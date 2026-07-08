@@ -11,12 +11,12 @@
   <div class="flex items-center space-x-4">
     <!-- Logged In Content -->
     <div id="logged-in-container" class="hidden items-center space-x-4">
-      <!-- Spiral Token Balance -->
-      <div class="flex items-center space-x-2 bg-cyan-950/20 border border-cyan-500/10 px-3 py-1.5 rounded-lg backdrop-blur-md">
-        <img src="/assets/icons/spiral.svg" alt="Spiral Icon" class="w-4 h-4 md:w-5 md:h-5 animate-spin-slow drop-shadow-[0_0_5px_rgba(34,211,238,0.5)]" />
+      <!-- Spiral Token Balance (Styled as game premium currency) -->
+      <div class="flex items-center space-x-2 bg-slate-950/60 border border-cyan-500/30 px-3 py-1.5 rounded-lg backdrop-blur-md shadow-[0_0_15px_rgba(34,211,238,0.15)]">
+        <img src="/assets/icons/spiral.svg" alt="Spiral Icon" class="w-4.5 h-4.5 md:w-5 md:h-5 drop-shadow-[0_0_6px_rgba(34,211,238,0.55)] select-none pointer-events-none" />
         <div class="flex flex-col text-left font-mono">
-          <span class="text-[10px] md:text-xs font-bold text-white leading-none">12,500</span>
-          <span class="text-[7px] md:text-[8px] text-cyan-400 tracking-wider leading-none">SPIRAL</span>
+          <span class="text-xs md:text-sm font-black text-white leading-none tracking-wide">12,500</span>
+          <span class="text-[7px] md:text-[8px] text-cyan-400 tracking-widest font-bold leading-none mt-0.5">SPIRAL</span>
         </div>
       </div>
 
@@ -212,6 +212,15 @@
   // Logout Simulation
   btnLogout?.addEventListener('click', (e) => {
     sessionStorage.removeItem('is_logged_in');
+    // Clear demo voting cache completely on logout
+    localStorage.removeItem('cc_proposals_db');
+    for (let i = 0; i < localStorage.length; i++) {
+      const key = localStorage.key(i);
+      if (key && key.startsWith('vote_CC-PROP-')) {
+        localStorage.removeItem(key);
+        i--;
+      }
+    }
     checkLogin();
     window.location.href = '/';
     e.stopPropagation();
@@ -236,12 +245,4 @@
   checkLogin();
 </script>
 
-<style>
-  @keyframes spin-slow {
-    from { transform: rotate(0deg); }
-    to { transform: rotate(360deg); }
-  }
-  .animate-spin-slow {
-    animation: spin-slow 15s linear infinite;
-  }
-</style>
+
