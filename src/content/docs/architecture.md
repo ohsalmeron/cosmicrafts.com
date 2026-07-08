@@ -1,31 +1,37 @@
 ---
 title: "Architecture"
-description: "A hybrid approach of robust cloud engines and standard Ethereum consensus."
+description: "Technical specifications of the hybrid Rust backend, multi-wallet auth, and GitOps governance."
 order: 2
 ---
 
-## Hybrid Consensus & Server Design
+## Hybrid Ledger & Backend
 
-To ensure optimal performance and security, Cosmicrafts uses a split-plane hybrid architecture:
+To eliminate transaction latency and gas fees during gameplay, we utilize a dual-layer approach:
 
-```
-┌─────────────────────────────────┐
-│     Centralized Cloud Server    │ <--- Matchmaking, Player Profiles,
-│  (No Gas, Zero Latency, 60 FPS) │      Real-time Battle State Engine
-└────────────────┬────────────────┘
-                 │
-                 │ State Proofs
-                 ▼
-┌─────────────────────────────────┐
-│        Ethereum Mainnet         │ <--- ERC-20 SPIRAL Token,
-│      (Secure, Permanent)        │      Immutable Asset Ledgers
-└─────────────────────────────────┘
-```
+1. **Rust Backend (Web2 Core)**: Implemented in Rust and hosted inside a secure FreeBSD jail. Valkey manages real-time session states, matchmaking queues, and player statistics with in-memory performance.
+2. **On-Chain Settlement (Web3 Layer)**: Ethereum Mainnet manages the standard ERC-20 `SPIRAL` ledger, token sales, and linear vesting schedules.
 
-### 1. Centralized Cloud Engine
-- **Gameplay Matchmaking**: Player matchmaking, game state calculation, and leaderboard updates are hosted on specialized, high-performance cloud servers.
-- **Frictionless Experience**: Players can enjoy the fully featured 3D game client without needing a crypto wallet connected for every action, resulting in **zero transaction latency and zero gas fees** during play.
+---
 
-### 2. Decentralized Asset Layer (Ethereum)
-- **SPIRAL ERC-20 Token**: The financial foundation of the franchise is deployed on the Ethereum mainnet.
-- **Permanent Ledger Storage**: Ethereum provides an indestructible smart contract environment. No single entity, including the development team, can alter or shut down the ledger state, giving investors and holders total transparency and security.
+## Multi-Chain Identity
+
+Users can bind multiple on-chain identities to their unified cloud game profile, using proven multi-chain integration patterns (similar to `ionicswap`):
+- **MetaMask (Ethereum)**: Used to verify `SPIRAL` token balances, claim staking rewards, and sign governance proposals.
+- **Phantom (Solana)** & **Internet Identity (ICP)**: Integrated to track cross-chain assets and historical achievements.
+
+---
+
+## Official Marketplace: NFTropoly
+
+All in-game trading, user-generated AI assets, and cosmetic items are settled on **NFTropoly**, the official marketplace engine for Cosmicrafts.
+- **Legacy Integration**: Legacy NFTs originally minted on ICP canisters are indexed and tradeable.
+- **Performance**: High-frequency trading and bid-matching are managed by NFTropoly's specialized Rust-based exchange backend to ensure instant trade resolution.
+
+---
+
+## GitOps Governance
+
+DAO governance is automated directly through open-source contribution workflows on GitHub:
+1. **Pull Requests as Proposals**: Any codebase updates, configuration changes, or treasury funding requests are submitted as a GitHub Pull Request (PR).
+2. **Review & Multi-Sig Authorization**: Once the PR is approved by the community and merged, a secure GitHub Action workflow triggers.
+3. **Smart Contract Trigger**: The cryptographic runner interacts directly with the `SpiralTreasury.sol` contract to execute or propose the required on-chain transaction automatically.
