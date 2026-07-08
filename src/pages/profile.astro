@@ -5,6 +5,7 @@ import Header from '../components/Header.astro';
 ---
 
 <Layout title="Cosmicrafts | Player Profile">
+  <!-- Viewport-Locked Container -->
   <div class="fixed inset-0 h-screen w-screen overflow-hidden flex flex-col justify-between p-6 md:p-10 select-none z-10 bg-[#020208]">
     <!-- Starfield Background -->
     <Starfield />
@@ -96,16 +97,101 @@ import Header from '../components/Header.astro';
             </div>
           </div>
 
-          <!-- Inventory Section -->
+          <!-- Inventory Section (Scrollable Grid Enabled) -->
           <div class="space-y-3">
             <h3 class="text-xs text-cyan-400 font-mono tracking-widest uppercase border-b border-white/5 pb-2">[ INVENTORY ]</h3>
-            <div class="grid grid-cols-1 sm:grid-cols-3 gap-4" id="inventory-container">
+            <div class="grid grid-cols-2 sm:grid-cols-3 gap-3 max-h-[290px] overflow-y-auto pr-1 scrollbar-thin" id="inventory-container">
               <!-- Dynamically populated via JS as vertical OpenSea-like NFT cards -->
             </div>
           </div>
         </div>
       </div>
     </main>
+
+    <!-- Floating High-Detail NFT Visor / Modal -->
+    <div id="nft-visor-modal" class="fixed inset-0 z-[9999] hidden items-center justify-center p-4 bg-slate-950/50 backdrop-blur-md">
+      <!-- Backdrop Click Close -->
+      <div class="absolute inset-0 z-0" id="nft-visor-backdrop"></div>
+      
+      <!-- Visor Content Panel -->
+      <div class="relative w-full max-w-3xl backdrop-blur-2xl bg-slate-950/85 border border-cyan-500/20 rounded-2xl p-6 md:p-8 shadow-[0_0_80px_rgba(6,182,212,0.2)] flex flex-col md:flex-row gap-6 md:gap-10 z-10 select-none overflow-hidden text-left">
+        <!-- Corner Brackets -->
+        <div class="absolute top-0 left-0 w-6 h-6 border-t border-l border-cyan-400/50"></div>
+        <div class="absolute top-0 right-0 w-6 h-6 border-t border-r border-cyan-400/50"></div>
+        <div class="absolute bottom-0 left-0 w-6 h-6 border-b border-l border-cyan-400/50"></div>
+        <div class="absolute bottom-0 right-0 w-6 h-6 border-b border-r border-cyan-400/50"></div>
+
+        <!-- Left Column: Visual Render -->
+        <div class="w-full md:w-72 flex flex-col items-center justify-center bg-[radial-gradient(circle_at_center,rgba(6,182,212,0.12)_0%,transparent_75%)] border border-white/5 rounded-xl p-6 relative">
+          <!-- Rarity Badge -->
+          <span id="visor-rarity" class="absolute top-3 left-3 px-2 py-0.5 rounded text-[8px] font-mono font-black uppercase tracking-widest bg-slate-950 border border-white/5">
+            LEGENDARY
+          </span>
+          <img id="visor-img" src="/assets/starter-ship.webp" alt="Visor Render" class="max-w-[85%] max-h-56 object-contain drop-shadow-[0_10px_35px_rgba(15,185,253,0.3)] animate-float" />
+        </div>
+
+        <!-- Right Column: Massive Technical Specifications (Cagadero de Info) -->
+        <div class="flex-1 flex flex-col justify-between overflow-y-auto max-h-[60vh] md:max-h-[350px] scrollbar-thin font-mono text-[10px] text-slate-400 space-y-4">
+          <div>
+            <div class="flex items-center justify-between border-b border-white/5 pb-2 mb-3">
+              <span class="text-cyan-400 text-xs font-black uppercase">[ TELEMETRY DETAILED READOUT ]</span>
+              <button id="btn-close-visor" class="text-[10px] hover:text-white transition-colors">CLOSE ✕</button>
+            </div>
+
+            <!-- Title & ID -->
+            <div class="space-y-1 mb-4">
+              <h1 id="visor-name" class="text-xl md:text-2xl font-black text-white uppercase tracking-tight leading-none">Void Dreadnought</h1>
+              <span id="visor-serial" class="text-slate-500 text-xs">ID: #0001</span>
+            </div>
+
+            <!-- Spec Grid -->
+            <div class="grid grid-cols-2 gap-x-6 gap-y-2 bg-white/5 border border-white/5 rounded-lg p-3 mb-4">
+              <div class="flex justify-between border-b border-white/5 pb-1">
+                <span class="text-slate-500">FIREPOWER:</span>
+                <span id="visor-power" class="text-white font-bold">98%</span>
+              </div>
+              <div class="flex justify-between border-b border-white/5 pb-1">
+                <span class="text-slate-500">SPEED_INDEX:</span>
+                <span id="visor-speed" class="text-white font-bold">9.5LY</span>
+              </div>
+              <div class="flex justify-between border-b border-white/5 pb-1">
+                <span class="text-slate-500">HULL PLATING:</span>
+                <span class="text-cyan-400">NANO-CARBON</span>
+              </div>
+              <div class="flex justify-between border-b border-white/5 pb-1">
+                <span class="text-slate-500">SHIELD TYPE:</span>
+                <span class="text-cyan-400">AEGIS MK-V</span>
+              </div>
+              <div class="flex justify-between col-span-2 pt-1">
+                <span class="text-slate-500">EST_VALUATION:</span>
+                <span id="visor-val" class="text-cyan-400 font-black">150,000 SPIRAL</span>
+              </div>
+            </div>
+
+            <!-- Web3 Ledger data (El Cagadero de Blockchain Info) -->
+            <div class="space-y-1.5 border-t border-white/5 pt-3">
+              <span class="text-[8px] text-slate-500 uppercase font-black tracking-widest">[ BLOCKCHAIN LEDGER DATA ]</span>
+              <div class="flex justify-between">
+                <span>CONTRACT STANDARD:</span>
+                <span class="text-slate-300">ERC-1155 (COSMIC_STORE)</span>
+              </div>
+              <div class="flex justify-between">
+                <span>METADATA STORAGE:</span>
+                <span class="text-slate-300">DECENTRALIZED IPFS</span>
+              </div>
+              <div class="flex justify-between">
+                <span>MINT_BLOCK:</span>
+                <span class="text-slate-300">#19823481 (ETH_MAINNET)</span>
+              </div>
+              <div class="flex flex-col gap-0.5 mt-2">
+                <span class="text-slate-500 text-[8px]">[ TRANSACTION_HASH ]</span>
+                <span class="text-cyan-400 text-[9px] select-text break-all">0x9e12bf4fa3198083933635ad420ec2bfce4b9211fb33c62</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
 
     <!-- Footer -->
     <footer class="w-full max-w-7xl mx-auto flex justify-between items-center z-10 font-mono text-[9px] text-slate-600">
@@ -116,7 +202,7 @@ import Header from '../components/Header.astro';
 </Layout>
 
 <script>
-  // 10 Mock Profiles Database with extended NFT Card parameters and rich inventories
+  // 10 Mock Profiles Database
   const players = [
     {
       name: "BIZKIT_0x1337",
@@ -135,11 +221,6 @@ import Header from '../components/Header.astro';
       achievements: [
         { title: "Creator of the Void", desc: "Helped forge the early alpha engine." },
         { title: "Mainnet Deployer", desc: "Successfully routed standard ERC-20." }
-      ],
-      inventory: [
-        { name: "Void Dreadnought", rarity: "Legendary", serial: "0001", power: 98, speed: 9.5, value: "150,000", img: "/assets/starter-ship.webp" },
-        { name: "Cosmic Planet", rarity: "Mythic", serial: "0012", power: 100, speed: 0.0, value: "2,500,000", img: "/assets/planet.webp" },
-        { name: "Stardust Interceptor", rarity: "Rare", serial: "0482", power: 65, speed: 12.0, value: "18,500", img: "/assets/starter-ship.webp" }
       ]
     },
     {
@@ -156,10 +237,6 @@ import Header from '../components/Header.astro';
       achievements: [
         { title: "Fleet Commander", desc: "Commanded 50 successful war operations." },
         { title: "Star Drifter", desc: "Traveled across 12 distinct solar sectors." }
-      ],
-      inventory: [
-        { name: "Flagship Carrier", rarity: "Epic", serial: "0082", power: 88, speed: 4.2, value: "75,000", img: "/assets/starter-ship.webp" },
-        { name: "Support Frigate", rarity: "Common", serial: "1094", power: 34, speed: 6.0, value: "2,100", img: "/assets/starter-ship.webp" }
       ]
     },
     {
@@ -177,10 +254,6 @@ import Header from '../components/Header.astro';
       achievements: [
         { title: "First Blood", desc: "Eliminated your first enemy flagship in battle." },
         { title: "Asteroid Raider", desc: "Looted 10 deep-space pirate stashes." }
-      ],
-      inventory: [
-        { name: "Void Interceptor", rarity: "Rare", serial: "0554", power: 62, speed: 11.5, value: "14,000", img: "/assets/starter-ship.webp" },
-        { name: "Rogue Explorer", rarity: "Rare", serial: "0219", power: 58, speed: 10.0, value: "11,500", img: "/assets/starter-ship.webp" }
       ]
     },
     {
@@ -197,10 +270,6 @@ import Header from '../components/Header.astro';
       achievements: [
         { title: "Matter Harvester", desc: "Extracted over 100,000 units of cosmic ore." },
         { title: "Deep Space Miner", desc: "Established your first mining outpost." }
-      ],
-      inventory: [
-        { name: "Mining Barge", rarity: "Common", serial: "2381", power: 25, speed: 2.1, value: "1,200", img: "/assets/starter-ship.webp" },
-        { name: "Cargo Hauler", rarity: "Common", serial: "1928", power: 30, speed: 3.5, value: "1,500", img: "/assets/starter-ship.webp" }
       ]
     },
     {
@@ -218,9 +287,6 @@ import Header from '../components/Header.astro';
       achievements: [
         { title: "First Flight", desc: "Completed the basic flight school tutorials." },
         { title: "Warp Jump", desc: "Performed your first stellar jump." }
-      ],
-      inventory: [
-        { name: "Starter Scout", rarity: "Common", serial: "8294", power: 12, speed: 7.5, value: "450", img: "/assets/starter-ship.webp" }
       ]
     },
     {
@@ -239,11 +305,6 @@ import Header from '../components/Header.astro';
       achievements: [
         { title: "Phantom Cloak", desc: "Traveled 10,000 LY while remaining fully cloaked." },
         { title: "Shadow Strike", desc: "Destroyed an enemy flagship from deep stealth." }
-      ],
-      inventory: [
-        { name: "Stealth Frigate", rarity: "Epic", serial: "0102", power: 84, speed: 14.2, value: "92,000", img: "/assets/starter-ship.webp" },
-        { name: "Chrono Planet", rarity: "Legendary", serial: "0018", power: 95, speed: 0.0, value: "180,000", img: "/assets/planet.webp" },
-        { name: "Shadow Fighter", rarity: "Epic", serial: "0401", power: 78, speed: 13.0, value: "62,000", img: "/assets/starter-ship.webp" }
       ]
     },
     {
@@ -261,10 +322,6 @@ import Header from '../components/Header.astro';
       achievements: [
         { title: "Alliance Builder", desc: "Formed a coalition of 5 distinct player clans." },
         { title: "Peacekeeper", desc: "Negotiated a treaty in a contested sector." }
-      ],
-      inventory: [
-        { name: "Diplomatic Shuttle", rarity: "Rare", serial: "0391", power: 45, speed: 8.0, value: "12,000", img: "/assets/starter-ship.webp" },
-        { name: "Sovereign Escort", rarity: "Rare", serial: "0721", power: 55, speed: 9.5, value: "15,800", img: "/assets/starter-ship.webp" }
       ]
     },
     {
@@ -281,10 +338,6 @@ import Header from '../components/Header.astro';
       achievements: [
         { title: "Tournament Winner", desc: "Won the Q1 Crimson Void PVP Tournament." },
         { title: "Crimson Blade", desc: "Scored 500 combat kills in Arena mode." }
-      ],
-      inventory: [
-        { name: "Heavy Cruiser", rarity: "Epic", serial: "0182", power: 85, speed: 5.8, value: "48,500", img: "/assets/starter-ship.webp" },
-        { name: "Arena Interceptor", rarity: "Epic", serial: "0109", power: 82, speed: 12.5, value: "54,000", img: "/assets/starter-ship.webp" }
       ]
     },
     {
@@ -302,10 +355,6 @@ import Header from '../components/Header.astro';
       achievements: [
         { title: "Shield Optimizer", desc: "Regenerated over 1,000,000 shield points in combat." },
         { title: "Hyperdrive Overclock", desc: "Achieved over 150% standard warp speed." }
-      ],
-      inventory: [
-        { name: "Repair Corvette", rarity: "Common", serial: "4810", power: 42, speed: 5.5, value: "1,800", img: "/assets/starter-ship.webp" },
-        { name: "Nano Frigate", rarity: "Rare", serial: "1098", power: 60, speed: 8.5, value: "9,500", img: "/assets/starter-ship.webp" }
       ]
     },
     {
@@ -323,13 +372,57 @@ import Header from '../components/Header.astro';
       achievements: [
         { title: "Sector Cartographer", desc: "Fully scanned and mapped 100 unexplored systems." },
         { title: "Stellar Cartographer", desc: "Discovered a hidden wormhole anomaly." }
-      ],
-      inventory: [
-        { name: "Explorer Vessel", rarity: "Rare", serial: "0291", power: 52, speed: 11.0, value: "11,200", img: "/assets/starter-ship.webp" },
-        { name: "Deep Survey Probe", rarity: "Common", serial: "3941", power: 22, speed: 15.0, value: "1,100", img: "/assets/starter-ship.webp" }
       ]
     }
   ];
+
+  // Base list of beautiful ship & planet designs to dynamically seed rich inventories (7 to 23 items per player)
+  const baseAssets = [
+    { name: "Void Interceptor", img: "/assets/starter-ship.webp", type: "ship" },
+    { name: "Nebula Interceptor", img: "/assets/starter-ship.webp", type: "ship" },
+    { name: "Dreadnought Destroyer", img: "/assets/starter-ship.webp", type: "ship" },
+    { name: "Sovereign Cruiser", img: "/assets/starter-ship.webp", type: "ship" },
+    { name: "Aegis Escort", img: "/assets/starter-ship.webp", type: "ship" },
+    { name: "Repair Corvette", img: "/assets/starter-ship.webp", type: "ship" },
+    { name: "Flagship Carrier", img: "/assets/starter-ship.webp", type: "ship" },
+    { name: "Planet Genesis", img: "/assets/planet.webp", type: "planet" },
+    { name: "Dyson Sphere Core", img: "/assets/planet.webp", type: "planet" },
+    { name: "Nebula Star Station", img: "/assets/planet.webp", type: "planet" },
+    { name: "Frozen Core", img: "/assets/planet.webp", type: "planet" },
+    { name: "Volcano Forge", img: "/assets/planet.webp", type: "planet" }
+  ];
+
+  const rarities = ["Mythic", "Legendary", "Epic", "Rare", "Common"];
+
+  // Helper to dynamically generate rich, unique, scrolled inventories (between 7 and 23 items per player)
+  const generateInventoryForPlayer = (idx: number) => {
+    // Deterministic random seed based on player name length & index
+    const count = 7 + ((idx * 7 + 13) % 17); // Generates between 7 and 23 items consistently
+    const inventory = [];
+    
+    for (let i = 0; i < count; i++) {
+      const assetIdx = (idx * 5 + i * 13) % baseAssets.length;
+      const asset = baseAssets[assetIdx];
+      const rarityIdx = (idx * 3 + i * 7) % rarities.length;
+      const rarity = rarities[rarityIdx];
+      
+      const serial = String(100 + (idx * 23 + i * 47) % 900).padStart(4, '0');
+      const power = 30 + (idx * 11 + i * 17) % 71;
+      const speed = asset.type === "planet" ? 0.0 : (5 + (idx * 3 + i * 9) % 11);
+      const value = (100 + (idx * 250 + i * 450) % 95000).toLocaleString();
+
+      inventory.push({
+        name: asset.name,
+        rarity,
+        serial,
+        power,
+        speed,
+        value,
+        img: asset.img
+      });
+    }
+    return inventory;
+  };
 
   let currentIndex = 0;
 
@@ -350,6 +443,51 @@ import Header from '../components/Header.astro';
   const identContainer = document.getElementById('identities-container');
   const achContainer = document.getElementById('achievements-container');
   const invContainer = document.getElementById('inventory-container');
+
+  // Visor selectors
+  const visorModal = document.getElementById('nft-visor-modal');
+  const visorBackdrop = document.getElementById('nft-visor-backdrop');
+  const btnCloseVisor = document.getElementById('btn-close-visor');
+  const visorImg = document.getElementById('visor-img') as HTMLImageElement;
+  const visorRarity = document.getElementById('visor-rarity');
+  const visorName = document.getElementById('visor-name');
+  const visorSerial = document.getElementById('visor-serial');
+  const visorPower = document.getElementById('visor-power');
+  const visorSpeed = document.getElementById('visor-speed');
+  const visorVal = document.getElementById('visor-val');
+
+  // Open details visor modal (Cagadero de Info Detailed view)
+  const openVisor = (item: any) => {
+    if (!visorModal) return;
+    
+    if (visorImg) visorImg.src = item.img;
+    if (visorRarity) {
+      visorRarity.innerText = item.rarity;
+      // Change color according to rarity
+      visorRarity.className = `absolute top-3 left-3 px-2 py-0.5 rounded text-[8px] font-mono font-black uppercase tracking-widest bg-slate-950 border border-white/5 ${
+        item.rarity === "Mythic" ? "text-purple-400 border-purple-500/20" :
+        item.rarity === "Legendary" ? "text-amber-400 border-amber-500/20" :
+        item.rarity === "Epic" ? "text-indigo-400 border-indigo-500/20" :
+        item.rarity === "Rare" ? "text-cyan-400 border-cyan-500/20" : "text-slate-400"
+      }`;
+    }
+    if (visorName) visorName.innerText = item.name;
+    if (visorSerial) visorSerial.innerText = `ID: #${item.serial}`;
+    if (visorPower) visorPower.innerText = `${item.power}%`;
+    if (visorSpeed) visorSpeed.innerText = `${item.speed}LY`;
+    if (visorVal) visorVal.innerText = `${item.value} SPIRAL`;
+
+    visorModal.classList.remove('hidden');
+    visorModal.classList.add('flex');
+  };
+
+  // Close Visor
+  const closeVisor = () => {
+    visorModal?.classList.add('hidden');
+    visorModal?.classList.remove('flex');
+  };
+  btnCloseVisor?.addEventListener('click', closeVisor);
+  visorBackdrop?.addEventListener('click', closeVisor);
 
   const updateProfile = (idx: number) => {
     const p = players[idx];
@@ -402,10 +540,12 @@ import Header from '../components/Header.astro';
         });
       }
 
-      // Populate Inventory (Vertical Collectible/NFT Card Format)
+      // Populate Procedural Rich Inventories (7 to 23 items to test scroll/hover)
       if (invContainer) {
         invContainer.innerHTML = '';
-        p.inventory.forEach(inv => {
+        const playerInventory = generateInventoryForPlayer(idx);
+        
+        playerInventory.forEach(inv => {
           const isMythic = inv.rarity === "Mythic";
           const isLegendary = inv.rarity === "Legendary";
           const isEpic = inv.rarity === "Epic";
@@ -416,59 +556,59 @@ import Header from '../components/Header.astro';
           let shadowGlow = "";
           
           if (isMythic) {
-            borderGlow = "border-purple-500/20 hover:border-purple-400/40 bg-purple-950/5";
+            borderGlow = "border-purple-500/15 hover:border-purple-400/40 bg-purple-950/5";
             textGlow = "text-purple-400";
             shadowGlow = "shadow-[0_0_15px_rgba(168,85,247,0.1)]";
           } else if (isLegendary) {
-            borderGlow = "border-amber-500/20 hover:border-amber-400/40 bg-amber-950/5";
+            borderGlow = "border-amber-500/15 hover:border-amber-400/40 bg-amber-950/5";
             textGlow = "text-amber-400";
             shadowGlow = "shadow-[0_0_15px_rgba(245,158,11,0.1)]";
           } else if (isEpic) {
-            borderGlow = "border-indigo-500/20 hover:border-indigo-400/40 bg-indigo-950/5";
+            borderGlow = "border-indigo-500/15 hover:border-indigo-400/40 bg-indigo-950/5";
             textGlow = "text-indigo-400";
             shadowGlow = "shadow-[0_0_15px_rgba(99,102,241,0.1)]";
           } else if (isRare) {
-            borderGlow = "border-cyan-500/20 hover:border-cyan-400/40 bg-cyan-950/5";
+            borderGlow = "border-cyan-500/15 hover:border-cyan-400/40 bg-cyan-950/5";
             textGlow = "text-cyan-400";
             shadowGlow = "shadow-[0_0_15px_rgba(6,182,212,0.1)]";
           }
 
           const item = document.createElement('div');
-          item.className = `bg-slate-950/65 border rounded-xl overflow-hidden flex flex-col transition-colors duration-200 relative ${borderGlow} ${shadowGlow} group`;
+          item.className = `bg-slate-950/40 border p-3 rounded-lg flex flex-col items-center text-center cursor-pointer transition-colors duration-200 ${borderGlow} ${shadowGlow} group`;
           item.innerHTML = `
-            <!-- Asset Thumbnail with Cyber Grid Background -->
-            <div class="relative w-full aspect-square bg-[radial-gradient(circle_at_center,rgba(6,182,212,0.1)_0%,transparent_70%)] border-b border-white/5 flex items-center justify-center p-3">
-              <!-- Floating Rarity Tag -->
-              <span class="absolute top-2 left-2 px-1.5 py-0.5 rounded text-[7px] font-mono font-black uppercase tracking-widest bg-slate-950/85 border border-white/5 ${textGlow}">
+            <!-- Mini Thumbnail with Grid Background -->
+            <div class="relative w-full aspect-square bg-[radial-gradient(circle_at_center,rgba(6,182,212,0.08)_0%,transparent_70%)] border-b border-white/5 flex items-center justify-center p-2">
+              <span class="absolute top-1.5 left-1.5 px-1.5 py-0.5 rounded text-[6px] font-mono font-black uppercase tracking-widest bg-slate-950/85 border border-white/5 ${textGlow}">
                 ${inv.rarity}
               </span>
-              
-              <img src="${inv.img}" alt="${inv.name}" class="max-w-[80%] max-h-[80%] object-contain drop-shadow-[0_4px_10px_rgba(0,0,0,0.5)] ${isMythic || isLegendary ? 'animate-bounce-slow' : ''}" />
+              <img src="${inv.img}" alt="${inv.name}" class="max-w-[75%] max-h-[75%] object-contain drop-shadow-[0_4px_10px_rgba(0,0,0,0.5)] ${isMythic || isLegendary ? 'animate-bounce-slow' : ''}" />
             </div>
             
-            <!-- Asset Details -->
-            <div class="p-3 flex flex-col text-left space-y-2 font-mono">
-              <div class="flex flex-col gap-0.5">
+            <!-- Details -->
+            <div class="p-2 w-full flex flex-col text-left space-y-1.5 font-mono">
+              <div class="flex flex-col">
                 <span class="text-[9px] text-white font-extrabold tracking-tight uppercase leading-none truncate">${inv.name}</span>
-                <span class="text-[7px] text-slate-500 leading-none">ID: #${inv.serial}</span>
+                <span class="text-[7px] text-slate-500 mt-0.5">ID: #${inv.serial}</span>
               </div>
-              
-              <!-- Stats readouts -->
-              <div class="flex justify-between items-center text-[7px] text-slate-400 bg-white/5 rounded p-1.5 border border-white/5">
+              <div class="flex justify-between items-center text-[6px] text-slate-400 bg-white/5 rounded p-1 border border-white/5">
                 <span>PWR: ${inv.power}%</span>
                 <span>SPD: ${inv.speed}LY</span>
               </div>
-              
-              <!-- Value / Price -->
-              <div class="flex items-center justify-between border-t border-white/5 pt-2 mt-1">
-                <span class="text-[7px] text-slate-500 uppercase font-black">VALUE:</span>
-                <div class="flex items-center gap-1">
-                  <img src="/assets/icons/spiral.svg" alt="SPIRAL" class="w-2.5 h-2.5" />
-                  <span class="text-[9px] text-cyan-400 font-black leading-none">${inv.value}</span>
+              <div class="flex items-center justify-between border-t border-white/5 pt-1.5 mt-0.5">
+                <span class="text-[6px] text-slate-500 uppercase font-black">VAL:</span>
+                <div class="flex items-center gap-0.5">
+                  <img src="/assets/icons/spiral.svg" alt="SPIRAL" class="w-2 h-2" />
+                  <span class="text-[8px] text-cyan-400 font-black leading-none">${inv.value}</span>
                 </div>
               </div>
             </div>
           `;
+
+          // Add Details Visor Click Trigger
+          item.addEventListener('click', () => {
+            openVisor(inv);
+          });
+
           invContainer.appendChild(item);
         });
       }
@@ -501,6 +641,15 @@ import Header from '../components/Header.astro';
   }
   .animate-bounce-slow {
     animation: bounce-slow 4s ease-in-out infinite;
+  }
+
+  /* Custom floating space animation for ships in visor */
+  @keyframes float-visor {
+    0%, 100% { transform: translateY(0px) rotate(0deg); }
+    50% { transform: translateY(-10px) rotate(1.5deg); }
+  }
+  .animate-float {
+    animation: float-visor 6s ease-in-out infinite;
   }
 
   /* Scrollbars inside profile container */
