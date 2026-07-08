@@ -1,0 +1,93 @@
+<div class="starry-background absolute inset-0 overflow-hidden w-full h-full pointer-events-none z-0">
+  <canvas id="starfield" class="w-full h-full block bg-transparent opacity-85"></canvas>
+</div>
+
+<script>
+  let n = 1500;
+  let w = window.innerWidth;
+  let h = window.innerHeight;
+  let x = w / 2;
+  let y = h / 2;
+  let z = (w + h) / 2;
+  let star_ratio = 256;
+  let starSpeed = 0.5;
+  let star = new Array(n);
+  let context: CanvasRenderingContext2D | null = null;
+
+  function init() {
+    w = window.innerWidth;
+    h = window.innerHeight;
+    x = w / 2;
+    y = h / 2;
+    z = (w + h) / 2;
+
+    const starfield = document.getElementById('starfield') as HTMLCanvasElement;
+    if (!starfield) return;
+
+    starfield.width = w;
+    starfield.height = h;
+    context = starfield.getContext('2d');
+    if (context) {
+      context.strokeStyle = 'rgba(180, 220, 255, 0.8)';
+      context.globalAlpha = 0.8;
+    }
+
+    for (let i = 0; i < n; i++) {
+      star[i] = new Array(5);
+      star[i][0] = Math.random() * w * 2 - x * 2;
+      star[i][1] = Math.random() * h * 2 - y * 2;
+      star[i][2] = Math.round(Math.random() * z);
+      star[i][3] = 0;
+      star[i][4] = 0;
+    }
+  }
+
+  function anim() {
+    if (!context) return;
+    context.clearRect(0, 0, w, h);
+    
+    context.fillStyle = "rgba(0, 15, 35, 0.1)";
+    context.fillRect(0, 0, w, h);
+    
+    for (let i = 0; i < n; i++) {
+      let star_x_save = star[i][3];
+      let star_y_save = star[i][4];
+      star[i][2] -= starSpeed;
+      if (star[i][2] > z) star[i][2] -= z;
+      if (star[i][2] < 0) star[i][2] += z;
+      star[i][3] = x + (star[i][0] / star[i][2]) * star_ratio;
+      star[i][4] = y + (star[i][1] / star[i][2]) * star_ratio;
+      
+      if (
+        star_x_save > 0 &&
+        star_x_save < w &&
+        star_y_save > 0 &&
+        star_y_save < h
+      ) {
+        const brightness = 1 - (star[i][2] / z) * 0.9;
+        context.lineWidth = brightness * 1.5;
+        context.strokeStyle = `rgba(180, 220, 255, ${brightness})`;
+        context.beginPath();
+        context.moveTo(star_x_save, star_y_save);
+        context.lineTo(star[i][3], star[i][4]);
+        context.stroke();
+      }
+    }
+    requestAnimationFrame(anim);
+  }
+
+  // Window resize handler
+  window.addEventListener('resize', () => {
+    init();
+  });
+
+  // Start the animation
+  init();
+  anim();
+</script>
+
+<style>
+  .starry-background {
+    background: radial-gradient(circle at center, #0a0a24 0%, #030310 100%);
+  }
+</style>
