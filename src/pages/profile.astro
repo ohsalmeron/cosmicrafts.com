@@ -29,8 +29,8 @@ import Header from '../components/Header.astro';
         </button>
       </div>
 
-      <!-- Main Steam Card Frame -->
-      <div class="w-full max-w-5xl mx-auto backdrop-blur-lg bg-slate-950/45 border border-cyan-500/10 rounded-xl p-6 md:p-8 shadow-[0_0_50px_rgba(6,182,212,0.06)] relative flex flex-col md:flex-row gap-6 md:gap-10 overflow-hidden items-stretch">
+      <!-- Main Steam Card Frame (Transition Enabled) -->
+      <div id="profile-frame" class="w-full max-w-5xl mx-auto backdrop-blur-lg bg-slate-950/45 border border-cyan-500/10 rounded-xl p-6 md:p-8 shadow-[0_0_50px_rgba(6,182,212,0.06)] relative flex flex-col md:flex-row gap-6 md:gap-10 overflow-hidden items-stretch transition-all duration-300">
         <!-- Cyber Corner Brackets -->
         <div class="absolute top-0 left-0 w-6 h-6 border-t border-l border-cyan-400/50"></div>
         <div class="absolute top-0 right-0 w-6 h-6 border-t border-r border-cyan-400/50"></div>
@@ -99,8 +99,8 @@ import Header from '../components/Header.astro';
           <!-- Inventory Section -->
           <div class="space-y-3">
             <h3 class="text-xs text-cyan-400 font-mono tracking-widest uppercase border-b border-white/5 pb-2">[ INVENTORY ]</h3>
-            <div class="grid grid-cols-2 sm:grid-cols-3 gap-3" id="inventory-container">
-              <!-- Dynamically populated via JS -->
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-4" id="inventory-container">
+              <!-- Dynamically populated via JS as vertical OpenSea-like NFT cards -->
             </div>
           </div>
         </div>
@@ -116,7 +116,7 @@ import Header from '../components/Header.astro';
 </Layout>
 
 <script>
-  // 10 Mock Profiles Database
+  // 10 Mock Profiles Database with extended NFT Card parameters and rich inventories
   const players = [
     {
       name: "BIZKIT_0x1337",
@@ -137,8 +137,9 @@ import Header from '../components/Header.astro';
         { title: "Mainnet Deployer", desc: "Successfully routed standard ERC-20." }
       ],
       inventory: [
-        { name: "Dreadnought", rarity: "Legendary", desc: "Heavy void combat cruiser.", img: "/assets/starter-ship.webp" },
-        { name: "Cosmic Planet", rarity: "Mythic", desc: "Genesis home planet asset.", img: "/assets/planet.webp" }
+        { name: "Void Dreadnought", rarity: "Legendary", serial: "0001", power: 98, speed: 9.5, value: "150,000", img: "/assets/starter-ship.webp" },
+        { name: "Cosmic Planet", rarity: "Mythic", serial: "0012", power: 100, speed: 0.0, value: "2,500,000", img: "/assets/planet.webp" },
+        { name: "Stardust Interceptor", rarity: "Rare", serial: "0482", power: 65, speed: 12.0, value: "18,500", img: "/assets/starter-ship.webp" }
       ]
     },
     {
@@ -157,7 +158,8 @@ import Header from '../components/Header.astro';
         { title: "Star Drifter", desc: "Traveled across 12 distinct solar sectors." }
       ],
       inventory: [
-        { name: "Flagship Carrier", rarity: "Epic", desc: "Large fleet logistics shuttle.", img: "/assets/starter-ship.webp" }
+        { name: "Flagship Carrier", rarity: "Epic", serial: "0082", power: 88, speed: 4.2, value: "75,000", img: "/assets/starter-ship.webp" },
+        { name: "Support Frigate", rarity: "Common", serial: "1094", power: 34, speed: 6.0, value: "2,100", img: "/assets/starter-ship.webp" }
       ]
     },
     {
@@ -177,7 +179,8 @@ import Header from '../components/Header.astro';
         { title: "Asteroid Raider", desc: "Looted 10 deep-space pirate stashes." }
       ],
       inventory: [
-        { name: "Void Interceptor", rarity: "Rare", desc: "Fitted with stealth warp drives.", img: "/assets/starter-ship.webp" }
+        { name: "Void Interceptor", rarity: "Rare", serial: "0554", power: 62, speed: 11.5, value: "14,000", img: "/assets/starter-ship.webp" },
+        { name: "Rogue Explorer", rarity: "Rare", serial: "0219", power: 58, speed: 10.0, value: "11,500", img: "/assets/starter-ship.webp" }
       ]
     },
     {
@@ -196,7 +199,8 @@ import Header from '../components/Header.astro';
         { title: "Deep Space Miner", desc: "Established your first mining outpost." }
       ],
       inventory: [
-        { name: "Mining Barge", rarity: "Common", desc: "Heavy cargo extraction rig.", img: "/assets/starter-ship.webp" }
+        { name: "Mining Barge", rarity: "Common", serial: "2381", power: 25, speed: 2.1, value: "1,200", img: "/assets/starter-ship.webp" },
+        { name: "Cargo Hauler", rarity: "Common", serial: "1928", power: 30, speed: 3.5, value: "1,500", img: "/assets/starter-ship.webp" }
       ]
     },
     {
@@ -216,7 +220,7 @@ import Header from '../components/Header.astro';
         { title: "Warp Jump", desc: "Performed your first stellar jump." }
       ],
       inventory: [
-        { name: "Starter Scout", rarity: "Common", desc: "Standard entry-level scout frigate.", img: "/assets/starter-ship.webp" }
+        { name: "Starter Scout", rarity: "Common", serial: "8294", power: 12, speed: 7.5, value: "450", img: "/assets/starter-ship.webp" }
       ]
     },
     {
@@ -237,8 +241,9 @@ import Header from '../components/Header.astro';
         { title: "Shadow Strike", desc: "Destroyed an enemy flagship from deep stealth." }
       ],
       inventory: [
-        { name: "Stealth Frigate", rarity: "Epic", desc: "Custom radar-absorbent hull plating.", img: "/assets/starter-ship.webp" },
-        { name: "Chrono Module", rarity: "Legendary", desc: "Temporal drive stabilizer.", img: "/assets/planet.webp" }
+        { name: "Stealth Frigate", rarity: "Epic", serial: "0102", power: 84, speed: 14.2, value: "92,000", img: "/assets/starter-ship.webp" },
+        { name: "Chrono Planet", rarity: "Legendary", serial: "0018", power: 95, speed: 0.0, value: "180,000", img: "/assets/planet.webp" },
+        { name: "Shadow Fighter", rarity: "Epic", serial: "0401", power: 78, speed: 13.0, value: "62,000", img: "/assets/starter-ship.webp" }
       ]
     },
     {
@@ -258,7 +263,8 @@ import Header from '../components/Header.astro';
         { title: "Peacekeeper", desc: "Negotiated a treaty in a contested sector." }
       ],
       inventory: [
-        { name: "Diplomatic Shuttle", rarity: "Rare", desc: "Dignitary transport with heavy shielding.", img: "/assets/starter-ship.webp" }
+        { name: "Diplomatic Shuttle", rarity: "Rare", serial: "0391", power: 45, speed: 8.0, value: "12,000", img: "/assets/starter-ship.webp" },
+        { name: "Sovereign Escort", rarity: "Rare", serial: "0721", power: 55, speed: 9.5, value: "15,800", img: "/assets/starter-ship.webp" }
       ]
     },
     {
@@ -277,7 +283,8 @@ import Header from '../components/Header.astro';
         { title: "Crimson Blade", desc: "Scored 500 combat kills in Arena mode." }
       ],
       inventory: [
-        { name: "Heavy Cruiser", rarity: "Epic", desc: "Fitted with high-output laser batteries.", img: "/assets/starter-ship.webp" }
+        { name: "Heavy Cruiser", rarity: "Epic", serial: "0182", power: 85, speed: 5.8, value: "48,500", img: "/assets/starter-ship.webp" },
+        { name: "Arena Interceptor", rarity: "Epic", serial: "0109", power: 82, speed: 12.5, value: "54,000", img: "/assets/starter-ship.webp" }
       ]
     },
     {
@@ -297,7 +304,8 @@ import Header from '../components/Header.astro';
         { title: "Hyperdrive Overclock", desc: "Achieved over 150% standard warp speed." }
       ],
       inventory: [
-        { name: "Repair Corvette", rarity: "Common", desc: "Support craft with nano-weld capabilities.", img: "/assets/starter-ship.webp" }
+        { name: "Repair Corvette", rarity: "Common", serial: "4810", power: 42, speed: 5.5, value: "1,800", img: "/assets/starter-ship.webp" },
+        { name: "Nano Frigate", rarity: "Rare", serial: "1098", power: 60, speed: 8.5, value: "9,500", img: "/assets/starter-ship.webp" }
       ]
     },
     {
@@ -317,7 +325,8 @@ import Header from '../components/Header.astro';
         { title: "Stellar Cartographer", desc: "Discovered a hidden wormhole anomaly." }
       ],
       inventory: [
-        { name: "Explorer Vessel", rarity: "Rare", desc: "Long-range research and survey shuttle.", img: "/assets/starter-ship.webp" }
+        { name: "Explorer Vessel", rarity: "Rare", serial: "0291", power: 52, speed: 11.0, value: "11,200", img: "/assets/starter-ship.webp" },
+        { name: "Deep Survey Probe", rarity: "Common", serial: "3941", power: 22, speed: 15.0, value: "1,100", img: "/assets/starter-ship.webp" }
       ]
     }
   ];
@@ -328,6 +337,7 @@ import Header from '../components/Header.astro';
   const btnPrev = document.getElementById('btn-prev');
   const btnNext = document.getElementById('btn-next');
   const indexDisplay = document.getElementById('current-index-display');
+  const profileFrame = document.getElementById('profile-frame');
   const pAvatar = document.getElementById('player-avatar') as HTMLImageElement;
   const pName = document.getElementById('player-name');
   const pTitle = document.getElementById('player-title');
@@ -345,93 +355,127 @@ import Header from '../components/Header.astro';
     const p = players[idx];
     if (!p) return;
 
-    // Index display
-    if (indexDisplay) indexDisplay.innerText = (idx + 1).toString();
+    // Trigger high-performance space warp fade-and-zoom transition (GPU bound)
+    profileFrame?.classList.add('opacity-0', 'scale-[0.985]', 'blur-[1.5px]');
 
-    // Basic details
-    if (pAvatar) pAvatar.src = p.avatar;
-    if (pName) pName.innerText = p.name;
-    if (pTitle) pTitle.innerText = p.title;
-    if (pLevel) pLevel.innerText = p.level.toString();
-    if (pXpBar) pXpBar.style.width = `${p.xp}%`;
-    if (pStake) pStake.innerText = p.stake;
-    if (pClaimable) pClaimable.innerText = p.claimable;
+    setTimeout(() => {
+      // Index display
+      if (indexDisplay) indexDisplay.innerText = (idx + 1).toString();
 
-    // Render Cryptographic Identities Dynamically (No hardcoded identical blocks)
-    if (identContainer) {
-      identContainer.innerHTML = '';
-      p.identities.forEach(ident => {
-        const item = document.createElement('div');
-        item.className = "p-1.5 rounded bg-white/5 border border-white/5 cursor-pointer hover:border-cyan-500/20 hover:bg-cyan-950/10 transition-colors duration-200 relative group";
-        item.innerHTML = `
-          <img src="${ident.icon}" alt="${ident.label}" class="w-4 h-4" />
-          <div class="absolute bottom-8 left-0 hidden group-hover:block bg-slate-950 border border-cyan-500/20 rounded px-2.5 py-1 text-[9px] font-mono text-white whitespace-nowrap z-50">
-            ${ident.label}: <span class="text-cyan-400">${ident.addr}</span>
-          </div>
-        `;
-        identContainer.appendChild(item);
-      });
-    }
+      // Basic details
+      if (pAvatar) pAvatar.src = p.avatar;
+      if (pName) pName.innerText = p.name;
+      if (pTitle) pTitle.innerText = p.title;
+      if (pLevel) pLevel.innerText = p.level.toString();
+      if (pXpBar) pXpBar.style.width = `${p.xp}%`;
+      if (pStake) pStake.innerText = p.stake;
+      if (pClaimable) pClaimable.innerText = p.claimable;
 
-    // Populate Achievements
-    if (achContainer) {
-      achContainer.innerHTML = '';
-      p.achievements.forEach(ach => {
-        const item = document.createElement('div');
-        item.className = "bg-white/5 border border-white/5 p-3 rounded-lg relative overflow-hidden flex flex-col justify-center";
-        item.innerHTML = `
-          <div class="absolute top-0 right-0 w-1.5 h-1.5 border-t border-r border-cyan-500/30"></div>
-          <span class="text-white font-bold text-xs uppercase tracking-tight">${ach.title}</span>
-          <p class="text-[10px] text-slate-400 font-light leading-snug mt-1">${ach.desc}</p>
-        `;
-        achContainer.appendChild(item);
-      });
-    }
+      // Render Cryptographic Identities Dynamically
+      if (identContainer) {
+        identContainer.innerHTML = '';
+        p.identities.forEach(ident => {
+          const item = document.createElement('div');
+          item.className = "p-1.5 rounded bg-white/5 border border-white/5 cursor-pointer hover:border-cyan-500/20 hover:bg-cyan-950/10 transition-colors duration-200 relative group";
+          item.innerHTML = `
+            <img src="${ident.icon}" alt="${ident.label}" class="w-4 h-4" />
+            <div class="absolute bottom-8 left-0 hidden group-hover:block bg-slate-950 border border-cyan-500/20 rounded px-2.5 py-1 text-[9px] font-mono text-white whitespace-nowrap z-50">
+              ${ident.label}: <span class="text-cyan-400">${ident.addr}</span>
+            </div>
+          `;
+          identContainer.appendChild(item);
+        });
+      }
 
-    // Populate Inventory (No hover scale logic, static border transition only)
-    if (invContainer) {
-      invContainer.innerHTML = '';
-      p.inventory.forEach(inv => {
-        const isMythic = inv.rarity === "Mythic";
-        const isLegendary = inv.rarity === "Legendary";
-        const isEpic = inv.rarity === "Epic";
-        const isRare = inv.rarity === "Rare";
-        
-        let borderGlow = "border-white/5 hover:border-cyan-500/25";
-        let textGlow = "text-slate-400";
-        let shadowGlow = "";
-        
-        if (isMythic) {
-          borderGlow = "border-purple-500/15 hover:border-purple-400/40";
-          textGlow = "text-purple-400";
-          shadowGlow = "shadow-[0_0_15px_rgba(168,85,247,0.1)]";
-        } else if (isLegendary) {
-          borderGlow = "border-amber-500/15 hover:border-amber-400/40";
-          textGlow = "text-amber-400";
-          shadowGlow = "shadow-[0_0_15px_rgba(245,158,11,0.1)]";
-        } else if (isEpic) {
-          borderGlow = "border-indigo-500/15 hover:border-indigo-400/40";
-          textGlow = "text-indigo-400";
-          shadowGlow = "shadow-[0_0_15px_rgba(99,102,241,0.1)]";
-        } else if (isRare) {
-          borderGlow = "border-cyan-500/15 hover:border-cyan-400/40";
-          textGlow = "text-cyan-400";
-          shadowGlow = "shadow-[0_0_15px_rgba(6,182,212,0.1)]";
-        }
+      // Populate Achievements
+      if (achContainer) {
+        achContainer.innerHTML = '';
+        p.achievements.forEach(ach => {
+          const item = document.createElement('div');
+          item.className = "bg-white/5 border border-white/5 p-3 rounded-lg relative overflow-hidden flex flex-col justify-center";
+          item.innerHTML = `
+            <div class="absolute top-0 right-0 w-1.5 h-1.5 border-t border-r border-cyan-500/30"></div>
+            <span class="text-white font-bold text-xs uppercase tracking-tight">${ach.title}</span>
+            <p class="text-[10px] text-slate-400 font-light leading-snug mt-1">${ach.desc}</p>
+          `;
+          achContainer.appendChild(item);
+        });
+      }
 
-        const item = document.createElement('div');
-        item.className = `bg-slate-950/40 border p-3 rounded-lg flex flex-col items-center text-center transition-colors duration-200 ${borderGlow} ${shadowGlow}`;
-        item.innerHTML = `
-          <!-- Mini 3D Render -->
-          <div class="relative w-12 h-12 flex items-center justify-center mb-2">
-            <img src="${inv.img}" alt="${inv.name}" class="max-w-full max-h-full object-contain ${isMythic || isLegendary ? 'animate-bounce-slow' : ''}" />
-          </div>
-          <span class="text-[10px] uppercase tracking-wider font-extrabold text-white leading-none">${inv.name}</span>
-          <span class="text-[8px] font-mono uppercase tracking-widest mt-1 ${textGlow}">${inv.rarity}</span>
-        `;
-        invContainer.appendChild(item);
-      });
-    }
+      // Populate Inventory (Vertical Collectible/NFT Card Format)
+      if (invContainer) {
+        invContainer.innerHTML = '';
+        p.inventory.forEach(inv => {
+          const isMythic = inv.rarity === "Mythic";
+          const isLegendary = inv.rarity === "Legendary";
+          const isEpic = inv.rarity === "Epic";
+          const isRare = inv.rarity === "Rare";
+          
+          let borderGlow = "border-white/5 hover:border-cyan-500/25";
+          let textGlow = "text-slate-400";
+          let shadowGlow = "";
+          
+          if (isMythic) {
+            borderGlow = "border-purple-500/20 hover:border-purple-400/40 bg-purple-950/5";
+            textGlow = "text-purple-400";
+            shadowGlow = "shadow-[0_0_15px_rgba(168,85,247,0.1)]";
+          } else if (isLegendary) {
+            borderGlow = "border-amber-500/20 hover:border-amber-400/40 bg-amber-950/5";
+            textGlow = "text-amber-400";
+            shadowGlow = "shadow-[0_0_15px_rgba(245,158,11,0.1)]";
+          } else if (isEpic) {
+            borderGlow = "border-indigo-500/20 hover:border-indigo-400/40 bg-indigo-950/5";
+            textGlow = "text-indigo-400";
+            shadowGlow = "shadow-[0_0_15px_rgba(99,102,241,0.1)]";
+          } else if (isRare) {
+            borderGlow = "border-cyan-500/20 hover:border-cyan-400/40 bg-cyan-950/5";
+            textGlow = "text-cyan-400";
+            shadowGlow = "shadow-[0_0_15px_rgba(6,182,212,0.1)]";
+          }
+
+          const item = document.createElement('div');
+          item.className = `bg-slate-950/65 border rounded-xl overflow-hidden flex flex-col transition-colors duration-200 relative ${borderGlow} ${shadowGlow} group`;
+          item.innerHTML = `
+            <!-- Asset Thumbnail with Cyber Grid Background -->
+            <div class="relative w-full aspect-square bg-[radial-gradient(circle_at_center,rgba(6,182,212,0.1)_0%,transparent_70%)] border-b border-white/5 flex items-center justify-center p-3">
+              <!-- Floating Rarity Tag -->
+              <span class="absolute top-2 left-2 px-1.5 py-0.5 rounded text-[7px] font-mono font-black uppercase tracking-widest bg-slate-950/85 border border-white/5 ${textGlow}">
+                ${inv.rarity}
+              </span>
+              
+              <img src="${inv.img}" alt="${inv.name}" class="max-w-[80%] max-h-[80%] object-contain drop-shadow-[0_4px_10px_rgba(0,0,0,0.5)] ${isMythic || isLegendary ? 'animate-bounce-slow' : ''}" />
+            </div>
+            
+            <!-- Asset Details -->
+            <div class="p-3 flex flex-col text-left space-y-2 font-mono">
+              <div class="flex flex-col gap-0.5">
+                <span class="text-[9px] text-white font-extrabold tracking-tight uppercase leading-none truncate">${inv.name}</span>
+                <span class="text-[7px] text-slate-500 leading-none">ID: #${inv.serial}</span>
+              </div>
+              
+              <!-- Stats readouts -->
+              <div class="flex justify-between items-center text-[7px] text-slate-400 bg-white/5 rounded p-1.5 border border-white/5">
+                <span>PWR: ${inv.power}%</span>
+                <span>SPD: ${inv.speed}LY</span>
+              </div>
+              
+              <!-- Value / Price -->
+              <div class="flex items-center justify-between border-t border-white/5 pt-2 mt-1">
+                <span class="text-[7px] text-slate-500 uppercase font-black">VALUE:</span>
+                <div class="flex items-center gap-1">
+                  <img src="/assets/icons/spiral.svg" alt="SPIRAL" class="w-2.5 h-2.5" />
+                  <span class="text-[9px] text-cyan-400 font-black leading-none">${inv.value}</span>
+                </div>
+              </div>
+            </div>
+          `;
+          invContainer.appendChild(item);
+        });
+      }
+
+      // Finish transition: fade back in
+      profileFrame?.classList.remove('opacity-0', 'scale-[0.985]', 'blur-[1.5px]');
+    }, 150);
   };
 
   // Nav actions
