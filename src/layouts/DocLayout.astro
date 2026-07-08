@@ -39,10 +39,10 @@ const sortedDocs = allDocs.sort((a, b) => (a.data.order || 0) - (b.data.order ||
       <!-- Left: Sidebar Navigation -->
       <aside class="w-full md:w-64 flex flex-row md:flex-col overflow-x-auto md:overflow-x-visible md:overflow-y-auto shrink-0 gap-2 border-b md:border-b-0 md:border-r border-white/5 pb-4 md:pb-0 md:pr-6 scrollbar-none select-none">
         {sortedDocs.map((doc) => {
-          const isActive = doc.slug === activeSlug;
+          const isActive = doc.id === activeSlug;
           return (
             <a
-              href={`/docs/${doc.slug}`}
+              href={`/docs/${doc.id}`}
               class={`px-4 py-2.5 rounded-lg text-xs md:text-sm font-mono tracking-wider uppercase border transition-all duration-300 whitespace-nowrap text-center md:text-left ${
                 isActive
                   ? 'bg-cyan-500/10 border-cyan-400/35 text-cyan-400 shadow-[0_0_15px_rgba(34,211,238,0.1)]'

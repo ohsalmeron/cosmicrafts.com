@@ -1,20 +1,20 @@
 ---
-import { getCollection } from 'astro:content';
+import { getCollection, render } from 'astro:content';
 import DocLayout from '../../layouts/DocLayout.astro';
 
 // Statically generate routes for each document
 export async function getStaticPaths() {
   const docs = await getCollection('docs');
   return docs.map((entry) => ({
-    params: { slug: entry.slug },
+    params: { slug: entry.id },
     props: { entry },
   }));
 }
 
 const { entry } = Astro.props;
-const { Content } = await entry.render();
+const { Content } = await render(entry);
 ---
 
-<DocLayout title={entry.data.title} activeSlug={entry.slug}>
+<DocLayout title={entry.data.title} activeSlug={entry.id}>
   <Content />
 </DocLayout>
