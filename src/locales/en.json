@@ -1,0 +1,1012 @@
+{
+  "login": {
+    "connectWith": "Welcome to the Metaverse",
+    "internetIdentity": "Sign in with Internet Identity",
+    "google": "Sign in with Google",
+    "guestAccount": "Continue as Guest",
+    "signInClarification": "Already have a seed?",
+    "loginWith": "Login with {method}",
+    "enterSeedPhrase": "Enter seed phrase",
+    "accountRecovery": "Recover your account",
+    "recoverAccount": "Login with this Seed",
+    "seedValid": "Your seed phrase appears to be valid!",
+    "invalidSeedPhrase": "The seed phrase is invalid.",
+    "invalidSeedLength": "The seed phrase must contain exactly 12 words.",
+    "guestLoginError": "Whoops, something went wrong!",
+    "recoverySuccess": "Account recovery successful!",
+    "recovering": "Recovering...",
+    "checksumWarning": "All words are valid, but they don't create a valid recovery phrase. Please check the word order.",
+    "seedPhraseInput": "Seed Phrase",
+    "recoverWithSeedPhrase": "Recover with Seed Phrase",
+    "backToLogin": "Back to Login",
+    "invalidWords": "Some words are not in the BIP39 dictionary. Please check for typos.",
+    "invalidChecksum": "Invalid seed phrase checksum. These words don't form a valid recovery phrase.",
+    "invalidWordCount": "Invalid word count: {count}. Expected 12 words.",
+    "tooManyWords": "Too many words. Using the first 12 words.",
+    "tooFewWords": "Not enough words. Please fill in the remaining fields.",
+    "recoveryFailed": "Account recovery failed. Please check your seed phrase and try again."
+  },
+  "wallet": {
+    "title": "Wallet",
+    "subtitle": "Manage your tokens and assets",
+    "principalId": "Principal ID",
+    "accountId": "Account ID",
+    "showPrincipalId": "Show Principal ID",
+    "showAccountId": "Show Account ID",
+    "tokens": "Tokens",
+    "loadingTokens": "Loading tokens...",
+    "noTokens": "No tokens found",
+    "addToken": "Add Token",
+    "addTokenTooltip": "Add a custom token",
+    "level": "Level",
+    "balance": "Balance",
+    "max": "Max",
+
+    "actions": "Actions",
+    "send": "Send",
+    "sendTooltip": "Send tokens to another account",
+    "sendTokens": "Send Tokens",
+    "sending": "Sending...",
+    "receive": "Receive",
+    "receiveTooltip": "Receive tokens from others",
+    "receiveTokens": "Receive Tokens",
+    "receiveDescription": "Share your address to receive tokens",
+    "scanToSend": "Scan to send tokens",
+    "receiveTokensNotice": "Make sure the sender is using the correct network. Only send tokens that are supported by this wallet.",
+    "yourAddress": "Your address",
+    "swap": "Swap",
+    "swapTooltip": "Swap between different tokens",
+    "stake": "Stake",
+    "stakeTooltip": "Stake tokens to earn rewards",
+
+    "recipient": "Recipient",
+    "enterRecipient": "Enter recipient address",
+    "amount": "Amount",
+    "enterAmount": "Enter amount",
+    "memo": "Memo",
+    "optional": "optional",
+    "enterMemo": "Enter a memo or message (optional)",
+    "transactionFee": "Transaction Fee",
+
+    "token": "Token",
+    "tokenId": "Token ID",
+    "enterTokenId": "Enter token canister ID",
+    "tokenIdHint": "The canister ID of the token you want to add",
+    "tokenStandard": "Token Standard",
+    "tokenName": "Token Name",
+    "tokenSymbol": "Token Symbol",
+    "tokenDecimals": "Token Decimals",
+    "showAdvanced": "Show Advanced Options",
+    "hideAdvanced": "Hide Advanced Options",
+
+    "nftCollection": "NFT Collection",
+    "loadingNfts": "Loading NFTs...",
+    "noNfts": "No NFTs found",
+    "openChest": "Open",
+    "openingChest": "Opening Chest",
+    "chestRewards": "Your Rewards",
+    "noRewardsFound": "No rewards found",
+    "tapToReveal": "Tap to reveal",
+
+    "activityLog": "Activity Log",
+    "clearLogs": "Clear Logs",
+    "noLogs": "No activity logs to display",
+
+    "copy": "Copy",
+    "comingSoon": "Coming Soon",
+
+    "closeDialog": "Close",
+    "close": "Close",
+
+    "loading": "Loading...",
+    "error": "Error",
+    
+    "seedWarningTitle": "IMPORTANT: BACKUP YOUR SEED PHRASE",
+    "seedWarningPoint1": "This seed phrase is the ONLY way to recover your account. Keep it safe!",
+    "seedWarningPoint2": "Anyone with this seed phrase can access your account and assets.",
+    "seedWarningPoint3": "Never share this with anyone or enter it on untrusted websites.",
+    "seedWarningPoint4": "Store it in a secure location, preferably offline or in a hardware wallet.",
+    "revealSeedPhrase": "I understand, show my seed phrase",
+    "hideSeedPhrase": "Hide seed phrase",
+    
+    "accounts": {
+      "manage": "Manage Accounts",
+      "defaultName": "My Account",
+      "error": {
+        "management": "Could not open Account Management. Please try again."
+      }
+    },
+    
+    "header": {
+      "accountIds": "Account IDs",
+      "ethereumAddress": "Ethereum Address",
+      "ethAddress": "ETH Address",
+      "buy": "Buy"
+    },
+    
+    "management": {
+      "title": "Account Security",
+      "tabs": {
+        "accounts": "Accounts",
+        "security": "Security",
+        "recovery": "Recovery"
+      },
+      "myAccounts": "My Accounts",
+      "createNewAccount": "Create New Account",
+      "importAccount": "Import Account",
+      "recoverAccount": "Recover Account",
+      "securitySettings": "Security Settings",
+      "notEncrypted": "Your wallet is not encrypted",
+      "encryptionRecommendation": "We recommend enabling at least one security method to protect your wallet. Your recovery phrase is currently stored unencrypted.",
+      "passwordProtection": "Password Protection",
+      "passwordDescription": "Encrypt your wallet data with a password",
+      "passkey": "Passkey Authentication",
+      "passkeyDescription": "Use your device's biometrics or PIN for secure access",
+      "twoFactor": "Two-Factor Authentication",
+      "twoFactorDescription": "Add an extra layer of security with a time-based code",
+      "enabled": "Enabled",
+      "disabled": "Disabled",
+      "enable": "Enable",
+      "disable": "Disable",
+      "walletRecovery": "Wallet Recovery",
+      "recoveryPhrase": "Recovery Phrase",
+      "recoveryPhraseDescription": "Your recovery phrase provides full access to your wallet. Keep it secure and private.",
+      "viewRecoveryPhrase": "View Recovery Phrase",
+      "recoveryWarning": "Never share your recovery phrase with anyone. Nobody should ever ask for it, if you lose it you lose your wallet."
+    }
+  },
+  "register": {
+    "usernameLabel": "Username:",
+    "usernamePlaceholder": "Max 12 characters",
+    "referralCodeLabel": "Referral Code:",
+    "referralCodePlaceholder": "(optional)",
+    "noReferralCode": "Don't have a code?",
+    "getReferralCode": "Get one here!",
+    "acceptTerms": "I accept",
+    "privacyPolicy": "Privacy Policy",
+    "termsOfService": "Terms of Service",
+    "and": "and",
+    "continueButton": "Continue",
+    "successMessage": "Welcome, {username}!",
+    "failureMessage": "Registration failed.",
+    "newPlayer": "New Player",
+    "selectedAvatarAlt": "Selected Avatar",
+    "projectedAvatarAlt": "Projected Avatar",
+    "avatarIconAlt": "Avatar Icon",
+    "avatarGridTitle": "Select Avatar",
+    "avatarAlt": "Avatar {index}"
+  },
+  "header": {
+    "home": "Home",
+    "features": "Features",
+    "play": "Play",
+    "games": "Games",
+    "community": "Community",
+    "contact": "Contact",
+    "support": "Support",
+    "language": "Language",
+    "marketplace": "Marketplace",
+    "spiral": "Spiral",
+    "dao": "DAO",
+    "dashboard": "Dashboard",
+    "connect": "Connect",
+    "whitepaper": "Whitepaper",
+    "login": "Login",
+    "myProfile": "My Profile",
+    "settings": "Settings",
+    "signout": "Sign out",
+    "profile": "Profile",
+    "roadmap": "Roadmap",
+    "notifications": "Notifications",
+    "principalId": "Principal ID"
+  },
+  "error": {
+    "title": "Whoah!",
+    "description": "That page doesn't exist, yet!",
+    "homeButton": "⏪ Warp Back"
+  },
+  "hero": {
+    "slides": [
+      {
+        "title": "Working on it, and fuck it, while we figure out how to present the project.",
+        "ctaButtons": [
+          { "text": "Play Now!" },
+          { "text": "Wishlist on Epic Games" }
+        ]
+      },
+      {
+        "title": "The Party's Here. Are You In or What?",
+        "ctaButtons": [
+          { "text": "Go to NNS" },
+          { "text": "Read Whitepaper" }
+        ]
+      },
+      {
+        "title": "On-chain RTS. A Starlight Drift, Galactic Mayhem",
+        "ctaButtons": [
+          { "text": "Download Now!" },
+          { "text": "Learn More!" }
+        ]
+      },
+      {
+        "title": "Cosmicrafts Classics - Bring back the Legacy",
+        "ctaButtons": [
+          { "text": "Play Classics" },
+          { "text": "X Highlights" }
+        ]
+      },
+      {
+        "title": "Time to team up! Invite friends and score exclusive rewards!",
+        "ctaButtons": [
+          { "text": "Go to Dashboard" },
+          { "text": "Get Referral Code" }
+        ]
+      }
+    ]
+  },
+  "cta": "Try Cosmicrafts Adventures",
+    "lore": {
+      "title": "Cosmicrafts Lore",
+      "description": "Dive deep with us into the rich lore of Cosmicrafts—full of heroes, epic battles, and mysteries waiting to be uncovered."
+    },
+  "games": {
+      "title": "Our Games",
+      "battlegrounds": {
+        "title": "Cosmicrafts Battlegrounds",
+        "description": "Get in on epic multiplayer battles with friends in the Cosmicrafts universe!"
+      },
+      "adventures": {
+        "title": "Cosmicrafts Adventures",
+        "description": "Join thrilling space quests and unlock the secrets of the galaxy with us!"
+      }
+    },
+    "carousel": {
+      "slides": [
+        {
+          "title": "Cosmicrafts Adventures",
+          "description": "Discover a new universe in development with Cosmicrafts Adventures!",
+          "buttonText": "Learn More",
+          "action": "adventures"
+        },
+        {
+          "title": "Cosmicrafts Battleground",
+          "description": "Jump into the action and play Cosmicrafts Battleground now!",
+          "buttonText": "Play Now",
+          "action": "battleground"
+        },
+        {
+          "title": "Latest News",
+          "description": "Stay in the loop with the latest updates from Cosmicrafts.",
+          "buttonText": "Read News",
+          "action": "news"
+        },
+        {
+          "title": "ICP Technology",
+          "description": "Learn more about the innovative ICP technology powering Cosmicrafts.",
+          "buttonText": "Discover ICP",
+          "action": "technology"
+        }
+      ]
+  },
+  "footer": {
+    "stayConnected": "Let's Stay Connected",
+    "explore": "Explore",
+    "careers": "Careers",
+    "about": "About",
+    "support": "Support",
+    "press": "Press",
+    "creators": "Creators",
+    "privacy": "Privacy",
+    "legal": "Legal",
+    "terms": "Terms",
+    "contact": "Contact",
+    "cookiePolicy": "Cookie Policy",
+    "cookieSettings": "Cookie Settings",
+    "language": "Language",
+    "trademarks": "All trademarks referenced herein are the properties of their respective owners."
+  },
+  "legal": {
+    "title": "Legal Notices"
+  },
+  "privacy": {
+    "title": "Privacy Policy"
+  },
+  "terms": {
+    "title": "Terms of Service"
+  },
+  "dao": {
+    "mission": {
+      "title": "Decentralized governance, united vision.",
+      "description": "Set a course, take it slow, make it happen."
+    },
+    "cta_title": "Join the DAO",
+    "cta_join": "Get Started",
+    "cta_learn_more": "Learn More",
+    "features": {
+      "decentralised_voting": "Decentralized Voting",
+      "decentralised_voting_desc": "Participate in key decisions with transparency.",
+      "community_ownership": "Community Ownership",
+      "community_ownership_desc": "Own and influence the direction of Cosmicrafts.",
+      "transparency": "Transparency",
+      "transparency_desc": "Clear and open governance for everyone."
+    },
+    "proposals": {
+      "title": "Current Proposals",
+      "sample1": { "title": "Proposal 1", "summary": "Details about proposal 1." },
+      "sample2": { "title": "Proposal 2", "summary": "Details about proposal 2." },
+      "no_proposals": "No proposals available at this time.",
+      "view": "View Proposal"
+    },
+    "headline": {
+      "title": "The dawn of a legacy",
+      "subtitle": "It's DAO or NEVER!",
+      "stakeholder_cta": "Become a Stakeholder",
+      "whitepaper_cta": "Read Whitepaper"
+    },
+    "explainer": {
+      "title": "What is the Cosmicrafts DAO?",
+      "description": "The Cosmicrafts DAO (Decentralized Autonomous Organization) empowers the community to collectively govern the future of the Cosmicrafts gaming ecosystem. Through ownership of SPIRAL tokens, stakeholders can participate in key decisions affecting the platform's development, treasury management, and economic policy.",
+      "pillars": {
+        "governance": {
+          "title": "Community Governance",
+          "description": "Vote on proposals and shape the future direction of the platform through democratic decision-making."
+        },
+        "treasury": {
+          "title": "Shared Treasury",
+          "description": "Collectively manage a treasury of 760M SPIRAL tokens dedicated to ecosystem growth and development."
+        },
+        "rewards": {
+          "title": "Staking Rewards",
+          "description": "Earn rewards through active participation and long-term commitment to the platform's growth."
+        }
+      },
+      "links": {
+        "roadmap": "View Our Roadmap",
+        "whitepaper": "Read the Whitepaper"
+      }
+    },
+    "distribution": {
+      "title": "Token Distribution",
+      "treasury": {
+        "title": "Treasury",
+        "description": "Ecosystem growth and DAO-controlled funds"
+      },
+      "swap": {
+        "title": "SNS Swap",
+        "description": "Public sale with 8 quarterly releases"
+      },
+      "team": {
+        "title": "Developer Team",
+        "description": "8-year vesting for core team"
+      },
+      "investors": {
+        "title": "Seed Investors",
+        "description": "Early backers with varied vesting"
+      }
+    },
+    "governance": {
+      "title": "Governance Model",
+      "proposal_creation": {
+        "title": "Proposal Creation",
+        "requirement": "1,000 SPIRAL",
+        "description": "Minimum stake required to submit proposals"
+      },
+      "voting_period": {
+        "title": "Voting Period",
+        "requirement": "7 Days",
+        "description": "Standard deliberation time for proposals"
+      },
+      "voting_power": {
+        "title": "Voting Power",
+        "requirement": "Up to 3x",
+        "description": "Maximum multiplier through staking and age"
+      },
+      "lock_period": {
+        "title": "Lock Period",
+        "requirement": "30d - 8y",
+        "description": "Flexible dissolve delay options"
+      }
+    },
+    "metrics": {
+      "title": "Token Metrics",
+      "total_supply": "Total Supply",
+      "treasury_size": "Treasury Size",
+      "min_proposal": "Min. Proposal Stake",
+      "initial_apy": "Initial APY"
+    },
+    "staking": {
+      "title": "Staking Benefits",
+      "subtitle": "Earn Through Participation",
+      "description": "Lock your SPIRAL tokens to earn rewards and increase your governance power",
+      "benefits": {
+        "initial_apy": {
+          "title": "Initial APY"
+        },
+        "transition": {
+          "title": "Transition Period"
+        },
+        "final_apy": {
+          "title": "Final APY"
+        }
+      },
+      "multipliers": {
+        "title": "Power Multipliers",
+        "dissolve": {
+          "title": "Dissolve Delay"
+        },
+        "age": {
+          "title": "Neuron Age"
+        }
+      }
+    },
+    "rights": {
+      "title": "Stakeholder Rights",
+      "treasury": {
+        "title": "Treasury Management",
+        "description": "Vote on allocation of DAO treasury funds for development, marketing, and community initiatives",
+        "items": {
+          "marketing": "Marketing campaigns",
+          "development": "Development funding",
+          "partnerships": "Strategic partnerships"
+        }
+      },
+      "economic": {
+        "title": "Economic Policies",
+        "description": "Shape the economic framework of the ecosystem through collective decision-making",
+        "items": {
+          "tokenomics": "Tokenomics adjustments",
+          "staking": "Staking rate changes",
+          "fees": "Fee structures"
+        }
+      },
+      "roadmap": {
+        "title": "Development Roadmap",
+        "description": "Influence the technical and product development priorities of the platform",
+        "items": {
+          "features": "Feature prioritization",
+          "expansions": "Game expansions", 
+          "improvements": "Technical improvements"
+        }
+      },
+      "community": {
+        "title": "Community Programs",
+        "description": "Establish and govern community-led initiatives to grow the ecosystem",
+        "items": {
+          "creators": "Content creator funding",
+          "events": "Events and tournaments",
+          "education": "Educational programs"
+        }
+      }
+    },
+    "join": {
+      "title": "Claim Your Cosmic Power!",
+      "description": "Join the DAO and participate in governing the first fully on-chain gaming franchise",
+      "stats": {
+        "voting": "Max Voting Power",
+        "apy": "APY Range",
+        "period": "Voting Period"
+      },
+      "stakeholder_cta": "Become a Stakeholder",
+      "whitepaper_cta": "Read Whitepaper"
+    }
+  },
+  "proposals": {
+    "title": "Active Proposals",
+    "for": "For",
+    "against": "Against",
+    "vote_for": "Vote For",
+    "vote_against": "Vote Against",
+    "status": {
+      "active": "Active",
+      "passed": "Passed",
+      "rejected": "Rejected",
+      "executed": "Executed",
+      "pending": "Pending"
+    },
+    "examples": {
+      "creator": {
+        "title": "Community Content Creator Program",
+        "summary": "Establish a framework for content creators to receive funding for promoting Cosmicrafts ecosystem"
+      },
+      "treasury": {
+        "title": "Treasury Diversification Strategy",
+        "summary": "Allocate 5% of treasury funds to strategic investments in ecosystem-aligned protocols"
+      }
+    }
+  },
+  "meta": {
+    "dao": {
+      "title": "Cosmicrafts DAO - Decentralized Governance for the Future of Gaming",
+      "description": "Join the Cosmicrafts DAO and participate in decentralized governance for the future of cosmic gaming. Stake SPIRAL tokens to earn rewards and voting power."
+    }
+  },
+  "darkRift": {
+    "title": "The Dark Rift",
+    "discover": "Discover"
+  },
+  "whitepaper": {
+    "title": "Whitepaper",
+    "navigation": {
+      "sections": {
+        "introduction": {
+          "title": "Introduction",
+          "description": "Overview and value proposition"
+        },
+        "tokenomics": {
+          "title": "Tokenomics",
+          "description": "Token distribution and economics"
+        },
+        "governance": {
+          "title": "Governance",
+          "description": "Decision-making system"
+        },
+        "community": {
+          "title": "Community",
+          "description": "Participation and growth"
+        },
+        "architecture": {
+          "title": "Architecture",
+          "description": "Technical infrastructure"
+        },
+        "core-features": {
+          "title": "Core Features",
+          "description": "Product capabilities"
+        }
+      },
+      "documentation": "Documentation",
+      "previous": "Previous",
+      "next": "Next",
+      "chapters": "Chapters",
+      "mobileTitle": "Whitepaper Sections",
+      "mobileSubtitle": "Navigate through chapters"
+    }
+  },
+  "profilePage": {
+    "profileError": "Profile Error",
+    "retry": "Retry",
+    "goHome": "Go Home",
+    "errorHelp": "This profile might not exist or might be temporarily unavailable. If you entered a username, try accessing by Principal ID instead, or vice versa.",
+    "tabs": {
+      "profile": "Profile",
+      "stats": "Stats",
+      "collection": "Collection",
+      "social": "Social"
+    },
+    "unknownPlayer": "Unknown Player",
+    "defaultTitle": "Galactic Adventurer",
+    "registrationDate": "Member since {date}",
+    "unknownRegistrationDate": "Registration date unknown",
+    "friendActions": {
+      "addFriend": "Add Friend",
+      "requestSent": "Request Sent",
+      "removeFriend": "Remove Friend"
+    },
+    "noDescription": "No description yet",
+    "edit": "Edit",
+    "playerStats": {
+      "elo": "ELO",
+      "winRate": "Win Rate",
+      "games": "Games"
+    },
+    "editProfile": "Edit Profile",
+    "playerId": "Player ID",
+    "quickStats": "Quick Stats",
+    "statsCards": {
+      "totalKills": "Total Kills",
+      "energyEfficiency": "Energy Efficiency",
+      "criticalHits": "Critical Hits"
+    },
+    "combatStatistics": "Combat Statistics",
+    "statsDetails": {
+      "damageDealt": "Damage Dealt",
+      "damageEvaded": "Damage Evaded",
+      "energyGenerated": "Energy Generated",
+      "energyUsed": "Energy Used"
+    },
+    "nftCollection": "NFT Collection",
+    "nftCategories": {
+      "all": "All NFTs",
+      "characters": "Characters",
+      "units": "Units",
+      "avatars": "Avatars",
+      "trophies": "Trophies",
+      "chests": "Chests"
+    },
+    "noNfts": "No {category} collected yet",
+    "achievements": "Achievements",
+    "achievementStats": {
+      "completedBy": "Completed by",
+      "points": "Points"
+    },
+    "friends": "Friends",
+    "friendStatus": {
+      "online": "Online",
+      "offline": "Offline"
+    },
+    "editProfileModal": {
+      "title": "Edit Profile",
+      "username": "Username",
+      "description": "Description",
+      "cancel": "Cancel",
+      "saveChanges": "Save Changes"
+    },
+    "confirmRemoveFriend": "Are you sure you want to remove {username} from your friends list?"
+  },
+  "notifications": {
+    "title": "Notifications",
+    "noNotifications": "No notifications yet",
+    "viewAll": "View All",
+    "friendRequests": "Friend Requests",
+    "noFriendRequests": "No friend requests",
+    "accept": "Accept",
+    "decline": "Decline",
+    "accepted": "Accepted",
+    "declined": "Declined",
+    "sentYouFriendRequest": "sent you a friend request",
+    "acceptedYourFriendRequest": "accepted your friend request",
+    "newFriendRequest": "You have a new friend request from",
+    "privacySettingsUpdated": "Your privacy settings have been updated.",
+    "tabs": {
+      "all": "All",
+      "friendRequests": "Friend Requests",
+      "notifications": "Notifications"
+    },
+    "timeAgo": {
+      "justNow": "just now",
+      "minutesAgo": "{minutes} minutes ago",
+      "hoursAgo": "{hours} hours ago",
+      "daysAgo": "{days} days ago"
+    }
+  },
+  "loadingScreen": {
+      "messages": {
+        "initializingQuantumShenanigans": "Activating quantum magic",
+        "chargingHyperdrive": "Charging hyperdrive",
+        "generatingCosmicChaos": "Spawning cosmic chaos",
+        "decodingAlienSignals": "Decoding alien signals",
+        "calibratingFluxCapacitor": "Tuning flux capacitor",
+        "initiatingSelfDestruct": "Starting self-destruct",
+        "fuelingRocket": "Fueling the rocket",
+        "generatingWormholes": "Opening wormholes",
+        "conjuringBlackHole": "Summoning black hole",
+        "syncingHiveMind": "Syncing hive mind",
+        "reticulatingSplines": "Reticulating splines",
+        "summoningSpaceHamsters": "Calling space hamsters",
+        "defragmentingSpaceTime": "Defragging space-time",
+        "transmogrifyingMatter": "Transforming matter",
+        "brewingNebula": "Brewing nebula",
+        "lubricatingGears": "Greasing the gears",
+        "tighteningRealityBolts": "Tightening reality bolts",
+        "chargingStardustReserves": "Charging stardust",
+        "calibratingLaserBeams": "Calibrating lasers",
+        "summoningFriendlyAliens": "Calling friendly aliens",
+        "spinningUpWormhole": "Spinning up wormhole",
+        "tamingBlackHoles": "Taming black holes",
+        "polishingStars": "Polishing stars",
+        "clearingAsteroidBelt": "Clearing asteroid belt",
+        "rewritingGalacticCode": "Rewriting galactic code",
+        "encryptingCosmos": "Encrypting the cosmos",
+        "quantumJuggling": "Juggling quantum stuff",
+        "debuggingAliens": "Debugging alien tech",
+        "hackingGravity": "Hacking gravity",
+        "warmingUpWarpDrive": "Warming up warp drive",
+        "tamingComets": "Taming comets",
+        "aligningPhotonBeams": "Aligning photon beams",
+        "overclockingStellarEngine": "Overclocking star engine",
+        "stirringCosmicSoup": "Stirring cosmic soup",
+        "buffingRocketPaint": "Buffing rocket paint",
+        "resettingWormholePhysics": "Resetting wormhole physics",
+        "aligningNebulas": "Aligning nebulas",
+        "herdingAsteroids": "Herding asteroids",
+        "debuggingStardust": "Debugging stardust",
+        "uploadingTheUniverse": "Uploading the universe",
+        "turningOffInertia": "Turning off inertia",
+        "pluckingSuperstrings": "Plucking superstrings",
+        "paintingNebulas": "Painting nebulas",
+        "scanningForLife": "Scanning for life",
+        "reversingPolarity": "Reversing polarity",
+        "quantumDancing": "Quantum dancing",
+        "herdingWormholes": "Herding wormholes",
+        "encryptingReality": "Encrypting reality",
+        "debuggingTheMultiverse": "Debugging the multiverse"
+      }
+  },
+  "months": {
+    "0": "January",
+    "1": "February",
+    "2": "March",
+    "3": "April",
+    "4": "May",
+    "5": "June",
+    "6": "July",
+    "7": "August",
+    "8": "September",
+    "9": "October",
+    "10": "November",
+    "11": "December"
+  },
+  "about": {
+    "title": "About Cosmicrafts",
+    "mission": {
+      "title": "Our Mission",
+      "description": "At Cosmicrafts, we're pioneering a new frontier in space gaming by integrating blockchain technology, immersive storytelling, and community governance.",
+      "vision": "Our vision is to create a metaverse where players not only explore the cosmos but also shape its development through our decentralized autonomous organization (DAO).",
+      "innovation": "Through innovative game mechanics and cutting-edge technology, we're building experiences that inspire collaboration, strategy, and a genuine sense of ownership in our digital universe."
+    },
+    "team": {
+      "title": "Meet the Team",
+      "roles": {
+        "ceo": "Founder & CEO",
+        "gameDesigner": "Lead Game Designer",
+        "blockchain": "Blockchain Architect",
+        "community": "Community Manager"
+      }
+    },
+    "values": {
+      "title": "Our Core Values",
+      "innovation": {
+        "title": "Innovation",
+        "description": "We constantly push the boundaries of what's possible in gaming, combining cutting-edge technology with creative game design."
+      },
+      "community": {
+        "title": "Community",
+        "description": "Our players are co-creators and stakeholders, empowered through our DAO to participate in governance and decision-making."
+      },
+      "transparency": {
+        "title": "Transparency",
+        "description": "We believe in open development, clear communication, and building trust with our community through honesty and accessibility."
+      },
+      "sustainability": {
+        "title": "Sustainability",
+        "description": "We're committed to energy-efficient blockchain solutions and creating a long-term, sustainable ecosystem for our games and players."
+      }
+    }
+  },
+  "careers": {
+    "title": "Join Our Mission",
+    "subtitle": "Help us shape the future of space gaming",
+    "whyUs": {
+      "title": "Why Cosmicrafts?",
+      "description": "We're pioneering the next generation of space strategy games, combining blockchain technology with immersive gameplay. Join our diverse team of innovators, creators, and space enthusiasts."
+    },
+    "perks": {
+      "remote": "Remote-First Culture",
+      "pay": "Competitive Pay",
+      "hours": "Flexible Hours",
+      "learning": "Learning Budget"
+    },
+    "positions": {
+      "location": "Location",
+      "type": "Type",
+      "applyNow": "Apply Now",
+      "compensation": "We offer competitive compensation, flexible work arrangements, and comprehensive benefits."
+    },
+    "contact": {
+      "title": "You have a unique skillset?",
+      "description": "We're always looking for talented individuals to join our crew. Send us your resume and tell us how you can contribute to our mission.",
+      "button": "Contact Us"
+    }
+  },
+  "contact": {
+    "support": {
+      "title": "Need Help?",
+      "subtitle": "We're here to assist you through multiple channels. Choose the option that works best for you.",
+      "chat": {
+        "title": "AI Assistant",
+        "description": "Get instant help from our AI assistant for common questions, game mechanics, and basic troubleshooting. Available 24/7",
+        "button": "Chat with AI",
+        "close": "Close Chat",
+        "shortcut": "Press 'A' to open chat"
+      },
+      "discord": {
+        "title": "Community & Support",
+        "description": "Join our active Discord community for real-time help from our team and experienced players. This is currently our primary support channel.",
+        "button": "Join Discord"
+      },
+      "email": {
+        "title": "Email Us",
+        "description": "For complex issues or business inquiries, reach out via email. We'll get back to you as soon as possible.",
+        "button": "Send Email",
+        "responseTime": "We aim to respond within 48 hours"
+      },
+      "comingSoon": {
+        "title": "Coming Soon: On-Chain Ticket System",
+        "description": "We're developing a decentralized support system where your tickets and their resolution will be tracked on the Internet Computer blockchain, ensuring transparency and accountability."
+      }
+    }
+  },
+  "marketplace": {
+    "title": "NFT Marketplace",
+    "subtitle": "Buy, sell, and trade NFTs on the Internet Computer",
+    "loading": "Loading marketplace data...",
+    "loading_nfts": "Loading your NFTs...",
+    "retry": "Retry",
+    "refresh": "Refresh",
+    "my_nfts_title": "Your NFT Collection",
+    "tabs": {
+      "explore": "Explore",
+      "my_asks": "My Listings",
+      "my_nfts": "My NFTs"
+    },
+    "no_asks_found": "No listings found",
+    "no_nfts_found": "You don't own any NFTs yet",
+    "login_to_view_asks": "Please connect your wallet to view your listings",
+    "login_to_view_nfts": "Please connect your wallet to view your NFTs",
+    "connect_wallet": "Connect Wallet",
+    "create_ask": "Create Listing",
+    "create_first_ask": "Create your first listing",
+    "create_new_ask": "Create New Listing",
+    "list_for_sale": "List For Sale",
+    "buy_now": "Buy Now",
+    "view_details": "View Details",
+    "stats": {
+      "active_asks": "Active Listings",
+      "total_asks": "Total Listings",
+      "fee": "Marketplace Fee",
+      "your_balance": "Your Balance"
+    },
+    "price": "Price",
+    "collection": "Collection",
+    "seller": "Seller",
+    "settled_at": "Settled At",
+    "collection_id": "Collection ID",
+    "token_id": "Token ID",
+    "nft_name": "Name",
+    "price_icp": "Price (ICP)",
+    "enter_collection_id": "Enter collection ID",
+    "enter_token_id": "Enter token ID",
+    "enter_price": "Enter price in ICP",
+    "validation": {
+      "all_fields_required": "All fields are required"
+    },
+    "error": {
+      "create_ask_failed": "Failed to create listing",
+      "insufficient_balance": "Insufficient balance to complete purchase",
+      "nft_not_owned": "You don't own this NFT"
+    },
+    "success": {
+      "ask_created": "Listing created successfully",
+      "purchase_complete": "Purchase completed successfully",
+      "data_refreshed": "Data refreshed successfully"
+    },
+    "ask_details": "Listing Details",
+    "ask_id": "Listing ID",
+    "status": "Status",
+    "token_details": "Token Details",
+    "loading_details": "Loading details...",
+    "login_required": "You need to be logged in to perform this action",
+    "connect": "Connect"
+  },
+  "common": {
+    "cancel": "Cancel",
+    "close": "Close",
+    "submit": "Submit",
+    "loading": "Loading...",
+    "comingSoon": "Coming Soon"
+  },
+  "dashboard": {
+    "loading": "Loading your cosmic data...",
+    "retry": "Retry",
+    "welcome": "Welcome, {username}!",
+    "subtitle": "Your cosmic journey awaits",
+    "principal": "Principal ID",
+    "copied": "Copied!",
+    
+    "tabs": {
+      "overview": "Overview",
+      "referrals": "Referral Network",
+      "rewards": "Rewards",
+      "settings": "Settings"
+    },
+
+    "stats": {
+      "level": "Level",
+      "multiplier": "Multiplier",
+      "rank": "Rank",
+      "points": "Points"
+    },
+
+    "cards": {
+      "referralCode": {
+        "title": "Referral Code",
+        "shareToEarn": "Share to earn rewards"
+      },
+      "network": {
+        "title": "Your Network",
+        "totalReferrals": "Total referrals in your network"
+      },
+      "multiplierBonus": {
+        "title": "Multiplier Bonus",
+        "explanation": "Extra rewards from your network"
+      }
+    },
+
+    "referrals": {
+      "title": "Referral Network",
+      "yourReferralCode": "Your Referral Code",
+      "shareCodeSubtext": "Share your code with friends to earn rewards",
+      "noReferralCode": "No referral code yet",
+      "directReferrals": "Direct Referrals",
+      "indirectReferrals": "Indirect Referrals",
+      "beyondReferrals": "Extended Network",
+      "referralTree": "Referral Tree",
+      "noReferrals": "No referrals yet",
+      "shareYourCode": "Share your code to grow your network",
+      "loadingReferrals": "Loading referral data...",
+      "multiplierSubtext": "Your current reward multiplier",
+      "shareMessage": "Join me in Cosmicrafts! Use my referral code: {code}",
+      "referralTiers": "Referral Network Summary",
+      "recentReferrals": "Recent Referrals",
+      "you": "You",
+      "referralTypes": {
+        "direct": "Direct Referral",
+        "indirect": "Indirect Referral",
+        "extended": "Extended Referral"
+      },
+      "bonusLabels": {
+        "direct": {
+          "tier1": "+100% Bonus",
+          "tier2": "+50% Bonus",
+          "tier3": "+25% Bonus",
+          "tier4": "+10% Bonus"
+        },
+        "indirect": {
+          "tier1": "+25% Bonus",
+          "tier2": "+10% Bonus",
+          "tier3": "+5% Bonus"
+        },
+        "beyond": {
+          "tier1": "+10% Bonus",
+          "tier2": "+5% Bonus",
+          "tier3": "+1% Bonus"
+        }
+      }
+    },
+
+    "rewards": {
+      "comingSoon": "Rewards Coming Soon",
+      "stayTuned": "Stay tuned for exciting rewards!"
+    },
+
+    "settings": {
+      "comingSoon": "Settings Coming Soon",
+      "checkBackLater": "Check back later for account settings"
+    },
+
+    "notifications": {
+      "referralCodeCopied": "Referral code copied to clipboard!",
+      "shareSuccess": "Successfully shared your referral code!",
+      "error": {
+        "failedToLoad": "Failed to load data",
+        "failedToShare": "Failed to share referral code",
+        "failedToCopy": "Failed to copy referral code"
+      }
+    },
+
+    "actions": {
+      "copy": "Copy Code",
+      "share": "Share",
+      "viewAll": "View All",
+      "shareOn": {
+        "twitter": "Share on Twitter",
+        "facebook": "Share on Facebook",
+        "telegram": "Share on Telegram",
+        "discord": "Share on Discord"
+      }
+    }
+  },
+  "esc_menu": {
+    "title": "Menu",
+    "game": "Game",
+    "social": "Social",
+    "settings": "Settings",
+    "continue_game": "Continue",
+    "main_menu": "Main Menu",
+    "friends": "Friends",
+    "messages": "Messages",
+    "audio": "Audio",
+    "video": "Video",
+    "interface": "Interface",
+    "logout": "Logout"
+  }
+}

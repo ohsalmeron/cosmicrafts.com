@@ -1,0 +1,643 @@
+{
+  "login": {
+    "connectWith": "メタバースへようこそ",
+    "internetIdentity": "Internet Identityでログイン",
+    "google": "Googleでログイン",
+    "guestAccount": "ゲストとして続ける",
+    "signInClarification": "シードをお持ちですか？",
+    "loginWith": "{method}でログイン",
+    "enterSeedPhrase": "シードフレーズを入力",
+    "accountRecovery": "アカウント復旧",
+    "recoverAccount": "このシードでログイン",
+    "seedValid": "シードフレーズが有効です！",
+    "invalidSeedPhrase": "無効なシードフレーズです。",
+    "invalidSeedLength": "シードフレーズは正確に12単語である必要があります。",
+    "guestLoginError": "申し訳ありません！エラーが発生しました。",
+    "recoverySuccess": "アカウント復旧成功！",
+    "recovering": "復旧中..."
+  },
+  "register": {
+    "usernameLabel": "ユーザー名:",
+    "usernamePlaceholder": "最大12文字",
+    "referralCodeLabel": "紹介コード:",
+    "referralCodePlaceholder": "(任意)",
+    "noReferralCode": "コードをお持ちでない方",
+    "getReferralCode": "こちらで取得！",
+    "acceptTerms": "以下に同意します",
+    "privacyPolicy": "プライバシーポリシー",
+    "termsOfService": "利用規約",
+    "and": "および",
+    "continueButton": "続ける",
+    "successMessage": "ようこそ、{username}さん！",
+    "failureMessage": "登録に失敗しました。",
+    "newPlayer": "新規プレイヤー",
+    "selectedAvatarAlt": "選択されたアバター",
+    "projectedAvatarAlt": "投影されたアバター",
+    "avatarIconAlt": "アバターアイコン",
+    "avatarGridTitle": "アバターを選択",
+    "avatarAlt": "アバター {index}"
+  },
+  "header": {
+    "home": "ホーム",
+    "features": "機能",
+    "play": "プレイ",
+    "games": "ゲーム",
+    "community": "コミュニティ",
+    "contact": "お問い合わせ",
+    "support": "サポート",
+    "language": "言語",
+    "marketplace": "マーケットプレイス",
+    "spiral": "スパイラル",
+    "dao": "DAO",
+    "dashboard": "ダッシュボード",
+    "connect": "接続",
+    "whitepaper": "ホワイトペーパー",
+    "login": "ログイン",
+    "myProfile": "マイプロフィール",
+    "settings": "設定",
+    "signout": "ログアウト",
+    "profile": "プロフィール",
+    "roadmap": "ロードマップ"
+  },
+  "error": {
+    "title": "おっと！",
+    "description": "このページは消えてしまいました！",
+    "homeButton": "⏪ 戻る"
+  },
+  "hero": {
+    "slides": [
+      {
+        "title": "すべてはここから始まります。アルファ版が準備完了、今すぐ参加！",
+        "ctaButtons": [
+          { "text": "今すぐプレイ！" },
+          { "text": "Epic Gamesでウィッシュリストに追加" }
+        ]
+      },
+      {
+        "title": "パーティーの始まりです！参加しませんか？",
+        "ctaButtons": [
+          { "text": "NNSへ移動" },
+          { "text": "ホワイトペーパーを見る" }
+        ]
+      },
+      {
+        "title": "ブロックチェーン上のRTS。星間移動、銀河の混沌",
+        "ctaButtons": [
+          { "text": "今すぐダウンロード！" },
+          { "text": "詳細を見る！" }
+        ]
+      },
+      {
+        "title": "つながろう！友達を招待して限定報酬をゲット！",
+        "ctaButtons": [
+          { "text": "ダッシュボードへ移動" },
+          { "text": "紹介コードを取得" }
+        ]
+      }
+    ]
+  },
+  "cta": "Cosmicrafts Adventuresを今すぐ体験",
+  "lore": {
+    "title": "Cosmicraftsの伝説",
+    "description": "英雄たち、伝説の戦い、そしてあなたが発見できる神秘に満ちたCosmicraftsの世界へ飛び込みましょう！"
+  },
+  "games": {
+    "title": "私たちのゲーム",
+    "battlegrounds": {
+      "title": "Cosmicrafts Battlegrounds",
+      "description": "Cosmicraftsの宇宙で友達と共にスリリングな戦いに参加しよう！"
+    },
+    "adventures": {
+      "title": "Cosmicrafts Adventures",
+      "description": "わくわくする宇宙ミッションを探索し、共に銀河の謎を解き明かそう！"
+    }
+  },
+  "carousel": {
+    "slides": [
+      {
+        "title": "Cosmicrafts Adventures",
+        "description": "Cosmicrafts Adventuresと共に発展する新しい宇宙を探索しよう！",
+        "buttonText": "詳細を見る",
+        "action": "adventures"
+      },
+      {
+        "title": "Cosmicrafts Battleground",
+        "description": "アクションに参加して、今すぐCosmicrafts Battlegroundをプレイ！",
+        "buttonText": "今すぐプレイ",
+        "action": "battleground"
+      },
+      {
+        "title": "最新ニュース",
+        "description": "Cosmicraftsの最新ニュースと情報をチェックしよう。",
+        "buttonText": "ニュースを見る",
+        "action": "news"
+      },
+      {
+        "title": "ICP技術",
+        "description": "Cosmicraftsを動かす革新的なICP技術について詳しく学ぼう。",
+        "buttonText": "ICPを探索",
+        "action": "technology"
+      }
+    ]
+  },
+  "footer": {
+    "stayConnected": "つながり続けよう",
+    "explore": "探索",
+    "careers": "採用情報",
+    "about": "概要",
+    "support": "サポート",
+    "press": "プレス",
+    "creators": "クリエイター",
+    "privacy": "プライバシー",
+    "legal": "法的情報",
+    "terms": "利用規約",
+    "cookiePolicy": "Cookie方針",
+    "cookieSettings": "Cookie設定",
+    "language": "言語",
+    "trademarks": "ここに記載されているすべての商標は、それぞれの所有者の財産です。"
+  },
+  "darkRift": {
+    "title": "ダークリフト",
+    "discover": "発見"
+  },
+  "loadingScreen": {
+    "messages": {
+      "initializingQuantumShenanigans": "量子いたずら初期化中",
+      "chargingHyperdrive": "ハイパードライブ充電中",
+      "generatingCosmicChaos": "宇宙の混沌生成中",
+      "decodingAlienSignals": "エイリアン信号解読中",
+      "calibratingFluxCapacitor": "フラックスコンデンサー調整中",
+      "initiatingSelfDestruct": "自己破壊開始中",
+      "fuelingRocket": "ロケット給油中",
+      "generatingWormholes": "ワームホール生成中",
+      "conjuringBlackHole": "ブラックホール召喚中",
+      "syncingHiveMind": "ハイブマインド同期中",
+      "reticulatingSplines": "スプライン再構成中",
+      "summoningSpaceHamsters": "宇宙ハムスター召喚中",
+      "defragmentingSpaceTime": "時空間デフラグ中",
+      "transmogrifyingMatter": "物質変換中",
+      "brewingNebula": "星雲醸造中",
+      "lubricatingGears": "歯車潤滑中",
+      "tighteningRealityBolts": "現実のボルト締め付け中",
+      "chargingStardustReserves": "スターダスト予備充電中",
+      "calibratingLaserBeams": "レーザービーム調整中",
+      "summoningFriendlyAliens": "フレンドリーなエイリアン召喚中",
+      "spinningUpWormhole": "ワームホール回転中",
+      "tamingBlackHoles": "ブラックホール馴致中",
+      "polishingStars": "星磨き中",
+      "clearingAsteroidBelt": "小惑星帯整理中",
+      "rewritingGalacticCode": "銀河コード書き換え中",
+      "encryptingCosmos": "宇宙暗号化中",
+      "quantumJuggling": "量子ジャグリング中",
+      "debuggingAliens": "エイリアンデバッグ中",
+      "hackingGravity": "重力ハッキング中",
+      "warmingUpWarpDrive": "ワープドライブ予熱中",
+      "tamingComets": "彗星馴致中",
+      "aligningPhotonBeams": "光子ビーム位置合わせ中",
+      "overclockingStellarEngine": "恒星エンジンオーバークロック中",
+      "stirringCosmicSoup": "宇宙スープ撹拌中",
+      "buffingRocketPaint": "ロケット塗装磨き中",
+      "resettingWormholePhysics": "ワームホール物理学リセット中",
+      "aligningNebulas": "星雲位置合わせ中",
+      "herdingAsteroids": "小惑星群制御中",
+      "debuggingStardust": "スターダストデバッグ中",
+      "uploadingTheUniverse": "宇宙アップロード中",
+      "turningOffInertia": "慣性オフ中",
+      "pluckingSuperstrings": "超弦はじき中",
+      "paintingNebulas": "星雲彩色中",
+      "scanningForLife": "生命体スキャン中",
+      "reversingPolarity": "極性反転中",
+      "quantumDancing": "量子ダンス中",
+      "herdingWormholes": "ワームホール群制御中",
+      "encryptingReality": "現実暗号化中",
+      "debuggingTheMultiverse": "多元宇宙デバッグ中"
+    }
+  },
+  "notifications": {
+    "title": "通知",
+    "noNotifications": "通知はありません",
+    "viewAll": "すべて表示",
+    "friendRequests": "フレンドリクエスト",
+    "noFriendRequests": "フレンドリクエストはありません",
+    "accept": "承認",
+    "decline": "拒否",
+    "accepted": "承認済み",
+    "declined": "拒否済み",
+    "sentYouFriendRequest": "さんがフレンドリクエストを送信しました",
+    "acceptedYourFriendRequest": "さんがフレンドリクエストを承認しました",
+    "newFriendRequest": "新しいフレンドリクエストがあります",
+    "privacySettingsUpdated": "プライバシー設定が更新されました。",
+    "tabs": {
+      "all": "すべて",
+      "friendRequests": "フレンドリクエスト",
+      "notifications": "通知"
+    },
+    "timeAgo": {
+      "justNow": "たった今",
+      "minutesAgo": "{minutes}分前",
+      "hoursAgo": "{hours}時間前",
+      "daysAgo": "{days}日前"
+    }
+  },
+  "profilePage": {
+    "profileError": "プロフィールエラー",
+    "retry": "再試行",
+    "goHome": "ホームに戻る",
+    "errorHelp": "このプロフィールは存在しないか、一時的に利用できません。ユーザー名を入力した場合はPrincipal IDでアクセスを試すか、その逆を試してください。",
+    "tabs": {
+      "profile": "プロフィール",
+      "stats": "統計",
+      "collection": "コレクション",
+      "social": "ソーシャル"
+    },
+    "unknownPlayer": "不明なプレイヤー",
+    "defaultTitle": "銀河探検家",
+    "registrationDate": "{date}からのメンバー",
+    "friendActions": {
+      "addFriend": "フレンド追加",
+      "requestSent": "リクエスト送信済み",
+      "removeFriend": "フレンド削除"
+    },
+    "noDescription": "説明なし",
+    "edit": "編集",
+    "playerStats": {
+      "elo": "ELO",
+      "winRate": "勝率",
+      "games": "ゲーム"
+    },
+    "editProfile": "プロフィール編集",
+    "playerId": "プレイヤーID",
+    "quickStats": "クイック統計",
+    "statsCards": {
+      "totalKills": "総キル数",
+      "energyEfficiency": "エネルギー効率",
+      "criticalHits": "クリティカルヒット"
+    },
+    "combatStatistics": "戦闘統計",
+    "statsDetails": {
+      "damageDealt": "与えたダメージ",
+      "damageEvaded": "回避したダメージ",
+      "energyGenerated": "生成エネルギー",
+      "energyUsed": "使用エネルギー"
+    },
+    "nftCollection": "NFTコレクション",
+    "nftCategories": {
+      "all": "すべてのNFT",
+      "characters": "キャラクター",
+      "units": "ユニット",
+      "avatars": "アバター",
+      "trophies": "トロフィー",
+      "chests": "チェスト"
+    },
+    "noNfts": "収集された{category}はありません",
+    "achievements": "実績",
+    "achievementStats": {
+      "completedBy": "達成者",
+      "points": "ポイント"
+    },
+    "friends": "フレンド",
+    "friendStatus": {
+      "online": "オンライン",
+      "offline": "オフライン"
+    },
+    "editProfileModal": {
+      "title": "プロフィール編集",
+      "username": "ユーザー名",
+      "title": "タイトル",
+      "description": "説明",
+      "cancel": "キャンセル",
+      "saveChanges": "変更を保存"
+    },
+    "confirmRemoveFriend": "{username}さんをフレンドリストから削除しますか？"
+  },
+  "months": {
+    "0": "1月",
+    "1": "2月",
+    "2": "3月",
+    "3": "4月",
+    "4": "5月",
+    "5": "6月",
+    "6": "7月",
+    "7": "8月",
+    "8": "9月",
+    "9": "10月",
+    "10": "11月",
+    "11": "12月"
+  },
+  "whitepaper": {
+    "title": "ホワイトペーパー",
+    "navigation": {
+      "sections": {
+        "introduction": {
+          "title": "はじめに",
+          "description": "概要と価値提案"
+        },
+        "tokenomics": {
+          "title": "トークノミクス",
+          "description": "トークン分配と経済性"
+        },
+        "governance": {
+          "title": "ガバナンス",
+          "description": "意思決定システム"
+        },
+        "community": {
+          "title": "コミュニティ",
+          "description": "参加と成長"
+        },
+        "architecture": {
+          "title": "アーキテクチャ",
+          "description": "技術インフラストラクチャ"
+        },
+        "core-features": {
+          "title": "主要機能",
+          "description": "プロダクト機能"
+        }
+      },
+      "documentation": "ドキュメント",
+      "previous": "前へ",
+      "next": "次へ",
+      "chapters": "チャプター",
+      "mobileTitle": "ホワイトペーパーセクション",
+      "mobileSubtitle": "チャプター間を移動"
+    }
+  },
+  "dao": {
+    "headline": {
+      "title": "遺産の夜明け",
+      "subtitle": "DAOか、さもなくば決してなし！",
+      "stakeholder_cta": "ステークホルダーになる",
+      "whitepaper_cta": "ホワイトペーパーを読む"
+    },
+    "explainer": {
+      "title": "コスミッククラフトのDAOとは？",
+      "description": "コスミッククラフトのDAO（分散型自律組織）は、コミュニティがコスミッククラフトのゲームエコシステムの未来を集合的に統治することを可能にします。SPIRALトークンの所有を通じて、ステークホルダーはプラットフォーム開発、資金管理、経済政策に影響を与える重要な決定に参加できます。",
+      "pillars": {
+        "governance": {
+          "title": "コミュニティガバナンス",
+          "description": "提案に投票し、民主的な意思決定を通じてプラットフォームの将来の方向性を形作ります。"
+        },
+        "treasury": {
+          "title": "共有財源",
+          "description": "エコシステムの成長と開発に専念する7億6000万SPIRALトークンの財源を共同で管理します。"
+        },
+        "rewards": {
+          "title": "ステーキング報酬",
+          "description": "積極的な参加とプラットフォームの成長への長期的なコミットメントを通じて報酬を獲得します。"
+        }
+      },
+      "links": {
+        "roadmap": "ロードマップを見る",
+        "whitepaper": "ホワイトペーパーを読む"
+      }
+    },
+    "distribution": {
+      "title": "トークン配布",
+      "treasury": {
+        "title": "財源",
+        "description": "エコシステムの成長とDAO管理の資金"
+      },
+      "swap": {
+        "title": "SNSスワップ",
+        "description": "8回の四半期リリースによる公開販売"
+      },
+      "team": {
+        "title": "開発チーム",
+        "description": "コアチームのための8年間のベスティング"
+      },
+      "investors": {
+        "title": "初期投資家",
+        "description": "様々なベスティングを持つ初期支援者"
+      }
+    },
+    "governance": {
+      "title": "ガバナンスモデル",
+      "proposal_creation": {
+        "title": "提案作成",
+        "requirement": "1,000 SPIRAL",
+        "description": "提案を提出するために必要な最小ステーク"
+      },
+      "voting_period": {
+        "title": "投票期間",
+        "requirement": "7日間",
+        "description": "提案に対する標準的な審議時間"
+      },
+      "voting_power": {
+        "title": "投票力",
+        "requirement": "最大3倍",
+        "description": "ステーキングと年齢を通じた最大倍率"
+      },
+      "lock_period": {
+        "title": "ロック期間",
+        "requirement": "30日〜8年",
+        "description": "ロック解除のための柔軟なオプション"
+      }
+    },
+    "metrics": {
+      "title": "トークンメトリクス",
+      "total_supply": "総供給量",
+      "treasury_size": "財源規模",
+      "min_proposal": "提案用最小ステーク",
+      "initial_apy": "初期APY"
+    },
+    "staking": {
+      "title": "ステーキングの特典",
+      "subtitle": "参加を通じて獲得",
+      "description": "SPIRALトークンをロックして報酬を獲得し、ガバナンス力を高めましょう",
+      "benefits": {
+        "initial_apy": {
+          "title": "初期APY"
+        },
+        "transition": {
+          "title": "移行期間"
+        },
+        "final_apy": {
+          "title": "最終APY"
+        }
+      },
+      "multipliers": {
+        "title": "パワー倍率",
+        "dissolve": {
+          "title": "溶解遅延"
+        },
+        "age": {
+          "title": "ニューロン年齢"
+        }
+      }
+    },
+    "rights": {
+      "title": "ステークホルダーの権利",
+      "treasury": {
+        "title": "財源管理",
+        "description": "開発、マーケティング、コミュニティイニシアチブのためのDAO財源の配分に投票します",
+        "items": {
+          "marketing": "マーケティングキャンペーン",
+          "development": "開発資金",
+          "partnerships": "戦略的パートナーシップ"
+        }
+      },
+      "economic": {
+        "title": "経済政策",
+        "description": "集団的意思決定を通じてエコシステムの経済的枠組みを形成します",
+        "items": {
+          "tokenomics": "トークノミクスの調整",
+          "staking": "ステーキングレートの変更",
+          "fees": "手数料構造"
+        }
+      },
+      "roadmap": {
+        "title": "開発ロードマップ",
+        "description": "プラットフォームの技術的および製品開発の優先順位に影響を与えます",
+        "items": {
+          "features": "機能の優先順位付け",
+          "expansions": "ゲーム拡張",
+          "improvements": "技術的改善"
+        }
+      },
+      "community": {
+        "title": "コミュニティプログラム",
+        "description": "エコシステムを成長させるためのコミュニティ主導のイニシアチブを確立し統治します",
+        "items": {
+          "creators": "コンテンツクリエイター向け資金",
+          "events": "イベントやトーナメント",
+          "education": "教育プログラム"
+        }
+      }
+    },
+    "join": {
+      "title": "あなたのコズミックパワーを手に入れよう！",
+      "description": "DAOに参加し、完全にオンチェーンの最初のゲームフランチャイズのガバナンスに参加しましょう",
+      "stats": {
+        "voting": "最大投票力",
+        "apy": "APY範囲",
+        "period": "投票期間"
+      },
+      "stakeholder_cta": "ステークホルダーになる",
+      "whitepaper_cta": "ホワイトペーパーを読む"
+    }
+  },
+  "proposals": {
+    "title": "アクティブな提案",
+    "for": "賛成",
+    "against": "反対",
+    "vote_for": "賛成に投票",
+    "vote_against": "反対に投票",
+    "status": {
+      "active": "アクティブ",
+      "passed": "可決",
+      "rejected": "否決",
+      "executed": "実行済み",
+      "pending": "保留中"
+    },
+    "examples": {
+      "creator": {
+        "title": "コミュニティコンテンツクリエイタープログラム",
+        "summary": "コンテンツクリエイターがコスミッククラフトエコシステムの宣伝のための資金を受け取るための枠組みを確立する"
+      },
+      "treasury": {
+        "title": "財源多様化戦略",
+        "summary": "エコシステムと連携したプロトコルへの戦略的投資に財源の5％を割り当てる"
+      }
+    }
+  },
+  "meta": {
+    "dao": {
+      "title": "コスミッククラフトDAO - ゲームの未来のための分散型ガバナンス",
+      "description": "コスミッククラフトDAOに参加し、宇宙ゲームの未来のための分散型ガバナンスに参加しましょう。SPIRALトークンをステーキングして報酬と投票力を獲得しましょう。"
+    }
+  },
+  "wallet": {
+    "title": "ウォレット",
+    "subtitle": "トークンと資産を管理する",
+    "principalId": "プリンシパルID",
+    "accountId": "アカウントID",
+    "showPrincipalId": "プリンシパルIDを表示",
+    "showAccountId": "アカウントIDを表示",
+    "tokens": "トークン",
+    "loadingTokens": "トークンを読み込み中...",
+    "noTokens": "トークンが見つかりません",
+    "addToken": "トークンを追加",
+    "addTokenTooltip": "カスタムトークンを追加",
+    "level": "レベル",
+    "balance": "残高",
+    "max": "最大",
+
+    "actions": "アクション",
+    "send": "送信",
+    "sendTooltip": "他のアカウントにトークンを送信",
+    "sendTokens": "トークンを送信",
+    "sending": "送信中...",
+    "receive": "受信",
+    "receiveTooltip": "他者からトークンを受信",
+    "receiveTokens": "トークンを受信",
+    "receiveDescription": "トークンを受け取るためにアドレスを共有してください",
+    "scanToSend": "スキャンしてトークンを送信",
+    "receiveTokensNotice": "送信者が正しいネットワークを使用していることを確認してください。このウォレットがサポートするトークンのみを送信してください。",
+    "yourAddress": "あなたのアドレス",
+    "swap": "スワップ",
+    "swapTooltip": "異なるトークン間で交換",
+    "stake": "ステーク",
+    "stakeTooltip": "報酬を得るためにトークンをステーク",
+
+    "recipient": "受信者",
+    "enterRecipient": "受信者アドレスを入力",
+    "amount": "金額",
+    "enterAmount": "金額を入力",
+    "memo": "メモ",
+    "optional": "任意",
+    "enterMemo": "メモやメッセージを入力（任意）",
+    "transactionFee": "取引手数料",
+
+    "token": "トークン",
+    "tokenId": "トークンID",
+    "enterTokenId": "トークンのキャニスターIDを入力",
+    "tokenIdHint": "追加したいトークンのキャニスターID",
+    "tokenStandard": "トークン規格",
+    "tokenName": "トークン名",
+    "tokenSymbol": "トークンシンボル",
+    "tokenDecimals": "トークン小数点",
+    "showAdvanced": "詳細オプションを表示",
+    "hideAdvanced": "詳細オプションを非表示",
+
+    "nftCollection": "NFTコレクション",
+    "loadingNfts": "NFTを読み込み中...",
+    "noNfts": "NFTが見つかりません",
+    "openChest": "開く",
+    "openingChest": "チェストを開いています",
+    "chestRewards": "あなたの報酬",
+    "noRewardsFound": "報酬が見つかりません",
+    "tapToReveal": "タップして表示",
+
+    "activityLog": "アクティビティログ",
+    "clearLogs": "ログをクリア",
+    "noLogs": "表示するアクティビティがありません",
+
+    "copy": "コピー",
+    "comingSoon": "近日公開",
+
+    "closeDialog": "閉じる",
+
+    "loading": "読み込み中...",
+    "error": "エラー"
+  },
+  "common": {
+    "cancel": "キャンセル",
+    "close": "閉じる",
+    "submit": "送信",
+    "loading": "読み込み中...",
+    "comingSoon": "近日公開"
+  },
+  "esc_menu": {
+    "title": "メニュー",
+    "game": "ゲーム",
+    "social": "ソーシャル",
+    "settings": "設定",
+    "continue_game": "続ける",
+    "main_menu": "メインメニュー",
+    "friends": "友達",
+    "messages": "メッセージ",
+    "audio": "オーディオ",
+    "video": "ビデオ",
+    "interface": "インターフェース",
+    "logout": "ログアウト"
+  }
+}

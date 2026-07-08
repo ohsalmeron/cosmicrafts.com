@@ -1,0 +1,644 @@
+{
+  "login": {
+  "connectWith": "Добро пожаловать в Метавселенную",
+  "internetIdentity": "Войти через Internet Identity",
+  "google": "Войти через Google",
+  "guestAccount": "Продолжить как гость",
+  "signInClarification": "Уже есть seed?",
+  "loginWith": "Войти через {method}",
+  "enterSeedPhrase": "Введите seed-фразу",
+  "accountRecovery": "Восстановить аккаунт",
+  "recoverAccount": "Войти с этой Seed",
+  "seedValid": "Ваша seed-фраза кажется верной!",
+  "invalidSeedPhrase": "Seed-фраза недействительна.",
+  "invalidSeedLength": "Seed-фраза должна содержать ровно 12 слов.",
+  "guestLoginError": "Упс! Что-то пошло не так.",
+  "recoverySuccess": "Аккаунт успешно восстановлен!",
+  "recovering": "Восстановление..."
+},
+"register": {
+  "usernameLabel": "Имя пользователя:",
+  "usernamePlaceholder": "Макс. 12 символов",
+  "referralCodeLabel": "Реферальный код:",
+  "referralCodePlaceholder": "(необязательно)",
+  "noReferralCode": "Нет кода?",
+  "getReferralCode": "Получите его здесь!",
+  "acceptTerms": "Я принимаю",
+  "privacyPolicy": "Политику конфиденциальности",
+  "termsOfService": "Условия использования",
+  "and": "и",
+  "continueButton": "Продолжить",
+  "successMessage": "Добро пожаловать, {username}!",
+  "failureMessage": "Ошибка регистрации.",
+  "newPlayer": "Новый игрок",
+  "selectedAvatarAlt": "Выбранный аватар",
+  "projectedAvatarAlt": "Проецируемый аватар",
+  "avatarIconAlt": "Иконка аватара",
+  "avatarGridTitle": "Выберите аватар",
+  "avatarAlt": "Аватар {index}"
+},
+  "header": {
+  "home": "Главная",
+  "features": "Особенности",
+  "play": "Играть",
+  "games": "Игры",
+  "community": "Сообщество",
+  "contact": "Контакты",
+  "support": "Поддержка",
+  "language": "Язык",
+  "marketplace": "Магазин",
+  "spiral": "Спираль",
+  "dao": "DAO",
+  "dashboard": "Панель управления",
+  "connect": "Подключиться",
+  "whitepaper": "Белая книга",
+  "login": "Войти",
+  "myProfile": "Мой Профиль",
+  "settings": "Настройки",
+  "signout": "Выйти",
+  "profile": "Профиль",
+  "roadmap": "Дорожная карта"
+},
+"error": {
+      "title": "Опа!",
+      "description": "Эта страница ушла в гиперпрыжок.",
+      "homeButton": "⏪ Назад"
+    },
+  "hero": {
+    "slides": [
+      {
+        "title": "Начало здесь. Альфа запущена — заходи!",
+        "ctaButtons": [
+          { "text": "Играть Сейчас!" },
+          { "text": "Добавить в список желаний на Epic Games" }
+        ]
+      },
+      {
+        "title": "Вечеринка здесь! Ты с нами или как?",
+        "ctaButtons": [
+          { "text": "Перейти к NNS" },
+          { "text": "Читать Whitepaper" }
+        ]
+      },
+      {
+        "title": "RTS на блокчейне. Звездный Дрейф, Галактический Хаос",
+        "ctaButtons": [
+          { "text": "Скачать Сейчас!" },
+          { "text": "Узнать Больше!" }
+        ]
+      },
+      {
+        "title": "Давай тусить вместе! Пригласи друзей и получи эксклюзивные бонусы!",
+        "ctaButtons": [
+          { "text": "Перейти к Панели" },
+          { "text": "Получить Реферальный Код" }
+        ]
+      }
+    ]
+  },
+  "cta": "Попробуй Cosmicrafts Adventures",
+  "lore": {
+    "title": "Лор Cosmicrafts",
+    "description": "Погрузись вместе с нами в удивительный лор вселенной Cosmicrafts – полный героев, эпичных сражений и тайн, ждущих своего открытия!"
+  },
+  "games": {
+    "title": "Наши Игры",
+    "battlegrounds": {
+      "title": "Cosmicrafts Battlegrounds",
+      "description": "Присоединяйся к эпическим сражениям в вселенной Cosmicrafts!"
+    },
+    "adventures": {
+      "title": "Cosmicrafts Adventures",
+      "description": "Отправляйся с нами на захватывающие космические приключения и раскрой секреты галактики!"
+    }
+  },
+  "carousel": {
+    "slides": [
+      {
+        "title": "Cosmicrafts Adventures",
+        "description": "Исследуй новую вселенную, разрабатываемую для Cosmicrafts Adventures!",
+        "buttonText": "Узнать Больше",
+        "action": "adventures"
+      },
+      {
+        "title": "Cosmicrafts Battleground",
+        "description": "Врывайся в бой и играй в Cosmicrafts Battleground прямо сейчас!",
+        "buttonText": "Играть Сейчас",
+        "action": "battleground"
+      },
+      {
+        "title": "Последние Новости",
+        "description": "Будь в курсе последних новостей и обновлений о Cosmicrafts.",
+        "buttonText": "Читать Новости",
+        "action": "news"
+      },
+      {
+        "title": "Технология ICP",
+        "description": "Узнай больше об инновационной технологии ICP, которая двигает Cosmicrafts.",
+        "buttonText": "Открыть ICP",
+        "action": "technology"
+      }
+    ]
+  },
+  "footer": {
+    "stayConnected": "Оставайтесь на связи",
+    "explore": "Исследовать",
+    "careers": "Карьера",
+    "about": "О нас",
+    "support": "Поддержка",
+    "press": "Пресса",
+    "creators": "Создатели",
+    "privacy": "Конфиденциальность",
+    "legal": "Правовая информация",
+    "terms": "Условия",
+    "cookiePolicy": "Политика файлов cookie",
+    "cookieSettings": "Настройки файлов cookie",
+    "language": "Язык",
+    "trademarks": "Все упомянутые здесь торговые марки являются собственностью их владельцев."
+  },
+  "darkRift": {
+  "title": "Тёмный Разлом",
+  "discover": "Откройте"
+},
+"loadingScreen": {
+    "messages": {
+      "initializingQuantumShenanigans": "Запуск квантовой магии",
+      "chargingHyperdrive": "Зарядка гипердвигателя",
+      "generatingCosmicChaos": "Создание космического хаоса",
+      "decodingAlienSignals": "Расшифровка сигналов пришельцев",
+      "calibratingFluxCapacitor": "Калибровка поточного конденсатора",
+      "initiatingSelfDestruct": "Активация самоуничтожения",
+      "fuelingRocket": "Заправка ракеты",
+      "generatingWormholes": "Создание червоточин",
+      "conjuringBlackHole": "Призывание черной дыры",
+      "syncingHiveMind": "Синхронизация коллективного разума",
+      "reticulatingSplines": "Настройка сплайнов",
+      "summoningSpaceHamsters": "Призыв космических хомяков",
+      "defragmentingSpaceTime": "Дефрагментация пространства-времени",
+      "transmogrifyingMatter": "Трансформация материи",
+      "brewingNebula": "Варим туманность",
+      "lubricatingGears": "Смазываем шестеренки",
+      "tighteningRealityBolts": "Затягиваем болты реальности",
+      "chargingStardustReserves": "Зарядка запаса звездной пыли",
+      "calibratingLaserBeams": "Калибровка лазерных лучей",
+      "summoningFriendlyAliens": "Призыв дружелюбных пришельцев",
+      "spinningUpWormhole": "Запуск червоточины",
+      "tamingBlackHoles": "Укрощение черных дыр",
+      "polishingStars": "Полируем звезды",
+      "clearingAsteroidBelt": "Очистка пояса астероидов",
+      "rewritingGalacticCode": "Переписываем галактический код",
+      "encryptingCosmos": "Шифруем космос",
+      "quantumJuggling": "Квантовая жонглировка",
+      "debuggingAliens": "Отладка инопланетных технологий",
+      "hackingGravity": "Взлом гравитации",
+      "warmingUpWarpDrive": "Разогрев варп-двигателя",
+      "tamingComets": "Приручение комет",
+      "aligningPhotonBeams": "Выравнивание фотонных лучей",
+      "overclockingStellarEngine": "Разгон звездного двигателя",
+      "stirringCosmicSoup": "Перемешиваем космический суп",
+      "buffingRocketPaint": "Полировка ракеты",
+      "resettingWormholePhysics": "Сброс физики червоточин",
+      "aligningNebulas": "Выравниваем туманности",
+      "herdingAsteroids": "Собираем астероиды в кучу",
+      "debuggingStardust": "Отладка звездной пыли",
+      "uploadingTheUniverse": "Загрузка вселенной в облако",
+      "turningOffInertia": "Отключение инерции",
+      "pluckingSuperstrings": "Перебираем суперструны",
+      "paintingNebulas": "Рисуем туманности",
+      "scanningForLife": "Сканируем на наличие жизни",
+      "reversingPolarity": "Меняем полярность",
+      "quantumDancing": "Квантовые танцы",
+      "herdingWormholes": "Пасем червоточины",
+      "encryptingReality": "Шифруем реальность",
+      "debuggingTheMultiverse": "Отладка мультивселенной"
+    }
+  },
+  "notifications": {
+    "title": "Уведомления",
+    "noNotifications": "Нет уведомлений",
+    "viewAll": "Посмотреть все",
+    "friendRequests": "Запросы в друзья",
+    "noFriendRequests": "Нет запросов в друзья",
+    "accept": "Принять",
+    "decline": "Отклонить",
+    "accepted": "Принято",
+    "declined": "Отклонено",
+    "sentYouFriendRequest": "отправил вам запрос в друзья",
+    "acceptedYourFriendRequest": "принял ваш запрос в друзья",
+    "newFriendRequest": "У вас новый запрос в друзья от",
+    "privacySettingsUpdated": "Ваши настройки конфиденциальности были обновлены.",
+    "tabs": {
+      "all": "Все",
+      "friendRequests": "Запросы в друзья",
+      "notifications": "Уведомления"
+    },
+    "timeAgo": {
+      "justNow": "только что",
+      "minutesAgo": "{minutes} минут назад",
+      "hoursAgo": "{hours} часов назад",
+      "daysAgo": "{days} дней назад"
+    }
+  },
+  "profilePage": {
+    "profileError": "Ошибка профиля",
+    "retry": "Повторить",
+    "goHome": "На главную",
+    "errorHelp": "Этот профиль может не существовать или временно недоступен. Если вы ввели имя пользователя, попробуйте получить доступ по ID Principal или наоборот.",
+    "tabs": {
+      "profile": "Профиль",
+      "stats": "Статистика",
+      "collection": "Коллекция",
+      "social": "Социальное"
+    },
+    "unknownPlayer": "Неизвестный игрок",
+    "defaultTitle": "Галактический искатель приключений",
+    "registrationDate": "Участник с {date}",
+    "unknownRegistrationDate": "Дата регистрации неизвестна",
+    "friendActions": {
+      "addFriend": "Добавить в друзья",
+      "requestSent": "Запрос отправлен",
+      "removeFriend": "Удалить из друзей"
+    },
+    "noDescription": "Пока нет описания",
+    "edit": "Редактировать",
+    "playerStats": {
+      "elo": "ELO",
+      "winRate": "Процент побед",
+      "games": "Игры"
+    },
+    "editProfile": "Редактировать профиль",
+    "playerId": "ID игрока",
+    "quickStats": "Быстрая статистика",
+    "statsCards": {
+      "totalKills": "Всего убийств",
+      "energyEfficiency": "Энергоэффективность",
+      "criticalHits": "Критические удары"
+    },
+    "combatStatistics": "Боевая статистика",
+    "statsDetails": {
+      "damageDealt": "Нанесенный урон",
+      "damageEvaded": "Избежанный урон",
+      "energyGenerated": "Сгенерированная энергия",
+      "energyUsed": "Использованная энергия"
+    },
+    "nftCollection": "Коллекция NFT",
+    "nftCategories": {
+      "all": "Все NFT",
+      "characters": "Персонажи",
+      "units": "Юниты",
+      "avatars": "Аватары",
+      "trophies": "Трофеи",
+      "chests": "Сундуки"
+    },
+    "noNfts": "Пока нет собранных {category}",
+    "achievements": "Достижения",
+    "achievementStats": {
+      "completedBy": "Выполнено",
+      "points": "Очки"
+    },
+    "friends": "Друзья",
+    "friendStatus": {
+      "online": "В сети",
+      "offline": "Не в сети"
+    },
+    "editProfileModal": {
+      "title": "Редактировать профиль",
+      "username": "Имя пользователя",
+      "title": "Титул",
+      "description": "Описание",
+      "cancel": "Отмена",
+      "saveChanges": "Сохранить изменения"
+    },
+    "confirmRemoveFriend": "Вы уверены, что хотите удалить {username} из списка друзей?"
+  },
+  "months": {
+    "0": "январь",
+    "1": "февраль",
+    "2": "март",
+    "3": "апрель",
+    "4": "май",
+    "5": "июнь",
+    "6": "июль",
+    "7": "август",
+    "8": "сентябрь",
+    "9": "октябрь",
+    "10": "ноябрь",
+    "11": "декабрь"
+  },
+  "whitepaper": {
+    "title": "Белая книга",
+    "navigation": {
+      "sections": {
+        "introduction": {
+          "title": "Введение",
+          "description": "Обзор и ценностное предложение"
+        },
+        "tokenomics": {
+          "title": "Токеномика",
+          "description": "Распределение токенов и экономика"
+        },
+        "governance": {
+          "title": "Управление",
+          "description": "Система принятия решений"
+        },
+        "community": {
+          "title": "Сообщество",
+          "description": "Участие и рост"
+        },
+        "architecture": {
+          "title": "Архитектура",
+          "description": "Техническая инфраструктура"
+        },
+        "core-features": {
+          "title": "Основные функции",
+          "description": "Возможности продукта"
+        }
+      },
+      "documentation": "Документация",
+      "previous": "Назад",
+      "next": "Вперед",
+      "chapters": "Главы",
+      "mobileTitle": "Разделы белой книги",
+      "mobileSubtitle": "Навигация по главам"
+    }
+  },
+  "dao": {
+    "headline": {
+      "title": "Рассвет наследия",
+      "subtitle": "Либо DAO, либо никогда!",
+      "stakeholder_cta": "Стать стейкхолдером",
+      "whitepaper_cta": "Прочитать вайтпейпер"
+    },
+    "explainer": {
+      "title": "Что такое Cosmicrafts DAO?",
+      "description": "Cosmicrafts DAO (децентрализованная автономная организация) позволяет сообществу коллективно управлять будущим игровой экосистемы Cosmicrafts. Владея токенами SPIRAL, стейкхолдеры могут участвовать в ключевых решениях, влияющих на развитие платформы, управление казной и экономическую политику.",
+      "pillars": {
+        "governance": {
+          "title": "Управление сообществом",
+          "description": "Голосуйте за предложения и формируйте будущее направление платформы через демократическое принятие решений."
+        },
+        "treasury": {
+          "title": "Общая казна",
+          "description": "Коллективно управляйте казной в 760 миллионов токенов SPIRAL, предназначенных для роста и развития экосистемы."
+        },
+        "rewards": {
+          "title": "Вознаграждения за стейкинг",
+          "description": "Получайте вознаграждения за активное участие и долгосрочную приверженность росту платформы."
+        }
+      },
+      "links": {
+        "roadmap": "Посмотреть дорожную карту",
+        "whitepaper": "Прочитать вайтпейпер"
+      }
+    },
+    "distribution": {
+      "title": "Распределение токенов",
+      "treasury": {
+        "title": "Казна",
+        "description": "Средства для роста экосистемы и под контролем DAO"
+      },
+      "swap": {
+        "title": "SNS своп",
+        "description": "Публичная продажа с 8 квартальными выпусками"
+      },
+      "team": {
+        "title": "Команда разработчиков",
+        "description": "8-летний вестинг для основной команды"
+      },
+      "investors": {
+        "title": "Ранние инвесторы",
+        "description": "Ранние сторонники с различным вестингом"
+      }
+    },
+    "governance": {
+      "title": "Модель управления",
+      "proposal_creation": {
+        "title": "Создание предложений",
+        "requirement": "1,000 SPIRAL",
+        "description": "Минимальный стейк для подачи предложений"
+      },
+      "voting_period": {
+        "title": "Период голосования",
+        "requirement": "7 дней",
+        "description": "Стандартное время для обсуждения предложений"
+      },
+      "voting_power": {
+        "title": "Сила голоса",
+        "requirement": "До 3х",
+        "description": "Максимальный множитель через стейкинг и возраст"
+      },
+      "lock_period": {
+        "title": "Период блокировки",
+        "requirement": "30д - 8л",
+        "description": "Гибкие опции для растворения блокировки"
+      }
+    },
+    "metrics": {
+      "title": "Метрики токенов",
+      "total_supply": "Общее предложение",
+      "treasury_size": "Размер казны",
+      "min_proposal": "Мин. стейк для предложений",
+      "initial_apy": "Начальный APY"
+    },
+    "staking": {
+      "title": "Преимущества стейкинга",
+      "subtitle": "Зарабатывайте через участие",
+      "description": "Блокируйте ваши токены SPIRAL для получения вознаграждений и увеличения силы управления",
+      "benefits": {
+        "initial_apy": {
+          "title": "Начальный APY"
+        },
+        "transition": {
+          "title": "Переходный период"
+        },
+        "final_apy": {
+          "title": "Конечный APY"
+        }
+      },
+      "multipliers": {
+        "title": "Множители силы",
+        "dissolve": {
+          "title": "Задержка растворения"
+        },
+        "age": {
+          "title": "Возраст нейрона"
+        }
+      }
+    },
+    "rights": {
+      "title": "Права стейкхолдеров",
+      "treasury": {
+        "title": "Управление казной",
+        "description": "Голосуйте за распределение средств DAO казны на разработку, маркетинг и инициативы сообщества",
+        "items": {
+          "marketing": "Маркетинговые кампании",
+          "development": "Финансирование разработки",
+          "partnerships": "Стратегические партнерства"
+        }
+      },
+      "economic": {
+        "title": "Экономическая политика",
+        "description": "Формируйте экономическую структуру экосистемы через коллективное принятие решений",
+        "items": {
+          "tokenomics": "Корректировки токеномики",
+          "staking": "Изменения ставок стейкинга",
+          "fees": "Структуры комиссий"
+        }
+      },
+      "roadmap": {
+        "title": "Дорожная карта разработки",
+        "description": "Влияйте на приоритеты технического и продуктового развития платформы",
+        "items": {
+          "features": "Приоритизация функций",
+          "expansions": "Расширения игр",
+          "improvements": "Технические улучшения"
+        }
+      },
+      "community": {
+        "title": "Программы сообщества",
+        "description": "Создавайте и управляйте инициативами под руководством сообщества для развития экосистемы",
+        "items": {
+          "creators": "Финансирование создателей контента",
+          "events": "События и турниры",
+          "education": "Образовательные программы"
+        }
+      }
+    },
+    "join": {
+      "title": "Заявите о своей космической силе!",
+      "description": "Присоединяйтесь к DAO и участвуйте в управлении первой полностью on-chain игровой франшизой",
+      "stats": {
+        "voting": "Макс. сила голоса",
+        "apy": "Диапазон APY",
+        "period": "Период голосования"
+      },
+      "stakeholder_cta": "Стать стейкхолдером",
+      "whitepaper_cta": "Прочитать вайтпейпер"
+    }
+  },
+  "proposals": {
+    "title": "Активные предложения",
+    "for": "За",
+    "against": "Против",
+    "vote_for": "Голосовать за",
+    "vote_against": "Голосовать против",
+    "status": {
+      "active": "Активное",
+      "passed": "Принято",
+      "rejected": "Отклонено",
+      "executed": "Исполнено",
+      "pending": "Ожидание"
+    },
+    "examples": {
+      "creator": {
+        "title": "Программа создателей контента сообщества",
+        "summary": "Создание структуры для получения финансирования создателями контента для продвижения экосистемы Cosmicrafts"
+      },
+      "treasury": {
+        "title": "Стратегия диверсификации казны",
+        "summary": "Выделение 5% средств казны на стратегические инвестиции в протоколы, согласованные с экосистемой"
+      }
+    }
+  },
+  "meta": {
+    "dao": {
+      "title": "Cosmicrafts DAO - децентрализованное управление для будущего игр",
+      "description": "Присоединяйтесь к Cosmicrafts DAO и участвуйте в децентрализованном управлении для будущего космических игр. Стейкайте токены SPIRAL для получения вознаграждений и силы голоса."
+    }
+  },
+  "wallet": {
+    "title": "Кошелек",
+    "subtitle": "Управляйте своими токенами и активами",
+    "principalId": "Principal ID",
+    "accountId": "ID аккаунта",
+    "showPrincipalId": "Показать Principal ID",
+    "showAccountId": "Показать ID аккаунта",
+    "tokens": "Токены",
+    "loadingTokens": "Загрузка токенов...",
+    "noTokens": "Токены не найдены",
+    "addToken": "Добавить токен",
+    "addTokenTooltip": "Добавить пользовательский токен",
+    "level": "Уровень",
+    "balance": "Баланс",
+    "max": "Макс",
+
+    "actions": "Действия",
+    "send": "Отправить",
+    "sendTooltip": "Отправить токены на другой аккаунт",
+    "sendTokens": "Отправить токены",
+    "sending": "Отправка...",
+    "receive": "Получить",
+    "receiveTooltip": "Получить токены от других",
+    "receiveTokens": "Получить токены",
+    "receiveDescription": "Поделитесь своим адресом, чтобы получить токены",
+    "scanToSend": "Сканируйте для отправки токенов",
+    "receiveTokensNotice": "Убедитесь, что отправитель использует правильную сеть. Отправляйте только токены, поддерживаемые этим кошельком.",
+    "yourAddress": "Ваш адрес",
+    "swap": "Обмен",
+    "swapTooltip": "Обменивайте различные токены",
+    "stake": "Стейкинг",
+    "stakeTooltip": "Стейкинг токенов для получения вознаграждений",
+
+    "recipient": "Получатель",
+    "enterRecipient": "Введите адрес получателя",
+    "amount": "Сумма",
+    "enterAmount": "Введите сумму",
+    "memo": "Примечание",
+    "optional": "необязательно",
+    "enterMemo": "Введите примечание или сообщение (необязательно)",
+    "transactionFee": "Комиссия за транзакцию",
+
+    "token": "Токен",
+    "tokenId": "ID токена",
+    "enterTokenId": "Введите ID канистра токена",
+    "tokenIdHint": "ID канистра токена, который вы хотите добавить",
+    "tokenStandard": "Стандарт токена",
+    "tokenName": "Название токена",
+    "tokenSymbol": "Символ токена",
+    "tokenDecimals": "Десятичные знаки токена",
+    "showAdvanced": "Показать расширенные настройки",
+    "hideAdvanced": "Скрыть расширенные настройки",
+
+    "nftCollection": "Коллекция NFT",
+    "loadingNfts": "Загрузка NFT...",
+    "noNfts": "NFT не найдены",
+    "openChest": "Открыть",
+    "openingChest": "Открытие сундука",
+    "chestRewards": "Ваши награды",
+    "noRewardsFound": "Награды не найдены",
+    "tapToReveal": "Нажмите, чтобы открыть",
+
+    "activityLog": "Журнал активности",
+    "clearLogs": "Очистить журнал",
+    "noLogs": "Нет активности для отображения",
+
+    "copy": "Копировать",
+    "comingSoon": "Скоро",
+
+    "closeDialog": "Закрыть",
+
+    "loading": "Загрузка...",
+    "error": "Ошибка"
+  },
+  "common": {
+    "cancel": "Отмена",
+    "close": "Закрыть",
+    "submit": "Отправить",
+    "loading": "Загрузка...",
+    "comingSoon": "Скоро"
+  },
+  "esc_menu": {
+    "title": "Меню",
+    "game": "Игра",
+    "social": "Социальное",
+    "settings": "Настройки",
+    "continue_game": "Продолжить",
+    "main_menu": "Главное меню",
+    "friends": "Друзья",
+    "messages": "Сообщения",
+    "audio": "Аудио",
+    "video": "Видео",
+    "interface": "Интерфейс",
+    "logout": "Выйти"
+  }
+}

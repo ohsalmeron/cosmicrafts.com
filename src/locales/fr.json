@@ -1,0 +1,712 @@
+{
+  "login": {
+  "connectWith": "Bienvenue dans le Métavers",
+  "internetIdentity": "Connectez-vous avec Internet Identity",
+  "google": "Connectez-vous avec Google",
+  "guestAccount": "Continuer en tant qu'Invité",
+  "signInClarification": "Vous avez déjà une seed ?",
+  "loginWith": "Connectez-vous avec {method}",
+  "enterSeedPhrase": "Entrez votre phrase secrète",
+  "accountRecovery": "Récupérez votre compte",
+  "recoverAccount": "Se connecter avec cette Seed",
+  "seedValid": "Votre phrase secrète semble valide !",
+  "invalidSeedPhrase": "La phrase secrète n'est pas valide.",
+  "invalidSeedLength": "La phrase secrète doit contenir exactement 12 mots.",
+  "guestLoginError": "Oups ! Quelque chose a mal tourné.",
+  "recoverySuccess": "Récupération de compte réussie !",
+  "recovering": "Récupération...",
+  "seedPhraseInput": "Balance ta phrase de récup ici (12 mots, wesh)",
+  "backToLogin": "Retour à la page de connexion",
+  "checksumWarning": "Tous les mots sont valides, mais ils forment pas une phrase de récup valide. Vérifie l'ordre, meuf/mec.",
+  "recoverWithSeedPhrase": "Récupérer avec ta phrase de récup",
+  "invalidWords": "Y'a des mots qui sont pas dans le dico BIP39. Cherche les fautes de frappe.",
+  "invalidChecksum": "Checksum de ta phrase pas valide. Ces mots forment pas une phrase de récup qui marche.",
+  "invalidWordCount": "Nombre de mots incorrect : {count}. Il faut 12 mots, pas plus pas moins.",
+  "tooManyWords": "Trop de mots là. On prend juste les 12 premiers.",
+  "tooFewWords": "Pas assez de mots. Complète les champs manquants.",
+  "recoveryFailed": "Récup de compte foirée. Vérifie ta phrase et retente."
+},
+"register": {
+  "usernameLabel": "Nom d'Utilisateur :",
+  "usernamePlaceholder": "Max. 12 caractères",
+  "referralCodeLabel": "Code de Référence :",
+  "referralCodePlaceholder": "(optionnel)",
+  "noReferralCode": "Vous n'avez pas de code ?",
+  "getReferralCode": "Obtenez-en un ici !",
+  "acceptTerms": "J'accepte",
+  "privacyPolicy": "la Politique de Confidentialité",
+  "termsOfService": "les Conditions d'Utilisation",
+  "and": "et",
+  "continueButton": "Continuer",
+  "successMessage": "Bienvenue, {username} !",
+  "failureMessage": "Échec de l'inscription.",
+  "newPlayer": "Nouveau Joueur",
+  "selectedAvatarAlt": "Avatar Sélectionné",
+  "projectedAvatarAlt": "Avatar Projeté",
+  "avatarIconAlt": "Icône d'Avatar",
+  "avatarGridTitle": "Sélectionnez un Avatar",
+  "avatarAlt": "Avatar {index}"
+},
+  "header": {
+  "home": "Accueil",
+  "features": "Fonctionnalités",
+  "play": "Jouer",
+  "games": "Jeux",
+  "community": "Communauté",
+  "contact": "Contact",
+  "support": "Support",
+  "language": "Langue",
+  "marketplace": "Marché",
+  "spiral": "Spiral",
+  "dao": "DAO",
+  "dashboard": "Tableau de bord",
+  "connect": "Connecter",
+  "whitepaper": "Livre blanc",
+  "login": "Connexion",
+  "myProfile": "Mon Profil",
+  "settings": "Paramètres",
+  "signout": "Se déconnecter",
+  "profile": "Profil",
+  "roadmap": "Roadmap",
+  "accountIds": "IDs de Compte",
+  "ethereumAddress": "Adresse Ethereum",
+  "ethAddress": "Adresse ETH",
+  "buy": "Acheter"
+},
+"error": {
+      "title": "Oh là là!",
+      "description": "Cette page a pris la tangente cosmique.",
+      "homeButton": "⏪ Retour"
+    },
+  "hero": {
+    "slides": [
+      {
+        "title": "Tout commence ici. L'Alpha est en ligne, viens voir !",
+        "ctaButtons": [
+          { "text": "Joue Maintenant !" },
+          { "text": "Ajouter à la Wishlist sur Epic Games" }
+        ]
+      },
+      {
+        "title": "La fête commence ici ! T'es des nôtres ou pas ?",
+        "ctaButtons": [
+          { "text": "Aller sur NNS" },
+          { "text": "Lire le Whitepaper" }
+        ]
+      },
+      {
+        "title": "RTS sur Blockchain. Drift Stellaire, Chaos Galactique",
+        "ctaButtons": [
+          { "text": "Télécharge-le Maintenant !" },
+          { "text": "Découvre Plus!" }
+        ]
+      },
+      {
+        "title": "On se connecte ? Invite des amis et gagne des récompenses exclusives !",
+        "ctaButtons": [
+          { "text": "Aller au Tableau de bord" },
+          { "text": "Obtenir le Code de Parrainage" }
+        ]
+      }
+    ]
+  },
+  "cta": "Essaie Cosmicrafts Adventures",
+  "lore": {
+    "title": "Lore de Cosmicrafts",
+    "description": "Plonge avec nous dans le lore incroyable de Cosmicrafts – rempli de héros, de batailles épiques et de mystères à découvrir !"
+  },
+  "games": {
+    "title": "Nos Jeux",
+    "battlegrounds": {
+      "title": "Cosmicrafts Battlegrounds",
+      "description": "Rejoins des batailles épiques multijoueurs dans l'univers de Cosmicrafts !"
+    },
+    "adventures": {
+      "title": "Cosmicrafts Adventures",
+      "description": "Pars pour des quêtes spatiales excitantes et découvre les secrets de la galaxie avec nous !"
+    }
+  },
+  "carousel": {
+    "slides": [
+      {
+        "title": "Cosmicrafts Adventures",
+        "description": "Découvre un nouvel univers en développement avec Cosmicrafts Adventures !",
+        "buttonText": "En Savoir Plus",
+        "action": "adventures"
+      },
+      {
+        "title": "Cosmicrafts Battleground",
+        "description": "Plonge dans l'action et joue à Cosmicrafts Battleground maintenant !",
+        "buttonText": "Jouer Maintenant",
+        "action": "battleground"
+      },
+      {
+        "title": "Dernières Nouvelles",
+        "description": "Reste au courant des dernières nouveautés de Cosmicrafts.",
+        "buttonText": "Lire les Nouvelles",
+        "action": "news"
+      },
+      {
+        "title": "Technologie ICP",
+        "description": "Découvre la technologie innovante ICP qui propulse Cosmicrafts.",
+        "buttonText": "Découvrir ICP",
+        "action": "technology"
+      }
+    ]
+  },
+  "footer": {
+    "stayConnected": "Restons connectés",
+    "explore": "Explorer",
+    "careers": "Carrières",
+    "about": "À propos",
+    "support": "Support",
+    "press": "Presse",
+    "creators": "Créateurs",
+    "privacy": "Confidentialité",
+    "legal": "Mentions Légales",
+    "terms": "Conditions",
+    "cookiePolicy": "Politique de Cookies",
+    "cookieSettings": "Paramètres de Cookies",
+    "language": "Langue",
+    "trademarks": "Toutes les marques mentionnées ici sont la propriété de leurs propriétaires respectifs."
+  },
+  "darkRift": {
+  "title": "La Faille Obscure",
+  "discover": "Découvrir"
+},
+"loadingScreen": {
+  "messages": {
+    "initializingQuantumShenanigans": "Activation de la magie quantique",
+    "chargingHyperdrive": "Chargement de l'hyperpropulseur",
+    "generatingCosmicChaos": "Génération du chaos cosmique",
+    "decodingAlienSignals": "Décodage des signaux extraterrestres",
+    "calibratingFluxCapacitor": "Calibrage du condensateur de flux",
+    "initiatingSelfDestruct": "Initiation de l'autodestruction",
+    "fuelingRocket": "Remplissage du carburant de la fusée",
+    "generatingWormholes": "Création de trous de ver",
+    "conjuringBlackHole": "Invocation d'un trou noir",
+    "syncingHiveMind": "Synchronisation de l'esprit collectif",
+    "reticulatingSplines": "Réticulation des splines",
+    "summoningSpaceHamsters": "Invocation des hamsters spatiaux",
+    "defragmentingSpaceTime": "Défragmentation de l'espace-temps",
+    "transmogrifyingMatter": "Transmutation de la matière",
+    "brewingNebula": "Préparation de la nébuleuse",
+    "lubricatingGears": "Lubrification des engrenages",
+    "tighteningRealityBolts": "Serrage des boulons de la réalité",
+    "chargingStardustReserves": "Chargement des réserves de poussière d'étoiles",
+    "calibratingLaserBeams": "Calibrage des rayons laser",
+    "summoningFriendlyAliens": "Invocation des extraterrestres amicaux",
+    "spinningUpWormhole": "Mise en rotation du trou de ver",
+    "tamingBlackHoles": "Domptage des trous noirs",
+    "polishingStars": "Polissage des étoiles",
+    "clearingAsteroidBelt": "Nettoyage de la ceinture d'astéroïdes",
+    "rewritingGalacticCode": "Réécriture du code galactique",
+    "encryptingCosmos": "Chiffrement du cosmos",
+    "quantumJuggling": "Jonglerie quantique",
+    "debuggingAliens": "Débogage de la technologie extraterrestre",
+    "hackingGravity": "Piratage de la gravité",
+    "warmingUpWarpDrive": "Chauffage du moteur de distorsion",
+    "tamingComets": "Domptage des comètes",
+    "aligningPhotonBeams": "Alignement des faisceaux de photons",
+    "overclockingStellarEngine": "Overclocking du moteur stellaire",
+    "stirringCosmicSoup": "Remuage de la soupe cosmique",
+    "buffingRocketPaint": "Polissage de la peinture de la fusée",
+    "resettingWormholePhysics": "Réinitialisation de la physique des trous de ver",
+    "aligningNebulas": "Alignement des nébuleuses",
+    "herdingAsteroids": "Rassemblement des astéroïdes",
+    "debuggingStardust": "Débogage de la poussière d'étoiles",
+    "uploadingTheUniverse": "Téléversement de l'univers",
+    "turningOffInertia": "Désactivation de l'inertie",
+    "pluckingSuperstrings": "Pincement des supercordes",
+    "paintingNebulas": "Peinture des nébuleuses",
+    "scanningForLife": "Recherche de vie intelligente",
+    "reversingPolarity": "Inversion de la polarité",
+    "quantumDancing": "Danse quantique",
+    "herdingWormholes": "Rassemblement des trous de ver",
+    "encryptingReality": "Chiffrement de la réalité",
+    "debuggingTheMultiverse": "Débogage du multivers"
+  }
+},
+"notifications": {
+  "title": "Notifications",
+  "noNotifications": "Pas de notifications",
+  "viewAll": "Voir tout",
+  "friendRequests": "Demandes d'amis",
+  "noFriendRequests": "Pas de demandes d'amis",
+  "accept": "Accepter",
+  "decline": "Refuser",
+  "accepted": "Accepté",
+  "declined": "Refusé",
+  "sentYouFriendRequest": "vous a envoyé une demande d'ami",
+  "acceptedYourFriendRequest": "a accepté votre demande d'ami",
+  "newFriendRequest": "Vous avez une nouvelle demande d'ami de",
+  "privacySettingsUpdated": "Vos paramètres de confidentialité ont été mis à jour.",
+  "tabs": {
+    "all": "Tout",
+    "friendRequests": "Demandes d'amis",
+    "notifications": "Notifications"
+  },
+  "timeAgo": {
+    "justNow": "à l'instant",
+    "minutesAgo": "il y a {minutes} minutes",
+    "hoursAgo": "il y a {hours} heures",
+    "daysAgo": "il y a {days} jours"
+  }
+},
+"profilePage": {
+  "profileError": "Erreur de Profil",
+  "retry": "Réessayer",
+  "goHome": "Accueil",
+  "errorHelp": "Ce profil pourrait ne pas exister ou être temporairement indisponible. Si vous avez entré un nom d'utilisateur, essayez d'accéder par ID Principal ou vice versa.",
+  "tabs": {
+    "profile": "Profil",
+    "stats": "Statistiques",
+    "collection": "Collection",
+    "social": "Social"
+  },
+  "unknownPlayer": "Joueur Inconnu",
+  "defaultTitle": "Aventurier Galactique",
+  "registrationDate": "Membre depuis {date}",
+  "unknownRegistrationDate": "Date d'inscription inconnue",
+  "friendActions": {
+    "addFriend": "Ajouter un Ami",
+    "requestSent": "Demande Envoyée",
+    "removeFriend": "Supprimer l'Ami"
+  },
+  "noDescription": "Pas encore de description",
+  "edit": "Modifier",
+  "playerStats": {
+    "elo": "ELO",
+    "winRate": "Taux de Victoire",
+    "games": "Parties"
+  },
+  "editProfile": "Modifier le Profil",
+  "playerId": "ID du Joueur",
+  "quickStats": "Statistiques Rapides",
+  "statsCards": {
+    "totalKills": "Éliminations Totales",
+    "energyEfficiency": "Efficacité Énergétique",
+    "criticalHits": "Coups Critiques"
+  },
+  "combatStatistics": "Statistiques de Combat",
+  "statsDetails": {
+    "damageDealt": "Dégâts Infligés",
+    "damageEvaded": "Dégâts Évités",
+    "energyGenerated": "Énergie Générée",
+    "energyUsed": "Énergie Utilisée"
+  },
+  "nftCollection": "Collection NFT",
+  "nftCategories": {
+    "all": "Tous les NFTs",
+    "characters": "Personnages",
+    "units": "Unités",
+    "avatars": "Avatars",
+    "trophies": "Trophées",
+    "chests": "Coffres"
+  },
+  "noNfts": "Pas encore de {category} collectés",
+  "achievements": "Succès",
+  "achievementStats": {
+    "completedBy": "Complété par",
+    "points": "Points"
+  },
+  "friends": "Amis",
+  "friendStatus": {
+    "online": "En ligne",
+    "offline": "Hors ligne"
+  },
+  "editProfileModal": {
+    "title": "Modifier le Profil",
+    "username": "Nom d'utilisateur",
+    "description": "Description",
+    "cancel": "Annuler",
+    "saveChanges": "Enregistrer les Modifications"
+  },
+  "confirmRemoveFriend": "Êtes-vous sûr de vouloir supprimer {username} de votre liste d'amis ?",
+  "months": {
+    "0": "janvier",
+    "1": "février",
+    "2": "mars",
+    "3": "avril",
+    "4": "mai",
+    "5": "juin",
+    "6": "juillet",
+    "7": "août",
+    "8": "septembre",
+    "9": "octobre",
+    "10": "novembre",
+    "11": "décembre"
+  }
+},
+"whitepaper": {
+  "title": "Livre Blanc",
+  "navigation": {
+    "sections": {
+      "introduction": {
+        "title": "Introduction",
+        "description": "Aperçu et proposition de valeur"
+      },
+      "tokenomics": {
+        "title": "Tokenomie",
+        "description": "Distribution et économie des tokens"
+      },
+      "governance": {
+        "title": "Gouvernance",
+        "description": "Système de prise de décision"
+      },
+      "community": {
+        "title": "Communauté",
+        "description": "Participation et croissance"
+      },
+      "architecture": {
+        "title": "Architecture",
+        "description": "Infrastructure technique"
+      },
+      "core-features": {
+        "title": "Fonctionnalités Principales",
+        "description": "Capacités du produit"
+      }
+    },
+    "documentation": "Documentation",
+    "previous": "Précédent",
+    "next": "Suivant",
+    "chapters": "Chapitres",
+    "mobileTitle": "Sections du Livre Blanc",
+    "mobileSubtitle": "Naviguer dans les chapitres"
+  }
+},
+"dao": {
+  "headline": {
+    "title": "L'aube d'un héritage",
+    "subtitle": "C'est la DAO ou JAMAIS !",
+    "stakeholder_cta": "Devenir Partie Prenante",
+    "whitepaper_cta": "Lire le Livre Blanc"
+  },
+  "explainer": {
+    "title": "Qu'est-ce que la DAO Cosmicrafts ?",
+    "description": "La DAO Cosmicrafts (Organisation Autonome Décentralisée) permet à la communauté de gouverner collectivement l'avenir de l'écosystème de jeux Cosmicrafts. Grâce à la propriété de jetons SPIRAL, les parties prenantes peuvent participer aux décisions clés qui affectent le développement de la plateforme, la gestion du trésor et la politique économique.",
+    "pillars": {
+      "governance": {
+        "title": "Gouvernance Communautaire",
+        "description": "Votez sur les propositions et façonnez l'orientation future de la plateforme grâce à une prise de décision démocratique."
+      },
+      "treasury": {
+        "title": "Trésorerie Partagée",
+        "description": "Gérez collectivement une trésorerie de 760 millions de jetons SPIRAL dédiés à la croissance et au développement de l'écosystème."
+      },
+      "rewards": {
+        "title": "Récompenses de Staking",
+        "description": "Gagnez des récompenses grâce à une participation active et un engagement à long terme pour la croissance de la plateforme."
+      }
+    },
+    "links": {
+      "roadmap": "Voir Notre Feuille de Route",
+      "whitepaper": "Lire le Livre Blanc"
+    }
+  },
+  "distribution": {
+    "title": "Distribution des Jetons",
+    "treasury": {
+      "title": "Trésorerie",
+      "description": "Croissance de l'écosystème et fonds contrôlés par la DAO"
+    },
+    "swap": {
+      "title": "Échange SNS",
+      "description": "Vente publique avec 8 lancements trimestriels"
+    },
+    "team": {
+      "title": "Équipe de Développement",
+      "description": "Acquisition progressive sur 8 ans pour l'équipe principale"
+    },
+    "investors": {
+      "title": "Investisseurs Initiaux",
+      "description": "Premiers soutiens avec acquisition progressive variée"
+    }
+  },
+  "governance": {
+    "title": "Modèle de Gouvernance",
+    "proposal_creation": {
+      "title": "Création de Propositions",
+      "requirement": "1 000 SPIRAL",
+      "description": "Mise minimale requise pour soumettre des propositions"
+    },
+    "voting_period": {
+      "title": "Période de Vote",
+      "requirement": "7 Jours",
+      "description": "Temps standard de délibération pour les propositions"
+    },
+    "voting_power": {
+      "title": "Pouvoir de Vote",
+      "requirement": "Jusqu'à 3x",
+      "description": "Multiplicateur maximal via le staking et l'ancienneté"
+    },
+    "lock_period": {
+      "title": "Période de Verrouillage",
+      "requirement": "30j - 8a",
+      "description": "Options flexibles de dissolution du verrouillage"
+    }
+  },
+  "metrics": {
+    "title": "Métriques des Jetons",
+    "total_supply": "Offre Totale",
+    "treasury_size": "Taille de la Trésorerie",
+    "min_proposal": "Mise Min. pour les Propositions",
+    "initial_apy": "APY Initial"
+  },
+  "staking": {
+    "title": "Avantages du Staking",
+    "subtitle": "Gagnez par la Participation",
+    "description": "Verrouillez vos jetons SPIRAL pour gagner des récompenses et augmenter votre pouvoir de gouvernance",
+    "benefits": {
+      "initial_apy": {
+        "title": "APY Initial"
+      },
+      "transition": {
+        "title": "Période de Transition"
+      },
+      "final_apy": {
+        "title": "APY Final"
+      }
+    },
+    "multipliers": {
+      "title": "Multiplicateurs de Pouvoir",
+      "dissolve": {
+        "title": "Délai de Dissolution"
+      },
+      "age": {
+        "title": "Âge du Neurone"
+      }
+    }
+  },
+  "rights": {
+    "title": "Droits des Parties Prenantes",
+    "treasury": {
+      "title": "Gestion de la Trésorerie",
+      "description": "Votez sur l'allocation des fonds de la trésorerie DAO pour le développement, le marketing et les initiatives communautaires",
+      "items": {
+        "marketing": "Campagnes marketing",
+        "development": "Financement du développement",
+        "partnerships": "Partenariats stratégiques"
+      }
+    },
+    "economic": {
+      "title": "Politiques Économiques",
+      "description": "Façonnez le cadre économique de l'écosystème grâce à une prise de décision collective",
+      "items": {
+        "tokenomics": "Ajustements de la tokenomie",
+        "staking": "Changements des taux de staking",
+        "fees": "Structures des frais"
+      }
+    },
+    "roadmap": {
+      "title": "Feuille de Route de Développement",
+      "description": "Influencez les priorités de développement technique et produit de la plateforme",
+      "items": {
+        "features": "Priorisation des fonctionnalités",
+        "expansions": "Extensions de jeux",
+        "improvements": "Améliorations techniques"
+      }
+    },
+    "community": {
+      "title": "Programmes Communautaires",
+      "description": "Établissez et gouvernez des initiatives dirigées par la communauté pour développer l'écosystème",
+      "items": {
+        "creators": "Financement des créateurs de contenu",
+        "events": "Événements et tournois",
+        "education": "Programmes éducatifs"
+      }
+    }
+  },
+  "join": {
+    "title": "Réclamez Votre Pouvoir Cosmique !",
+    "description": "Rejoignez la DAO et participez à la gouvernance de la première franchise de jeux entièrement on-chain",
+    "stats": {
+      "voting": "Pouvoir de Vote Max.",
+      "apy": "Plage d'APY",
+      "period": "Période de Vote"
+    },
+    "stakeholder_cta": "Devenir Partie Prenante",
+    "whitepaper_cta": "Lire le Livre Blanc"
+  }
+},
+"proposals": {
+  "title": "Propositions Actives",
+  "for": "Pour",
+  "against": "Contre",
+  "vote_for": "Voter Pour",
+  "vote_against": "Voter Contre",
+  "status": {
+    "active": "Active",
+    "passed": "Adoptée",
+    "rejected": "Rejetée",
+    "executed": "Exécutée",
+    "pending": "En attente"
+  },
+  "examples": {
+    "creator": {
+      "title": "Programme de Créateurs de Contenu Communautaire",
+      "summary": "Établir un cadre pour que les créateurs de contenu reçoivent un financement pour promouvoir l'écosystème Cosmicrafts"
+    },
+    "treasury": {
+      "title": "Stratégie de Diversification de la Trésorerie",
+      "summary": "Allouer 5% des fonds de la trésorerie à des investissements stratégiques dans des protocoles alignés avec l'écosystème"
+    }
+  }
+},
+"meta": {
+  "dao": {
+    "title": "DAO Cosmicrafts - Gouvernance Décentralisée pour l'Avenir des Jeux",
+    "description": "Rejoignez la DAO Cosmicrafts et participez à la gouvernance décentralisée pour l'avenir des jeux cosmiques. Misez des jetons SPIRAL pour gagner des récompenses et du pouvoir de vote."
+  }
+},
+"wallet": {
+  "title": "Portefeuille",
+  "subtitle": "Gérez vos jetons et vos actifs",
+  "principalId": "ID Principal",
+  "accountId": "ID de Compte",
+  "showPrincipalId": "Afficher l'ID Principal",
+  "showAccountId": "Afficher l'ID de Compte",
+  "tokens": "Jetons",
+  "loadingTokens": "Chargement des jetons...",
+  "noTokens": "Aucun jeton trouvé",
+  "addToken": "Ajouter un Jeton",
+  "addTokenTooltip": "Ajouter un jeton personnalisé",
+  "level": "Niveau",
+  "balance": "Solde",
+  "max": "Max",
+
+  "actions": "Actions",
+  "send": "Envoyer",
+  "sendTooltip": "Envoyer des jetons à un autre compte",
+  "sendTokens": "Envoyer des Jetons",
+  "sending": "Envoi en cours...",
+  "receive": "Recevoir",
+  "receiveTooltip": "Recevoir des jetons d'autres personnes",
+  "receiveTokens": "Recevoir des Jetons",
+  "receiveDescription": "Partagez votre adresse pour recevoir des jetons",
+  "scanToSend": "Scannez pour envoyer des jetons",
+  "receiveTokensNotice": "Assurez-vous que l'expéditeur utilise le bon réseau. N'envoyez que des jetons pris en charge par ce portefeuille.",
+  "yourAddress": "Votre adresse",
+  "swap": "Échanger",
+  "swapTooltip": "Échanger entre différents jetons",
+  "stake": "Staker",
+  "stakeTooltip": "Staker des jetons pour gagner des récompenses",
+
+  "recipient": "Destinataire",
+  "enterRecipient": "Entrez l'adresse du destinataire",
+  "amount": "Montant",
+  "enterAmount": "Entrez le montant",
+  "memo": "Mémo",
+  "optional": "optionnel",
+  "enterMemo": "Entrez un mémo ou un message (optionnel)",
+  "transactionFee": "Frais de Transaction",
+
+  "token": "Jeton",
+  "tokenId": "ID du Jeton",
+  "enterTokenId": "Entrez l'ID du canister du jeton",
+  "tokenIdHint": "L'ID du canister du jeton que vous souhaitez ajouter",
+  "tokenStandard": "Standard du Jeton",
+  "tokenName": "Nom du Jeton",
+  "tokenSymbol": "Symbole du Jeton",
+  "tokenDecimals": "Décimales du Jeton",
+  "showAdvanced": "Afficher les Options Avancées",
+  "hideAdvanced": "Masquer les Options Avancées",
+
+  "nftCollection": "Collection de NFTs",
+  "loadingNfts": "Chargement des NFTs...",
+  "noNfts": "Aucun NFT trouvé",
+  "openChest": "Ouvrir",
+  "openingChest": "Ouverture du Coffre",
+  "chestRewards": "Vos Récompenses",
+  "noRewardsFound": "Aucune récompense trouvée",
+  "tapToReveal": "Appuyez pour révéler",
+
+  "activityLog": "Journal d'Activité",
+  "clearLogs": "Effacer le Journal",
+  "noLogs": "Aucune activité à afficher",
+
+  "copy": "Copier",
+  "comingSoon": "Bientôt Disponible",
+
+  "closeDialog": "Fermer",
+  "close": "Fermer",
+
+  "loading": "Chargement...",
+  "error": "Erreur",
+  
+  "seedWarningTitle": "ATTENTION MEUF/MEC : PROTÈGE TA PHRASE DE RÉCUP !",
+  "seedWarningPoint1": "Cette phrase de récup, c'est le SEUL moyen de retrouver ton compte si tu te plantes. Garde-la au chaud !",
+  "seedWarningPoint2": "N'importe quel keum avec cette phrase peut se taper l'incruste sur ton compte et te piquer tes affaires. C'est pas des blagues !",
+  "seedWarningPoint3": "Jamais tu la partages avec qui que ce soit ou tu la mets sur des sites chelous. Ce serait trop la dech !",
+  "seedWarningPoint4": "Planque-la dans un endroit sûr, de préférence hors ligne ou dans un portefeuille blindé.",
+  "revealSeedPhrase": "Ça roule, j'ai capté, montre-moi ma phrase de récup",
+  "hideSeedPhrase": "Cacher la phrase de récup",
+  
+  "accounts": {
+    "manage": "Gérer les Comptes",
+    "defaultName": "Mon Compte",
+    "error": {
+      "management": "Impossible d'ouvrir la Gestion de Compte. Réessaie, wesh."
+    }
+  },
+  
+  "header": {
+    "accountIds": "IDs de Compte",
+    "ethereumAddress": "Adresse Ethereum",
+    "ethAddress": "Adresse ETH",
+    "buy": "Acheter"
+  },
+  
+  "management": {
+    "title": "Sécurité du Compte",
+    "tabs": {
+      "accounts": "Comptes",
+      "security": "Sécurité",
+      "recovery": "Récupération"
+    },
+    "myAccounts": "Mes Comptes",
+    "createNewAccount": "Créer un Nouveau Compte",
+    "importAccount": "Importer un Compte",
+    "recoverAccount": "Récupérer un Compte",
+    "securitySettings": "Paramètres de Sécurité",
+    "notEncrypted": "Ton portefeuille n'est pas crypté, meuf/mec",
+    "encryptionRecommendation": "On te conseille d'activer au moins une méthode de sécu pour protéger ton portefeuille. Ta phrase de récup est stockée sans cryptage pour l'instant.",
+    "passwordProtection": "Protection par Mot de Passe",
+    "passwordDescription": "Crypte les données de ton portefeuille avec un mot de passe",
+    "passkey": "Authentification par Passkey",
+    "passkeyDescription": "Utilise la biométrie ou le PIN de ton appareil pour un accès sécurisé",
+    "twoFactor": "Authentification à Deux Facteurs",
+    "twoFactorDescription": "Ajoute une couche de sécu sup avec un code temporaire",
+    "enabled": "Activé",
+    "disabled": "Désactivé",
+    "enable": "Activer",
+    "disable": "Désactiver",
+    "walletRecovery": "Récupération du Portefeuille",
+    "recoveryPhrase": "Phrase de Récupération",
+    "recoveryPhraseDescription": "Ta phrase de récup donne accès complet à ton portefeuille. Garde-la bien planquée.",
+    "viewRecoveryPhrase": "Voir ma Phrase de Récup",
+    "recoveryWarning": "Ne partage jamais ta phrase de récup avec personne. Personne ne devrait te la demander, si tu la perds, t'as tout perdu."
+  }
+},
+"common": {
+  "cancel": "Annuler",
+  "close": "Fermer",
+  "submit": "Soumettre",
+  "loading": "Chargement...",
+  "comingSoon": "Bientôt Disponible"
+},
+"esc_menu": {
+  "title": "Menu",
+  "game": "Jeu",
+  "social": "Social",
+  "settings": "Paramètres",
+  "continue_game": "Continuer",
+  "main_menu": "Menu Principal",
+  "friends": "Amis",
+  "messages": "Messages",
+  "audio": "Audio",
+  "video": "Vidéo",
+  "interface": "Interface",
+  "logout": "Déconnexion"
+}
+}

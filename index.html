@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Preconnect for performance -->
+  <link rel="preconnect" href="https://www.googletagmanager.com">
+  <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+
+  <!-- Inline critical CSS for faster rendering -->
+  <style>
+    /* Critical CSS for above-the-fold content */
+    :root {
+      --color-primary: #0fb9fd;
+      --color-secondary: #6366f1;
+      --color-accent: #f59e0b;
+      --color-success: #10b981;
+      --color-warning: #f59e0b;
+      --color-error: #ef4444;
+      --color-surface-primary: #1a1a2e;
+      --color-surface-secondary: #16213e;
+      --color-surface-tertiary: #0f3460;
+      --color-text-primary: #ffffff;
+      --color-text-secondary: #94a3b8;
+      --color-text-muted: #64748b;
+      --color-border-subtle: rgba(255, 255, 255, 0.1);
+      --color-border-medium: rgba(255, 255, 255, 0.2);
+      --cosmic-shadow-sm: 0 4px 8px rgba(0, 0, 0, 0.15);
+      --cosmic-shadow-md: 0 8px 16px rgba(0, 0, 0, 0.2);
+      --cosmic-shadow-lg: 0 16px 32px rgba(0, 0, 0, 0.25);
+    }
+    
+    * { box-sizing: border-box; }
+    
+    html { scroll-behavior: smooth; }
+    
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: linear-gradient(135deg, #0a0e1c 0%, #1a1a2e 50%, #16213e 100%);
+      color: var(--color-text-primary);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+    
+    #app {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    
+    .loading-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: var(--color-surface-primary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 9999;
+    }
+    
+    .spinner {
+      width: 40px;
+      height: 40px;
+      border: 3px solid rgba(15, 185, 253, 0.3);
+      border-top: 3px solid var(--color-primary);
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+    }
+    
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+    
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+    
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      max-width: 1200px;
+      padding: 0 2rem;
+    }
+    
+    .hero-image {
+      max-width: 100%;
+      height: auto;
+      border-radius: 12px;
+      box-shadow: var(--cosmic-shadow-lg);
+    }
+    
+    .hero-logo {
+      max-width: 300px;
+      height: auto;
+      margin: 2rem 0;
+    }
+    
+    .hero-title {
+      font-size: clamp(2rem, 5vw, 4rem);
+      font-weight: 700;
+      margin: 1rem 0;
+      background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    
+    .header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      background: rgba(26, 26, 46, 0.95);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--color-border-subtle);
+    }
+    
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.75rem 1.5rem;
+      border: none;
+      border-radius: 8px;
+      font-weight: 600;
+      text-decoration: none;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      background: var(--color-primary);
+      color: white;
+    }
+    
+    .btn:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--cosmic-shadow-md);
+    }
+    
+    @media (max-width: 768px) {
+      .hero-content { padding: 0 1rem; }
+      .hero-logo { max-width: 200px; }
+    }
+    
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
+    }
+    
+    *:focus {
+      outline: 2px solid var(--color-primary);
+      outline-offset: 2px;
+    }
+    
+    img {
+      max-width: 100%;
+      height: auto;
+    }
+    
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1rem;
+    }
+    
+    h1, h2, h3, h4, h5, h6 {
+      margin: 0 0 1rem 0;
+      font-weight: 600;
+      line-height: 1.2;
+    }
+    
+    p { margin: 0 0 1rem 0; }
+    
+    .fade-enter-active, .fade-leave-active {
+      transition: opacity 0.3s ease;
+    }
+    
+    .fade-enter-from, .fade-leave-to {
+      opacity: 0;
+    }
+  </style>
+
+  <!-- Preload critical resources -->
+  <link rel="preload" href="/src/main.js" as="script">
+  <link rel="preload" href="/src/style.css" as="style">
+  <link rel="preload" href="/favicon.svg" as="image" type="image/svg+xml">
+  <!-- Add your font preload below if needed -->
+  <!-- <link rel="preload" href="/assets/fonts/your-font.woff2" as="font" type="font/woff2" crossorigin> -->
+
+  <!-- Web App Manifest -->
+  <link rel="manifest" href="/site.webmanifest">
+
+  <!-- Canonical Link -->
+  <link rel="canonical" href="https://cosmicrafts.com/" />
+
+  <!-- Author and Copyright -->
+  <meta name="author" content="Cosmicrafts Team">
+  <meta name="copyright" content="Cosmicrafts">
+
+  <!-- Mobile specific -->
+  <meta name="format-detection" content="telephone=no">
+  <meta name="theme-color" content="#0a0e1c">
+
+  <!-- Social Media Links -->
+  <link rel="me" href="https://x.com/cosmicrafts" type="text/html">
+  <link rel="me" href="https://discord.gg/cosmicrafts-884272584491941888" type="text/html">
+
+  <!-- SEO Meta Description -->
+  <meta name="description" content="Cosmicrafts - A universe of games built over a decade. From classic 2D to modern adventures. No blockchain, just games." />
+
+  <!-- Twitter Card Data -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@cosmicrafts">
+  <meta name="twitter:creator" content="@cosmicrafts">
+  <meta name="twitter:title" content="Cosmicrafts - Gaming Universe">
+  <meta name="twitter:description" content="A universe of games built over a decade. From classic 2D to modern adventures.">
+  <meta name="twitter:image" content="https://cosmicrafts.com/favicon.svg">
+  <meta name="twitter:image:alt" content="Cosmicrafts Gaming Universe">
+
+  <!-- Open Graph Metadata -->
+  <meta property="og:title" content="Cosmicrafts - Gaming Universe">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://cosmicrafts.com/">
+  <meta property="og:image" content="https://cosmicrafts.com/favicon.svg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:description" content="A universe of games built over a decade. From classic 2D to modern adventures.">
+  <meta property="og:site_name" content="Cosmicrafts">
+  <meta property="og:locale" content="en_US">
+  <meta property="article:author" content="https://facebook.com/cosmicrafts">
+  <meta property="article:publisher" content="https://facebook.com/cosmicrafts">
+
+  <!-- Social -->
+  <link rel="me" href="https://x.com/cosmicrafts" type="text/html">
+  <link rel="me" href="https://discord.gg/cosmicrafts-884272584491941888" type="text/html">
+  <meta property="og:see_also" content="https://instagram.com/cosmicraftz">
+  <meta property="og:see_also" content="https://www.tiktok.com/@cosmicrafts">
+  <meta property="og:see_also" content="https://facebook.com/cosmicrafts">
+  <meta property="og:see_also" content="https://x.com/cosmicrafts">
+  <meta property="og:see_also" content="https://discord.gg/cosmicrafts-884272584491941888">
+  <meta property="og:see_also" content="https://t.me/cosmicrafts">
+  <meta name="tiktok" content="@cosmicrafts">
+  <meta name="telegram:channel" content="@cosmicrafts">
+  <meta name="msapplication-config" content="/browserconfig.xml">
+
+  <!-- Schema.org Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Cosmicrafts",
+    "url": "https://cosmicrafts.com/",
+    "logo": "https://cosmicrafts.com/favicon.svg",
+    "sameAs": [
+      "https://x.com/cosmicrafts",
+      "https://discord.gg/cosmicrafts-884272584491941888",
+      "https://www.facebook.com/cosmicrafts",
+      "https://www.instagram.com/cosmicraftz",
+      "https://www.youtube.com/@cosmicrafts",
+      "https://www.twitch.tv/cosmicraftstv",
+      "https://www.tiktok.com/@cosmicrafts",
+      "https://github.com/cosmicrafts",
+      "https://medium.com/@cosmicrafts",
+      "https://www.reddit.com/r/cosmicrafts",
+      "https://t.me/cosmicrafts"
+    ],
+    "description": "A universe of games built over a decade. From classic 2D to modern adventures.",
+    "foundingDate": "2016",
+    "founders": [
+      {
+        "@type": "Business",
+        "name": "World of Unreal"
+      }
+    ],
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "email": "contact@cosmicrafts.com",
+      "contactType": "customer support",
+      "url": "https://cosmicrafts.com/contact"
+    }
+  }
+  </script>
+
+  <!-- Dublin Core Metadata -->
+  <meta name="DC.title" content="Cosmicrafts" />
+  <meta name="DC.description" content="A universe of games built over a decade. From classic 2D to modern adventures." />
+
+  <meta itemprop="name" content="Cosmicrafts" />
+  <meta itemprop="description" content=" " />
+  <meta itemprop="image" content="/logo.svg" />
+
+  <!-- Charset declaration must be first in head -->
+  <meta charset="UTF-8" />
+  
+  <!-- Additional meta tags -->
+  <meta name="robots" content="index, follow" />
+  <meta name="sitemap" type="application/xml" title="Sitemap" href="/sitemap.xml" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <!-- Replace '&' with 'and' in the meta description -->
+  <meta name="description" content="Cosmicrafts - A universe of games built over a decade." />
+  <meta name="keywords" content="Cosmic, Craft, Gaming, Video Games, Franchise, Cosmicrafts, Metaverse, Games" />
+  <meta name="ohsalmeron" content="Cosmicrafts" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <title>Cosmicrafts</title>
+  
+  <!-- Original keywords meta tag retained -->
+  <meta name="geo.region" content="US-CA" />
+  <meta name="geo.placename" content="Los Angeles" />
+  <meta name="geo.position" content="34.0522;-118.2437" />
+  <meta name="ICBM" content="34.0522, -118.2437" />
+  <meta name="language" content="English, Chinese, Japanese, Korean, Vietnamese, Russian, Turkish, German, French, Spanish, Portuguese and Arabic." />
+  <meta name="theme-color" content="#0a0e1c">
+  <!-- Facebook Domain Verification -->
+  <meta name="facebook-domain-verification" content="l2ubzxxw1ypirlb1ryqlmpj0xrf12y" />
+  <!-- Pinterest Domain Verification -->
+  <meta name="p:domain_verify" content="8e0646171ae77ff586a1eb5da006872e"/>
+
+  <!-- Google Analytics (GA4) with SPA support -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-9P86X6QWQW"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-9P86X6QWQW', {
+      page_title: document.title,
+      page_path: window.location.pathname + window.location.search,
+      send_page_view: true
+    });
+    // For SPA page transitions, see main.js for router integration
+  </script>
+
+  <!-- Microsoft Clarity - Initialized via NPM package in clarity.js -->
+</head>
+
+<body>
+  <noscript>
+    <strong>Wow, can't use JavaScript here?.</strong>
+  </noscript>
+  <div id="app"></div>
+  
+  <!-- Fallback service worker -->
+  <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('/sw.js').catch(() => {});
+      });
+    }
+  </script>
+  
+  <script src="/src/main.js" type="module" defer></script>
+</body>
+</html>
