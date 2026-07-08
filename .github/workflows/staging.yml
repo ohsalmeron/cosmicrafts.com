@@ -29,6 +29,9 @@ jobs:
       run: |
         mkdir -p ~/.ssh
         ssh-keyscan -H ${{ secrets.SSH_HOST }} >> ~/.ssh/known_hosts
+    - name: Ensure remote directory exists
+      run: |
+        ssh -o StrictHostKeyChecking=no ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} "mkdir -p /zroot/jails/cosmicrafts/var/www/ptr.cosmicrafts.com/dist"
     - name: Deploy to PTR via Rsync
       run: |
         rsync -avz --delete dist/ ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:/zroot/jails/cosmicrafts/var/www/ptr.cosmicrafts.com/dist/
