@@ -10,30 +10,20 @@ import Header from '../components/Header.astro';
     <!-- Starfield Animated Background -->
     <Starfield />
 
-    <!-- Ambient Grid & Scanline FX for sci-fi atmosphere -->
-    <div class="absolute inset-0 bg-[linear-gradient(rgba(18,16,16,0)_50%,rgba(0,0,0,0.25)_50%),linear-gradient(90deg,rgba(255,0,0,0.06),rgba(0,255,0,0.02),rgba(0,0,255,0.06))] bg-[size:100%_4px,6px_100%] pointer-events-none z-0 opacity-30"></div>
-    
-    <!-- Ambient Nebulous Glows -->
-    <div class="absolute top-1/3 left-1/4 w-[600px] h-[500px] bg-cyan-500/5 rounded-full blur-[140px] pointer-events-none z-0 animate-pulse-slow"></div>
-    <div class="absolute bottom-1/3 right-1/4 w-[500px] h-[500px] bg-indigo-500/5 rounded-full blur-[140px] pointer-events-none z-0 animate-pulse-slow-reverse"></div>
-
     <!-- Header component -->
     <Header />
 
     <!-- Main Dynamic Section -->
-    <main class="w-full max-w-7xl mx-auto flex-1 flex items-center justify-between z-10 gap-10 overflow-hidden my-4">
+    <main class="w-full max-w-7xl mx-auto flex-1 flex items-center justify-center z-10 gap-10 overflow-hidden my-4">
       
-      <!-- Left: Text/Glassmorphic Card with grid cards inside -->
-      <div class="w-full lg:max-w-2xl flex flex-col justify-center">
+      <!-- Center: Text/Glassmorphic Card with grid cards inside -->
+      <div class="w-full max-w-2xl flex flex-col justify-center">
         <div class="relative backdrop-blur-lg bg-slate-950/40 border border-cyan-500/10 rounded-xl p-6 md:p-8 shadow-[0_0_50px_rgba(6,182,212,0.05)] overflow-hidden">
           <!-- Cyber Corner Brackets -->
           <div class="absolute top-0 left-0 w-6 h-6 border-t border-l border-cyan-400/60"></div>
           <div class="absolute top-0 right-0 w-6 h-6 border-t border-r border-cyan-400/60"></div>
           <div class="absolute bottom-0 left-0 w-6 h-6 border-b border-l border-cyan-400/60"></div>
           <div class="absolute bottom-0 right-0 w-6 h-6 border-b border-r border-cyan-400/60"></div>
-
-          <!-- Digital Scan Line Accent -->
-          <div class="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-cyan-400/40 to-transparent animate-scan"></div>
 
           <!-- Technical Specs Sub-header -->
           <div class="flex items-center justify-between text-[9px] text-cyan-500 font-mono tracking-widest uppercase mb-4 border-b border-white/5 pb-2">
@@ -78,42 +68,6 @@ import Header from '../components/Header.astro';
             </a>
           </div>
         </div>
-      </div>
-
-      <!-- Right: Immersive 3D Space Scene (Desktop Only) -->
-      <div class="hidden lg:flex flex-1 justify-center items-center relative h-full min-h-[420px]">
-        <!-- Orbit rings with precise CSS animations -->
-        <div class="absolute w-[360px] h-[350px] border border-cyan-500/10 rounded-full rotate-12 pointer-events-none animate-pulse-slow"></div>
-        <div class="absolute w-[440px] h-[440px] border border-dashed border-cyan-400/5 rounded-full -rotate-12 pointer-events-none animate-pulse-slow-reverse"></div>
-        
-        <!-- Technical HUD overlay -->
-        <div class="absolute w-44 h-44 border border-dashed border-cyan-500/15 rounded-full flex items-center justify-center pointer-events-none">
-          <div class="w-24 h-24 border border-cyan-500/10 rounded-full flex items-center justify-center animate-spin-slow">
-            <div class="w-1.5 h-1.5 rounded-full bg-cyan-400"></div>
-          </div>
-        </div>
-
-        <!-- Target Reticle -->
-        <div class="absolute w-72 h-72 border border-white/5 rounded-full flex items-center justify-center pointer-events-none">
-          <div class="absolute top-0 left-1/2 -translate-x-1/2 w-4 h-1 bg-cyan-500/40"></div>
-          <div class="absolute bottom-0 left-1/2 -translate-x-1/2 w-4 h-1 bg-cyan-500/40"></div>
-          <div class="absolute left-0 top-1/2 -translate-y-1/2 w-1 h-4 bg-cyan-500/40"></div>
-          <div class="absolute right-0 top-1/2 -translate-y-1/2 w-1 h-4 bg-cyan-500/40"></div>
-        </div>
-
-        <!-- Slow Rotating Planet -->
-        <img 
-          src="/assets/planet.webp" 
-          alt="Planet" 
-          class="absolute w-52 h-52 opacity-50 blur-[0.5px] -top-5 -right-5 animate-spin-slow pointer-events-none"
-        />
-
-        <!-- Main Spaceship -->
-        <img 
-          src="/assets/starter-ship.webp" 
-          alt="Starter Ship" 
-          class="w-[390px] h-auto drop-shadow-[0_15px_40px_rgba(15,185,253,0.3)] animate-float pointer-events-none z-10 hover:scale-105 transition-transform duration-500"
-        />
       </div>
     </main>
 

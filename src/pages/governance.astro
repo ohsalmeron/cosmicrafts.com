@@ -4,141 +4,1435 @@ import Starfield from '../components/Starfield.astro';
 import Header from '../components/Header.astro';
 ---
 
-<Layout title="Cosmicrafts | DAO Governance">
-  <div class="fixed inset-0 h-screen w-screen overflow-hidden flex flex-col justify-between p-6 md:p-10 select-none z-10">
+<Layout title="Cosmicrafts | GitOps DAO Terminal">
+  <div class="fixed inset-0 h-screen w-screen overflow-hidden flex flex-col justify-between p-4 md:p-6 select-none z-10">
     <Starfield />
-
-    <!-- Ambient glows -->
-    <div class="absolute bottom-1/4 right-1/3 w-[450px] h-[450px] bg-indigo-500/5 rounded-full blur-[120px] pointer-events-none z-0"></div>
 
     <!-- Header component -->
     <Header />
 
     <!-- Main governance interface -->
-    <main class="w-full max-w-7xl mx-auto flex-1 flex flex-col md:flex-row gap-6 md:gap-10 my-4 overflow-hidden z-10 items-stretch justify-center py-4">
+    <main class="w-full max-w-7xl mx-auto flex-1 flex flex-col lg:flex-row gap-4 md:gap-6 my-2 overflow-hidden z-10 items-stretch justify-center py-2 h-[calc(100vh-140px)]">
       
-      <!-- Left: Active Proposals -->
-      <div class="flex-1 max-w-xl backdrop-blur-lg bg-slate-950/40 border border-cyan-500/10 rounded-xl p-6 shadow-[0_0_50px_rgba(6,182,212,0.05)] overflow-hidden flex flex-col relative justify-between">
+      <!-- Left Panel: Proposal Directory -->
+      <div class="w-full lg:w-[450px] backdrop-blur-lg bg-slate-950/40 border border-cyan-500/10 rounded-xl p-4 shadow-[0_0_50px_rgba(6,182,212,0.03)] flex flex-col relative justify-between overflow-hidden h-full">
+        <!-- Cyber Brackets -->
         <div class="absolute top-0 left-0 w-4 h-4 border-t border-l border-cyan-400/40"></div>
         <div class="absolute top-0 right-0 w-4 h-4 border-t border-r border-cyan-400/40"></div>
         <div class="absolute bottom-0 left-0 w-4 h-4 border-b border-l border-cyan-400/40"></div>
         <div class="absolute bottom-0 right-0 w-4 h-4 border-b border-r border-cyan-400/40"></div>
 
-        <div>
-          <div class="flex items-center justify-between text-[10px] text-cyan-400 font-mono tracking-widest uppercase mb-4 border-b border-white/5 pb-2">
-            <span>[ Active Proposals ]</span>
-            <span>2 Proposals</span>
+        <div class="flex flex-col h-full overflow-hidden">
+          <!-- Terminal Header -->
+          <div class="flex items-center justify-between text-[10px] text-cyan-400 font-mono tracking-widest uppercase mb-3 border-b border-white/5 pb-2">
+            <span>[ Proposal Directory ]</span>
+            <span id="active-proposal-count">36 Proposals</span>
           </div>
 
-          <div class="space-y-4 overflow-y-auto max-h-[50vh] pr-2">
-            <!-- Proposal 1 -->
-            <div class="bg-white/5 border border-white/5 p-4 rounded-lg space-y-2 text-left hover:border-cyan-500/30 transition-all duration-300 cursor-pointer">
-              <div class="flex justify-between items-center text-[9px] font-mono">
-                <span class="text-cyan-400">PROP #042 // GITOPS_MERGE</span>
-                <span class="px-2 py-0.5 rounded bg-amber-500/10 border border-amber-500/20 text-amber-400 uppercase tracking-widest">voting</span>
-              </div>
-              <p class="text-sm font-bold text-white uppercase tracking-tight">Merge staging to master (v0.8.2)</p>
-              <p class="text-xs text-slate-400 font-light leading-relaxed">
-                Approve code changes under PR #114 to merge staging into the master deployment branch.
-              </p>
-              <div class="flex justify-between items-center font-mono text-[9px] text-slate-500 pt-2 border-t border-white/5">
-                <span>VOTES: 42,102,000 SPIRAL</span>
-                <span class="text-cyan-400">END_TIME: 12H</span>
-              </div>
+          <!-- Search & Status Filters -->
+          <div class="space-y-2 mb-3">
+            <input 
+              type="text" 
+              id="search-input" 
+              placeholder="Search by ID, keyword, or author..." 
+              class="w-full bg-slate-900/50 border border-white/10 rounded-lg px-3 py-1.5 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-cyan-500/50 transition-colors font-mono"
+            />
+            
+            <!-- Tab Controls -->
+            <div class="grid grid-cols-4 gap-1 p-0.5 bg-slate-950/60 border border-white/5 rounded-lg text-[9px] font-mono">
+              <button id="tab-active" class="py-1 rounded bg-cyan-500/15 border border-cyan-500/20 text-cyan-300 uppercase tracking-wider tab-btn">CURRENT</button>
+              <button id="tab-passed" class="py-1 rounded text-slate-400 hover:text-white uppercase tracking-wider tab-btn font-mono">PASSED</button>
+              <button id="tab-defeated" class="py-1 rounded text-slate-400 hover:text-white uppercase tracking-wider tab-btn font-mono">DEFEATED</button>
+              <button id="tab-all" class="py-1 rounded text-slate-400 hover:text-white uppercase tracking-wider tab-btn font-mono">ALL</button>
             </div>
 
-            <!-- Proposal 2 -->
-            <div class="bg-white/5 border border-white/5 p-4 rounded-lg space-y-2 text-left opacity-60 hover:opacity-100 transition-all duration-300 cursor-pointer">
-              <div class="flex justify-between items-center text-[9px] font-mono">
-                <span class="text-slate-500">PROP #041 // TREASURY_RELEASE</span>
-                <span class="px-2 py-0.5 rounded bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 uppercase tracking-widest">passed</span>
-              </div>
-              <p class="text-sm font-bold text-white uppercase tracking-tight">Transfer 20,000 SPIRAL for Server Scaling</p>
-              <p class="text-xs text-slate-400 font-light leading-relaxed">
-                Release tokens from the Gnosis Safe treasury to cover Q3 cloud multiplayer server costs.
-              </p>
-              <div class="flex justify-between items-center font-mono text-[9px] text-slate-500 pt-2 border-t border-white/5">
-                <span>VOTES: 98,124,000 SPIRAL</span>
-                <span class="text-emerald-400">MERGED VIA GITHUB ACTION</span>
-              </div>
+            <!-- Quality Filter Chips -->
+            <div class="flex flex-wrap gap-1 pt-1" id="quality-filters">
+              <span class="text-[8px] text-slate-500 font-mono flex items-center mr-1 uppercase">QUALITY:</span>
+              <button data-quality="all" class="px-2 py-0.5 rounded border border-cyan-500/30 bg-cyan-500/10 text-cyan-300 text-[8px] font-mono uppercase tracking-wider quality-btn">ALL</button>
+              <button data-quality="great" class="px-2 py-0.5 rounded border border-emerald-500/10 bg-white/5 text-emerald-400 text-[8px] font-mono uppercase tracking-wider quality-btn">GREAT</button>
+              <button data-quality="good" class="px-2 py-0.5 rounded border border-teal-500/10 bg-white/5 text-teal-400 text-[8px] font-mono uppercase tracking-wider quality-btn">GOOD</button>
+              <button data-quality="meh" class="px-2 py-0.5 rounded border-slate-500/10 bg-white/5 text-slate-400 text-[8px] font-mono uppercase tracking-wider quality-btn">MEH</button>
+              <button data-quality="bad" class="px-2 py-0.5 rounded border-orange-500/10 bg-white/5 text-orange-400 text-[8px] font-mono uppercase tracking-wider quality-btn">BAD</button>
+              <button data-quality="dogshit" class="px-2 py-0.5 rounded border-yellow-500/10 bg-white/5 text-yellow-400 text-[8px] font-mono uppercase tracking-wider quality-btn">DOGSHIT ☣</button>
             </div>
           </div>
-        </div>
 
-        <div class="border-t border-white/5 pt-4 mt-4 text-center">
-          <p class="text-[10px] text-slate-500 font-mono">VOTING STAKE CONVERTS HELD TOKENS INTO VOTING POWER</p>
+          <!-- Scrollable Proposal List -->
+          <div id="proposals-list" class="flex-1 overflow-y-auto space-y-2 pr-1 custom-scrollbar">
+            <!-- Loading placeholder -->
+            <div class="text-center py-10 text-slate-500 font-mono text-xs">Initializing Secure Index...</div>
+          </div>
         </div>
       </div>
 
-      <!-- Right: Voting Console -->
-      <div class="w-full md:w-80 backdrop-blur-lg bg-slate-950/40 border border-cyan-500/10 rounded-xl p-6 shadow-[0_0_50px_rgba(6,182,212,0.05)] overflow-hidden flex flex-col justify-between relative">
+      <!-- Right Panel: Terminal Workspace -->
+      <div class="flex-1 backdrop-blur-lg bg-slate-950/40 border border-cyan-500/10 rounded-xl p-6 shadow-[0_0_50px_rgba(6,182,212,0.03)] flex flex-col relative justify-between overflow-hidden h-full">
+        <!-- Cyber Brackets -->
         <div class="absolute top-0 left-0 w-4 h-4 border-t border-l border-cyan-400/40"></div>
         <div class="absolute top-0 right-0 w-4 h-4 border-t border-r border-cyan-400/40"></div>
         <div class="absolute bottom-0 left-0 w-4 h-4 border-b border-l border-cyan-400/40"></div>
         <div class="absolute bottom-0 right-0 w-4 h-4 border-b border-r border-cyan-400/40"></div>
 
-        <div>
-          <div class="flex items-center justify-between text-[10px] text-cyan-400 font-mono tracking-widest uppercase mb-4 border-b border-white/5 pb-2">
-            <span>[ Vote Terminal ]</span>
-            <span>PROP #042</span>
+        <!-- Selected Proposal Workspace -->
+        <div class="flex flex-col h-full justify-between" id="proposal-detail-workspace">
+          <!-- Non-selected placeholder state -->
+          <div id="no-selection" class="hidden flex-1 flex-col items-center justify-center text-center font-mono space-y-4">
+            <svg class="w-12 h-12 text-cyan-500/30 animate-pulse" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+            </svg>
+            <p class="text-xs text-slate-400 uppercase tracking-widest">[ SELECT A PROPOSAL FROM DIRECTORY TO MOUNT WORKSPACE ]</p>
           </div>
 
-          <div class="space-y-4 font-mono text-xs">
-            <div class="bg-white/5 border border-white/5 p-4 rounded-lg space-y-2 text-left">
-              <div class="flex justify-between text-[10px] text-slate-500">
-                <span>YOUR VOTING POWER:</span>
-                <span class="text-cyan-400">70,000,000 SPIRAL</span>
+          <!-- Active Selection Content -->
+          <div id="active-selection" class="flex flex-col h-full justify-between gap-4 overflow-hidden workspace-transition">
+            <!-- Proposal Info Section -->
+            <div class="space-y-4 overflow-y-auto pr-1 max-h-[50%] custom-scrollbar">
+              <div class="flex items-center justify-between text-[10px] text-cyan-400 font-mono tracking-widest uppercase border-b border-white/5 pb-2">
+                <span id="detail-id">CC-PROP-001</span>
+                <span id="detail-quality-pill" class="px-2 py-0.5 rounded bg-cyan-500/10 border border-cyan-500/20 text-cyan-300 text-[8px]">EXCELLENT</span>
               </div>
-              <div class="flex justify-between text-[10px] text-slate-500">
-                <span>STAKING STATUS:</span>
-                <span class="text-emerald-400">LOCKED (FOUNDER)</span>
+
+              <div class="space-y-2">
+                <h1 id="detail-title" class="text-xl font-black text-white uppercase tracking-tight leading-tight">INITIALIZING SECURE INDEX...</h1>
+                <div class="flex items-center gap-4 text-[10px] font-mono text-slate-500">
+                  <span>PROPOSER: <span id="detail-author" class="text-white">FOUNDER_0X</span></span>
+                  <span>CATEGORY: <span id="detail-category" class="text-cyan-400">INFRASTRUCTURE</span></span>
+                  <span>STATUS: <span id="detail-status" class="text-emerald-400 uppercase">ACTIVE</span></span>
+                </div>
+              </div>
+
+              <div class="bg-white/5 p-4 rounded-lg border border-white/5">
+                <p id="detail-description" class="text-xs text-slate-300 font-light leading-relaxed select-text">
+                  Loading secure proposal metadata. Please stand by...
+                </p>
               </div>
             </div>
 
-            <!-- Cast Votes -->
-            <div class="space-y-2 pt-2">
-              <button id="btn-approve" class="w-full py-3 bg-emerald-500/20 border border-emerald-500/30 hover:bg-emerald-500/30 text-emerald-400 font-mono text-xs tracking-widest uppercase rounded-lg transition-all duration-300">
-                Approve & Merge
-              </button>
-              <button id="btn-reject" class="w-full py-3 bg-rose-500/20 border border-rose-500/30 hover:bg-rose-500/30 text-rose-400 font-mono text-xs tracking-widest uppercase rounded-lg transition-all duration-300">
-                Reject & Close
-              </button>
+            <!-- Voting Matrix Panel -->
+            <div class="bg-slate-950/80 border border-white/5 p-4 rounded-xl space-y-4 font-mono">
+              <div class="flex justify-between items-center text-[10px] text-slate-500">
+                <span>VOTE SPECTRUM SUMMARY</span>
+                <span class="text-slate-400" id="total-voted-count">TOTAL: 87,300,000 SPIRAL</span>
+              </div>
+
+              <!-- Vote Bar -->
+              <div class="space-y-2">
+                <div class="h-3 w-full bg-slate-900 rounded-full overflow-hidden flex border border-white/5 relative">
+                  <div id="vote-bar-for" class="h-full bg-emerald-500/30 border-r border-emerald-400 transition-all duration-700 ease-out" style="width: 52%"></div>
+                  <div id="vote-bar-against" class="h-full bg-rose-500/30 transition-all duration-700 ease-out" style="width: 48%"></div>
+                </div>
+                <div class="flex justify-between text-[10px]">
+                  <span class="text-emerald-400 flex items-center gap-1.5">
+                    <span class="inline-block w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
+                    FOR: <span id="detail-votes-for-pct">52%</span> (<span id="detail-votes-for-abs">45M</span>)
+                  </span>
+                  <span class="text-rose-400 flex items-center gap-1.5 justify-end">
+                    AGAINST: <span id="detail-votes-against-pct">48%</span> (<span id="detail-votes-against-abs">42M</span>)
+                    <span class="inline-block w-1.5 h-1.5 rounded-full bg-rose-400"></span>
+                  </span>
+                </div>
+              </div>
+
+              <!-- Vote Console (Interactive Area) -->
+              <div id="voting-console" class="space-y-3 pt-2 border-t border-white/5">
+                <div class="flex items-center justify-between text-[10px]">
+                  <span class="text-slate-500">YOUR VOTING ACCOUNT:</span>
+                  <span id="user-status-info" class="text-emerald-400">CONNECTED (70,000,000 SPIRAL)</span>
+                </div>
+
+                <!-- Alert of Swing Potential -->
+                <div id="swing-banner" class="bg-cyan-500/5 border border-cyan-500/20 px-3 py-2 rounded-lg flex items-center justify-between text-[10px] animate-pulse">
+                  <span class="text-cyan-400 uppercase tracking-widest flex items-center gap-1.5">
+                    <span class="inline-block w-1.5 h-1.5 rounded bg-cyan-400"></span>
+                    Tide Turner Mode Active
+                  </span>
+                  <span class="text-slate-400">YOUR 70M VOTE SWINGS THE DECISION!</span>
+                </div>
+
+                <div class="grid grid-cols-2 gap-3" id="vote-btn-grid">
+                  <button id="btn-vote-for" class="py-3 bg-emerald-500/10 border border-emerald-500/25 hover:bg-emerald-500/20 text-emerald-400 font-mono text-xs tracking-widest uppercase rounded-lg transition-all duration-300 hover:border-emerald-400">
+                    Vote For (Approve)
+                  </button>
+                  <button id="btn-vote-against" class="py-3 bg-rose-500/10 border border-rose-500/25 hover:bg-rose-500/20 text-rose-400 font-mono text-xs tracking-widest uppercase rounded-lg transition-all duration-300 hover:border-rose-400">
+                    Vote Against (Reject)
+                  </button>
+                </div>
+
+                <!-- Connect Wallet fallback -->
+                <div id="login-fallback" class="hidden text-center p-2 bg-white/5 border border-white/5 rounded-lg">
+                  <p class="text-[10px] text-slate-400 uppercase mb-2">Connect wallet to enable voting power</p>
+                  <button id="btn-fallback-connect" class="px-4 py-1.5 bg-cyan-500/20 hover:bg-cyan-500/35 text-cyan-300 text-[9px] uppercase tracking-wider rounded border border-cyan-500/30 font-bold transition-all duration-300">
+                    Connect Wallet
+                  </button>
+                </div>
+              </div>
+
+              <!-- Immutable Consensus Terminal -->
+              <div class="border-t border-white/5 pt-3">
+                <div class="flex items-center justify-between text-[8px] text-slate-500 mb-1">
+                  <span>ETHEREUM MULTI-PROVIDER VALIDATION (4 NODES)</span>
+                  <span class="text-emerald-400 flex items-center gap-1">
+                    <span class="w-1 h-1 bg-emerald-400 rounded-full animate-pulse"></span>
+                    SYNCED
+                  </span>
+                </div>
+                <div class="grid grid-cols-4 gap-1 text-[8px] text-center font-mono">
+                  <div id="node-alchemy" class="py-1 bg-slate-900 border border-emerald-500/20 text-emerald-400 rounded">ALCHEMY // SECURE</div>
+                  <div id="node-infura" class="py-1 bg-slate-900 border border-emerald-500/20 text-emerald-400 rounded">INFURA // SECURE</div>
+                  <div id="node-quicknode" class="py-1 bg-slate-900 border border-emerald-500/20 text-emerald-400 rounded">QUICKNODE // SECURE</div>
+                  <div id="node-ankr" class="py-1 bg-slate-900 border border-emerald-500/20 text-emerald-400 rounded">ANKR // SECURE</div>
+                </div>
+              </div>
+
+              <!-- Simulated vote action feedback -->
+              <div id="vote-success-terminal" class="hidden text-left bg-slate-900/80 border border-cyan-500/30 p-3 rounded-lg font-mono text-[9px] text-slate-400 space-y-1 overflow-hidden max-h-28 overflow-y-auto">
+                <div class="text-emerald-400 font-bold uppercase tracking-wider text-[10px] mb-1">✓ DECIDING VOTE BROADCASTED SUCCESSFULLY</div>
+                <div>[0.00s] Initiating Web3 wallet signing sequence...</div>
+                <div>[0.45s] Signature authenticated via Ethereum RPC block #1948271.</div>
+                <div>[0.90s] Injected 70,000,000 SPIRAL voting weight.</div>
+                <div class="text-cyan-400">[1.35s] Swung proposal result. Syncing with GitHub webhooks...</div>
+                <div class="text-emerald-400" id="github-gitops-log">[1.80s] GitHub Action triggered. PR auto-merging verified.</div>
+              </div>
             </div>
           </div>
-        </div>
-
-        <!-- Simulated voting action feedback -->
-        <div id="vote-feedback" class="hidden text-center space-y-2 font-mono border-t border-white/5 pt-4">
-          <span class="text-[10px] text-emerald-400 uppercase tracking-widest block">✓ Vote cast successfully</span>
-          <p class="text-[9px] text-slate-500 leading-relaxed">
-            GitHub API webhook received. Auto-merging PR #114 when vote cycle completes.
-          </p>
         </div>
       </div>
     </main>
 
     <!-- Footer -->
-    <footer class="w-full max-w-7xl mx-auto flex justify-between items-center z-10 font-mono text-[9px] text-slate-600">
-      <span>&copy; 2026 COSMICRAFTS. GITOPS DAO TERMINAL V0.1</span>
-      <span>ETHEREUM MULTI-SIG INTEGRATION</span>
+    <footer class="w-full max-w-7xl mx-auto flex justify-between items-center z-10 font-mono text-[9px] text-slate-600 mt-1">
+      <span>&copy; 2026 COSMICRAFTS. GITOPS DAO TERMINAL V0.2</span>
+      <span>ETHEREUM MULTI-SIG INTEGRATION (4 RPC NODES CONSENSUS)</span>
     </footer>
+
+    <!-- Spectacular Vote Impact Overlay -->
+    <div id="vote-impact-overlay" class="fixed inset-0 z-[10000] hidden items-center justify-center bg-black/60 backdrop-blur-md select-none font-mono">
+      
+      <!-- Central glass card -->
+      <div id="impact-card" class="relative w-full max-w-2xl mx-4 bg-slate-950/85 border border-emerald-500/20 rounded-2xl p-6 md:p-10 shadow-[0_0_80px_rgba(16,185,129,0.15)] text-center space-y-6 overflow-hidden transform scale-95 opacity-0 transition-all duration-500">
+        <!-- Corner Brackets -->
+        <div id="impact-bracket-tl" class="absolute top-0 left-0 w-8 h-8 border-t-2 border-l-2 border-emerald-400"></div>
+        <div id="impact-bracket-tr" class="absolute top-0 right-0 w-8 h-8 border-t-2 border-r-2 border-emerald-400"></div>
+        <div id="impact-bracket-bl" class="absolute bottom-0 left-0 w-8 h-8 border-b-2 border-l-2 border-emerald-400"></div>
+        <div id="impact-bracket-br" class="absolute bottom-0 right-0 w-8 h-8 border-b-2 border-r-2 border-emerald-400"></div>
+        
+        <!-- Blinking Warning indicator -->
+        <div class="text-[9px] md:text-[10px] text-slate-500 uppercase tracking-[0.3em] font-bold flex items-center justify-center gap-2">
+          <span class="inline-block w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse" id="impact-ping"></span>
+          [ GITOPS_CONSENSUS_ENGINE_RUNNING ]
+        </div>
+
+        <div class="space-y-2">
+          <h2 id="impact-status-header" class="text-3xl md:text-5xl font-black tracking-wider text-emerald-400 uppercase select-text">PROPOSAL APPROVED</h2>
+          <p id="impact-proposal-id" class="text-xs text-slate-400 font-bold uppercase tracking-widest select-text">[ CC-PROP-001 ]</p>
+        </div>
+
+        <!-- Progress visual slider -->
+        <div class="space-y-1 max-w-md mx-auto">
+          <div class="flex justify-between text-[8px] md:text-[9px] text-slate-500">
+            <span>SEQUENCE STAGE</span>
+            <span id="sequence-stage-percent">0%</span>
+          </div>
+          <div class="h-1.5 w-full bg-slate-900 border border-white/5 rounded-full overflow-hidden">
+            <div id="impact-progress-bar" class="h-full bg-emerald-500 w-0 transition-all duration-300 ease-out shadow-[0_0_10px_rgba(16,185,129,0.5)]"></div>
+          </div>
+        </div>
+
+        <!-- Terminal Logs Scrolling -->
+        <div class="bg-black/80 border border-white/5 p-4 rounded-lg font-mono text-[10px] md:text-xs text-left text-slate-400 space-y-1.5 h-36 overflow-y-auto custom-scrollbar" id="impact-logs-container">
+          <!-- Dynamically populated via JS typing effect -->
+        </div>
+
+        <!-- Bottom Warning -->
+        <div id="impact-action-banner" class="text-[10px] text-emerald-400 uppercase tracking-widest bg-emerald-500/10 border border-emerald-500/20 py-2 rounded-lg font-bold">
+          PR AUTO-MERGE TRIGGERED // ETHEREUM LEDGER FINALIZED
+        </div>
+      </div>
+    </div>
   </div>
 </Layout>
 
-<script>
-  const btnApprove = document.getElementById('btn-approve');
-  const btnReject = document.getElementById('btn-reject');
-  const voteFeedback = document.getElementById('vote-feedback');
+<style>
+  /* Custom Scrollbar */
+  .custom-scrollbar::-webkit-scrollbar {
+    width: 4px;
+  }
+  .custom-scrollbar::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.02);
+    border-radius: 2px;
+  }
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    background: rgba(6, 182, 212, 0.15);
+    border-radius: 2px;
+  }
+  .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    background: rgba(6, 182, 212, 0.4);
+  }
 
-  btnApprove?.addEventListener('click', () => {
-    btnApprove.innerText = "Voting...";
-    btnApprove.setAttribute('disabled', 'true');
-    if (btnReject) btnReject.style.display = 'none';
+  /* Scanline CRT animation */
+  @keyframes scanline {
+    0% {
+      background-position: 0 0;
+    }
+    100% {
+      background-position: 0 100%;
+    }
+  }
+  .animate-scanline {
+    animation: scanline 10s linear infinite;
+  }
+
+  /* Slide out transition for removed sidebar items */
+  .proposal-slide-out {
+    transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    opacity: 0 !important;
+    transform: translateX(-100%) !important;
+    height: 0 !important;
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+    overflow: hidden !important;
+    border-color: transparent !important;
+  }
+
+  /* Transition for workspace detail workspace card */
+  .workspace-transition {
+    transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1), opacity 0.4s ease-out;
+  }
+  .workspace-hidden {
+    opacity: 0 !important;
+    transform: translateX(40px) scale(0.97) !important;
+    pointer-events: none;
+  }
+</style>
+
+<script>
+  // 36 proposals array database (all states, qualities, issues, and ideas)
+  const BASE_PROPOSALS = [
+    {
+      id: "CC-PROP-001",
+      title: "Deploy Base ERC-20 SpiralToken.sol to Ethereum Mainnet",
+      description: "Launch the primary, fixed-supply SPIRAL token contract on Ethereum using standard, audited OpenZeppelin modules with no post-deployment minting. This ensures absolute trust and permanence for the foundation of our entire creator economy.",
+      category: "INFRASTRUCTURE",
+      quality: "great",
+      votesFor: 45200000,
+      votesAgainst: 42100000,
+      status: "active",
+      author: "founder_0x",
+      gitops: true
+    },
+    {
+      id: "CC-PROP-002",
+      title: "Transfer 500,000 SPIRAL to unverified TikTok influencer for viral reach",
+      description: "An anonymous TikTok growth hacker with 12k purchased followers claims he can bring 10 million views to Cosmicrafts if we transfer half a million SPIRAL upfront with no locked metrics, contracts, or KPI verification.",
+      category: "COMMUNITY",
+      quality: "dogshit",
+      votesFor: 32000000,
+      votesAgainst: 34500000,
+      status: "active",
+      author: "shill_master",
+      gitops: false
+    },
+    {
+      id: "CC-PROP-003",
+      title: "Deploy 4-Node RPC Consensus (Infura, Alchemy, QuickNode, Ankr) for GitOps Actions",
+      description: "Implement multi-provider Ethereum verification within our GitHub Actions CI runner. This checks that code merges can only happen if state is proven authentic across 4 independent node providers, neutralizing single-provider RPC failure risks.",
+      category: "GITOPS",
+      quality: "great",
+      votesFor: 48900000,
+      votesAgainst: 47100000,
+      status: "active",
+      author: "bizkit_0x1337",
+      gitops: true
+    },
+    {
+      id: "CC-PROP-004",
+      title: "Change default player spaceship horn sound to a literal 'Bruh' sound effect",
+      description: "Change the audio file for the multiplayer ship horn to the viral 'Bruh' sound effect. This is intended to increase player retention and social sharing via standard internet meme culture.",
+      category: "GAMEPLAY",
+      quality: "meh",
+      votesFor: 25000000,
+      votesAgainst: 26000000,
+      status: "active",
+      author: "meme_lord",
+      gitops: true
+    },
+    {
+      id: "CC-PROP-005",
+      title: "Convert 90% of the DAO Treasury into Dogecoin during market peak",
+      description: "Convert 711 million SPIRAL from the treasury into Dogecoin immediately. A trending tweet by an influential tech billionaire suggests it might go to $10. Let's deploy the entire treasury directly to buy the top.",
+      category: "TREASURY",
+      quality: "dogshit",
+      votesFor: 12000000,
+      votesAgainst: 14000000,
+      status: "active",
+      author: "degens_unite",
+      gitops: false
+    },
+    {
+      id: "CC-PROP-006",
+      title: "Implement exit fee on withdrawing SPIRAL from in-game database back to Ethereum",
+      description: "Introduce a flat transfer fee (calculated dynamically based on Ethereum base gas rate) for players initiating transfers from their in-game ledger balance back to their ERC-20 on-chain wallet. This covers gas refunds and deters withdrawal spam.",
+      category: "TREASURY",
+      quality: "good",
+      votesFor: 35000000,
+      votesAgainst: 33000000,
+      status: "active",
+      author: "finance_lead",
+      gitops: true
+    },
+    {
+      id: "CC-PROP-007",
+      title: "Build a 50-foot solid gold statue of the Founder to install in the metaverse lobby",
+      description: "Deploy 5 million SPIRAL from community funds to design and render a colossal solid gold statue of the Founder. This asset will sit in the center of the sandbox social lobby, serving no gameplay function but asserting absolute dominance.",
+      category: "COMMUNITY",
+      quality: "dogshit",
+      votesFor: 5000000,
+      votesAgainst: 12000000,
+      status: "active",
+      author: "yes_man_99",
+      gitops: false
+    },
+    {
+      id: "CC-PROP-008",
+      title: "Integrate IPFS-based backup for user-generated AI asset recipe schema",
+      description: "Store text prompts and 2D asset recipes permanently on decentralized IPFS. Even if our cloud servers face outages, player asset parameters remain fully restorable by reading IPFS CID hash logs.",
+      category: "INFRASTRUCTURE",
+      quality: "good",
+      votesFor: 56000000,
+      votesAgainst: 22000000,
+      status: "passed",
+      author: "infra_guru",
+      gitops: true
+    },
+    {
+      id: "CC-PROP-009",
+      title: "Sponsor a local coffee shop in Madrid for $150,000 worth of SPIRAL",
+      description: "Send 150,000 SPIRAL from community funds to a coffee shop in central Madrid because the developers go there on weekends. This does not advertise the game, but the owner said he'll put a small printed Cosmicrafts sticker on the tip jar.",
+      category: "COMMUNITY",
+      quality: "bad",
+      votesFor: 18000000,
+      votesAgainst: 39000000,
+      status: "defeated",
+      author: "madrid_surfer",
+      gitops: false
+    },
+    {
+      id: "CC-PROP-010",
+      title: "Nuke combat balance: make Starter Ship 500x stronger than Bosses",
+      description: "Some players find the PvE boss fights too challenging. Let's update the starter fighter vessel with 5,000,000 HP and 100,000 DPS. This allows any player to win the entire game in 5 seconds with zero effort.",
+      category: "GAMEPLAY",
+      quality: "bad",
+      votesFor: 11000000,
+      votesAgainst: 28000000,
+      status: "defeated",
+      author: "noob_slayer",
+      gitops: true
+    },
+    {
+      id: "CC-PROP-011",
+      title: "Hire professional Solidity audit firm to verify SpiralVesting.sol",
+      description: "Approve 20,000 USDC payment from treasury to contract an industry-standard external security firm to audit the token locking mechanisms, securing the 7% Founder and 2.6% Seed allocations before deployment.",
+      category: "INFRASTRUCTURE",
+      quality: "great",
+      votesFor: 89000000,
+      votesAgainst: 2000000,
+      status: "executed",
+      author: "founder_0x",
+      gitops: true
+    },
+    {
+      id: "CC-PROP-012",
+      title: "Establish 100,000 SPIRAL Grand Tournament with no sponsor backing",
+      description: "Host a global esport event offering 100,000 SPIRAL in prizes, entirely paid out from the treasury, without securing any streaming rights, brand sponsorships, or ticket sales beforehand. Hope for the best.",
+      category: "COMMUNITY",
+      quality: "bad",
+      votesFor: 22000000,
+      votesAgainst: 45000000,
+      status: "defeated",
+      author: "hype_builder",
+      gitops: false
+    },
+    {
+      id: "CC-PROP-013",
+      title: "Integrate Gnosis Safe multisig with core Solidity deployment workflow",
+      description: "Bind Gnosis Safe API endpoints directly to our deployment scripts so that token releases can only occur when multi-sig confirmations correspond with verified GitHub pull request approvals.",
+      category: "GITOPS",
+      quality: "great",
+      votesFor: 91000000,
+      votesAgainst: 1000000,
+      status: "executed",
+      author: "bizkit_0x1337",
+      gitops: true
+    },
+    {
+      id: "CC-PROP-014",
+      title: "Sponsor core dev's high-end gaming PC upgrade for $8,000",
+      description: "Approve treasury release to purchase an custom liquid-cooled PC with dual RTX 4090s for a core developer. He claims it is strictly for 'testing' the 2D pixel UI at 4,000 frames per second.",
+      category: "TREASURY",
+      quality: "bad",
+      votesFor: 15000000,
+      votesAgainst: 41000000,
+      status: "defeated",
+      author: "hungry_dev",
+      gitops: false
+    },
+    {
+      id: "CC-PROP-015",
+      title: "Add standard customizable keyboard bindings to the web client launcher",
+      description: "Let players configure custom WASD keys and hotkey macros via a clean terminal layout panel, reducing control friction for left-handed competitive players.",
+      category: "GAMEPLAY",
+      quality: "good",
+      votesFor: 64000000,
+      votesAgainst: 8000000,
+      status: "passed",
+      author: "keybind_expert",
+      gitops: true
+    },
+    {
+      id: "CC-PROP-016",
+      title: "Send the entire core team on a fully paid 6-month holiday in Maui",
+      description: "Close down cloud multiplayer development servers and sponsor a half-year luxury retreat for all staff using treasury capital. Developers promise to 'think about' game balance while surfing.",
+      category: "COMMUNITY",
+      quality: "dogshit",
+      votesFor: 4000000,
+      votesAgainst: 68000000,
+      status: "defeated",
+      author: "beach_bum",
+      gitops: false
+    },
+    {
+      id: "CC-PROP-017",
+      title: "Establish $50,000 Discord Nitro community giveaway for marketing",
+      description: "Buy and distribute 5,000 Discord Nitro subscriptions to random accounts to generate hype on the server. Most participants are predicted to be Sybil airdrop bots who leave the server in 24 hours.",
+      category: "COMMUNITY",
+      quality: "bad",
+      votesFor: 19000000,
+      votesAgainst: 34000000,
+      status: "defeated",
+      author: "nitro_distributor",
+      gitops: false
+    },
+    {
+      id: "CC-PROP-018",
+      title: "Build and host Cosmicrafts multiplayer tournament inside Antarctica",
+      description: "Host an exclusive, ultra-high-budget esport league at the South Pole. Players and commentators must travel via custom icebreakers. This will generate massive organic press due to extreme absurdity.",
+      category: "COMMUNITY",
+      quality: "dogshit",
+      votesFor: 3000000,
+      votesAgainst: 72000000,
+      status: "defeated",
+      author: "polar_explorer",
+      gitops: false
+    },
+    {
+      id: "CC-PROP-019",
+      title: "Optimize 2D Canvas rendering loop to bypass browser engine bottlenecks",
+      description: "Refactor starfield and sprite rendering to reuse a single offscreen buffer context. Tests show a 40% reduction in CPU idle cycles on low-end laptops and standard Chromebooks.",
+      category: "INFRASTRUCTURE",
+      quality: "good",
+      votesFor: 71000000,
+      votesAgainst: 4000000,
+      status: "passed",
+      author: "perf_wizard",
+      gitops: true
+    },
+    {
+      id: "CC-PROP-020",
+      title: "Switch cloud multiplayer server database to a collaborative Google Sheet",
+      description: "Maintain player state, balances, and matchmaking rankings in a shared, public Google Spreadsheet instead of hosting a secure database cluster. This saves $10 per month in cloud hosting costs.",
+      category: "INFRASTRUCTURE",
+      quality: "dogshit",
+      votesFor: 1000000,
+      votesAgainst: 84000000,
+      status: "defeated",
+      author: "sheet_fanatic",
+      gitops: false
+    },
+    {
+      id: "CC-PROP-021",
+      title: "Launch community wallpaper pack featuring high-res 3D spacecraft artwork",
+      description: "Release a free downloadable digital pack containing original, high-resolution spacecraft renders for desktop and mobile devices to boost community asset engagement.",
+      category: "COMMUNITY",
+      quality: "good",
+      votesFor: 48000000,
+      votesAgainst: 9000000,
+      status: "passed",
+      author: "creative_director",
+      gitops: false
+    },
+    {
+      id: "CC-PROP-022",
+      title: "Port Cosmicrafts RTS code to the retro Nintendo 3DS console platform",
+      description: "Allocate three months of senior developer time to port our browser-based multiplayer client to run on dual-screen Nintendo 3DS hardware. Very retro-cool, but targets a defunct, offline userbase.",
+      category: "GAMEPLAY",
+      quality: "meh",
+      votesFor: 22000000,
+      votesAgainst: 31000000,
+      status: "defeated",
+      author: "retro_collector",
+      gitops: false
+    },
+    {
+      id: "CC-PROP-023",
+      title: "Double vesting schedule duration for all core founders to align incentives",
+      description: "Extend the linear unlock cliff of founder allocations from 12 months to 24 months. Demonstrates long-term, non-diluted commitment to seed investors and the broader ecosystem survival.",
+      category: "TREASURY",
+      quality: "great",
+      votesFor: 78000000,
+      votesAgainst: 2000000,
+      status: "passed",
+      author: "founder_0x",
+      gitops: true
+    },
+    {
+      id: "CC-PROP-024",
+      title: "Replace standard sound effects with generic corporate elevator jazz",
+      description: "Replace laser fire, reactor explosions, and hyperdrive hums with continuous low-fidelity corporate elevator jazz tracks. Aimed at establishing a calm, relaxed environment during high-intensity competitive combat.",
+      category: "GAMEPLAY",
+      quality: "dogshit",
+      votesFor: 2000000,
+      votesAgainst: 59000000,
+      status: "defeated",
+      author: "muzak_fan",
+      gitops: true
+    },
+    {
+      id: "CC-PROP-025",
+      title: "Integrate automatic server-clock NTP calibration to reduce latency drifts",
+      description: "Deploy a lightweight clock synchronization check against four highly accurate atomic NTP pools before starting competitive lobby matches, eliminating micro-stutters during high-speed ship collisions.",
+      category: "INFRASTRUCTURE",
+      quality: "good",
+      votesFor: 52000000,
+      votesAgainst: 3000000,
+      status: "passed",
+      author: "bizkit_0x1337",
+      gitops: true
+    },
+    {
+      id: "CC-PROP-026",
+      title: "Buy $100,000 worth of virtual land in a highly inflated, empty metaverse",
+      description: "Deploy valuable treasury funds to purchase three virtual plots of digital soil in a legacy, empty metaverse grid. There are no players on this grid, but we can display a virtual 2D poster of Cosmicrafts.",
+      category: "TREASURY",
+      quality: "bad",
+      votesFor: 12000000,
+      votesAgainst: 49000000,
+      status: "defeated",
+      author: "meta_broker",
+      gitops: false
+    },
+    {
+      id: "CC-PROP-027",
+      title: "Change main token symbol from SPIRAL to SPNL for no specific reason",
+      description: "Re-compile all frontends, indexes, metadata, and documentation to change our clean token symbol to SPNL because it sounds slightly more professional in a single email.",
+      category: "COMMUNITY",
+      quality: "meh",
+      votesFor: 15000000,
+      votesAgainst: 28000000,
+      status: "defeated",
+      author: "punc_guy",
+      gitops: false
+    },
+    {
+      id: "CC-PROP-028",
+      title: "Deploy localized Discord webhook integrations for automatic PR state logs",
+      description: "Transmit immediate, read-only Discord log updates whenever a new GitOps proposal enters active, passed, or auto-merged stages, boosting transparency for community members.",
+      category: "COMMUNITY",
+      quality: "good",
+      votesFor: 59000000,
+      votesAgainst: 4000000,
+      status: "passed",
+      author: "community_mod",
+      gitops: true
+    },
+    {
+      id: "CC-PROP-029",
+      title: "Build secret cheat code into client that displays classic arcade easter eggs",
+      description: "Introduce a classic keystroke combination (Konami Code) in the sandbox lobby that renders a retro pixel sprite animation. Fun, lightweight, zero-latency community engagement asset.",
+      category: "GAMEPLAY",
+      quality: "meh",
+      votesFor: 41000000,
+      votesAgainst: 12000000,
+      status: "passed",
+      author: "easter_egg",
+      gitops: true
+    },
+    {
+      id: "CC-PROP-030",
+      title: "Create localized DevRel lead position to help onboard asset designers",
+      description: "Approve 3,000 SPIRAL monthly allocation to contract a technical developer relations advocate to write clear step-by-step guides for custom spaceship model uploads.",
+      category: "COMMUNITY",
+      quality: "good",
+      votesFor: 53000000,
+      votesAgainst: 7000000,
+      status: "passed",
+      author: "founder_0x",
+      gitops: false
+    },
+    {
+      id: "CC-PROP-031",
+      title: "Add floating particle physics to main starfield lobby backdrop",
+      description: "Enhance visual atmosphere by introducing low-weight floating stardust particles reacting gently to player cursor movements in the starfield canvas. Fully GPU-optimized.",
+      category: "GAMEPLAY",
+      quality: "good",
+      votesFor: 62000000,
+      votesAgainst: 5000000,
+      status: "passed",
+      author: "vfx_artist",
+      gitops: true
+    },
+    {
+      id: "CC-PROP-032",
+      title: "Hire professional concept artist to draw 10 premium ship hulls",
+      description: "Approve one-time 8,000 SPIRAL release to hire a top-tier sci-fi concept designer. Hulls will be utilized as baseline blueprints for the AI generation seed index.",
+      category: "GAMEPLAY",
+      quality: "good",
+      votesFor: 68000000,
+      votesAgainst: 2000000,
+      status: "passed",
+      author: "creative_director",
+      gitops: false
+    },
+    {
+      id: "CC-PROP-033",
+      title: "Increase total token supply to 500 Billion to make token feel 'cheaper'",
+      description: "Nuke the 1 Billion token limit and inflate supply by 500x. Players will hold millions of tokens instead of hundreds, which might make them feel richer psychologically.",
+      category: "TREASURY",
+      quality: "dogshit",
+      votesFor: 4000000,
+      votesAgainst: 82000000,
+      status: "defeated",
+      author: "math_genius",
+      gitops: true
+    },
+    {
+      id: "CC-PROP-034",
+      title: "Refactor API routing logic to optimize hybrid cloud payload headers",
+      description: "Streamline communication frames between client web-sockets and our node backend servers, cutting redundant telemetry metrics and shaving 15ms off network responses.",
+      category: "INFRASTRUCTURE",
+      quality: "great",
+      votesFor: 76000000,
+      votesAgainst: 1000000,
+      status: "passed",
+      author: "perf_wizard",
+      gitops: true
+    },
+    {
+      id: "CC-PROP-035",
+      title: "Rent physical billboard in Times Square for $80,000 for 1 day",
+      description: "Deploy standard treasury assets to print our logo on a Times Square billboard for 24 hours. No call-to-action link, no tracking. Just pure, expensive ego boost.",
+      category: "COMMUNITY",
+      quality: "bad",
+      votesFor: 12000000,
+      votesAgainst: 48000000,
+      status: "defeated",
+      author: "hype_builder",
+      gitops: false
+    },
+    {
+      id: "CC-PROP-036",
+      title: "Sponsor core dev's cat nutrition plan with custom monthly organic salmon",
+      description: "Deploy 500 SPIRAL monthly from community resources to feed a senior developer's cat premium wild-caught salmon. Dev claims a happy cat results in 5% higher typing speeds.",
+      category: "TREASURY",
+      quality: "meh",
+      votesFor: 25000000,
+      votesAgainst: 30000000,
+      status: "active",
+      author: "hungry_dev",
+      gitops: false
+    }
+  ];
+
+  // DOM selectors
+  const proposalsListContainer = document.getElementById('proposals-list');
+  const searchInput = document.getElementById('search-input') as HTMLInputElement;
+  const activeCountEl = document.getElementById('active-proposal-count');
+  
+  // Workspace selectors
+  const noSelectionState = document.getElementById('no-selection');
+  const activeSelectionState = document.getElementById('active-selection');
+  
+  const detailId = document.getElementById('detail-id');
+  const detailQualityPill = document.getElementById('detail-quality-pill');
+  const detailTitle = document.getElementById('detail-title');
+  const detailAuthor = document.getElementById('detail-author');
+  const detailCategory = document.getElementById('detail-category');
+  const detailStatus = document.getElementById('detail-status');
+  const detailDescription = document.getElementById('detail-description');
+  
+  const voteBarFor = document.getElementById('vote-bar-for');
+  const voteBarAgainst = document.getElementById('vote-bar-against');
+  const detailVotesForPct = document.getElementById('detail-votes-for-pct');
+  const detailVotesForAbs = document.getElementById('detail-votes-for-abs');
+  const detailVotesAgainstPct = document.getElementById('detail-votes-against-pct');
+  const detailVotesAgainstAbs = document.getElementById('detail-votes-against-abs');
+  const totalVotedCount = document.getElementById('total-voted-count');
+  
+  const votingConsole = document.getElementById('voting-console');
+  const swingBanner = document.getElementById('swing-banner');
+  const voteBtnGrid = document.getElementById('vote-btn-grid');
+  const loginFallback = document.getElementById('login-fallback');
+  const userStatusInfo = document.getElementById('user-status-info');
+  const btnFallbackConnect = document.getElementById('btn-fallback-connect');
+  
+  const btnVoteFor = document.getElementById('btn-vote-for');
+  const btnVoteAgainst = document.getElementById('btn-vote-against');
+  const voteSuccessTerminal = document.getElementById('vote-success-terminal');
+  const githubGitopsLog = document.getElementById('github-gitops-log');
+
+  // RPC nodes indicators
+  const nodes = {
+    alchemy: document.getElementById('node-alchemy'),
+    infura: document.getElementById('node-infura'),
+    quicknode: document.getElementById('node-quicknode'),
+    ankr: document.getElementById('node-ankr')
+  };
+
+  // Impact Overlay Selectors
+  const voteImpactOverlay = document.getElementById('vote-impact-overlay');
+  const impactCard = document.getElementById('impact-card');
+  const impactStatusHeader = document.getElementById('impact-status-header');
+  const impactProposalId = document.getElementById('impact-proposal-id');
+  const impactProgressBar = document.getElementById('impact-progress-bar');
+  const sequenceStagePercent = document.getElementById('sequence-stage-percent');
+  const impactLogsContainer = document.getElementById('impact-logs-container');
+  const impactActionBanner = document.getElementById('impact-action-banner');
+  const impactPing = document.getElementById('impact-ping');
+  
+  const impactBrackets = [
+    document.getElementById('impact-bracket-tl'),
+    document.getElementById('impact-bracket-tr'),
+    document.getElementById('impact-bracket-bl'),
+    document.getElementById('impact-bracket-br')
+  ];
+
+  // State
+  let proposals = [];
+  let currentSelectionId = "CC-PROP-001";
+  let activeTab = "active";
+  let activeQuality = "all";
+  const userVotingPower = 70000000; // 70 Million SPIRAL
+
+  // Initialize and load state
+  const loadProposals = () => {
+    // ALWAYS reset the proposals database and votes on page refresh / load for clean infinite demos
+    localStorage.removeItem('cc_proposals_db');
+    for (let i = 0; i < localStorage.length; i++) {
+      const key = localStorage.key(i);
+      if (key && key.startsWith('vote_CC-PROP-')) {
+        localStorage.removeItem(key);
+        i--; // Adjust index since we removed an item
+      }
+    }
+
+    // Populate fresh from scratch
+    proposals = JSON.parse(JSON.stringify(BASE_PROPOSALS));
+    localStorage.setItem('cc_proposals_db', JSON.stringify(proposals));
+  };
+
+  const saveProposals = () => {
+    localStorage.setItem('cc_proposals_db', JSON.stringify(proposals));
+  };
+
+  const getIsLoggedIn = () => {
+    return sessionStorage.getItem('is_logged_in') === 'true';
+  };
+
+  // Humanized numbers helper
+  const formatCompact = (num) => {
+    if (num >= 1000000) {
+      return (num / 1000000).toFixed(1) + 'M';
+    }
+    if (num >= 1000) {
+      return (num / 1000).toFixed(1) + 'K';
+    }
+    return num.toLocaleString();
+  };
+
+  // Quality styling map
+  const qualityConfigs = {
+    great: { label: "GREAT", pillClass: "bg-emerald-500/10 border-emerald-500/30 text-emerald-400", hoverBorder: "hover:border-emerald-500/30" },
+    good: { label: "GOOD", pillClass: "bg-teal-500/10 border-teal-500/30 text-teal-400", hoverBorder: "hover:border-teal-500/30" },
+    meh: { label: "MEH", pillClass: "bg-slate-500/10 border-slate-500/30 text-slate-400", hoverBorder: "hover:border-slate-500/20" },
+    bad: { label: "BAD", pillClass: "bg-orange-500/10 border-orange-500/30 text-orange-400", hoverBorder: "hover:border-orange-500/30" },
+    dogshit: { label: "DOGSHIT ☣", pillClass: "bg-yellow-500/10 border-yellow-500/30 text-yellow-400 font-bold tracking-wider animate-pulse", hoverBorder: "hover:border-yellow-500/40" }
+  };
+
+  const statusColors = {
+    active: "text-cyan-400 bg-cyan-500/5 border border-cyan-500/20",
+    passed: "text-emerald-400 bg-emerald-500/5 border border-emerald-500/20",
+    defeated: "text-rose-400 bg-rose-500/5 border border-rose-500/20",
+    executed: "text-purple-400 bg-purple-500/5 border border-purple-500/20",
+    voted_for: "text-emerald-400 bg-emerald-500/10 border border-emerald-500/30",
+    voted_against: "text-rose-400 bg-rose-500/10 border border-rose-500/30"
+  };
+
+  // Render directory
+  const renderList = () => {
+    if (!proposalsListContainer) return;
+    proposalsListContainer.innerHTML = '';
+
+    const query = searchInput.value.toLowerCase();
     
+    // Filter
+    const filtered = proposals.filter(prop => {
+      // Search query
+      const matchesSearch = prop.id.toLowerCase().includes(query) || 
+                            prop.title.toLowerCase().includes(query) || 
+                            prop.author.toLowerCase().includes(query) ||
+                            prop.description.toLowerCase().includes(query);
+      
+      // Tab filter
+      let matchesTab = true;
+      if (activeTab === "active") {
+        matchesTab = prop.status === "active";
+      } else if (activeTab === "passed") {
+        matchesTab = prop.status === "passed" || prop.status === "executed";
+      } else if (activeTab === "defeated") {
+        matchesTab = prop.status === "defeated";
+      }
+
+      // Quality filter
+      let matchesQuality = true;
+      if (activeQuality !== "all") {
+        matchesQuality = prop.quality === activeQuality;
+      }
+
+      return matchesSearch && matchesTab && matchesQuality;
+    });
+
+    // Auto-select first matching proposal if current selection is filtered out
+    if (filtered.length > 0) {
+      const isSelectedInFiltered = filtered.some(p => p.id === currentSelectionId);
+      if (!isSelectedInFiltered) {
+        currentSelectionId = filtered[0].id;
+        setTimeout(() => { renderWorkspace(); }, 0);
+      }
+    }
+
+    activeCountEl.innerText = `${filtered.length} Proposals`;
+
+    if (filtered.length === 0) {
+      proposalsListContainer.innerHTML = `
+        <div class="text-center py-12 text-slate-500 font-mono text-xs uppercase border border-dashed border-white/5 rounded-lg">
+          No proposals found matching filter guidelines
+        </div>
+      `;
+      return;
+    }
+
+    filtered.forEach(prop => {
+      const config = qualityConfigs[prop.quality] || qualityConfigs.meh;
+      
+      // Check if user voted on this in localStorage
+      const userVote = localStorage.getItem(`vote_${prop.id}`);
+      let statusLabel = prop.status.toUpperCase();
+      let statusClass = statusColors[prop.status] || "text-slate-400";
+      
+      if (userVote) {
+        statusLabel = `VOTED ${userVote.toUpperCase()}`;
+        statusClass = statusColors[`voted_${userVote}`] || statusClass;
+      }
+
+      const item = document.createElement('div');
+      item.className = `p-3.5 bg-white/5 border ${prop.id === currentSelectionId ? 'border-cyan-500/40 bg-cyan-950/10 shadow-[0_0_15px_rgba(6,182,212,0.05)]' : 'border-white/5'} rounded-lg transition-all duration-200 cursor-pointer text-left ${config.hoverBorder}`;
+      item.dataset.id = prop.id;
+      
+      // Safe HTML render
+      item.innerHTML = `
+        <div class="flex justify-between items-center text-[8px] font-mono mb-1.5">
+          <span class="text-cyan-500/80">${prop.id} // ${prop.category}</span>
+          <div class="flex items-center gap-1.5">
+            <span class="px-1.5 py-0.5 rounded text-[7px] uppercase ${config.pillClass}">${config.label}</span>
+            <span class="px-1.5 py-0.5 rounded text-[7px] uppercase ${statusClass}">${statusLabel}</span>
+          </div>
+        </div>
+        <p class="text-xs font-bold text-white uppercase tracking-tight line-clamp-1 mb-1 group-hover:text-cyan-400 transition-colors">${prop.title}</p>
+        <div class="flex justify-between items-center text-[8px] font-mono text-slate-500 pt-1.5 border-t border-white/5 mt-1.5">
+          <span>VOTES: ${formatCompact(prop.votesFor + prop.votesAgainst)} SPIRAL</span>
+          <span class="text-slate-400">BY: ${prop.author.toUpperCase()}</span>
+        </div>
+      `;
+
+      item.addEventListener('click', () => {
+        if (prop.id === currentSelectionId) return;
+        currentSelectionId = prop.id;
+        renderList();
+        
+        const activeSelection = document.getElementById('active-selection');
+        if (activeSelection) {
+          activeSelection.classList.add('workspace-hidden');
+          setTimeout(() => {
+            renderWorkspace();
+            void activeSelection.offsetWidth; // Force reflow
+            activeSelection.classList.remove('workspace-hidden');
+          }, 150);
+        } else {
+          renderWorkspace();
+        }
+      });
+
+      proposalsListContainer.appendChild(item);
+    });
+  };
+
+  // Render workspace details
+  const renderWorkspace = () => {
+    const prop = proposals.find(p => p.id === currentSelectionId);
+    if (!prop) {
+      noSelectionState?.classList.remove('hidden');
+      activeSelectionState?.classList.add('hidden');
+      return;
+    }
+
+    noSelectionState?.classList.add('hidden');
+    activeSelectionState?.classList.remove('hidden');
+
+    // Load static values
+    detailId.innerText = prop.id;
+    detailTitle.innerText = prop.title;
+    detailAuthor.innerText = prop.author.toUpperCase();
+    detailCategory.innerText = prop.category;
+    detailDescription.innerText = prop.description;
+
+    // Quality Badge
+    const config = qualityConfigs[prop.quality] || qualityConfigs.meh;
+    detailQualityPill.className = `px-2.5 py-0.5 rounded text-[8px] border uppercase ${config.pillClass}`;
+    detailQualityPill.innerText = config.label;
+
+    // Votes computations
+    const totalVotes = prop.votesFor + prop.votesAgainst;
+    const forPct = totalVotes > 0 ? Math.round((prop.votesFor / totalVotes) * 100) : 50;
+    const againstPct = 100 - forPct;
+
+    detailVotesForPct.innerText = `${forPct}%`;
+    detailVotesAgainstPct.innerText = `${againstPct}%`;
+    detailVotesForAbs.innerText = formatCompact(prop.votesFor);
+    detailVotesAgainstAbs.innerText = formatCompact(prop.votesAgainst);
+    totalVotedCount.innerText = `TOTAL: ${totalVotes.toLocaleString()} SPIRAL`;
+
+    voteBarFor.style.width = `${forPct}%`;
+    voteBarAgainst.style.width = `${againstPct}%`;
+
+    // Status config
+    const userVote = localStorage.getItem(`vote_${prop.id}`);
+    if (userVote) {
+      detailStatus.className = `text-[10px] px-2 py-0.5 rounded ${statusColors['voted_' + userVote] || 'text-cyan-400'}`;
+      detailStatus.innerText = `VOTED ${userVote.toUpperCase()}`;
+    } else {
+      detailStatus.className = `text-[10px] px-2 py-0.5 rounded ${statusColors[prop.status] || 'text-slate-400'}`;
+      detailStatus.innerText = prop.status.toUpperCase();
+    }
+
+    // Interactive components setup
+    const loggedIn = getIsLoggedIn();
+    if (!loggedIn) {
+      votingConsole?.classList.remove('space-y-3');
+      voteBtnGrid?.classList.add('hidden');
+      swingBanner?.classList.add('hidden');
+      loginFallback?.classList.remove('hidden');
+      userStatusInfo.className = "text-rose-400 animate-pulse";
+      userStatusInfo.innerText = "NOT CONNECTED (0 SPIRAL)";
+      voteSuccessTerminal?.classList.add('hidden');
+    } else {
+      userStatusInfo.className = "text-emerald-400";
+      userStatusInfo.innerText = `CONNECTED (${userVotingPower.toLocaleString()} SPIRAL)`;
+      loginFallback?.classList.add('hidden');
+      voteBtnGrid?.classList.remove('hidden');
+
+      if (userVote || prop.status !== 'active') {
+        // Already voted or concluded
+        voteBtnGrid?.classList.add('hidden');
+        swingBanner?.classList.add('hidden');
+        
+        // Show simulated log detailing the transaction confirmation
+        voteSuccessTerminal?.classList.remove('hidden');
+        const castVote = userVote || (prop.status === 'passed' ? 'for' : 'against');
+        
+        if (prop.gitops) {
+          githubGitopsLog.innerText = `[1.80s] GitHub Action completed. Auto-merge status code: 200 (SUCCESS).`;
+          githubGitopsLog.className = "text-emerald-400";
+        } else {
+          githubGitopsLog.innerText = `[1.80s] Local ledger execution completed. Treasury state finalized.`;
+          githubGitopsLog.className = "text-teal-400";
+        }
+
+        voteSuccessTerminal.innerHTML = `
+          <div class="text-emerald-400 font-bold uppercase tracking-wider text-[9px] mb-1">✓ DECIDING VOTE VERIFIED ON GITOPS CONSENSUS</div>
+          <div>[0.00s] Connected via MetaMask address: 0x71C...9312</div>
+          <div>[0.35s] Signature authenticated via Ethereum multi-sig block.</div>
+          <div>[0.70s] Registered voting weight: ${userVotingPower.toLocaleString()} SPIRAL (Locked Vesting).</div>
+          <div class="text-cyan-400">[1.10s] Current vote outcome: ${castVote === 'for' ? 'PASSED & APPROVED' : 'REJECTED & DEFEATED'}</div>
+          <div class="${prop.gitops ? 'text-emerald-400' : 'text-teal-400'} font-mono">[1.55s] Consensus: ${prop.gitops ? '✓ GitHub Webhook triggered. Auto-merging verified.' : '✓ Transaction ledger state saved.'}</div>
+        `;
+      } else {
+        // Can vote! Show Tide Turner Swing Indicator
+        voteBtnGrid?.classList.remove('hidden');
+        swingBanner?.classList.remove('hidden');
+        voteSuccessTerminal?.classList.add('hidden');
+
+        // Reset button states so the next active proposal is completely interactable
+        if (btnVoteFor) {
+          btnVoteFor.removeAttribute('disabled');
+          btnVoteFor.innerText = "Vote For (Approve)";
+          btnVoteFor.style.opacity = "1";
+        }
+        if (btnVoteAgainst) {
+          btnVoteAgainst.removeAttribute('disabled');
+          btnVoteAgainst.innerText = "Vote Against (Reject)";
+          btnVoteAgainst.style.opacity = "1";
+        }
+
+        // Calculate swing
+        const diff = Math.abs(prop.votesFor - prop.votesAgainst);
+        const diffFormatted = formatCompact(diff);
+        swingBanner.innerHTML = `
+          <span class="text-cyan-400 uppercase tracking-widest flex items-center gap-1.5">
+            <span class="inline-block w-1.5 h-1.5 rounded bg-cyan-400 animate-ping"></span>
+            Tide Turner Mode Active
+          </span>
+          <span class="text-slate-300">DIFF IS ONLY ${diffFormatted}. YOUR 70M SPIRAL SWINGS THE OUTCOME!</span>
+        `;
+      }
+    }
+
+    // Update node simulation (simulate latency for verification consensus)
+    triggerNodeValidationAnimation();
+  };
+
+  // Simulated node validation animations
+  const triggerNodeValidationAnimation = () => {
+    const rpcs = [nodes.alchemy, nodes.infura, nodes.quicknode, nodes.ankr];
+    rpcs.forEach((node, i) => {
+      if (!node) return;
+      node.className = "py-1 bg-slate-900 border border-cyan-500/10 text-slate-500 rounded animate-pulse";
+      node.innerText = "VERIFYING...";
+      
+      setTimeout(() => {
+        node.className = "py-1 bg-slate-900 border border-emerald-500/20 text-emerald-400 rounded transition-all duration-300";
+        node.innerText = `${node.id.split('-')[1].toUpperCase()} // SECURE`;
+      }, 400 + i * 150);
+    });
+  };
+
+  // Spectacular Vote Impact Overlay sequence
+  const showDramaticImpact = (direction, prop) => {
+    if (!voteImpactOverlay || !impactCard || !impactLogsContainer || !impactProgressBar || !sequenceStagePercent || !impactStatusHeader || !impactActionBanner || !impactPing) return;
+
+    // Clear previous logs
+    impactLogsContainer.innerHTML = '';
+    impactProgressBar.style.width = '0%';
+    sequenceStagePercent.innerText = '0%';
+
+    // Set layout based on vote direction (Approved vs Rejected)
+    const isApproved = direction === 'for';
+    
+    // Reset any direction-specific colors first
+    impactCard.className = "relative w-full max-w-2xl mx-4 bg-slate-950/85 border rounded-2xl p-6 md:p-10 text-center space-y-6 overflow-hidden transform scale-95 opacity-0 transition-all duration-500";
+    
+    if (isApproved) {
+      // PROPOSAL APPROVED (Emerald / Cyan)
+      impactCard.classList.add('border-emerald-500/30', 'shadow-[0_0_80px_rgba(16,185,129,0.25)]');
+      impactStatusHeader.className = "text-2xl md:text-4xl font-black tracking-wider text-emerald-400 uppercase animate-pulse select-text";
+      impactStatusHeader.innerText = "PROPOSAL APPROVED // MERGE CODES RUNNING";
+      
+      impactProgressBar.className = "h-full bg-emerald-500 transition-all duration-300 ease-out shadow-[0_0_10px_rgba(16,185,129,0.5)]";
+      sequenceStagePercent.className = "text-emerald-400 font-mono";
+      
+      impactActionBanner.className = "text-[10px] text-emerald-400 uppercase tracking-widest bg-emerald-500/10 border border-emerald-500/20 py-2 rounded-lg font-bold font-mono";
+      impactActionBanner.innerText = "✓ CODE DEPLOYMENT INITIATED // ETHEREUM FINALIZED";
+      
+      impactPing.className = "inline-block w-2.5 h-2.5 rounded-full bg-emerald-500 animate-ping";
+      
+      impactBrackets.forEach(b => {
+        if (b) b.className = b.className.replace(/border-(rose|emerald|cyan|red)-\d+/g, 'border-emerald-400');
+      });
+    } else {
+      // PROPOSAL DEFEATED / REJECTED (Rose / Red)
+      impactCard.classList.add('border-rose-500/40', 'shadow-[0_0_80px_rgba(244,63,94,0.3)]');
+      impactStatusHeader.className = "text-2xl md:text-4xl font-black tracking-wider text-rose-500 uppercase select-text";
+      impactStatusHeader.innerText = "PROPOSAL REJECTED // PR TERMINATED";
+      
+      impactProgressBar.className = "h-full bg-rose-500 transition-all duration-300 ease-out shadow-[0_0_10px_rgba(244,63,94,0.5)]";
+      sequenceStagePercent.className = "text-rose-400 font-mono";
+      
+      impactActionBanner.className = "text-[10px] text-rose-400 uppercase tracking-widest bg-rose-500/10 border border-rose-500/20 py-2 rounded-lg font-bold font-mono animate-pulse";
+      impactActionBanner.innerText = "☣ PROPOSAL TERMINATED // PULL REQUEST SHUTDOWN";
+      
+      impactPing.className = "inline-block w-2.5 h-2.5 rounded-full bg-rose-500 animate-ping";
+      
+      impactBrackets.forEach(b => {
+        if (b) b.className = b.className.replace(/border-(rose|emerald|cyan|red)-\d+/g, 'border-rose-500');
+      });
+    }
+
+    impactProposalId.innerText = `[ ${prop.id} // ${prop.category} ]`;
+
+    // Unhide overlay
+    voteImpactOverlay.classList.remove('hidden');
+    voteImpactOverlay.classList.add('flex');
+    
+    // Animate zoom in
     setTimeout(() => {
-      btnApprove.innerText = "APPROVED";
-      btnApprove.classList.add('bg-emerald-500/40');
-      voteFeedback?.classList.remove('hidden');
-    }, 1200);
+      impactCard.classList.remove('scale-95', 'opacity-0');
+      impactCard.classList.add('scale-100', 'opacity-100');
+    }, 50);
+
+    // Logging steps
+    const logs = isApproved ? [
+      { text: `[SYSTEM] Connection authenticated from address: 0x71C...9312 (Vesting Signature)`, class: "text-slate-500 font-mono" },
+      { text: `[STATE] Staked Balance Checked: 70,000,000 SPIRAL parsed.`, class: "text-slate-400 font-mono" },
+      { text: `[STATE] INJECTING DECIDING POWER (+70M SPIRAL WEIGHT TO APPROVED)...`, class: "text-emerald-400 font-bold font-mono" },
+      { text: `[CONSENSUS] QUORUM STAGE MET: Total Votes passed threshold.`, class: "text-cyan-400 font-mono" },
+      { text: `[CONSENSUS] Multi-sig execution contract verified on 4 independent RPC Nodes.`, class: "text-cyan-400 font-mono" },
+      { text: `[GITHUB] Dispatching secure GitOps webhook to repo main branch...`, class: "text-slate-400 font-mono" },
+      { text: `[GITHUB] Triggering actions runner: merging branch 'staging' into 'master'.`, class: "text-slate-400 font-mono" },
+      { text: `[DEPLOY] Auto-deployment running... Static assets compiling...`, class: "text-slate-400 font-mono" },
+      { text: `[DEPLOY] GITOPS PR AUTO-MERGED: Status 200 (SUCCESS).`, class: "text-emerald-400 font-bold animate-pulse font-mono" },
+      { text: `[SYSTEM] Consensus loop completed. Clearing memory channels...`, class: "text-slate-500 font-mono" }
+    ] : [
+      { text: `[SYSTEM] Connection authenticated from address: 0x71C...9312 (Vesting Signature)`, class: "text-slate-500 font-mono" },
+      { text: `[STATE] Staked Balance Checked: 70,000,000 SPIRAL parsed.`, class: "text-slate-400 font-mono" },
+      { text: `[STATE] INJECTING DECIDING POWER (+70M SPIRAL WEIGHT TO REJECTED)...`, class: "text-rose-400 font-bold font-mono" },
+      { text: `[CONSENSUS] SHUTDOWN THRESHOLD MET: Defeat weight overrides approval.`, class: "text-red-400 font-mono" },
+      { text: `[CONSENSUS] Multi-sig execution sequence ABORTED. Gnosis Safe transaction cancelled.`, class: "text-red-400 font-mono" },
+      { text: `[GITHUB] Dispatching rejection webhook to repository controllers...`, class: "text-slate-400 font-mono" },
+      { text: `[GITHUB] Triggering actions runner: closing PR #${prop.id.split('-')[2]} without merging.`, class: "text-slate-400 font-mono" },
+      { text: `[DEPLOY] GITOPS STATUS: PR CLOSED & ARCHIVED. CODE LOCKED [403]`, class: "text-rose-400 font-bold animate-pulse font-mono" },
+      { text: `[SYSTEM] Proposal terminated successfully. All voting power released.`, class: "text-slate-500 font-mono" }
+    ];
+
+    let currentLogIndex = 0;
+    const totalLogs = logs.length;
+
+    const printNextLog = () => {
+      if (currentLogIndex < totalLogs) {
+        const log = logs[currentLogIndex];
+        const logLine = document.createElement('div');
+        logLine.className = `${log.class}`;
+        logLine.innerText = `> ${log.text}`;
+        impactLogsContainer.appendChild(logLine);
+        impactLogsContainer.scrollTop = impactLogsContainer.scrollHeight;
+
+        // Update progress bar
+        const pct = Math.round(((currentLogIndex + 1) / totalLogs) * 100);
+        impactProgressBar.style.width = `${pct}%`;
+        sequenceStagePercent.innerText = `${pct}%`;
+
+        currentLogIndex++;
+        setTimeout(printNextLog, 250);
+      } else {
+        // All logs completed! Wait 1.5s to savor the victory/defeat, then close overlay
+        setTimeout(() => {
+          // Fade out card
+          impactCard.classList.remove('scale-100', 'opacity-100');
+          impactCard.classList.add('scale-95', 'opacity-0');
+          
+          setTimeout(() => {
+            // Hide overlay completely
+            voteImpactOverlay.classList.remove('flex');
+            voteImpactOverlay.classList.add('hidden');
+            
+            // --- START SMOOTH SWAP SEQUENCE (PAST -> PRESENT) ---
+            // 1. Slide out and collapse the old sidebar item
+            const sidebarItem = document.querySelector(`[data-id="${prop.id}"]`);
+            if (sidebarItem) {
+              sidebarItem.classList.add('proposal-slide-out');
+            }
+
+            // 2. Slide out and fade the old workspace details
+            const activeSelection = document.getElementById('active-selection');
+            if (activeSelection) {
+              activeSelection.classList.add('workspace-hidden');
+            }
+
+            // Wait 600ms for slide-out animations to fully complete
+            setTimeout(() => {
+              // Find the current filtered list items to determine the next proposal ID
+              const query = searchInput.value.toLowerCase();
+              const filtered = proposals.filter(p => {
+                const matchesSearch = p.id.toLowerCase().includes(query) || 
+                                      p.title.toLowerCase().includes(query) || 
+                                      p.author.toLowerCase().includes(query) ||
+                                      p.description.toLowerCase().includes(query);
+                let matchesTab = true;
+                if (activeTab === "active") {
+                  matchesTab = p.status === "active";
+                } else if (activeTab === "passed") {
+                  matchesTab = p.status === "passed" || p.status === "executed";
+                } else if (activeTab === "defeated") {
+                  matchesTab = p.status === "defeated";
+                }
+                let matchesQuality = activeQuality === "all" || p.quality === activeQuality;
+                return matchesSearch && matchesTab && matchesQuality;
+              });
+
+              // Select the next proposal ID
+              const currentIndex = filtered.findIndex(p => p.id === prop.id);
+              let nextId = null;
+              if (filtered.length > 1) {
+                if (currentIndex !== -1 && currentIndex < filtered.length - 1) {
+                  nextId = filtered[currentIndex + 1].id;
+                } else {
+                  nextId = filtered[0].id;
+                }
+              }
+
+              if (nextId) {
+                currentSelectionId = nextId;
+              }
+
+              // Re-render list (old item is removed, list slides up cleanly)
+              renderList();
+              
+              // Load the new proposal details (still hidden)
+              renderWorkspace();
+              
+              // Force CSS reflow and slide in next proposal beautifully
+              if (activeSelection) {
+                activeSelection.classList.add('workspace-hidden');
+                void activeSelection.offsetWidth; // force reflow
+                activeSelection.classList.remove('workspace-hidden');
+              }
+            }, 600);
+          }, 400);
+        }, 1200);
+      }
+    };
+
+    // Start logging sequence after card transitions open
+    setTimeout(printNextLog, 400);
+  };
+
+  // Register Vote Logic
+  const castVote = (direction) => {
+    const prop = proposals.find(p => p.id === currentSelectionId);
+    if (!prop || prop.status !== 'active') return;
+
+    // Persist vote
+    localStorage.setItem(`vote_${prop.id}`, direction);
+    
+    // Inject user voting power
+    if (direction === 'for') {
+      prop.votesFor += userVotingPower;
+    } else {
+      prop.votesAgainst += userVotingPower;
+    }
+
+    // Your vote ALWAYS decides the final outcome absolutely - no restrictions, absolute decision
+    if (direction === 'for') {
+      prop.status = "passed";
+      if (prop.votesFor <= prop.votesAgainst) {
+        prop.votesFor = prop.votesAgainst + Math.round(userVotingPower * 0.4);
+      }
+    } else {
+      prop.status = "defeated";
+      if (prop.votesAgainst <= prop.votesFor) {
+        prop.votesAgainst = prop.votesFor + Math.round(userVotingPower * 0.4);
+      }
+    }
+
+    saveProposals();
+    
+    // Render workspace immediately so progress bar slide and terminal logs print
+    renderWorkspace();
+    
+    // Trigger spectacular full screen diagnostic diagnostic overlay
+    showDramaticImpact(direction, prop);
+  };
+
+  // Add click listeners to vote buttons
+  btnVoteFor?.addEventListener('click', () => {
+    btnVoteFor.innerText = "SIGNING TX...";
+    btnVoteFor.setAttribute('disabled', 'true');
+    if (btnVoteAgainst) btnVoteAgainst.style.opacity = '0.3';
+
+    setTimeout(() => {
+      castVote('for');
+      btnVoteFor.innerText = "VOTED FOR";
+    }, 1000);
   });
+
+  btnVoteAgainst?.addEventListener('click', () => {
+    btnVoteAgainst.innerText = "SIGNING TX...";
+    btnVoteAgainst.setAttribute('disabled', 'true');
+    if (btnVoteFor) btnVoteFor.style.opacity = '0.3';
+
+    setTimeout(() => {
+      castVote('against');
+      btnVoteAgainst.innerText = "VOTED AGAINST";
+    }, 1000);
+  });
+
+  // Filter button state handlers
+  const tabBtns = document.querySelectorAll('.tab-btn');
+  tabBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      tabBtns.forEach(b => {
+        b.className = "py-1 rounded text-slate-400 hover:text-white uppercase tracking-wider tab-btn";
+      });
+      btn.className = "py-1 rounded bg-cyan-500/15 border border-cyan-500/20 text-cyan-300 uppercase tracking-wider tab-btn";
+      
+      const tabId = btn.id.split('-')[1];
+      activeTab = tabId;
+      renderList();
+    });
+  });
+
+  const qualityBtns = document.querySelectorAll('.quality-btn');
+  qualityBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      qualityBtns.forEach(b => {
+        b.className = b.className.replace('border-cyan-500/30 bg-cyan-500/10 text-cyan-300', 'border-white/5 bg-white/5 text-slate-400');
+        // keep quality styles colored natively when unselected except default All
+        const quality = b.getAttribute('data-quality');
+        if (quality !== 'all' && b !== btn) {
+          b.className = b.className.replace('text-emerald-400', 'text-slate-400').replace('text-teal-400', 'text-slate-400').replace('text-orange-400', 'text-slate-400').replace('text-yellow-400', 'text-slate-400');
+        }
+      });
+      
+      const q = btn.getAttribute('data-quality') || 'all';
+      activeQuality = q;
+      
+      // Restore appropriate color text
+      if (q === 'great') btn.className = btn.className.replace('text-slate-400', 'text-emerald-400');
+      if (q === 'good') btn.className = btn.className.replace('text-slate-400', 'text-teal-400');
+      if (q === 'meh') btn.className = btn.className.replace('text-slate-400', 'text-slate-400');
+      if (q === 'bad') btn.className = btn.className.replace('text-slate-400', 'text-orange-400');
+      if (q === 'dogshit') btn.className = btn.className.replace('text-slate-400', 'text-yellow-400');
+
+      btn.className = btn.className.replace('border-white/5 bg-white/5', 'border-cyan-500/30 bg-cyan-500/10 text-cyan-300');
+      renderList();
+    });
+  });
+
+  // Search filter
+  searchInput?.addEventListener('input', renderList);
+
+  // Fallback Login Connect Wallet triggering standard Header event
+  btnFallbackConnect?.addEventListener('click', () => {
+    const mainConnectBtn = document.getElementById('btn-open-login');
+    if (mainConnectBtn) {
+      mainConnectBtn.click();
+    }
+  });
+
+  // Watch for connection state
+  setInterval(() => {
+    const currentLoginState = getIsLoggedIn();
+    const loginStateCheck = loginFallback?.classList.contains('hidden');
+    // If the displayed login fallback visibility is not aligned with actual state, re-render workspace
+    if (currentLoginState === loginStateCheck) {
+      // already aligned
+    } else {
+      renderWorkspace();
+    }
+  }, 1000);
+
+  // Initial Load
+  loadProposals();
+  renderList();
+  renderWorkspace();
 </script>
