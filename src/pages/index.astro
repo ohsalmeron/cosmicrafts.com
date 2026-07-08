@@ -3,85 +3,135 @@ import Layout from '../layouts/Layout.astro';
 import Starfield from '../components/Starfield.astro';
 ---
 
-<Layout title="Cosmicrafts | Under Construction">
-  <div class="fixed inset-0 h-screen w-screen overflow-hidden flex flex-col justify-between p-6 md:p-10 select-none z-10">
-    <!-- Starfield Background -->
+<Layout title="Cosmicrafts | Reforging">
+  <!-- Main Viewport-Locked Container -->
+  <div class="fixed inset-0 h-screen w-screen overflow-hidden flex flex-col justify-between p-6 md:p-10 select-none z-10 bg-[#020208]">
+    <!-- Starfield Animated Background -->
     <Starfield />
 
-    <!-- Ambient blur glows in background -->
-    <div class="absolute top-1/4 left-1/4 w-[500px] h-[500px] bg-cyan-500/5 rounded-full blur-[120px] pointer-events-none z-0"></div>
-    <div class="absolute bottom-1/4 right-1/4 w-[500px] h-[500px] bg-indigo-500/5 rounded-full blur-[120px] pointer-events-none z-0"></div>
+    <!-- Ambient Grid & Scanline FX for sci-fi atmosphere -->
+    <div class="absolute inset-0 bg-[linear-gradient(rgba(18,16,16,0)_50%,rgba(0,0,0,0.25)_50%),linear-gradient(90deg,rgba(255,0,0,0.06),rgba(0,255,0,0.02),rgba(0,0,255,0.06))] bg-[size:100%_4px,6px_100%] pointer-events-none z-0 opacity-30"></div>
+    
+    <!-- Ambient Nebulous Glows -->
+    <div class="absolute top-1/3 left-1/4 w-[600px] h-[500px] bg-cyan-500/5 rounded-full blur-[140px] pointer-events-none z-0 animate-pulse-slow"></div>
+    <div class="absolute bottom-1/3 right-1/4 w-[500px] h-[500px] bg-indigo-500/5 rounded-full blur-[140px] pointer-events-none z-0 animate-pulse-slow-reverse"></div>
 
-    <!-- Header -->
-    <header class="w-full max-w-7xl mx-auto flex justify-between items-center z-10">
-      <img src="/logo.svg" alt="Cosmicrafts Logo" class="h-8 md:h-10 opacity-90" />
-      <div class="flex items-center space-x-2 text-[10px] md:text-xs text-cyan-400 font-mono tracking-widest uppercase bg-cyan-950/20 border border-cyan-500/20 px-3 py-1.5 rounded-full">
-        <span class="inline-block w-2 h-2 rounded-full bg-cyan-400 animate-pulse"></span>
-        <span>UNDER CONSTRUCTION</span>
+    <!-- Header / Telemetry -->
+    <header class="w-full max-w-7xl mx-auto flex justify-between items-start z-10 font-mono text-[9px] md:text-xs text-slate-400 tracking-wider">
+      <div class="flex flex-col gap-1">
+        <img src="/logo.svg" alt="Cosmicrafts Logo" class="h-8 md:h-10 opacity-95 mb-2 hover:scale-[1.02] transition-transform duration-300" />
+        <span class="text-slate-500">[ SYSTEM SOURCE: CLOUD_INFRA ]</span>
+      </div>
+      
+      <div class="flex flex-col items-end gap-1 text-right">
+        <div class="flex items-center space-x-2 text-cyan-400 bg-cyan-950/20 border border-cyan-500/20 px-3 py-1 rounded-full">
+          <span class="inline-block w-1.5 h-1.5 rounded-full bg-cyan-400 animate-ping"></span>
+          <span class="font-semibold uppercase tracking-widest text-[9px] md:text-xs">Reforging Ecosytem</span>
+        </div>
+        <span class="text-slate-500">[ SECURE TRANSMISSION // SEC_VERIFIED ]</span>
       </div>
     </header>
 
-    <!-- Main Content Area -->
+    <!-- Main Dynamic Section -->
     <main class="w-full max-w-7xl mx-auto flex-1 flex items-center justify-between z-10 gap-10">
-      <!-- Left: Text/Glassmorphic Card -->
+      
+      <!-- Left: Sci-fi Dashboard Console -->
       <div class="w-full lg:max-w-xl flex flex-col justify-center">
-        <div class="backdrop-blur-md bg-slate-950/45 border border-white/10 rounded-2xl p-6 md:p-10 shadow-[0_0_50px_rgba(15,185,253,0.08)] relative overflow-hidden">
-          <!-- Card corner accents -->
-          <div class="absolute top-0 left-0 w-4 h-4 border-t-2 border-l-2 border-cyan-500/50 rounded-tl"></div>
-          <div class="absolute top-0 right-0 w-4 h-4 border-t-2 border-r-2 border-cyan-500/50 rounded-tr"></div>
-          <div class="absolute bottom-0 left-0 w-4 h-4 border-b-2 border-l-2 border-cyan-500/50 rounded-bl"></div>
-          <div class="absolute bottom-0 right-0 w-4 h-4 border-b-2 border-r-2 border-cyan-500/50 rounded-br"></div>
+        <div class="relative backdrop-blur-lg bg-slate-950/40 border border-cyan-500/10 rounded-xl p-8 shadow-[0_0_50px_rgba(6,182,212,0.05)] overflow-hidden">
+          <!-- Cyber Corner Brackets -->
+          <div class="absolute top-0 left-0 w-6 h-6 border-t border-l border-cyan-400/60"></div>
+          <div class="absolute top-0 right-0 w-6 h-6 border-t border-r border-cyan-400/60"></div>
+          <div class="absolute bottom-0 left-0 w-6 h-6 border-b border-l border-cyan-400/60"></div>
+          <div class="absolute bottom-0 right-0 w-6 h-6 border-b border-r border-cyan-400/60"></div>
+
+          <!-- Digital Scan Line Accent -->
+          <div class="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-cyan-400/40 to-transparent animate-scan"></div>
+
+          <!-- Technical Specs Sub-header -->
+          <div class="flex items-center justify-between text-[10px] text-cyan-500 font-mono tracking-widest uppercase mb-6 border-b border-white/5 pb-3">
+            <span>[ SYSTEM: STANDBY ]</span>
+            <span>COSMICRAFTS // ERC-20</span>
+          </div>
 
           <!-- Title -->
-          <h1 class="text-3xl md:text-5xl font-extrabold tracking-tighter bg-gradient-to-r from-cyan-400 via-indigo-400 to-purple-400 bg-clip-text text-transparent uppercase mb-6 animate-pulse-slow">
-            COMING SOON
+          <h1 class="text-4xl md:text-6xl font-black tracking-tight uppercase leading-none mb-4 bg-gradient-to-r from-white via-slate-100 to-cyan-400 bg-clip-text text-transparent">
+            Reforging<br/>The Future
           </h1>
 
-          <!-- Plain English Statement -->
-          <p class="text-sm md:text-base text-slate-300 font-light leading-relaxed text-justify">
-            We are currently building a brand new, highly optimized experience for the Cosmicrafts universe. Our team is working behind the scenes on our next phase.
+          <!-- Statement description -->
+          <p class="text-xs md:text-sm text-slate-300 font-light leading-relaxed mb-6 text-justify">
+            We are restructuring the Cosmicrafts franchise for a fast, frictionless, and secure future. Deprecating the complex on-chain ICP engine, we are engineering a highly optimized hybrid architecture combining blazing-fast cloud multiplayer lobbies with a stable, secure, and permanent Ethereum ERC-20 token ecosystem.
           </p>
+
+          <!-- Technical Grid readout -->
+          <div class="grid grid-cols-2 gap-4 font-mono text-[10px] text-slate-500 border-t border-white/5 pt-4">
+            <div class="flex flex-col gap-1">
+              <span>INITIAL_SUPPLY: 1,000,000,000</span>
+              <span>TOKEN_TYPE: ERC-20</span>
+            </div>
+            <div class="flex flex-col gap-1 text-right">
+              <span>TARGET_CHAIN: ETHEREUM</span>
+              <span>INFRA_METRICS: ACTIVE</span>
+            </div>
+          </div>
         </div>
       </div>
 
-      <!-- Right: Floating Spaceship & Planet (Desktop Only) -->
-      <div class="hidden lg:flex flex-1 justify-center items-center relative h-full min-h-[400px]">
-        <!-- Ambient Orbit Ring -->
-        <div class="absolute w-[350px] h-[350px] border border-white/5 rounded-full rotate-12 pointer-events-none"></div>
-        <div class="absolute w-[450px] h-[450px] border border-dashed border-cyan-500/5 rounded-full -rotate-12 pointer-events-none"></div>
+      <!-- Right: Immersive 3D Space Scene -->
+      <div class="hidden lg:flex flex-1 justify-center items-center relative h-full min-h-[420px]">
+        <!-- Orbit rings with precise CSS animations -->
+        <div class="absolute w-[360px] h-[350px] border border-cyan-500/10 rounded-full rotate-12 pointer-events-none animate-pulse-slow"></div>
+        <div class="absolute w-[440px] h-[440px] border border-dashed border-cyan-400/5 rounded-full -rotate-12 pointer-events-none animate-pulse-slow-reverse"></div>
+        
+        <!-- Technical HUD overlay -->
+        <div class="absolute w-44 h-44 border border-dashed border-cyan-500/15 rounded-full flex items-center justify-center pointer-events-none">
+          <div class="w-24 h-24 border border-cyan-500/10 rounded-full flex items-center justify-center animate-spin-slow">
+            <div class="w-1.5 h-1.5 rounded-full bg-cyan-400"></div>
+          </div>
+        </div>
 
-        <!-- Planet Background -->
+        <!-- Target Reticle -->
+        <div class="absolute w-72 h-72 border border-white/5 rounded-full flex items-center justify-center pointer-events-none">
+          <div class="absolute top-0 left-1/2 -translate-x-1/2 w-4 h-1 bg-cyan-500/40"></div>
+          <div class="absolute bottom-0 left-1/2 -translate-x-1/2 w-4 h-1 bg-cyan-500/40"></div>
+          <div class="absolute left-0 top-1/2 -translate-y-1/2 w-1 h-4 bg-cyan-500/40"></div>
+          <div class="absolute right-0 top-1/2 -translate-y-1/2 w-1 h-4 bg-cyan-500/40"></div>
+        </div>
+
+        <!-- Slow Rotating Planet -->
         <img 
           src="/assets/planet.webp" 
           alt="Planet" 
-          class="absolute w-48 h-48 opacity-40 blur-[1.5px] -top-10 -right-10 animate-spin-slow pointer-events-none"
+          class="absolute w-52 h-52 opacity-50 blur-[0.5px] -top-5 -right-5 animate-spin-slow pointer-events-none"
         />
 
         <!-- Main Spaceship -->
         <img 
           src="/assets/starter-ship.webp" 
           alt="Starter Ship" 
-          class="w-[380px] h-auto drop-shadow-[0_10px_30px_rgba(15,185,253,0.25)] animate-float pointer-events-none z-10"
+          class="w-[390px] h-auto drop-shadow-[0_15px_40px_rgba(15,185,253,0.3)] animate-float pointer-events-none z-10 hover:scale-105 transition-transform duration-500"
         />
       </div>
     </main>
 
     <!-- Footer -->
-    <footer class="w-full max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center z-10 gap-4">
-      <p class="text-[10px] md:text-xs text-slate-500 font-mono tracking-wider">
-        &copy; 2026 COSMICRAFTS. ALL RIGHTS RESERVED.
-      </p>
+    <footer class="w-full max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center z-10 gap-4 border-t border-white/5 pt-4 font-mono text-[9px] md:text-xs text-slate-500">
+      <div class="flex items-center space-x-1">
+        <span>&copy; 2026 COSMICRAFTS. ALL RIGHTS RESERVED.</span>
+        <span class="text-cyan-500/50">|</span>
+        <span>LATENCY: [ 0ms_CLOUD ]</span>
+      </div>
       
-      <!-- Social links -->
+      <!-- Social links with glowing glass circles -->
       <div class="flex items-center space-x-3">
-        <a href="https://x.com/cosmicrafts" target="_blank" class="p-2 md:p-2.5 rounded-full border border-white/10 bg-white/5 hover:bg-cyan-500/20 hover:border-cyan-400/50 hover:text-cyan-400 transition-all duration-300">
-          <img src="/assets/icons/x.svg" alt="X/Twitter" class="w-4 h-4 md:w-5 md:h-5 opacity-80" />
+        <a href="https://x.com/cosmicrafts" target="_blank" class="p-2.5 rounded-lg border border-white/10 bg-white/5 hover:bg-cyan-500/15 hover:border-cyan-400/40 hover:shadow-[0_0_15px_rgba(6,182,212,0.25)] transition-all duration-300">
+          <img src="/assets/icons/x.svg" alt="X" class="w-4 h-4 md:w-5 md:h-5 opacity-90 hover:opacity-100" />
         </a>
-        <a href="https://discord.com/invite/cosmicrafts-884272584491941888" target="_blank" class="p-2 md:p-2.5 rounded-full border border-white/10 bg-white/5 hover:bg-cyan-500/20 hover:border-cyan-400/50 hover:text-cyan-400 transition-all duration-300">
-          <img src="/assets/icons/discord.svg" alt="Discord" class="w-4 h-4 md:w-5 md:h-5 opacity-80" />
+        <a href="https://discord.com/invite/cosmicrafts-884272584491941888" target="_blank" class="p-2.5 rounded-lg border border-white/10 bg-white/5 hover:bg-cyan-500/15 hover:border-cyan-400/40 hover:shadow-[0_0_15px_rgba(6,182,212,0.25)] transition-all duration-300">
+          <img src="/assets/icons/discord.svg" alt="Discord" class="w-4 h-4 md:w-5 md:h-5 opacity-90 hover:opacity-100" />
         </a>
-        <a href="https://www.youtube.com/@cosmicrafts" target="_blank" class="p-2 md:p-2.5 rounded-full border border-white/10 bg-white/5 hover:bg-cyan-500/20 hover:border-cyan-400/50 hover:text-cyan-400 transition-all duration-300">
-          <img src="/assets/icons/youtube.svg" alt="YouTube" class="w-4 h-4 md:w-5 md:h-5 opacity-80" />
+        <a href="https://www.youtube.com/@cosmicrafts" target="_blank" class="p-2.5 rounded-lg border border-white/10 bg-white/5 hover:bg-cyan-500/15 hover:border-cyan-400/40 hover:shadow-[0_0_15px_rgba(6,182,212,0.25)] transition-all duration-300">
+          <img src="/assets/icons/youtube.svg" alt="YouTube" class="w-4 h-4 md:w-5 md:h-5 opacity-90 hover:opacity-100" />
         </a>
       </div>
     </footer>
@@ -89,21 +139,29 @@ import Starfield from '../components/Starfield.astro';
 </Layout>
 
 <style>
-  /* Custom smooth float animation for spaceship */
+  /* Viewport locking */
+  :global(body) {
+    overflow: hidden !important;
+    height: 100vh !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  /* Exquisite smooth float animation */
   @keyframes float {
     0%, 100% {
       transform: translateY(0px) rotate(0deg) scale(1);
     }
     50% {
-      transform: translateY(-15px) rotate(2deg) scale(1.02);
+      transform: translateY(-12px) rotate(1.5deg) scale(1.01);
     }
   }
 
   .animate-float {
-    animation: float 6s ease-in-out infinite;
+    animation: float 7s ease-in-out infinite;
   }
 
-  /* Slow rotate for background planet */
+  /* Slow rotate for planet */
   @keyframes spin-slow {
     from {
       transform: rotate(0deg);
@@ -114,22 +172,48 @@ import Starfield from '../components/Starfield.astro';
   }
 
   .animate-spin-slow {
-    animation: spin-slow 120s linear infinite;
+    animation: spin-slow 180s linear infinite;
   }
 
-  /* Slow elegant pulse for title */
+  /* Subtle pulsing glows */
   @keyframes pulse-slow {
+    0%, 100% { opacity: 0.8; transform: scale(1); }
+    50% { opacity: 0.9; transform: scale(1.03); }
+  }
+  @keyframes pulse-slow-reverse {
+    0%, 100% { opacity: 0.9; transform: scale(1.02); }
+    50% { opacity: 0.8; transform: scale(1); }
+  }
+
+  .animate-pulse-slow {
+    animation: pulse-slow 8s ease-in-out infinite;
+  }
+  .animate-pulse-slow-reverse {
+    animation: pulse-slow-reverse 8s ease-in-out infinite;
+  }
+
+  /* Slow elegant pulse for title background */
+  @keyframes pulse-glow {
     0%, 100% {
-      opacity: 1;
-      filter: drop-shadow(0 0 10px rgba(6, 182, 212, 0.2));
+      filter: drop-shadow(0 0 10px rgba(6, 182, 212, 0.1));
     }
     50% {
-      opacity: 0.8;
-      filter: drop-shadow(0 0 25px rgba(99, 102, 241, 0.4));
+      filter: drop-shadow(0 0 25px rgba(99, 102, 241, 0.25));
     }
   }
 
   .animate-pulse-slow {
-    animation: pulse-slow 4s ease-in-out infinite;
+    animation: pulse-glow 5s ease-in-out infinite;
+  }
+
+  /* Tech scanner line animation */
+  @keyframes scan {
+    0% { transform: translateY(-10px); opacity: 0; }
+    15% { opacity: 0.5; }
+    85% { opacity: 0.5; }
+    100% { transform: translateY(320px); opacity: 0; }
+  }
+  .animate-scan {
+    animation: scan 6s cubic-bezier(0.4, 0, 0.2, 1) infinite;
   }
 </style>
