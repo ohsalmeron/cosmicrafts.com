@@ -2,6 +2,7 @@
 import Layout from '../layouts/Layout.astro';
 import Starfield from '../components/Starfield.astro';
 import Header from '../components/Header.astro';
+import Panel from '../components/Panel.astro';
 ---
 
 <Layout title="Cosmicrafts | Community Claim">
@@ -13,12 +14,7 @@ import Header from '../components/Header.astro';
 
     <!-- Main claims interface -->
     <main class="w-full max-w-7xl mx-auto flex-1 flex items-center justify-center z-10">
-      <div class="w-full max-w-md relative backdrop-blur-lg bg-slate-950/40 border border-cyan-500/10 rounded-xl p-8 shadow-[0_0_50px_rgba(6,182,212,0.05)] overflow-hidden text-center">
-        <!-- Corner brackets -->
-        <div class="absolute top-0 left-0 w-4 h-4 border-t border-l border-cyan-400/40"></div>
-        <div class="absolute top-0 right-0 w-4 h-4 border-t border-r border-cyan-400/40"></div>
-        <div class="absolute bottom-0 left-0 w-4 h-4 border-b border-l border-cyan-400/40"></div>
-        <div class="absolute bottom-0 right-0 w-4 h-4 border-b border-r border-cyan-400/40"></div>
+      <Panel class="w-full max-w-md p-8 text-center">
 
         <h2 class="text-xs text-cyan-400 font-mono tracking-widest uppercase mb-2">[ Community allocation ]</h2>
         <h1 class="text-2xl md:text-3xl font-black tracking-tight uppercase text-white mb-6">Claim Portal</h1>
@@ -68,9 +64,9 @@ import Header from '../components/Header.astro';
           <div class="text-[9px] text-slate-500 border border-white/5 p-2 rounded bg-black/20">
             TX_HASH: 0x9e12...b4fa
           </div>
-        </div>
-      </div>
-    </main>
+          </div>
+        </Panel>
+      </main>
 
     <!-- Footer -->
     <footer class="w-full max-w-7xl mx-auto flex justify-between items-center z-10 font-mono text-[9px] text-slate-600">
