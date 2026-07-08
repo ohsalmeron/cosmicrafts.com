@@ -2,6 +2,7 @@
 import Layout from '../layouts/Layout.astro';
 import Starfield from '../components/Starfield.astro';
 import Header from '../components/Header.astro';
+import Panel from '../components/Panel.astro';
 ---
 
 <Layout title="Cosmicrafts | Player Profile">
@@ -31,12 +32,7 @@ import Header from '../components/Header.astro';
       </div>
 
       <!-- Main Steam Card Frame (Transition Enabled) -->
-      <div id="profile-frame" class="w-full max-w-5xl mx-auto backdrop-blur-lg bg-slate-950/45 border border-cyan-500/10 rounded-xl p-6 md:p-8 shadow-[0_0_50px_rgba(6,182,212,0.06)] relative flex flex-col md:flex-row gap-6 md:gap-10 overflow-hidden items-stretch transition-all duration-300">
-        <!-- Cyber Corner Brackets -->
-        <div class="absolute top-0 left-0 w-6 h-6 border-t border-l border-cyan-400/50"></div>
-        <div class="absolute top-0 right-0 w-6 h-6 border-t border-r border-cyan-400/50"></div>
-        <div class="absolute bottom-0 left-0 w-6 h-6 border-b border-l border-cyan-400/50"></div>
-        <div class="absolute bottom-0 right-0 w-6 h-6 border-b border-r border-cyan-400/50"></div>
+      <Panel id="profile-frame" class="w-full max-w-5xl mx-auto p-6 md:p-8 flex flex-col md:flex-row gap-6 md:gap-10 items-stretch transition-all duration-300">
 
         <!-- Left side: Player Basic Info -->
         <div class="w-full md:w-80 flex flex-col justify-between border-b md:border-b-0 md:border-r border-white/5 pb-6 md:pb-0 md:pr-10">
@@ -105,8 +101,8 @@ import Header from '../components/Header.astro';
             </div>
           </div>
         </div>
-      </div>
-    </main>
+        </Panel>
+      </main>
 
     <!-- Floating High-Detail NFT Visor / Modal -->
     <div id="nft-visor-modal" class="fixed inset-0 z-[9999] hidden items-center justify-center p-4 bg-slate-950/50 backdrop-blur-md">
@@ -114,12 +110,7 @@ import Header from '../components/Header.astro';
       <div class="absolute inset-0 z-0" id="nft-visor-backdrop"></div>
       
       <!-- Visor Content Panel -->
-      <div class="relative w-full max-w-3xl backdrop-blur-2xl bg-slate-950/85 border border-cyan-500/20 rounded-2xl p-6 md:p-8 shadow-[0_0_80px_rgba(6,182,212,0.2)] flex flex-col md:flex-row gap-6 md:gap-10 z-10 select-none overflow-hidden text-left">
-        <!-- Corner Brackets -->
-        <div class="absolute top-0 left-0 w-6 h-6 border-t border-l border-cyan-400/50"></div>
-        <div class="absolute top-0 right-0 w-6 h-6 border-t border-r border-cyan-400/50"></div>
-        <div class="absolute bottom-0 left-0 w-6 h-6 border-b border-l border-cyan-400/50"></div>
-        <div class="absolute bottom-0 right-0 w-6 h-6 border-b border-r border-cyan-400/50"></div>
+      <Panel class="relative w-full max-w-3xl p-6 md:p-8 flex flex-col md:flex-row gap-6 md:gap-10 z-10 select-none text-left">
 
         <!-- Left Column: Visual Render -->
         <div class="w-full md:w-72 flex flex-col items-center justify-center bg-[radial-gradient(circle_at_center,rgba(6,182,212,0.12)_0%,transparent_75%)] border border-white/5 rounded-xl p-6 relative">
@@ -190,7 +181,7 @@ import Header from '../components/Header.astro';
             </div>
           </div>
         </div>
-      </div>
+      </Panel>
     </div>
 
     <!-- Footer -->
@@ -652,19 +643,5 @@ import Header from '../components/Header.astro';
     animation: float-visor 6s ease-in-out infinite;
   }
 
-  /* Scrollbars inside profile container */
-  .scrollbar-thin::-webkit-scrollbar {
-    width: 4px;
-    height: 4px;
-  }
-  .scrollbar-thin::-webkit-scrollbar-track {
-    background: transparent;
-  }
-  .scrollbar-thin::-webkit-scrollbar-thumb {
-    background: rgba(255, 255, 255, 0.1);
-    border-radius: 9999px;
-  }
-  .scrollbar-thin::-webkit-scrollbar-thumb:hover {
-    background: rgba(15, 185, 253, 0.3);
-  }
+  
 </style>
