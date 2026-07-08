@@ -10,9 +10,23 @@ This document serves as the permanent **Source of Truth** for the vision, scope,
 
 ---
 
+## 🚀 The Pivot
+
+Cosmicrafts started as a fully on-chain game experiment. We respect that work and everyone who contributed to it.
+
+But we're shifting gears to make this thing real:
+
+- **Hybrid cloud + Ethereum**: Game state, matchmaking, profiles — all on cloud servers. Fast, no gas fees. SPIRAL lives on Ethereum as a standard ERC-20. Permanent, liquid, no cycle management.
+- **Lower costs**: This setup costs a fraction of what we were burning. That means we can keep delivering instead of watching overhead eat the runway.
+- **No free airdrops**: Every token is bought or earned. That's it.
+
+This is not a betrayal of the original vision — it's the only way to ship something people can actually use. We owe that to the people who believed in this.
+
+---
+
 ## 🎯 1. The Core Vision: The AI-Driven Space Sandbox
 
-Cosmicrafts is pivoting from a traditional on-chain RTS game to a **Web2.5 AI-driven Creator Economy** (an AI-powered, decentralized Roblox for sci-fi assets).
+Cosmicrafts is building an **AI-powered creator sandbox** for sci-fi assets.
 
 - **The Forge**: Users prompt an AI engine (generating 3D spaceships, characters, or avatar items from text or 2D image inputs).
 - **The Utility**: The generated assets are instantly usable inside the game client or tradeable on our internal ledger.

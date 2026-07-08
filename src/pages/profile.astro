@@ -1,0 +1,514 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Starfield from '../components/Starfield.astro';
+import Header from '../components/Header.astro';
+---
+
+<Layout title="Cosmicrafts | Player Profile">
+  <div class="fixed inset-0 h-screen w-screen overflow-hidden flex flex-col justify-between p-6 md:p-10 select-none z-10 bg-[#020208]">
+    <!-- Starfield Background -->
+    <Starfield />
+
+    <!-- Ambient glows -->
+    <div class="absolute top-1/4 left-1/4 w-[500px] h-[500px] bg-cyan-500/5 rounded-full blur-[140px] pointer-events-none z-0"></div>
+    <div class="absolute bottom-1/4 right-1/4 w-[500px] h-[500px] bg-indigo-500/5 rounded-full blur-[140px] pointer-events-none z-0"></div>
+
+    <!-- Header component -->
+    <Header />
+
+    <!-- Main Profile Card Content Area -->
+    <main class="w-full max-w-7xl mx-auto flex-1 flex flex-col my-4 overflow-hidden z-10 justify-center">
+      <!-- Top controls / Selector -->
+      <div class="w-full flex justify-between items-center mb-4 font-mono text-[10px] md:text-xs">
+        <button id="btn-prev" class="px-4 py-2 bg-white/5 border border-white/5 hover:border-cyan-500/30 hover:bg-cyan-950/20 text-slate-400 hover:text-white rounded-lg transition-all duration-300 transform active:scale-95">
+          ◀ PREV PROFILE
+        </button>
+        <span class="text-slate-500 uppercase tracking-widest">[ CYCLING MOCK PROFILES: <span id="current-index-display" class="text-cyan-400">1</span> / 10 ]</span>
+        <button id="btn-next" class="px-4 py-2 bg-white/5 border border-white/5 hover:border-cyan-500/30 hover:bg-cyan-950/20 text-slate-400 hover:text-white rounded-lg transition-all duration-300 transform active:scale-95">
+          NEXT PROFILE ▶
+        </button>
+      </div>
+
+      <!-- Main Steam Card Frame -->
+      <div class="w-full max-w-5xl mx-auto backdrop-blur-lg bg-slate-950/45 border border-cyan-500/10 rounded-xl p-6 md:p-8 shadow-[0_0_50px_rgba(6,182,212,0.06)] relative flex flex-col md:flex-row gap-6 md:gap-10 overflow-hidden items-stretch">
+        <!-- Cyber Corner Brackets -->
+        <div class="absolute top-0 left-0 w-6 h-6 border-t border-l border-cyan-400/50"></div>
+        <div class="absolute top-0 right-0 w-6 h-6 border-t border-r border-cyan-400/50"></div>
+        <div class="absolute bottom-0 left-0 w-6 h-6 border-b border-l border-cyan-400/50"></div>
+        <div class="absolute bottom-0 right-0 w-6 h-6 border-b border-r border-cyan-400/50"></div>
+
+        <!-- Left side: Player Basic Info / Steam Card -->
+        <div class="w-full md:w-80 flex flex-col justify-between border-b md:border-b-0 md:border-r border-white/5 pb-6 md:pb-0 md:pr-10">
+          <div class="space-y-6">
+            <!-- Avatar & Username block -->
+            <div class="flex items-center space-x-4">
+              <!-- Avatar Circle -->
+              <div class="relative w-16 h-16 rounded-full border-2 border-cyan-500/30 overflow-hidden shadow-[0_0_20px_rgba(6,182,212,0.15)] flex-shrink-0">
+                <img id="player-avatar" src="/assets/avatar.webp" alt="Avatar" class="w-full h-full object-cover" />
+              </div>
+              <div class="flex flex-col text-left">
+                <h2 id="player-name" class="text-lg md:text-2xl font-black text-white uppercase tracking-tight">BIZKIT_0x1337</h2>
+                <span id="player-title" class="text-[10px] text-cyan-400 font-mono tracking-widest uppercase">Galactic Emperor</span>
+              </div>
+            </div>
+
+            <!-- Level Progression (Steam Vibe) -->
+            <div class="space-y-1.5 font-mono text-[10px] text-left">
+              <div class="flex justify-between text-slate-400 uppercase">
+                <span>Galactic Level: <span id="player-level" class="text-white font-bold">99</span></span>
+                <span>XP: 100%</span>
+              </div>
+              <div class="w-full h-2 bg-slate-900 border border-white/5 rounded-full overflow-hidden">
+                <div id="player-xp-bar" class="h-full bg-gradient-to-r from-cyan-500 to-indigo-500 rounded-full" style="width: 100%"></div>
+              </div>
+            </div>
+
+            <!-- Staking & Token Metrics readout -->
+            <div class="bg-white/5 border border-white/5 rounded-lg p-4 font-mono text-xs text-left space-y-2.5">
+              <div class="text-[10px] text-slate-500 tracking-wider uppercase border-b border-white/5 pb-1">[ COSMIC_VAULT ]</div>
+              <div class="flex justify-between">
+                <span class="text-slate-400">Locked Stake:</span>
+                <span id="player-stake" class="text-white font-bold">70,000,000 SPIRAL</span>
+              </div>
+              <div class="flex justify-between">
+                <span class="text-slate-400">Available Claim:</span>
+                <span id="player-claimable" class="text-cyan-400 font-bold">12,500 SPIRAL</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Subtle Cryptographic Tooltip Toggle -->
+          <div class="relative pt-6 border-t border-white/5 mt-6 text-left">
+            <span class="text-[9px] text-slate-500 font-mono block mb-1 uppercase">[ CRYPTOGRAPHIC_IDENTITIES ]</span>
+            <div class="flex space-x-2">
+              <div class="p-1.5 rounded bg-white/5 border border-white/5 cursor-pointer hover:border-cyan-500/30 transition-all duration-300 relative group" id="ident-eth">
+                <img src="/assets/icons/metamask.svg" alt="ETH" class="w-4 h-4" />
+                <div class="absolute bottom-8 left-0 hidden group-hover:block bg-slate-950 border border-cyan-500/20 rounded px-2.5 py-1 text-[9px] font-mono text-white whitespace-nowrap z-50">
+                  EVM: <span id="player-addr-evm" class="text-cyan-400">0x71C...9312</span>
+                </div>
+              </div>
+              <div class="p-1.5 rounded bg-white/5 border border-white/5 cursor-pointer hover:border-cyan-500/30 transition-all duration-300 relative group" id="ident-sol">
+                <img src="/assets/icons/phantom.svg" alt="SOL" class="w-4 h-4" />
+                <div class="absolute bottom-8 left-0 hidden group-hover:block bg-slate-950 border border-cyan-500/20 rounded px-2.5 py-1 text-[9px] font-mono text-white whitespace-nowrap z-50">
+                  SOL: <span id="player-addr-sol" class="text-cyan-400">Phan...771a</span>
+                </div>
+              </div>
+              <div class="p-1.5 rounded bg-white/5 border border-white/5 cursor-pointer hover:border-cyan-500/30 transition-all duration-300 relative group" id="ident-btc">
+                <img src="/assets/icons/xverse.svg" alt="BTC" class="w-4 h-4" />
+                <div class="absolute bottom-8 left-0 hidden group-hover:block bg-slate-950 border border-cyan-500/20 rounded px-2.5 py-1 text-[9px] font-mono text-white whitespace-nowrap z-50">
+                  BTC: <span id="player-addr-btc" class="text-cyan-400">bc1p...337f</span>
+                </div>
+              </div>
+              <div class="p-1.5 rounded bg-white/5 border border-white/5 cursor-pointer hover:border-cyan-500/30 transition-all duration-300 relative group" id="ident-icp">
+                <img src="/assets/icons/icp.svg" alt="ICP" class="w-4 h-4" />
+                <div class="absolute bottom-8 left-0 hidden group-hover:block bg-slate-950 border border-cyan-500/20 rounded px-2.5 py-1 text-[9px] font-mono text-white whitespace-nowrap z-50">
+                  ICP: <span id="player-addr-icp" class="text-cyan-400">aaaaa-aa</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right side: Achievements and Galactic Inventory (Scrollable) -->
+        <div class="flex-1 flex flex-col gap-6 overflow-y-auto max-h-[55vh] md:max-h-[500px] scrollbar-thin text-left pr-2">
+          <!-- Achievements Section -->
+          <div class="space-y-3">
+            <h3 class="text-xs text-cyan-400 font-mono tracking-widest uppercase border-b border-white/5 pb-2">[ UNLOCKED ACHIEVEMENTS ]</h3>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3" id="achievements-container">
+              <!-- Dynamically populated via JS -->
+            </div>
+          </div>
+
+          <!-- Galactic Inventory Section -->
+          <div class="space-y-3">
+            <h3 class="text-xs text-cyan-400 font-mono tracking-widest uppercase border-b border-white/5 pb-2">[ GALACTIC INVENTORY ]</h3>
+            <div class="grid grid-cols-2 sm:grid-cols-3 gap-3" id="inventory-container">
+              <!-- Dynamically populated via JS -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="w-full max-w-7xl mx-auto flex justify-between items-center z-10 font-mono text-[9px] text-slate-600">
+      <span>&copy; 2026 COSMICRAFTS. PROFILE HUB V1.0</span>
+      <span>SECURE ENCRYPTED CONNECTION</span>
+    </footer>
+  </div>
+</Layout>
+
+<script>
+  // 10 Mock Profiles Database
+  const players = [
+    {
+      name: "BIZKIT_0x1337",
+      title: "Galactic Emperor",
+      level: 99,
+      xp: 100,
+      avatar: "/assets/avatar.webp",
+      stake: "70,000,000 SPIRAL",
+      claimable: "12,500 SPIRAL",
+      addresses: {
+        evm: "0x71C...9312",
+        sol: "Phan...771a",
+        btc: "bc1p...337f",
+        icp: "aaaaa-aa"
+      },
+      achievements: [
+        { title: "Creator of the Void", desc: "Helped forge the early alpha engine." },
+        { title: "Mainnet Deployer", desc: "Successfully routed standard ERC-20." }
+      ],
+      inventory: [
+        { name: "Dreadnought", rarity: "Legendary", desc: "Heavy void combat cruiser.", img: "/assets/starter-ship.webp" },
+        { name: "Cosmic Planet", rarity: "Mythic", desc: "Genesis home planet asset.", img: "/assets/planet.webp" }
+      ]
+    },
+    {
+      name: "KURISU_NXS",
+      title: "Fleet Admiral",
+      level: 74,
+      xp: 85,
+      avatar: "/assets/avatar.webp", // Will reuse the same avatar mock or add slight hue/borders later
+      stake: "120,000 SPIRAL",
+      claimable: "4,500 SPIRAL",
+      addresses: {
+        evm: "0x89A...c210",
+        sol: "SolP...992a",
+        btc: "bc1p...928b",
+        icp: "bbbbb-bb"
+      },
+      achievements: [
+        { title: "Fleet Commander", desc: "Commanded 50 successful war operations." },
+        { title: "Star Drifter", desc: "Traveled across 12 distinct solar sectors." }
+      ],
+      inventory: [
+        { name: "Flagship Carrier", rarity: "Epic", desc: "Large fleet logistics shuttle.", img: "/assets/starter-ship.webp" }
+      ]
+    },
+    {
+      name: "SAKUNIX_VOID",
+      title: "Bounty Hunter",
+      level: 45,
+      xp: 60,
+      avatar: "/assets/avatar.webp",
+      stake: "42,000 SPIRAL",
+      claimable: "1,200 SPIRAL",
+      addresses: {
+        evm: "0x45E...b312",
+        sol: "BntH...881f",
+        btc: "bc1p...112c",
+        icp: "ccccc-cc"
+      },
+      achievements: [
+        { title: "First Blood", desc: "Eliminated your first enemy flagship in battle." },
+        { title: "Asteroid Raider", desc: "Looted 10 deep-space pirate stashes." }
+      ],
+      inventory: [
+        { name: "Void Interceptor", rarity: "Rare", desc: "Fitted with stealth warp drives.", img: "/assets/starter-ship.webp" }
+      ]
+    },
+    {
+      name: "SHIZUKEN_CORP",
+      title: "Resource Mogul",
+      level: 30,
+      xp: 40,
+      avatar: "/assets/avatar.webp",
+      stake: "15,000 SPIRAL",
+      claimable: "800 SPIRAL",
+      addresses: {
+        evm: "0x12A...f92a",
+        sol: "Mine...331b",
+        btc: "bc1p...445d",
+        icp: "ddddd-dd"
+      },
+      achievements: [
+        { title: "Matter Harvester", desc: "Extracted over 100,000 units of cosmic ore." },
+        { title: "Deep Space Miner", desc: "Established your first mining outpost." }
+      ],
+      inventory: [
+        { name: "Mining Barge", rarity: "Common", desc: "Heavy cargo extraction rig.", img: "/assets/starter-ship.webp" }
+      ]
+    },
+    {
+      name: "ALEX_STARDUST",
+      title: "Space Cadet",
+      level: 12,
+      xp: 20,
+      avatar: "/assets/avatar.webp",
+      stake: "1,500 SPIRAL",
+      claimable: "150 SPIRAL",
+      addresses: {
+        evm: "0x99B...a881",
+        sol: "Cdts...110e",
+        btc: "bc1p...667e",
+        icp: "eeeee-ee"
+      },
+      achievements: [
+        { title: "First Flight", desc: "Completed the basic flight school tutorials." },
+        { title: "Warp Jump", desc: "Performed your first stellar jump." }
+      ],
+      inventory: [
+        { name: "Starter Scout", rarity: "Common", desc: "Standard entry-level scout frigate.", img: "/assets/starter-ship.webp" }
+      ]
+    },
+    {
+      name: "V_VOIDWALKER",
+      title: "Void Pathfinder",
+      level: 82,
+      xp: 92,
+      avatar: "/assets/avatar.webp",
+      stake: "5,000,000 SPIRAL",
+      claimable: "25,000 SPIRAL",
+      addresses: {
+        evm: "0x88D...c456",
+        sol: "Void...001a",
+        btc: "bc1p...990z",
+        icp: "fffff-ff"
+      },
+      achievements: [
+        { title: "Phantom Cloak", desc: "Traveled 10,000 LY while remaining fully cloaked." },
+        { title: "Shadow Strike", desc: "Destroyed an enemy flagship from deep stealth." }
+      ],
+      inventory: [
+        { name: "Stealth Frigate", rarity: "Epic", desc: "Custom radar-absorbent hull plating.", img: "/assets/starter-ship.webp" },
+        { name: "Chrono Module", rarity: "Legendary", desc: "Temporal drive stabilizer.", img: "/assets/planet.webp" }
+      ]
+    },
+    {
+      name: "SARA_COSMICON",
+      title: "Alliance Ambassador",
+      level: 55,
+      xp: 70,
+      avatar: "/assets/avatar.webp",
+      stake: "250,000 SPIRAL",
+      claimable: "9,000 SPIRAL",
+      addresses: {
+        evm: "0x77C...229a",
+        sol: "Dipl...442b",
+        btc: "bc1p...109y",
+        icp: "ggggg-gg"
+      },
+      achievements: [
+        { title: "Alliance Builder", desc: "Formed a coalition of 5 distinct player clans." },
+        { title: "Peacekeeper", desc: "Negotiated a treaty in a contested sector." }
+      ],
+      inventory: [
+        { name: "Diplomatic Shuttle", rarity: "Rare", desc: "Dignitary transport with heavy shielding.", img: "/assets/starter-ship.webp" }
+      ]
+    },
+    {
+      name: "X_CRIMSON",
+      title: "Arena Gladiator",
+      level: 68,
+      xp: 15,
+      avatar: "/assets/avatar.webp",
+      stake: "900,000 SPIRAL",
+      claimable: "15,500 SPIRAL",
+      addresses: {
+        evm: "0x68F...771c",
+        sol: "Glad...556c",
+        btc: "bc1p...228u",
+        icp: "hhhhh-hh"
+      },
+      achievements: [
+        { title: "Tournament Winner", desc: "Won the Q1 Crimson Void PVP Tournament." },
+        { title: "Crimson Blade", desc: "Scored 500 combat kills in Arena mode." }
+      ],
+      inventory: [
+        { name: "Heavy Cruiser", rarity: "Epic", desc: "Fitted with high-output laser batteries.", img: "/assets/starter-ship.webp" }
+      ]
+    },
+    {
+      name: "NANO_DRU",
+      title: "Shield Tech Specialist",
+      level: 38,
+      xp: 50,
+      avatar: "/assets/avatar.webp",
+      stake: "35,000 SPIRAL",
+      claimable: "1,100 SPIRAL",
+      addresses: {
+        evm: "0x38D...556f",
+        sol: "Tech...223e",
+        btc: "bc1p...009v",
+        icp: "iiiii-ii"
+      },
+      achievements: [
+        { title: "Shield Optimizer", desc: "Regenerated over 1,000,000 shield points in combat." },
+        { title: "Hyperdrive Overclock", desc: "Achieved over 150% standard warp speed." }
+      ],
+      inventory: [
+        { name: "Repair Corvette", rarity: "Common", desc: "Support craft with nano-weld capabilities.", img: "/assets/starter-ship.webp" }
+      ]
+    },
+    {
+      name: "ZEPHYR_WIND",
+      title: "Stellar Pathfinder",
+      level: 50,
+      xp: 5,
+      avatar: "/assets/avatar.webp",
+      stake: "150,000 SPIRAL",
+      claimable: "6,000 SPIRAL",
+      addresses: {
+        evm: "0x50C...112e",
+        sol: "Path...445z",
+        btc: "bc1p...889x",
+        icp: "jjjjj-jj"
+      },
+      achievements: [
+        { title: "Sector Cartographer", desc: "Fully scanned and mapped 100 unexplored systems." },
+        { title: "Stellar Cartographer", desc: "Discovered a hidden wormhole anomaly." }
+      ],
+      inventory: [
+        { name: "Explorer Vessel", rarity: "Rare", desc: "Long-range research and survey shuttle.", img: "/assets/starter-ship.webp" }
+      ]
+    }
+  ];
+
+  let currentIndex = 0;
+
+  // DOM selectors
+  const btnPrev = document.getElementById('btn-prev');
+  const btnNext = document.getElementById('btn-next');
+  const indexDisplay = document.getElementById('current-index-display');
+  const pName = document.getElementById('player-name');
+  const pTitle = document.getElementById('player-title');
+  const pLevel = document.getElementById('player-level');
+  const pXpBar = document.getElementById('player-xp-bar');
+  const pStake = document.getElementById('player-stake');
+  const pClaimable = document.getElementById('player-claimable');
+  
+  // Addresses selectors
+  const addrEvm = document.getElementById('player-addr-evm');
+  const addrSol = document.getElementById('player-addr-sol');
+  const addrBtc = document.getElementById('player-addr-btc');
+  const addrIcp = document.getElementById('player-addr-icp');
+
+  // Containers
+  const achContainer = document.getElementById('achievements-container');
+  const invContainer = document.getElementById('inventory-container');
+
+  const updateProfile = (idx: number) => {
+    const p = players[idx];
+    if (!p) return;
+
+    // Index display
+    if (indexDisplay) indexDisplay.innerText = (idx + 1).toString();
+
+    // Text details
+    if (pName) pName.innerText = p.name;
+    if (pTitle) pTitle.innerText = p.title;
+    if (pLevel) pLevel.innerText = p.level.toString();
+    if (pXpBar) pXpBar.style.width = `${p.xp}%`;
+    if (pStake) pStake.innerText = p.stake;
+    if (pClaimable) pClaimable.innerText = p.claimable;
+
+    // Cryptographic Addresses
+    if (addrEvm) addrEvm.innerText = p.addresses.evm;
+    if (addrSol) addrSol.innerText = p.addresses.sol;
+    if (addrBtc) addrBtc.innerText = p.addresses.btc;
+    if (addrIcp) addrIcp.innerText = p.addresses.icp;
+
+    // Populate Achievements
+    if (achContainer) {
+      achContainer.innerHTML = '';
+      p.achievements.forEach(ach => {
+        const item = document.createElement('div');
+        item.className = "bg-white/5 border border-white/5 hover:border-cyan-500/20 p-3 rounded-lg relative overflow-hidden flex flex-col justify-center transition-all duration-300";
+        item.innerHTML = `
+          <div class="absolute top-0 right-0 w-1.5 h-1.5 border-t border-r border-cyan-500/30"></div>
+          <span class="text-white font-bold text-xs uppercase tracking-tight">${ach.title}</span>
+          <p class="text-[10px] text-slate-400 font-light leading-snug mt-1">${ach.desc}</p>
+        `;
+        achContainer.appendChild(item);
+      });
+    }
+
+    // Populate Inventory
+    if (invContainer) {
+      invContainer.innerHTML = '';
+      p.inventory.forEach(inv => {
+        const isMythic = inv.rarity === "Mythic";
+        const isLegendary = inv.rarity === "Legendary";
+        const isEpic = inv.rarity === "Epic";
+        const isRare = inv.rarity === "Rare";
+        
+        let borderGlow = "border-white/5 hover:border-white/15";
+        let textGlow = "text-slate-400";
+        let shadowGlow = "";
+        
+        if (isMythic) {
+          borderGlow = "border-purple-500/30 hover:border-purple-400/50";
+          textGlow = "text-purple-400";
+          shadowGlow = "shadow-[0_0_15px_rgba(168,85,247,0.15)]";
+        } else if (isLegendary) {
+          borderGlow = "border-amber-500/30 hover:border-amber-400/50";
+          textGlow = "text-amber-400";
+          shadowGlow = "shadow-[0_0_15px_rgba(245,158,11,0.15)]";
+        } else if (isEpic) {
+          borderGlow = "border-indigo-500/30 hover:border-indigo-400/50";
+          textGlow = "text-indigo-400";
+          shadowGlow = "shadow-[0_0_15px_rgba(99,102,241,0.15)]";
+        } else if (isRare) {
+          borderGlow = "border-cyan-500/30 hover:border-cyan-400/50";
+          textGlow = "text-cyan-400";
+          shadowGlow = "shadow-[0_0_15px_rgba(6,182,212,0.15)]";
+        }
+
+        const item = document.createElement('div');
+        item.className = `bg-slate-950/40 border p-3 rounded-lg flex flex-col items-center text-center transition-all duration-300 hover:scale-[1.02] ${borderGlow} ${shadowGlow}`;
+        item.innerHTML = `
+          <!-- Mini 3D Render -->
+          <div class="relative w-12 h-12 flex items-center justify-center mb-2">
+            <img src="${inv.img}" alt="${inv.name}" class="max-w-full max-h-full object-contain ${isMythic || isLegendary ? 'animate-bounce-slow' : ''}" />
+          </div>
+          <span class="text-[10px] uppercase tracking-wider font-extrabold text-white leading-none">${inv.name}</span>
+          <span class="text-[8px] font-mono uppercase tracking-widest mt-1 ${textGlow}">${inv.rarity}</span>
+        `;
+        invContainer.appendChild(item);
+      });
+    }
+  };
+
+  // Nav actions
+  btnPrev?.addEventListener('click', () => {
+    currentIndex = currentIndex === 0 ? players.length - 1 : currentIndex - 1;
+    updateProfile(currentIndex);
+  });
+
+  btnNext?.addEventListener('click', () => {
+    currentIndex = currentIndex === players.length - 1 ? 0 : currentIndex + 1;
+    updateProfile(currentIndex);
+  });
+
+  // Initial load
+  updateProfile(0);
+</script>
+
+<style>
+  /* Bounce animations for legendary items */
+  @keyframes bounce-slow {
+    0%, 100% { transform: translateY(0px) rotate(0deg); }
+    50% { transform: translateY(-4px) rotate(1deg); }
+  }
+  .animate-bounce-slow {
+    animation: bounce-slow 4s ease-in-out infinite;
+  }
+
+  /* Scrollbars inside profile container */
+  .scrollbar-thin::-webkit-scrollbar {
+    width: 4px;
+    height: 4px;
+  }
+  .scrollbar-thin::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  .scrollbar-thin::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 9999px;
+  }
+  .scrollbar-thin::-webkit-scrollbar-thumb:hover {
+    background: rgba(15, 185, 253, 0.3);
+  }
+</style>
+</Layout>
