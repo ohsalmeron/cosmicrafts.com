@@ -16,6 +16,7 @@ import vScrollToTop from '@/directives/scrollToTop';
 import { useToastStore } from '@/stores/toast';
 
 const route = useRoute();
+const isHome = computed(() => route.path === '/');
 const isWhitepaper = computed(() => route.path === '/whitepaper');
 const isGame = computed(() => route.path === '/adventures');
 const isCosmicrafts2D = computed(() => route.path === '/cosmicrafts2d');
@@ -179,10 +180,10 @@ const closeEscMenu = () => {
   /> -->
   
   <main id="app" @keydown.esc="handleEscKey" :class="{ 'fullscreen-game': isFullscreenGame }">
-    <Header :hoverToShow="isFullscreenGame" />
+    <Header v-if="!isHome" :hoverToShow="isFullscreenGame" />
     <Modal />
     <router-view v-scroll-to-top />
-    <Footer :hideForFullscreenGame="isFullscreenGame" />
+    <Footer v-if="!isHome" :hideForFullscreenGame="isFullscreenGame" />
     
     <!-- ESC Menu component -->
     <EscMenu 
