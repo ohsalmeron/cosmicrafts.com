@@ -37,14 +37,14 @@ import Header from '../components/Header.astro';
         <div class="absolute bottom-0 left-0 w-6 h-6 border-b border-l border-cyan-400/50"></div>
         <div class="absolute bottom-0 right-0 w-6 h-6 border-b border-r border-cyan-400/50"></div>
 
-        <!-- Left side: Player Basic Info / Steam Card -->
+        <!-- Left side: Player Basic Info -->
         <div class="w-full md:w-80 flex flex-col justify-between border-b md:border-b-0 md:border-r border-white/5 pb-6 md:pb-0 md:pr-10">
           <div class="space-y-6">
             <!-- Avatar & Username block -->
             <div class="flex items-center space-x-4">
               <!-- Avatar Circle -->
               <div class="relative w-16 h-16 rounded-full border-2 border-cyan-500/30 overflow-hidden shadow-[0_0_20px_rgba(6,182,212,0.15)] flex-shrink-0">
-                <img id="player-avatar" src="/assets/avatar.webp" alt="Avatar" class="w-full h-full object-cover" />
+                <img id="player-avatar" src="/assets/avatars/Avatar_01.webp" alt="Avatar" class="w-full h-full object-cover" />
               </div>
               <div class="flex flex-col text-left">
                 <h2 id="player-name" class="text-lg md:text-2xl font-black text-white uppercase tracking-tight">BIZKIT_0x1337</h2>
@@ -52,10 +52,10 @@ import Header from '../components/Header.astro';
               </div>
             </div>
 
-            <!-- Level Progression (Steam Vibe) -->
+            <!-- Level Progression -->
             <div class="space-y-1.5 font-mono text-[10px] text-left">
               <div class="flex justify-between text-slate-400 uppercase">
-                <span>Galactic Level: <span id="player-level" class="text-white font-bold">99</span></span>
+                <span>Level: <span id="player-level" class="text-white font-bold">99</span></span>
                 <span>XP: 100%</span>
               </div>
               <div class="w-full h-2 bg-slate-900 border border-white/5 rounded-full overflow-hidden">
@@ -63,65 +63,42 @@ import Header from '../components/Header.astro';
               </div>
             </div>
 
-            <!-- Staking & Token Metrics readout -->
+            <!-- Staking & Token Metrics -->
             <div class="bg-white/5 border border-white/5 rounded-lg p-4 font-mono text-xs text-left space-y-2.5">
-              <div class="text-[10px] text-slate-500 tracking-wider uppercase border-b border-white/5 pb-1">[ COSMIC_VAULT ]</div>
+              <div class="text-[10px] text-slate-500 tracking-wider uppercase border-b border-white/5 pb-1">[ VAULT ]</div>
               <div class="flex justify-between">
                 <span class="text-slate-400">Locked Stake:</span>
                 <span id="player-stake" class="text-white font-bold">70,000,000 SPIRAL</span>
               </div>
               <div class="flex justify-between">
-                <span class="text-slate-400">Available Claim:</span>
+                <span class="text-slate-400">Claimable:</span>
                 <span id="player-claimable" class="text-cyan-400 font-bold">12,500 SPIRAL</span>
               </div>
             </div>
           </div>
 
-          <!-- Subtle Cryptographic Tooltip Toggle -->
+          <!-- Subtle Cryptographic Identities -->
           <div class="relative pt-6 border-t border-white/5 mt-6 text-left">
-            <span class="text-[9px] text-slate-500 font-mono block mb-1 uppercase">[ CRYPTOGRAPHIC_IDENTITIES ]</span>
-            <div class="flex space-x-2">
-              <div class="p-1.5 rounded bg-white/5 border border-white/5 cursor-pointer hover:border-cyan-500/30 transition-all duration-300 relative group" id="ident-eth">
-                <img src="/assets/icons/metamask.svg" alt="ETH" class="w-4 h-4" />
-                <div class="absolute bottom-8 left-0 hidden group-hover:block bg-slate-950 border border-cyan-500/20 rounded px-2.5 py-1 text-[9px] font-mono text-white whitespace-nowrap z-50">
-                  EVM: <span id="player-addr-evm" class="text-cyan-400">0x71C...9312</span>
-                </div>
-              </div>
-              <div class="p-1.5 rounded bg-white/5 border border-white/5 cursor-pointer hover:border-cyan-500/30 transition-all duration-300 relative group" id="ident-sol">
-                <img src="/assets/icons/phantom.svg" alt="SOL" class="w-4 h-4" />
-                <div class="absolute bottom-8 left-0 hidden group-hover:block bg-slate-950 border border-cyan-500/20 rounded px-2.5 py-1 text-[9px] font-mono text-white whitespace-nowrap z-50">
-                  SOL: <span id="player-addr-sol" class="text-cyan-400">Phan...771a</span>
-                </div>
-              </div>
-              <div class="p-1.5 rounded bg-white/5 border border-white/5 cursor-pointer hover:border-cyan-500/30 transition-all duration-300 relative group" id="ident-btc">
-                <img src="/assets/icons/xverse.svg" alt="BTC" class="w-4 h-4" />
-                <div class="absolute bottom-8 left-0 hidden group-hover:block bg-slate-950 border border-cyan-500/20 rounded px-2.5 py-1 text-[9px] font-mono text-white whitespace-nowrap z-50">
-                  BTC: <span id="player-addr-btc" class="text-cyan-400">bc1p...337f</span>
-                </div>
-              </div>
-              <div class="p-1.5 rounded bg-white/5 border border-white/5 cursor-pointer hover:border-cyan-500/30 transition-all duration-300 relative group" id="ident-icp">
-                <img src="/assets/icons/icp.svg" alt="ICP" class="w-4 h-4" />
-                <div class="absolute bottom-8 left-0 hidden group-hover:block bg-slate-950 border border-cyan-500/20 rounded px-2.5 py-1 text-[9px] font-mono text-white whitespace-nowrap z-50">
-                  ICP: <span id="player-addr-icp" class="text-cyan-400">aaaaa-aa</span>
-                </div>
-              </div>
+            <span class="text-[9px] text-slate-500 font-mono block mb-2 uppercase">[ IDENTITIES ]</span>
+            <div class="flex space-x-2" id="identities-container">
+              <!-- Dynamically rendered via JS -->
             </div>
           </div>
         </div>
 
-        <!-- Right side: Achievements and Galactic Inventory (Scrollable) -->
+        <!-- Right side: Achievements and Inventory -->
         <div class="flex-1 flex flex-col gap-6 overflow-y-auto max-h-[55vh] md:max-h-[500px] scrollbar-thin text-left pr-2">
           <!-- Achievements Section -->
           <div class="space-y-3">
-            <h3 class="text-xs text-cyan-400 font-mono tracking-widest uppercase border-b border-white/5 pb-2">[ UNLOCKED ACHIEVEMENTS ]</h3>
+            <h3 class="text-xs text-cyan-400 font-mono tracking-widest uppercase border-b border-white/5 pb-2">[ ACHIEVEMENTS ]</h3>
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-3" id="achievements-container">
               <!-- Dynamically populated via JS -->
             </div>
           </div>
 
-          <!-- Galactic Inventory Section -->
+          <!-- Inventory Section -->
           <div class="space-y-3">
-            <h3 class="text-xs text-cyan-400 font-mono tracking-widest uppercase border-b border-white/5 pb-2">[ GALACTIC INVENTORY ]</h3>
+            <h3 class="text-xs text-cyan-400 font-mono tracking-widest uppercase border-b border-white/5 pb-2">[ INVENTORY ]</h3>
             <div class="grid grid-cols-2 sm:grid-cols-3 gap-3" id="inventory-container">
               <!-- Dynamically populated via JS -->
             </div>
@@ -146,15 +123,15 @@ import Header from '../components/Header.astro';
       title: "Galactic Emperor",
       level: 99,
       xp: 100,
-      avatar: "/assets/avatar.webp",
+      avatar: "/assets/avatars/Avatar_01.webp",
       stake: "70,000,000 SPIRAL",
       claimable: "12,500 SPIRAL",
-      addresses: {
-        evm: "0x71C...9312",
-        sol: "Phan...771a",
-        btc: "bc1p...337f",
-        icp: "aaaaa-aa"
-      },
+      identities: [
+        { type: "eth", icon: "/assets/icons/metamask.svg", label: "EVM", addr: "0x71C...9312" },
+        { type: "sol", icon: "/assets/icons/phantom.svg", label: "SOL", addr: "Phan...771a" },
+        { type: "btc", icon: "/assets/icons/xverse.svg", label: "BTC", addr: "bc1p...337f" },
+        { type: "icp", icon: "/assets/icons/icp.svg", label: "ICP", addr: "aaaaa-aa" }
+      ],
       achievements: [
         { title: "Creator of the Void", desc: "Helped forge the early alpha engine." },
         { title: "Mainnet Deployer", desc: "Successfully routed standard ERC-20." }
@@ -169,15 +146,12 @@ import Header from '../components/Header.astro';
       title: "Fleet Admiral",
       level: 74,
       xp: 85,
-      avatar: "/assets/avatar.webp", // Will reuse the same avatar mock or add slight hue/borders later
+      avatar: "/assets/avatars/Avatar_02.webp",
       stake: "120,000 SPIRAL",
       claimable: "4,500 SPIRAL",
-      addresses: {
-        evm: "0x89A...c210",
-        sol: "SolP...992a",
-        btc: "bc1p...928b",
-        icp: "bbbbb-bb"
-      },
+      identities: [
+        { type: "eth", icon: "/assets/icons/metamask.svg", label: "EVM", addr: "0x89A...c210" }
+      ],
       achievements: [
         { title: "Fleet Commander", desc: "Commanded 50 successful war operations." },
         { title: "Star Drifter", desc: "Traveled across 12 distinct solar sectors." }
@@ -191,15 +165,13 @@ import Header from '../components/Header.astro';
       title: "Bounty Hunter",
       level: 45,
       xp: 60,
-      avatar: "/assets/avatar.webp",
+      avatar: "/assets/avatars/Avatar_03.webp",
       stake: "42,000 SPIRAL",
       claimable: "1,200 SPIRAL",
-      addresses: {
-        evm: "0x45E...b312",
-        sol: "BntH...881f",
-        btc: "bc1p...112c",
-        icp: "ccccc-cc"
-      },
+      identities: [
+        { type: "sol", icon: "/assets/icons/phantom.svg", label: "SOL", addr: "BntH...881f" },
+        { type: "btc", icon: "/assets/icons/xverse.svg", label: "BTC", addr: "bc1p...112c" }
+      ],
       achievements: [
         { title: "First Blood", desc: "Eliminated your first enemy flagship in battle." },
         { title: "Asteroid Raider", desc: "Looted 10 deep-space pirate stashes." }
@@ -213,15 +185,12 @@ import Header from '../components/Header.astro';
       title: "Resource Mogul",
       level: 30,
       xp: 40,
-      avatar: "/assets/avatar.webp",
+      avatar: "/assets/avatars/Avatar_04.webp",
       stake: "15,000 SPIRAL",
       claimable: "800 SPIRAL",
-      addresses: {
-        evm: "0x12A...f92a",
-        sol: "Mine...331b",
-        btc: "bc1p...445d",
-        icp: "ddddd-dd"
-      },
+      identities: [
+        { type: "icp", icon: "/assets/icons/icp.svg", label: "ICP", addr: "ddddd-dd" }
+      ],
       achievements: [
         { title: "Matter Harvester", desc: "Extracted over 100,000 units of cosmic ore." },
         { title: "Deep Space Miner", desc: "Established your first mining outpost." }
@@ -235,15 +204,13 @@ import Header from '../components/Header.astro';
       title: "Space Cadet",
       level: 12,
       xp: 20,
-      avatar: "/assets/avatar.webp",
+      avatar: "/assets/avatars/Avatar_05.webp",
       stake: "1,500 SPIRAL",
       claimable: "150 SPIRAL",
-      addresses: {
-        evm: "0x99B...a881",
-        sol: "Cdts...110e",
-        btc: "bc1p...667e",
-        icp: "eeeee-ee"
-      },
+      identities: [
+        { type: "eth", icon: "/assets/icons/metamask.svg", label: "EVM", addr: "0x99B...a881" },
+        { type: "sol", icon: "/assets/icons/phantom.svg", label: "SOL", addr: "Cdts...110e" }
+      ],
       achievements: [
         { title: "First Flight", desc: "Completed the basic flight school tutorials." },
         { title: "Warp Jump", desc: "Performed your first stellar jump." }
@@ -257,15 +224,14 @@ import Header from '../components/Header.astro';
       title: "Void Pathfinder",
       level: 82,
       xp: 92,
-      avatar: "/assets/avatar.webp",
+      avatar: "/assets/avatars/Avatar_06.webp",
       stake: "5,000,000 SPIRAL",
       claimable: "25,000 SPIRAL",
-      addresses: {
-        evm: "0x88D...c456",
-        sol: "Void...001a",
-        btc: "bc1p...990z",
-        icp: "fffff-ff"
-      },
+      identities: [
+        { type: "sol", icon: "/assets/icons/phantom.svg", label: "SOL", addr: "Void...001a" },
+        { type: "btc", icon: "/assets/icons/xverse.svg", label: "BTC", addr: "bc1p...990z" },
+        { type: "icp", icon: "/assets/icons/icp.svg", label: "ICP", addr: "fffff-ff" }
+      ],
       achievements: [
         { title: "Phantom Cloak", desc: "Traveled 10,000 LY while remaining fully cloaked." },
         { title: "Shadow Strike", desc: "Destroyed an enemy flagship from deep stealth." }
@@ -280,15 +246,13 @@ import Header from '../components/Header.astro';
       title: "Alliance Ambassador",
       level: 55,
       xp: 70,
-      avatar: "/assets/avatar.webp",
+      avatar: "/assets/avatars/Avatar_07.webp",
       stake: "250,000 SPIRAL",
       claimable: "9,000 SPIRAL",
-      addresses: {
-        evm: "0x77C...229a",
-        sol: "Dipl...442b",
-        btc: "bc1p...109y",
-        icp: "ggggg-gg"
-      },
+      identities: [
+        { type: "eth", icon: "/assets/icons/metamask.svg", label: "EVM", addr: "0x77C...229a" },
+        { type: "btc", icon: "/assets/icons/xverse.svg", label: "BTC", addr: "bc1p...109y" }
+      ],
       achievements: [
         { title: "Alliance Builder", desc: "Formed a coalition of 5 distinct player clans." },
         { title: "Peacekeeper", desc: "Negotiated a treaty in a contested sector." }
@@ -302,15 +266,12 @@ import Header from '../components/Header.astro';
       title: "Arena Gladiator",
       level: 68,
       xp: 15,
-      avatar: "/assets/avatar.webp",
+      avatar: "/assets/avatars/Avatar_08.webp",
       stake: "900,000 SPIRAL",
       claimable: "15,500 SPIRAL",
-      addresses: {
-        evm: "0x68F...771c",
-        sol: "Glad...556c",
-        btc: "bc1p...228u",
-        icp: "hhhhh-hh"
-      },
+      identities: [
+        { type: "eth", icon: "/assets/icons/metamask.svg", label: "EVM", addr: "0x68F...771c" }
+      ],
       achievements: [
         { title: "Tournament Winner", desc: "Won the Q1 Crimson Void PVP Tournament." },
         { title: "Crimson Blade", desc: "Scored 500 combat kills in Arena mode." }
@@ -321,18 +282,16 @@ import Header from '../components/Header.astro';
     },
     {
       name: "NANO_DRU",
-      title: "Shield Tech Specialist",
+      title: "Shield Specialist",
       level: 38,
       xp: 50,
-      avatar: "/assets/avatar.webp",
+      avatar: "/assets/avatars/Avatar_09.webp",
       stake: "35,000 SPIRAL",
       claimable: "1,100 SPIRAL",
-      addresses: {
-        evm: "0x38D...556f",
-        sol: "Tech...223e",
-        btc: "bc1p...009v",
-        icp: "iiiii-ii"
-      },
+      identities: [
+        { type: "eth", icon: "/assets/icons/metamask.svg", label: "EVM", addr: "0x38D...556f" },
+        { type: "icp", icon: "/assets/icons/icp.svg", label: "ICP", addr: "iiiii-ii" }
+      ],
       achievements: [
         { title: "Shield Optimizer", desc: "Regenerated over 1,000,000 shield points in combat." },
         { title: "Hyperdrive Overclock", desc: "Achieved over 150% standard warp speed." }
@@ -346,15 +305,13 @@ import Header from '../components/Header.astro';
       title: "Stellar Pathfinder",
       level: 50,
       xp: 5,
-      avatar: "/assets/avatar.webp",
+      avatar: "/assets/avatars/Avatar_10.webp",
       stake: "150,000 SPIRAL",
       claimable: "6,000 SPIRAL",
-      addresses: {
-        evm: "0x50C...112e",
-        sol: "Path...445z",
-        btc: "bc1p...889x",
-        icp: "jjjjj-jj"
-      },
+      identities: [
+        { type: "sol", icon: "/assets/icons/phantom.svg", label: "SOL", addr: "Path...445z" },
+        { type: "btc", icon: "/assets/icons/xverse.svg", label: "BTC", addr: "bc1p...889x" }
+      ],
       achievements: [
         { title: "Sector Cartographer", desc: "Fully scanned and mapped 100 unexplored systems." },
         { title: "Stellar Cartographer", desc: "Discovered a hidden wormhole anomaly." }
@@ -371,6 +328,7 @@ import Header from '../components/Header.astro';
   const btnPrev = document.getElementById('btn-prev');
   const btnNext = document.getElementById('btn-next');
   const indexDisplay = document.getElementById('current-index-display');
+  const pAvatar = document.getElementById('player-avatar') as HTMLImageElement;
   const pName = document.getElementById('player-name');
   const pTitle = document.getElementById('player-title');
   const pLevel = document.getElementById('player-level');
@@ -378,13 +336,8 @@ import Header from '../components/Header.astro';
   const pStake = document.getElementById('player-stake');
   const pClaimable = document.getElementById('player-claimable');
   
-  // Addresses selectors
-  const addrEvm = document.getElementById('player-addr-evm');
-  const addrSol = document.getElementById('player-addr-sol');
-  const addrBtc = document.getElementById('player-addr-btc');
-  const addrIcp = document.getElementById('player-addr-icp');
-
   // Containers
+  const identContainer = document.getElementById('identities-container');
   const achContainer = document.getElementById('achievements-container');
   const invContainer = document.getElementById('inventory-container');
 
@@ -395,7 +348,8 @@ import Header from '../components/Header.astro';
     // Index display
     if (indexDisplay) indexDisplay.innerText = (idx + 1).toString();
 
-    // Text details
+    // Basic details
+    if (pAvatar) pAvatar.src = p.avatar;
     if (pName) pName.innerText = p.name;
     if (pTitle) pTitle.innerText = p.title;
     if (pLevel) pLevel.innerText = p.level.toString();
@@ -403,18 +357,28 @@ import Header from '../components/Header.astro';
     if (pStake) pStake.innerText = p.stake;
     if (pClaimable) pClaimable.innerText = p.claimable;
 
-    // Cryptographic Addresses
-    if (addrEvm) addrEvm.innerText = p.addresses.evm;
-    if (addrSol) addrSol.innerText = p.addresses.sol;
-    if (addrBtc) addrBtc.innerText = p.addresses.btc;
-    if (addrIcp) addrIcp.innerText = p.addresses.icp;
+    // Render Cryptographic Identities Dynamically (No hardcoded identical blocks)
+    if (identContainer) {
+      identContainer.innerHTML = '';
+      p.identities.forEach(ident => {
+        const item = document.createElement('div');
+        item.className = "p-1.5 rounded bg-white/5 border border-white/5 cursor-pointer hover:border-cyan-500/20 hover:bg-cyan-950/10 transition-colors duration-200 relative group";
+        item.innerHTML = `
+          <img src="${ident.icon}" alt="${ident.label}" class="w-4 h-4" />
+          <div class="absolute bottom-8 left-0 hidden group-hover:block bg-slate-950 border border-cyan-500/20 rounded px-2.5 py-1 text-[9px] font-mono text-white whitespace-nowrap z-50">
+            ${ident.label}: <span class="text-cyan-400">${ident.addr}</span>
+          </div>
+        `;
+        identContainer.appendChild(item);
+      });
+    }
 
     // Populate Achievements
     if (achContainer) {
       achContainer.innerHTML = '';
       p.achievements.forEach(ach => {
         const item = document.createElement('div');
-        item.className = "bg-white/5 border border-white/5 hover:border-cyan-500/20 p-3 rounded-lg relative overflow-hidden flex flex-col justify-center transition-all duration-300";
+        item.className = "bg-white/5 border border-white/5 p-3 rounded-lg relative overflow-hidden flex flex-col justify-center";
         item.innerHTML = `
           <div class="absolute top-0 right-0 w-1.5 h-1.5 border-t border-r border-cyan-500/30"></div>
           <span class="text-white font-bold text-xs uppercase tracking-tight">${ach.title}</span>
@@ -424,7 +388,7 @@ import Header from '../components/Header.astro';
       });
     }
 
-    // Populate Inventory
+    // Populate Inventory (No hover scale logic, static border transition only)
     if (invContainer) {
       invContainer.innerHTML = '';
       p.inventory.forEach(inv => {
@@ -433,30 +397,30 @@ import Header from '../components/Header.astro';
         const isEpic = inv.rarity === "Epic";
         const isRare = inv.rarity === "Rare";
         
-        let borderGlow = "border-white/5 hover:border-white/15";
+        let borderGlow = "border-white/5 hover:border-cyan-500/25";
         let textGlow = "text-slate-400";
         let shadowGlow = "";
         
         if (isMythic) {
-          borderGlow = "border-purple-500/30 hover:border-purple-400/50";
+          borderGlow = "border-purple-500/15 hover:border-purple-400/40";
           textGlow = "text-purple-400";
-          shadowGlow = "shadow-[0_0_15px_rgba(168,85,247,0.15)]";
+          shadowGlow = "shadow-[0_0_15px_rgba(168,85,247,0.1)]";
         } else if (isLegendary) {
-          borderGlow = "border-amber-500/30 hover:border-amber-400/50";
+          borderGlow = "border-amber-500/15 hover:border-amber-400/40";
           textGlow = "text-amber-400";
-          shadowGlow = "shadow-[0_0_15px_rgba(245,158,11,0.15)]";
+          shadowGlow = "shadow-[0_0_15px_rgba(245,158,11,0.1)]";
         } else if (isEpic) {
-          borderGlow = "border-indigo-500/30 hover:border-indigo-400/50";
+          borderGlow = "border-indigo-500/15 hover:border-indigo-400/40";
           textGlow = "text-indigo-400";
-          shadowGlow = "shadow-[0_0_15px_rgba(99,102,241,0.15)]";
+          shadowGlow = "shadow-[0_0_15px_rgba(99,102,241,0.1)]";
         } else if (isRare) {
-          borderGlow = "border-cyan-500/30 hover:border-cyan-400/50";
+          borderGlow = "border-cyan-500/15 hover:border-cyan-400/40";
           textGlow = "text-cyan-400";
-          shadowGlow = "shadow-[0_0_15px_rgba(6,182,212,0.15)]";
+          shadowGlow = "shadow-[0_0_15px_rgba(6,182,212,0.1)]";
         }
 
         const item = document.createElement('div');
-        item.className = `bg-slate-950/40 border p-3 rounded-lg flex flex-col items-center text-center transition-all duration-300 hover:scale-[1.02] ${borderGlow} ${shadowGlow}`;
+        item.className = `bg-slate-950/40 border p-3 rounded-lg flex flex-col items-center text-center transition-colors duration-200 ${borderGlow} ${shadowGlow}`;
         item.innerHTML = `
           <!-- Mini 3D Render -->
           <div class="relative w-12 h-12 flex items-center justify-center mb-2">
