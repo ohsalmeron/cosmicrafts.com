@@ -211,10 +211,26 @@
   });
 
   // Logout Simulation
-  btnLogout?.addEventListener('click', () => {
+  btnLogout?.addEventListener('click', (e) => {
     sessionStorage.removeItem('is_logged_in');
     checkLogin();
     window.location.href = '/';
+    e.stopPropagation();
+  });
+
+  // Setup dropdown toggle
+  const trigger = document.getElementById('user-menu-trigger');
+  const dropdown = document.getElementById('user-dropdown');
+
+  trigger?.addEventListener('click', (e) => {
+    dropdown?.classList.toggle('hidden');
+    dropdown?.classList.toggle('flex');
+    e.stopPropagation();
+  });
+
+  document.addEventListener('click', () => {
+    dropdown?.classList.add('hidden');
+    dropdown?.classList.remove('flex');
   });
 
   // Init State on Load
