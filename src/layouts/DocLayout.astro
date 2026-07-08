@@ -76,21 +76,7 @@ const sortedDocs = allDocs.sort((a, b) => (a.data.order || 0) - (b.data.order ||
 </Layout>
 
 <style is:global>
-  /* Beautiful custom scrollbar for markdown text */
-  .scrollbar-thin::-webkit-scrollbar {
-    width: 4px;
-    height: 4px;
-  }
-  .scrollbar-thin::-webkit-scrollbar-track {
-    background: transparent;
-  }
-  .scrollbar-thin::-webkit-scrollbar-thumb {
-    background: rgba(255, 255, 255, 0.1);
-    border-radius: 9999px;
-  }
-  .scrollbar-thin::-webkit-scrollbar-thumb:hover {
-    background: rgba(15, 185, 253, 0.3);
-  }
+  
 
   /* Basic Markdown prose styles to ensure beautiful, rich output */
   .prose h1, .prose h2, .prose h3, .prose h4 {
