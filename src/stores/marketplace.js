@@ -4,7 +4,7 @@ import { useCanisterStore } from './canister.js';
 import { useAuthStore } from './auth.js';
 import { Principal } from '@dfinity/principal';
 import { HttpAgent, Actor } from '@dfinity/agent';
-import { idlFactory } from '../../../declarations/marketplace/marketplace.did.js';
+import { idlFactory } from '@/declarations/marketplace/marketplace.did.js';
 import { computed, ref } from 'vue';
 
 // Direct marketplace canister ID

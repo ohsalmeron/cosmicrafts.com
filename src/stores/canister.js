@@ -1,8 +1,8 @@
 import { defineStore } from 'pinia';
 import { HttpAgent, Actor } from '@dfinity/agent';
-import { createActor as createActorBackend, canisterId as backendCanisterId } from '../../../declarations/backend';
-import { createActor as createActorRoadmap, canisterId as roadmapCanisterId } from '../../../declarations/backend';
-import { createActor as createActorMarketplace, canisterId as marketplaceCanisterId } from '../../../declarations/marketplace';
+import { createActor as createActorBackend, canisterId as backendCanisterId } from '@/declarations/backend';
+import { createActor as createActorRoadmap, canisterId as roadmapCanisterId } from '@/declarations/backend';
+import { createActor as createActorMarketplace, canisterId as marketplaceCanisterId } from '@/declarations/marketplace';
 // Import the ledger-specific libraries
 import { AccountIdentifier } from '@dfinity/ledger-icp';
 import { Principal } from '@dfinity/principal';
