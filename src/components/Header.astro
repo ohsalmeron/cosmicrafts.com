@@ -36,7 +36,7 @@ import Panel from './Panel.astro';
         </div>
 
         <!-- Sci-fi Dropdown Menu -->
-        <Panel id="user-dropdown" class="absolute top-12 right-0 w-56 p-4 hidden flex-col gap-3 font-mono text-[10px] text-slate-400 z-50 text-left">
+        <Panel id="user-dropdown" class="absolute top-full mt-2 right-0 w-56 p-4 hidden flex-col gap-3 font-mono text-[10px] text-slate-400 z-50 text-left">
 
           <div class="border-b border-white/5 pb-2">
             <span class="text-cyan-400 block text-[9px] tracking-wider mb-0.5">[ NETWORK STATUS ]</span>
@@ -229,6 +229,11 @@ import Panel from './Panel.astro';
   trigger?.addEventListener('click', (e) => {
     dropdown?.classList.toggle('hidden');
     dropdown?.classList.toggle('flex');
+    e.stopPropagation();
+  });
+
+  // Stop click propagation inside dropdown to avoid closing or toggling triggers
+  dropdown?.addEventListener('click', (e) => {
     e.stopPropagation();
   });
 
