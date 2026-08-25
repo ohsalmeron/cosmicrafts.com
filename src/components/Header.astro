@@ -1,22 +1,48 @@
 ---
 import Panel from './Panel.astro';
+import AuthModal from './AuthModal.astro';
 ---
 
 <header class="w-full max-w-7xl mx-auto flex justify-between items-center z-20 pb-4 border-b border-white/5 relative">
-  <!-- Left: Cosmicrafts Logo -->
-  <a href="/" class="flex flex-col gap-0.5 select-none group">
-    <img src="/logo.svg" alt="Cosmicrafts Logo" class="h-8 md:h-10 opacity-90 group-hover:scale-[1.01] transition-transform duration-300" />
-  </a>
+  <!-- Left: Cosmicrafts Logo & Global Player Search -->
+  <div class="flex items-center gap-4 sm:gap-6">
+    <a href="/" class="flex flex-col gap-0.5 select-none group">
+      <img src="/logo.svg" alt="Cosmicrafts Logo" class="h-8 md:h-10 opacity-90 group-hover:scale-[1.01] transition-transform duration-300" />
+    </a>
+
+    <!-- Global Player Search Bar -->
+    <div class="relative hidden sm:block">
+      <div class="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-slate-900/60 border border-white/10 focus-within:border-cyan-400/50 focus-within:bg-slate-900/90 transition">
+        <svg class="w-3.5 h-3.5 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+        </svg>
+        <input
+          id="header-player-search"
+          type="text"
+          placeholder="Search commanders..."
+          class="bg-transparent text-xs text-white placeholder-slate-500 focus:outline-none w-36 lg:w-48 font-mono"
+        />
+      </div>
+
+      <!-- Search Results Dropdown -->
+      <div
+        id="header-search-results"
+        class="hidden absolute top-full left-0 mt-2 w-64 bg-slate-950/95 border border-white/15 rounded-xl shadow-2xl backdrop-blur-xl p-1.5 z-50 space-y-1 max-h-60 overflow-y-auto"
+      >
+        <!-- Populated dynamically via JS -->
+      </div>
+    </div>
+  </div>
 
   <!-- Right: Web3 Wallet & Token Readout -->
-  <div class="flex items-center space-x-4">
+  <div class="flex items-center space-x-3 sm:space-x-4">
     <!-- Logged In Content -->
-    <div id="logged-in-container" class="hidden items-center space-x-4">
-      <!-- Spiral Token Balance (Styled as game premium currency) -->
+    <div id="logged-in-container" class="hidden items-center space-x-3 sm:space-x-4">
+      <!-- Spiral Token Balance -->
       <div class="flex items-center space-x-2 bg-slate-950/60 border border-cyan-500/30 px-3 py-1.5 rounded-lg backdrop-blur-md shadow-[0_0_15px_rgba(34,211,238,0.15)]">
         <img src="/assets/icons/spiral.svg" alt="Spiral Icon" class="w-4.5 h-4.5 md:w-5 md:h-5 drop-shadow-[0_0_6px_rgba(34,211,238,0.55)] select-none pointer-events-none" />
         <div class="flex flex-col text-left font-mono">
-          <span class="text-xs md:text-sm font-black text-white leading-none tracking-wide">12,500</span>
+          <span id="header-spiral-balance" class="text-xs md:text-sm font-black text-white leading-none tracking-wide">12,500</span>
           <span class="text-[7px] md:text-[8px] text-cyan-400 tracking-widest font-bold leading-none mt-0.5">SPIRAL</span>
         </div>
       </div>
@@ -24,36 +50,58 @@ import Panel from './Panel.astro';
       <!-- User Wallet Avatar & Info -->
       <div class="relative flex items-center space-x-2 bg-slate-900/40 border border-white/5 pl-3 pr-2 py-1 rounded-lg backdrop-blur-md cursor-pointer group" id="user-menu-trigger">
         <div class="flex flex-col text-right font-mono hidden sm:flex">
-          <span class="text-[9px] md:text-[10px] font-bold text-white leading-none">BIZKIT_0x1337</span>
-          <span class="text-[7px] text-emerald-400 tracking-wider leading-none flex items-center justify-end gap-1 mt-0.5">
+          <div class="flex items-center justify-end gap-1.5">
+            <span id="header-clan-badge" class="hidden text-[8px] text-purple-400 font-bold font-mono">[TAG]</span>
+            <span id="header-username" class="text-[9px] md:text-[10px] font-bold text-white leading-none">COMMANDER</span>
+          </div>
+          <span id="header-network-label" class="text-[7px] text-emerald-400 tracking-wider leading-none flex items-center justify-end gap-1 mt-0.5">
             <span class="inline-block w-1 h-1 rounded-full bg-emerald-400 animate-pulse"></span>
-            ETHEREUM
+            WOU-ID ONLINE
           </span>
         </div>
+
         <!-- User Avatar Circle -->
-        <div class="relative w-8 h-8 rounded-full border border-cyan-500/30 overflow-hidden group-hover:border-cyan-400 transition-colors duration-300">
-          <img src="/assets/avatar.webp" alt="User Avatar" class="w-full h-full object-cover" />
+        <div class="relative w-8 h-8 rounded-full border border-cyan-500/30 overflow-hidden group-hover:border-cyan-400 transition-colors duration-300 flex items-center justify-center bg-cyan-950/40">
+          <img id="header-avatar-img" src="" alt="User Avatar" class="hidden w-full h-full object-cover" />
+          <span id="header-avatar-emoji" class="text-xs">🎮</span>
         </div>
 
         <!-- Sci-fi Dropdown Menu -->
-        <Panel id="user-dropdown" class="absolute top-full mt-2 right-0 w-56 p-4 hidden flex-col gap-3 font-mono text-[10px] text-slate-400 z-50 text-left">
-
+        <Panel id="user-dropdown" class="absolute top-full mt-2 right-0 w-64 p-4 hidden flex-col gap-3 font-mono text-[10px] text-slate-400 z-50 text-left">
           <div class="border-b border-white/5 pb-2">
-            <span class="text-cyan-400 block text-[9px] tracking-wider mb-0.5">[ NETWORK STATUS ]</span>
-            <span class="text-white font-bold">ETH_MAINNET (CONNECTED)</span>
+            <span class="text-cyan-400 block text-[9px] tracking-wider mb-0.5">[ NETWORK IDENTITY ]</span>
+            <span id="dropdown-user-name" class="text-white font-bold block truncate">Commander</span>
+            <span id="dropdown-user-handle" class="text-xs text-cyan-400 select-text">@handle</span>
           </div>
 
-          <div class="flex flex-col gap-1">
-            <span class="text-slate-500 text-[8px]">[ ADDRESS ]</span>
-            <span class="text-white text-xs select-text">0x71C...9312</span>
+          <!-- Embedded Gaming Wallets -->
+          <div class="space-y-1.5 border-b border-white/5 pb-2 text-[9px]">
+            <div class="flex items-center justify-between">
+              <span class="text-slate-500">[ EVM ]</span>
+              <button id="copy-evm-btn" type="button" class="text-slate-300 hover:text-cyan-400 font-mono transition" title="Copy EVM Address">
+                <span id="dropdown-evm-addr">0x000...0000</span>
+              </button>
+            </div>
+            <div class="flex items-center justify-between">
+              <span class="text-slate-500">[ SOL ]</span>
+              <button id="copy-sol-btn" type="button" class="text-slate-300 hover:text-purple-400 font-mono transition" title="Copy Solana Address">
+                <span id="dropdown-sol-addr">Sol...0000</span>
+              </button>
+            </div>
+            <div class="flex items-center justify-between">
+              <span class="text-slate-500">[ ICP ]</span>
+              <button id="copy-icp-btn" type="button" class="text-slate-300 hover:text-cyan-400 font-mono transition" title="Copy ICP Principal">
+                <span id="dropdown-icp-addr">icp...0000</span>
+              </button>
+            </div>
           </div>
 
           <!-- View Profile Navigation Link -->
-          <a href="/profile" class="w-full py-2 bg-cyan-500/10 border border-cyan-500/20 hover:bg-cyan-500/25 hover:border-cyan-400/40 text-cyan-400 hover:text-cyan-300 font-mono text-[9px] tracking-widest uppercase rounded text-center transition-all duration-300 mt-1">
+          <a href="/profile" class="w-full py-2 bg-cyan-500/10 border border-cyan-500/20 hover:bg-cyan-500/25 hover:border-cyan-400/40 text-cyan-400 hover:text-cyan-300 font-mono text-[9px] tracking-widest uppercase rounded text-center transition-all duration-300 mt-0.5">
             View Profile
           </a>
 
-          <button id="btn-logout" class="w-full py-2 bg-rose-500/10 border border-rose-500/20 hover:bg-rose-500/20 text-rose-400 font-mono text-[9px] tracking-widest uppercase rounded transition-all duration-300 mt-1">
+          <button id="btn-logout" type="button" class="w-full py-2 bg-rose-500/10 border border-rose-500/20 hover:bg-rose-500/20 text-rose-400 font-mono text-[9px] tracking-widest uppercase rounded transition-all duration-300 cursor-pointer">
             Disconnect
           </button>
         </Panel>
@@ -62,177 +110,115 @@ import Panel from './Panel.astro';
 
     <!-- Logged Out Content -->
     <div id="logged-out-container" class="flex items-center">
-      <button id="btn-open-login" class="px-4 py-2 bg-gradient-to-r from-cyan-500 to-indigo-500 hover:from-cyan-400 hover:to-indigo-400 text-white font-mono text-[10px] md:text-xs tracking-widest uppercase rounded-lg shadow-[0_0_20px_rgba(6,182,212,0.2)] transition-all duration-300 transform active:scale-95">
+      <button id="btn-open-login" type="button" class="px-4 py-2 bg-gradient-to-r from-cyan-500 to-indigo-500 hover:from-cyan-400 hover:to-indigo-400 text-white font-mono text-[10px] md:text-xs tracking-widest uppercase rounded-lg shadow-[0_0_20px_rgba(6,182,212,0.2)] transition-all duration-300 transform active:scale-95 cursor-pointer">
         Connect Wallet
       </button>
     </div>
   </div>
 
-  <!-- Interactive Multi-Wallet Login Modal -->
-  <div id="login-modal" class="fixed inset-0 z-[9999] hidden items-center justify-center p-4 bg-slate-950/40 backdrop-blur-md">
-    <!-- Backdrop dismiss -->
-    <div class="absolute inset-0 z-0" id="login-modal-backdrop"></div>
-    
-    <Panel class="w-full max-w-md p-6 md:p-8 flex flex-col text-center select-none overflow-hidden" status="SECURITY" title="AUTHENTICATION">
-
-      <!-- Header -->
-      <div class="flex items-center justify-between text-[8px] md:text-[9px] text-cyan-500 font-mono tracking-widest uppercase mb-4 border-b border-white/5 pb-2">
-        <span>[ SECURITY_LOG: CONNECT ]</span>
-        <button id="btn-close-login" class="hover:text-white transition-colors">CLOSE ✕</button>
-      </div>
-
-      <h1 class="text-xl md:text-2xl font-black text-white uppercase tracking-tight mb-2">Connect Wallet</h1>
-      <p class="text-[11px] text-slate-400 font-light mb-6">Select a cryptographic provider to establish your Cosmic Profile.</p>
-
-      <!-- Primary Methods -->
-      <div class="space-y-2 mb-4">
-        <!-- MetaMask (EVM) -->
-        <button class="w-full py-2.5 px-4 bg-white/5 border border-white/5 hover:border-cyan-500/30 hover:bg-cyan-950/15 text-white font-mono text-[10px] md:text-xs tracking-wider uppercase rounded-xl flex items-center justify-between transition-all duration-300 wallet-option" data-wallet="metamask">
-          <span class="flex items-center gap-3">
-            <img src="/assets/icons/metamask.svg" alt="MetaMask" class="w-5 h-5" />
-            <span>METAMASK (EVM)</span>
-          </span>
-          <span class="text-[8px] text-emerald-400 uppercase">[ ACTIVE ]</span>
-        </button>
-
-        <!-- Phantom (Solana) -->
-        <button class="w-full py-2.5 px-4 bg-white/5 border border-white/5 hover:border-cyan-500/30 hover:bg-cyan-950/15 text-white font-mono text-[10px] md:text-xs tracking-wider uppercase rounded-xl flex items-center justify-between transition-all duration-300 wallet-option" data-wallet="phantom">
-          <span class="flex items-center gap-3">
-            <img src="/assets/icons/phantom.svg" alt="Phantom" class="w-5 h-5" />
-            <span>PHANTOM (SOLANA)</span>
-          </span>
-          <span class="text-[8px] text-slate-500 uppercase">[ INSTALLED ]</span>
-        </button>
-
-        <!-- XVerse (Bitcoin) -->
-        <button class="w-full py-2.5 px-4 bg-white/5 border border-white/5 hover:border-cyan-500/30 hover:bg-cyan-950/15 text-white font-mono text-[10px] md:text-xs tracking-wider uppercase rounded-xl flex items-center justify-between transition-all duration-300 wallet-option" data-wallet="xverse">
-          <span class="flex items-center gap-3">
-            <img src="/assets/icons/xverse.svg" alt="XVerse" class="w-5 h-5" />
-            <span>XVERSE (BITCOIN)</span>
-          </span>
-          <span class="text-[8px] text-slate-500 uppercase">[ INSTALLED ]</span>
-        </button>
-
-        <!-- Internet Identity (ICP) -->
-        <button class="w-full py-2.5 px-4 bg-white/5 border border-white/5 hover:border-cyan-500/30 hover:bg-cyan-950/15 text-white font-mono text-[10px] md:text-xs tracking-wider uppercase rounded-xl flex items-center justify-between transition-all duration-300 wallet-option" data-wallet="icp">
-          <span class="flex items-center gap-3">
-            <img src="/assets/icons/icp.svg" alt="Internet Identity" class="w-5 h-5" />
-            <span>INTERNET IDENTITY</span>
-          </span>
-          <span class="text-[8px] text-slate-500 uppercase">[ COMPATIBLE ]</span>
-        </button>
-      </div>
-
-      <!-- Other Wallets -->
-      <div class="grid grid-cols-2 gap-2 text-[9px] font-mono border-t border-white/5 pt-4 mt-2">
-        <button class="py-2 border border-white/5 bg-white/5 hover:border-cyan-500/30 rounded text-slate-400 hover:text-white flex items-center justify-center gap-2 wallet-option" data-wallet="okx">
-          <img src="/assets/icons/okx.svg" alt="OKX" class="w-3.5 h-3.5" />
-          <span>OKX WALLET</span>
-        </button>
-        <button class="py-2 border border-white/5 bg-white/5 hover:border-cyan-500/30 rounded text-slate-400 hover:text-white flex items-center justify-center gap-2 wallet-option" data-wallet="plug">
-          <img src="/assets/icons/plug.svg" alt="Plug" class="w-3.5 h-3.5" />
-          <span>PLUG WALLET</span>
-        </button>
-      </div>
-    </Panel>
-  </div>
-
-  <!-- Simulated Signing Overlay -->
-  <div id="signing-overlay" class="fixed inset-0 z-[10000] hidden items-center justify-center bg-slate-950/60 backdrop-blur-md font-mono select-none">
-    <div class="text-center space-y-4 max-w-sm px-6">
-      <div class="w-10 h-10 border border-t-2 border-cyan-400 border-t-transparent rounded-full animate-spin mx-auto"></div>
-      <h2 class="text-sm font-bold text-white uppercase tracking-widest">SIGNING TRANSMISSION</h2>
-      <p class="text-[10px] text-slate-400 leading-normal">Please approve the signature request in your wallet to deterministically derive your cross-chain profile identities...</p>
-    </div>
-  </div>
+  <!-- Global Auth Modal -->
+  <AuthModal />
 </header>
 
 <script>
+  import { wouAuth, type WouAccount } from '../scripts/wou-auth';
+
   // UI selectors
   const loggedInContainer = document.getElementById('logged-in-container');
   const loggedOutContainer = document.getElementById('logged-out-container');
   const btnOpenLogin = document.getElementById('btn-open-login');
-  const btnCloseLogin = document.getElementById('btn-close-login');
-  const loginModal = document.getElementById('login-modal');
-  const loginModalBackdrop = document.getElementById('login-modal-backdrop');
-  const walletOptions = document.querySelectorAll('.wallet-option');
-  const signingOverlay = document.getElementById('signing-overlay');
   const btnLogout = document.getElementById('btn-logout');
 
-  // Check login state
-  const checkLogin = () => {
-    const isLoggedIn = sessionStorage.getItem('is_logged_in') === 'true';
-    if (isLoggedIn) {
+  // Header Elements
+  const headerUsername = document.getElementById('header-username');
+  const headerClanBadge = document.getElementById('header-clan-badge');
+  const headerAvatarImg = document.getElementById('header-avatar-img') as HTMLImageElement;
+  const headerAvatarEmoji = document.getElementById('header-avatar-emoji');
+
+  // Dropdown Elements
+  const trigger = document.getElementById('user-menu-trigger');
+  const dropdown = document.getElementById('user-dropdown');
+  const dropdownUserName = document.getElementById('dropdown-user-name');
+  const dropdownUserHandle = document.getElementById('dropdown-user-handle');
+  const dropdownEvmAddr = document.getElementById('dropdown-evm-addr');
+  const dropdownSolAddr = document.getElementById('dropdown-sol-addr');
+  const dropdownIcpAddr = document.getElementById('dropdown-icp-addr');
+
+  const copyEvmBtn = document.getElementById('copy-evm-btn');
+  const copySolBtn = document.getElementById('copy-sol-btn');
+  const copyIcpBtn = document.getElementById('copy-icp-btn');
+
+  function renderHeaderAuth(user: WouAccount | null) {
+    if (user) {
       loggedInContainer?.classList.remove('hidden');
       loggedInContainer?.classList.add('flex');
       loggedOutContainer?.classList.add('hidden');
+
+      if (headerUsername) headerUsername.textContent = (user.display_name || user.username || 'COMMANDER').toUpperCase();
+
+      if (user.clan_tag && headerClanBadge) {
+        headerClanBadge.textContent = `[${user.clan_tag.toUpperCase()}]`;
+        headerClanBadge.classList.remove('hidden');
+      } else if (headerClanBadge) {
+        headerClanBadge.classList.add('hidden');
+      }
+
+      if (user.profile?.avatar_url && headerAvatarImg) {
+        headerAvatarImg.src = user.profile.avatar_url;
+        headerAvatarImg.classList.remove('hidden');
+        headerAvatarEmoji?.classList.add('hidden');
+      } else if (headerAvatarEmoji) {
+        const emoji = (user.profile as any)?.custom_attributes?.animal_emoji || '🎮';
+        headerAvatarEmoji.textContent = emoji;
+        headerAvatarEmoji.classList.remove('hidden');
+        headerAvatarImg?.classList.add('hidden');
+      }
+
+      // Dropdown data
+      if (dropdownUserName) dropdownUserName.textContent = user.display_name || user.username || 'Commander';
+      if (dropdownUserHandle) dropdownUserHandle.textContent = user.username ? `@${user.username}` : '@commander';
+
+      if (user.embedded_wallets) {
+        if (dropdownEvmAddr) {
+          const addr = user.embedded_wallets.evm_address;
+          dropdownEvmAddr.textContent = addr ? `${addr.slice(0, 6)}...${addr.slice(-4)}` : 'N/A';
+        }
+        if (dropdownSolAddr) {
+          const addr = user.embedded_wallets.solana_address;
+          dropdownSolAddr.textContent = addr ? `${addr.slice(0, 4)}...${addr.slice(-4)}` : 'N/A';
+        }
+        if (dropdownIcpAddr) {
+          const addr = user.embedded_wallets.icp_principal;
+          dropdownIcpAddr.textContent = addr ? `${addr.slice(0, 5)}...${addr.slice(-3)}` : 'N/A';
+        }
+      }
     } else {
       loggedInContainer?.classList.add('hidden');
       loggedInContainer?.classList.remove('flex');
       loggedOutContainer?.classList.remove('hidden');
     }
-  };
+  }
 
   // Open modal
   btnOpenLogin?.addEventListener('click', () => {
-    loginModal?.classList.remove('hidden');
-    loginModal?.classList.add('flex');
+    wouAuth.openModal();
   });
 
-  // Close modal
-  const closeModal = () => {
-    loginModal?.classList.add('hidden');
-    loginModal?.classList.remove('flex');
-  };
-  btnCloseLogin?.addEventListener('click', closeModal);
-  loginModalBackdrop?.addEventListener('click', closeModal);
-
-  // Connect Simulation
-  walletOptions.forEach(opt => {
-    opt.addEventListener('click', () => {
-      closeModal();
-      signingOverlay?.classList.remove('hidden');
-      signingOverlay?.classList.add('flex');
-      
-      setTimeout(() => {
-        signingOverlay?.classList.add('hidden');
-        signingOverlay?.classList.remove('flex');
-        sessionStorage.setItem('is_logged_in', 'true');
-        checkLogin();
-        // Redirect to profile
-        window.location.href = '/profile';
-      }, 1800);
-    });
-  });
-
-  // Logout Simulation
+  // Logout
   btnLogout?.addEventListener('click', (e) => {
-    sessionStorage.removeItem('is_logged_in');
-    // Clear demo voting cache completely on logout
-    localStorage.removeItem('cc_proposals_db');
-    for (let i = 0; i < localStorage.length; i++) {
-      const key = localStorage.key(i);
-      if (key && key.startsWith('vote_CC-PROP-')) {
-        localStorage.removeItem(key);
-        i--;
-      }
-    }
-    checkLogin();
-    window.location.href = '/';
+    wouAuth.logout();
+    dropdown?.classList.add('hidden');
+    dropdown?.classList.remove('flex');
     e.stopPropagation();
   });
 
   // Setup dropdown toggle
-  const trigger = document.getElementById('user-menu-trigger');
-  const dropdown = document.getElementById('user-dropdown');
-
   trigger?.addEventListener('click', (e) => {
     dropdown?.classList.toggle('hidden');
     dropdown?.classList.toggle('flex');
     e.stopPropagation();
   });
 
-  // Stop click propagation inside dropdown to avoid closing or toggling triggers
   dropdown?.addEventListener('click', (e) => {
     e.stopPropagation();
   });
@@ -242,8 +228,103 @@ import Panel from './Panel.astro';
     dropdown?.classList.remove('flex');
   });
 
-  // Init State on Load
-  checkLogin();
+  // Copy wallet helpers
+  function copyText(text: string, label: string) {
+    if (!text) return;
+    navigator.clipboard.writeText(text);
+    alert(`Copied ${label} address to clipboard: \n${text}`);
+  }
+
+  copyEvmBtn?.addEventListener('click', () => {
+    const user = wouAuth.getUser();
+    if (user?.embedded_wallets?.evm_address) copyText(user.embedded_wallets.evm_address, 'EVM');
+  });
+
+  copySolBtn?.addEventListener('click', () => {
+    const user = wouAuth.getUser();
+    if (user?.embedded_wallets?.solana_address) copyText(user.embedded_wallets.solana_address, 'Solana');
+  });
+
+  copyIcpBtn?.addEventListener('click', () => {
+    const user = wouAuth.getUser();
+    if (user?.embedded_wallets?.icp_principal) copyText(user.embedded_wallets.icp_principal, 'ICP');
+  });
+
+  // Player Search Logic
+  const searchInput = document.getElementById('header-player-search') as HTMLInputElement;
+  const searchResults = document.getElementById('header-search-results');
+  let searchDebounceTimer: any = null;
+
+  searchInput?.addEventListener('input', () => {
+    clearTimeout(searchDebounceTimer);
+    const query = searchInput.value.trim();
+
+    if (!query || query.length < 2) {
+      searchResults?.classList.add('hidden');
+      if (searchResults) searchResults.innerHTML = '';
+      return;
+    }
+
+    searchDebounceTimer = setTimeout(async () => {
+      try {
+        const players = await wouAuth.searchPlayers(query, 5);
+        if (!searchResults) return;
+
+        if (players.length === 0) {
+          searchResults.innerHTML = `
+            <div class="px-3 py-2 text-[10px] text-slate-500 font-mono text-center">
+              No commanders found
+            </div>
+          `;
+          searchResults.classList.remove('hidden');
+          return;
+        }
+
+        searchResults.innerHTML = players
+          .map((p) => {
+            const avatar = p.avatar_url
+              ? `<img src="${p.avatar_url}" class="w-5 h-5 rounded-full object-cover shrink-0" />`
+              : `<div class="w-5 h-5 rounded-full bg-cyan-500/20 border border-cyan-500/30 flex items-center justify-center text-[10px] shrink-0">${p.animal_emoji || '🎮'}</div>`;
+            const clan = p.clan_tag ? `<span class="text-[9px] font-mono text-purple-400 font-bold ml-1">[${p.clan_tag}]</span>` : '';
+
+            return `
+              <a
+                href="https://worldofunreal.com/profile/${p.username}"
+                target="_blank"
+                class="flex items-center gap-2 p-1.5 rounded-lg hover:bg-white/10 transition group"
+              >
+                ${avatar}
+                <div class="min-w-0 flex-1 text-left">
+                  <div class="flex items-center text-[11px] font-bold text-white group-hover:text-cyan-400 truncate">
+                    <span>${p.display_name}</span>
+                    ${clan}
+                  </div>
+                  <p class="text-[9px] font-mono text-slate-400 truncate">@${p.username}</p>
+                </div>
+              </a>
+            `;
+          })
+          .join('');
+
+        searchResults.classList.remove('hidden');
+      } catch {
+        // Ignore search error
+      }
+    }, 250);
+  });
+
+  // Hide search dropdown on click outside
+  document.addEventListener('click', (e) => {
+    if (!searchInput?.contains(e.target as Node) && !searchResults?.contains(e.target as Node)) {
+      searchResults?.classList.add('hidden');
+    }
+  });
+
+  // Listen to Auth State Changes
+  window.addEventListener('wou:auth-state-change', (e: any) => {
+    renderHeaderAuth(e.detail?.user || null);
+  });
+
+  // Initial Check
+  renderHeaderAuth(wouAuth.getUser());
 </script>
-
-
