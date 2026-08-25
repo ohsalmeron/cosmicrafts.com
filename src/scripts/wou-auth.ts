@@ -566,6 +566,19 @@ class WouAuthClient {
     });
   }
 
+  // Convenience Aliases
+  public loginWithSocial(provider: 'discord' | 'google' | 'twitter' | 'meta'): void {
+    return this.loginWithOAuth(provider);
+  }
+
+  public async loginWithEvm(): Promise<any> {
+    return this.loginWithEthereum();
+  }
+
+  public async loginWithIcp(): Promise<any> {
+    return this.loginWithInternetIdentity();
+  }
+
   // ==========================================
   // PLAYER SEARCH & DISCOVERY
   // ==========================================
