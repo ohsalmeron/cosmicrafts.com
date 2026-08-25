@@ -300,6 +300,8 @@ import Panel from '../components/Panel.astro';
 </style>
 
 <script>
+  import { wouAuth } from '../scripts/wou-auth';
+
   // 36 proposals array database (all states, qualities, issues, and ideas)
   const BASE_PROPOSALS = [
     {
@@ -828,7 +830,7 @@ import Panel from '../components/Panel.astro';
   };
 
   const getIsLoggedIn = () => {
-    return sessionStorage.getItem('is_logged_in') === 'true';
+    return wouAuth.isAuthenticated();
   };
 
   // Humanized numbers helper
@@ -1402,25 +1404,15 @@ import Panel from '../components/Panel.astro';
   // Search filter
   searchInput?.addEventListener('input', renderList);
 
-  // Fallback Login Connect Wallet triggering standard Header event
+  // Fallback Login Connect Wallet triggering WOU-ID Modal
   btnFallbackConnect?.addEventListener('click', () => {
-    const mainConnectBtn = document.getElementById('btn-open-login');
-    if (mainConnectBtn) {
-      mainConnectBtn.click();
-    }
+    wouAuth.openModal();
   });
 
-  // Watch for connection state
-  setInterval(() => {
-    const currentLoginState = getIsLoggedIn();
-    const loginStateCheck = loginFallback?.classList.contains('hidden');
-    // If the displayed login fallback visibility is not aligned with actual state, re-render workspace
-    if (currentLoginState === loginStateCheck) {
-      // already aligned
-    } else {
-      renderWorkspace();
-    }
-  }, 1000);
+  // Watch for auth state changes
+  window.addEventListener('wou:auth-state-change', () => {
+    renderWorkspace();
+  });
 
   // Initial Load
   loadProposals();

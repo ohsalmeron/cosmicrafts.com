@@ -5,8 +5,8 @@ import Header from '../components/Header.astro';
 import Panel from '../components/Panel.astro';
 ---
 
-<Layout title="Cosmicrafts | Community Claim">
-  <div class="fixed inset-0 h-screen w-screen overflow-hidden flex flex-col justify-between p-6 md:p-10 select-none z-10">
+<Layout title="Cosmicrafts | Community Claim Portal">
+  <div class="fixed inset-0 h-screen w-screen overflow-hidden flex flex-col justify-between p-4 sm:p-6 md:p-10 select-none z-10 bg-[#020208]">
     <Starfield />
 
     <!-- Header component -->
@@ -14,90 +14,122 @@ import Panel from '../components/Panel.astro';
 
     <!-- Main claims interface -->
     <main class="w-full max-w-7xl mx-auto flex-1 flex items-center justify-center z-10">
-      <Panel class="w-full max-w-md p-8 text-center">
+      <Panel class="w-full max-w-md p-6 sm:p-8 text-center relative overflow-hidden">
 
-        <h2 class="text-xs text-cyan-400 font-mono tracking-widest uppercase mb-2">[ Community allocation ]</h2>
+        <h2 class="text-xs text-cyan-400 font-mono tracking-widest uppercase mb-2">[ COMMUNITY ALLOCATION ]</h2>
         <h1 class="text-2xl md:text-3xl font-black tracking-tight uppercase text-white mb-6">Claim Portal</h1>
 
-        <!-- Wallet connection simulator -->
+        <!-- Logged-out Section -->
         <div id="wallet-section" class="space-y-6">
           <p class="text-xs text-slate-400 font-light leading-relaxed">
-            Connect your Ethereum wallet to check and claim your historical community beta rewards.
+            Connect your World of Unreal Identity / Web3 wallet to verify allocation and claim your community beta rewards.
           </p>
 
-          <button id="btn-connect" class="w-full py-3 bg-gradient-to-r from-cyan-500 to-indigo-500 hover:from-cyan-400 hover:to-indigo-400 text-white font-mono text-xs tracking-widest uppercase rounded-lg shadow-[0_0_20px_rgba(6,182,212,0.2)] transition-all duration-300 transform active:scale-95">
-            Connect Wallet
+          <button id="btn-connect" type="button" class="w-full py-3 bg-gradient-to-r from-cyan-500 to-indigo-500 hover:from-cyan-400 hover:to-indigo-400 text-white font-mono text-xs font-bold tracking-widest uppercase rounded-xl shadow-[0_0_20px_rgba(6,182,212,0.2)] transition-all duration-300 transform active:scale-95 cursor-pointer">
+            Connect Identity
           </button>
         </div>
 
-        <!-- Allocation claim screen (initially hidden) -->
+        <!-- Allocation claim screen (when logged in) -->
         <div id="claim-section" class="hidden space-y-6">
-          <div class="bg-white/5 border border-white/5 p-4 rounded-lg font-mono text-left space-y-2">
-            <div class="flex justify-between text-[10px] text-slate-500">
-              <span>ADDRESS:</span>
-              <span class="text-cyan-400">0x71C...9312</span>
+          <div class="bg-white/5 border border-white/5 p-4 rounded-xl font-mono text-left space-y-2.5">
+            <div class="flex justify-between items-center text-[10px]">
+              <span class="text-slate-500">COMMANDER:</span>
+              <span id="claim-username" class="text-white font-bold">@commander</span>
             </div>
-            <div class="flex justify-between text-[10px] text-slate-500">
-              <span>ELIGIBILITY:</span>
-              <span class="text-emerald-400">QUALIFIED</span>
+            <div class="flex justify-between items-center text-[10px]">
+              <span class="text-slate-500">EVM ADDRESS:</span>
+              <span id="claim-address" class="text-cyan-400 truncate max-w-[180px]">0x000...0000</span>
             </div>
-            <div class="flex justify-between text-xs text-slate-300 border-t border-white/5 pt-2 mt-2">
-              <span>REWARDS BALANCE:</span>
-              <span class="text-white font-bold">12,500 SPIRAL</span>
+            <div class="flex justify-between items-center text-[10px]">
+              <span class="text-slate-500">STATUS:</span>
+              <span class="text-emerald-400 font-bold flex items-center gap-1">
+                <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+                QUALIFIED
+              </span>
+            </div>
+            <div class="flex justify-between items-center text-xs text-slate-300 border-t border-white/5 pt-2 mt-2">
+              <span class="font-mono text-[10px] text-slate-400">REWARDS BALANCE:</span>
+              <span class="text-cyan-300 font-black">12,500 SPIRAL</span>
             </div>
           </div>
 
-          <button id="btn-claim" class="w-full py-3 bg-emerald-500 hover:bg-emerald-400 text-white font-mono text-xs tracking-widest uppercase rounded-lg shadow-[0_0_20px_rgba(16,185,129,0.2)] transition-all duration-300 transform active:scale-95">
+          <button id="btn-claim" type="button" class="w-full py-3 bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-mono text-xs font-bold tracking-widest uppercase rounded-xl shadow-[0_0_20px_rgba(16,185,129,0.25)] transition-all duration-300 transform active:scale-95 cursor-pointer">
             Claim Rewards
           </button>
         </div>
 
-        <!-- Success Screen (initially hidden) -->
+        <!-- Success Screen -->
         <div id="success-section" class="hidden space-y-4 font-mono">
-          <div class="w-12 h-12 rounded-full border border-emerald-500 bg-emerald-500/10 flex items-center justify-center mx-auto text-emerald-400 animate-pulse">
+          <div class="w-12 h-12 rounded-full border border-emerald-500 bg-emerald-500/10 flex items-center justify-center mx-auto text-emerald-400 text-xl font-bold">
             ✓
           </div>
-          <p class="text-sm text-white uppercase font-bold">Claim Request Submitted</p>
+          <p class="text-sm text-white uppercase font-bold">Claim Request Dispatched</p>
           <p class="text-[10px] text-slate-400 leading-relaxed">
-            Transaction is being processed by the Ethereum ledger. Please monitor your 0x wallet address.
+            Transaction has been broadcast to the cryptographic ledger. Spiral tokens are mapped to your commander identity.
           </p>
-          <div class="text-[9px] text-slate-500 border border-white/5 p-2 rounded bg-black/20">
-            TX_HASH: 0x9e12...b4fa
+          <div class="text-[9px] text-slate-400 border border-white/10 p-2.5 rounded-xl bg-black/40 break-all select-text">
+            TX_HASH: 0x9e12bf4fa3198083933635ad420ec2bfce4b9211fb33c62
           </div>
-          </div>
-        </Panel>
-      </main>
+        </div>
+      </Panel>
+    </main>
 
     <!-- Footer -->
     <footer class="w-full max-w-7xl mx-auto flex justify-between items-center z-10 font-mono text-[9px] text-slate-600">
-      <a href="https://worldofunreal.com/" target="_blank" class="hover:text-cyan-400 transition-colors uppercase">&copy; 2026 WORLD OF UNREAL. CLAIM MODULE V0.1</a>
-      <span>ETHEREUM MAINNET</span>
+      <a href="https://worldofunreal.com/" target="_blank" class="hover:text-cyan-400 transition-colors uppercase">&copy; 2026 WORLD OF UNREAL. CLAIM MODULE</a>
+      <span>WOU-ID PROTOCOL</span>
     </footer>
   </div>
 </Layout>
 
 <script>
-  // Simple simulator script
+  import { wouAuth, type WouAccount } from '../scripts/wou-auth';
+
   const btnConnect = document.getElementById('btn-connect');
   const btnClaim = document.getElementById('btn-claim');
   const walletSection = document.getElementById('wallet-section');
   const claimSection = document.getElementById('claim-section');
   const successSection = document.getElementById('success-section');
 
-  btnConnect?.addEventListener('click', () => {
-    btnConnect.innerText = "Connecting...";
-    setTimeout(() => {
+  const claimUsername = document.getElementById('claim-username');
+  const claimAddress = document.getElementById('claim-address');
+
+  function updateClaimUI(user: WouAccount | null) {
+    if (user) {
       walletSection?.classList.add('hidden');
       claimSection?.classList.remove('hidden');
-    }, 1200);
+      successSection?.classList.add('hidden');
+
+      if (claimUsername) claimUsername.textContent = `@${user.username || 'commander'}`;
+      if (claimAddress) {
+        const addr = user.embedded_wallets?.evm_address || user.embedded_wallets?.solana_address || user.id;
+        claimAddress.textContent = addr ? `${addr.slice(0, 8)}...${addr.slice(-6)}` : 'Verified Identity';
+      }
+    } else {
+      walletSection?.classList.remove('hidden');
+      claimSection?.classList.add('hidden');
+      successSection?.classList.add('hidden');
+    }
+  }
+
+  btnConnect?.addEventListener('click', () => {
+    wouAuth.openModal();
   });
 
   btnClaim?.addEventListener('click', () => {
-    btnClaim.innerText = "Processing...";
+    btnClaim.innerText = "Dispatching Transmission...";
     btnClaim.setAttribute('disabled', 'true');
     setTimeout(() => {
       claimSection?.classList.add('hidden');
       successSection?.classList.remove('hidden');
-    }, 1800);
+    }, 1200);
   });
+
+  window.addEventListener('wou:auth-state-change', (e: any) => {
+    updateClaimUI(e.detail?.user || null);
+  });
+
+  // Initial check
+  updateClaimUI(wouAuth.getUser());
 </script>
