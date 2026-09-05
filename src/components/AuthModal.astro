@@ -11,8 +11,9 @@
     <div class="flex items-center justify-between mb-5 border-b border-white/5 pb-3">
       <div class="flex items-center gap-2.5">
         <img src="/logo.svg" alt="Cosmicrafts Logo" class="h-6 w-auto" />
-        <span class="text-[9px] font-mono text-cyan-400 uppercase tracking-widest border-l border-white/10 pl-2.5">
-          [ AUTHENTICATION ]
+        <img src="/wouid.svg" alt="WouID" class="h-4 w-auto border-l border-white/10 pl-2.5" />
+        <span class="text-[9px] font-mono text-cyan-400 uppercase tracking-widest">
+          WouID
         </span>
       </div>
       <button id="modal-close-btn" type="button" class="text-slate-400 hover:text-white p-1 rounded-lg hover:bg-white/10 transition-colors" aria-label="Close">
@@ -210,7 +211,8 @@
 </div>
 
 <script>
-  import { wouAuth } from '../scripts/wou-auth';
+  import { wouAuth } from '@worldofunreal/id-sdk';
+  wouAuth.setDefaultContext('cosmicrafts');
 
   const modal = document.getElementById('wou-auth-modal');
   const closeBtn = document.getElementById('modal-close-btn');

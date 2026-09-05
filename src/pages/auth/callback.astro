@@ -46,7 +46,8 @@ import Starfield from '../../components/Starfield.astro';
 </Layout>
 
 <script>
-    import { wouAuth } from '../../scripts/wou-auth';
+    import { wouAuth } from '@worldofunreal/id-sdk';
+    wouAuth.setDefaultContext('cosmicrafts');
 
     const params = new URLSearchParams(window.location.search);
     const code = params.get('code') || '';

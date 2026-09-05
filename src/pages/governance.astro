@@ -300,7 +300,8 @@ import Panel from '../components/Panel.astro';
 </style>
 
 <script>
-  import { wouAuth } from '../scripts/wou-auth';
+  import { wouAuth } from '@worldofunreal/id-sdk';
+  wouAuth.setDefaultContext('cosmicrafts');
 
   // 36 proposals array database (all states, qualities, issues, and ideas)
   const BASE_PROPOSALS = [

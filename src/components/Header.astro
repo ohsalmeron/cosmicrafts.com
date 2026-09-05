@@ -121,7 +121,8 @@ import AuthModal from './AuthModal.astro';
 </header>
 
 <script>
-  import { wouAuth, type WouAccount } from '../scripts/wou-auth';
+  import { wouAuth, type WouAccount } from '@worldofunreal/id-sdk';
+  wouAuth.setDefaultContext('cosmicrafts');
 
   // UI selectors
   const loggedInContainer = document.getElementById('logged-in-container');

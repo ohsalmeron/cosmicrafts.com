@@ -84,7 +84,8 @@ import Panel from '../components/Panel.astro';
 </Layout>
 
 <script>
-  import { wouAuth, type WouAccount } from '../scripts/wou-auth';
+  import { wouAuth, type WouAccount } from '@worldofunreal/id-sdk';
+  wouAuth.setDefaultContext('cosmicrafts');
 
   const btnConnect = document.getElementById('btn-connect');
   const btnClaim = document.getElementById('btn-claim');
