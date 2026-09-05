@@ -47,6 +47,28 @@
       </button>
     </div>
 
+        <!-- QR SIGN-IN (same flow everywhere: scan, approve on phone, this device enters) -->
+    <div id="qr-box" class="mb-5 p-3 rounded-xl border border-white/10 bg-white/[0.03] flex items-center gap-3">
+      <div id="qr-idle" class="flex-1 flex items-center gap-2">
+        <div class="flex-1">
+          <div class="text-xs font-bold text-white">Scan to sign in</div>
+          <input id="qr-user" placeholder="@username for push (optional)" class="mt-1 w-full px-2 py-1 rounded-lg bg-black/40 border border-white/10 text-[11px] font-mono text-white placeholder-zinc-600 focus:outline-none" />
+        </div>
+        <button id="qr-start" type="button" class="px-3 py-1.5 rounded-lg bg-cyan-500 text-slate-950 text-[11px] font-mono font-bold uppercase hover:bg-cyan-400 transition-all cursor-pointer">Show link</button>
+      </div>
+      <div id="qr-view" class="hidden flex-1">
+        <div class="text-xs font-bold text-white">Open on your phone</div>
+        <div class="flex items-center gap-2 mt-1">
+          <input id="qr-link" readonly class="flex-1 px-2 py-1 rounded-lg bg-black/40 border border-white/10 text-[11px] font-mono text-zinc-300 focus:outline-none" />
+          <button id="qr-copy" type="button" class="px-3 py-1 rounded-lg bg-white/5 border border-white/10 text-white text-[11px] font-mono font-bold hover:bg-white/10 transition-all cursor-pointer">Copy</button>
+        </div>
+        <div class="flex items-center gap-2 mt-1.5">
+          <span id="qr-timer" class="text-[11px] font-mono text-zinc-500"></span>
+          <button id="qr-cancel" type="button" class="text-[11px] text-zinc-400 hover:text-white ml-auto">Cancel</button>
+        </div>
+      </div>
+    </div>
+
     <!-- TAB 1: WEB3 WALLETS -->
     <div id="tab-content-web3" class="space-y-2.5">
       <!-- EVM / MetaMask -->
@@ -165,6 +187,14 @@
         <div class="flex items-center gap-3">
           <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
           <span>X / TWITTER</span>
+        </div>
+        <span class="text-[9px] text-slate-500">[ INSTANT ]</span>
+      </button>
+
+      <button data-provider="meta" class="social-btn w-full py-2.5 px-4 rounded-xl bg-white/5 border border-white/10 hover:bg-white/10 text-white flex items-center justify-between transition-all cursor-pointer">
+        <div class="flex items-center gap-3">
+          <svg class="w-4 h-4 fill-current text-[#0081FB]" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+          <span>META ACCOUNT</span>
         </div>
         <span class="text-[9px] text-slate-500">[ INSTANT ]</span>
       </button>
@@ -382,5 +412,50 @@
     } catch (err: any) {
       showError(err.message || 'ICP authentication failed.');
     }
+  });
+
+  // QR sign-in (same everywhere)
+  let qrState = null;
+  let qrPoll = null;
+  const qrBox = document.getElementById('qr-box');
+  const qrIdle = document.getElementById('qr-idle');
+  const qrView = document.getElementById('qr-view');
+  const qrLink = document.getElementById('qr-link');
+  const qrTimer = document.getElementById('qr-timer');
+  function qrStop() { if (qrPoll) clearInterval(qrPoll); qrPoll = null; }
+  document.getElementById('qr-start')?.addEventListener('click', async () => {
+    hideError();
+    try {
+      const u = (document.getElementById('qr-user') as HTMLInputElement)?.value.trim() || undefined;
+      const q = await wouAuth.startQr({ username: u });
+      qrState = q;
+      (qrLink as HTMLInputElement).value = q.approve_url;
+      qrIdle?.classList.add('hidden'); qrView?.classList.remove('hidden');
+      let left = q.expires_in_seconds;
+      const tick = () => { if (qrTimer) qrTimer.textContent = Math.floor(left / 60) + ':' + String(left % 60).padStart(2, '0') + (q.notified?.length ? ' · push: ' + q.notified.join(', ') : ''); };
+      tick();
+      qrStop();
+      qrPoll = setInterval(async () => {
+        left -= 2;
+        try {
+          const s = await wouAuth.qrStatus(q.id, q.secret);
+          if (s.status === 'approved' && s.session_token && s.account) {
+            qrStop();
+            wouAuth.setSession(s.session_token, s.account);
+            window.location.reload();
+            return;
+          }
+          if (s.status === 'expired') { qrStop(); qrState = null; qrIdle?.classList.remove('hidden'); qrView?.classList.add('hidden'); showError('Code expired.'); return; }
+        } catch {}
+        tick();
+      }, 2000);
+    } catch (err: any) { showError(err.message || 'QR failed.'); }
+  });
+  document.getElementById('qr-copy')?.addEventListener('click', async () => {
+    try { await navigator.clipboard.writeText((qrLink as HTMLInputElement).value); } catch {}
+  });
+  document.getElementById('qr-cancel')?.addEventListener('click', async () => {
+    if (qrState) { try { await wouAuth.qrCancel(qrState.id, qrState.secret); } catch {} }
+    qrStop(); qrState = null; qrIdle?.classList.remove('hidden'); qrView?.classList.add('hidden');
   });
 </script>
