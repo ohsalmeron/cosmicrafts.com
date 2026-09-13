@@ -4,6 +4,8 @@ description: "High-performance technical specifications and overview of Cosmicra
 order: 1
 ---
 
+# Cosmicrafts Overview
+
 ## Technical Pivot
 
 Following a failed DAO launch on ICP, we shifted to a high-performance, cost-effective Web2.5 hybrid architecture:

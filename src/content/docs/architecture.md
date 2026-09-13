@@ -4,6 +4,8 @@ description: "Technical specifications of the hybrid Rust backend, multi-wallet 
 order: 2
 ---
 
+# Cosmicrafts Architecture
+
 ## Hybrid Ledger & Backend
 
 To eliminate transaction latency and gas fees during gameplay, we utilize a dual-layer approach:

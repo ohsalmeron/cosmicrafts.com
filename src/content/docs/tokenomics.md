@@ -4,6 +4,8 @@ description: "Distribution allocations, hybrid ledger design, and smart contract
 order: 3
 ---
 
+# Cosmicrafts Tokenomics & Contracts
+
 ## Token Distribution Strategy
 
 Total Fixed Supply: **1,000,000,000 SPIRAL Tokens (1 Billion)**

@@ -5,17 +5,18 @@ import { getCollection } from 'astro:content';
 
 interface Props {
   title: string;
+  description?: string;
   activeSlug: string;
 }
 
-const { title, activeSlug } = Astro.props;
+const { title, description, activeSlug } = Astro.props;
 
 // Fetch and sort all documents in the collection
 const allDocs = await getCollection('docs');
 const sortedDocs = allDocs.sort((a, b) => (a.data.order || 0) - (b.data.order || 0));
 ---
 
-<Layout title={`${title} | Cosmicrafts Docs`}>
+<Layout title={`${title} | Cosmicrafts Docs`} description={description}>
   <div class="fixed inset-0 h-screen w-screen overflow-hidden flex flex-col justify-between p-4 md:p-8 select-none z-10">
     <!-- Starfield Background -->
     <Starfield />

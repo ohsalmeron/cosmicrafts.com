@@ -4,6 +4,8 @@ description: "Terms and legal boundaries of the SPIRAL token project."
 order: 4
 ---
 
+# Cosmicrafts Legal & Disclaimers
+
 ## Disclaimers
 
 ### Not Investment Advice
