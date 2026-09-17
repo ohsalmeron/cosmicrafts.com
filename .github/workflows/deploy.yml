@@ -50,15 +50,31 @@ jobs:
 
       - name: Stage Immutable Release
         run: |
-          REL=" releases/${{ github.sha }}-${{ github.run_number }}"
-          REL="$(echo "$REL" | tr -d ' ')"
-          echo "RELEASE=$REL" >> "$GITHUB_ENV"
+          REL="releases/${{ github.sha }}-${{ github.run_number }}"
           rsync -avz -e "ssh -o StrictHostKeyChecking=no" dist/ "${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:/var/www/cosmicrafts.com/$REL/"
+          echo "staged $REL"
 
       - name: Activate Release (atomic symlink + retain 5)
         run: |
-          ssh -o StrictHostKeyChecking=no "${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}" \
-            "link=/var/www/cosmicrafts.com/.current.$$; ln -sfn '$RELEASE' $link && mv -hf $link /var/www/cosmicrafts.com/current && cd /var/www/cosmicrafts.com/releases && old=$(ls -t | tail -n +6); [ -n "$old" ] && echo "$old" | xargs -I{} rm -rf {} ; readlink /var/www/cosmicrafts.com/current"
+          # NOTE: the remote script arrives via quoted heredoc so NOTHING
+          # expands locally ($link, $$ stay intact for the server shell).
+          # A double-quoted ssh string once ate them and the flip silently
+          # never happened while the step stayed green. Never go back to that.
+          REL="releases/${{ github.sha }}-${{ github.run_number }}"
+          ssh -o StrictHostKeyChecking=no "${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}" "WANT='$REL' bash -s" <<'REMOTE'
+          set -eu
+          link="/var/www/cosmicrafts.com/.current.$$"
+          ln -sfn "$WANT" "$link"
+          mv -hf "$link" /var/www/cosmicrafts.com/current
+          rm -f /var/www/cosmicrafts.com/current.tmp
+          got="$(readlink /var/www/cosmicrafts.com/current)"
+          test "$got" = "$WANT" || { echo "FLIP FAILED: current=$got want=$WANT"; exit 1; }
+          echo "live now: $got"
+          cd /var/www/cosmicrafts.com/releases
+          old="$(ls -t | tail -n +6 || true)"
+          if [ -n "$old" ]; then echo "$old" | xargs -I{} rm -rf "{}"; fi
+          ls
+          REMOTE
 
       - name: Verify Live Site
         run: |
