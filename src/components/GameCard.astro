@@ -21,9 +21,9 @@ const href = game.externalUrl ?? game.playRoute ?? game.repo;
 const external = Boolean(game.externalUrl);
 ---
 
-<Panel variant={index % 2 === 0 ? 'cyan' : 'purple'} class="overflow-hidden group hover:border-cyan-400/30 transition-all duration-300 hover:-translate-y-1 flex flex-col">
+<Panel variant={index % 2 === 0 ? 'cyan' : 'purple'} class="overflow-hidden group hover:border-cyan-400/30 transition-[transform,border-color] duration-300 hover:-translate-y-1 flex flex-col">
   <div class="relative h-44 overflow-hidden -m-0">
-    <img src={game.image} alt={game.name} loading="lazy" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
+    <img src={game.image} alt={game.name} width="640" height="360" loading="lazy" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
     <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/20 to-transparent"></div>
     <span class={`absolute top-3 right-3 px-2 py-0.5 rounded-full border text-[9px] font-mono font-bold tracking-widest uppercase ${tagStyles[game.tagColor]}`}>
       {game.tag}
@@ -32,7 +32,7 @@ const external = Boolean(game.externalUrl);
   </div>
 
   <div class="p-4 flex flex-col gap-2 flex-1">
-    <h3 class="text-sm font-black text-white uppercase tracking-tight">{game.name}</h3>
+    <h3 class="text-sm font-black text-white uppercase tracking-tight text-balance">{game.name}</h3>
     <p class="text-[11px] text-slate-400 font-light leading-relaxed flex-1">{game.description}</p>
     <div class="flex flex-wrap gap-1">
       {game.features.map((f) => (
@@ -44,16 +44,17 @@ const external = Boolean(game.externalUrl);
         href={href}
         target={external ? '_blank' : undefined}
         rel={external ? 'noopener' : undefined}
-        class="flex-1 text-center py-2 rounded-lg bg-gradient-to-r from-cyan-500 to-indigo-500 hover:from-cyan-400 hover:to-indigo-400 text-white font-mono text-[10px] font-bold tracking-widest uppercase transition-all active:scale-95"
+        class="flex-1 inline-flex items-center justify-center min-h-[44px] text-center py-2 rounded-lg bg-gradient-to-r from-cyan-500 to-indigo-500 hover:from-cyan-400 hover:to-indigo-400 text-white font-mono text-[10px] font-bold tracking-widest uppercase transition-[background-color,transform] active:scale-95"
       >
-        {game.status === 'soon' ? 'Ver repo' : game.status === 'live' ? 'Jugar ahora' : 'Jugar'}
+        {game.status === 'live' ? 'Jugar ahora' : 'Jugar'}
       </a>
       <a
         href={game.repo}
         target="_blank"
         rel="noopener"
         title="Código en GitHub"
-        class="px-3 py-2 rounded-lg bg-white/5 border border-white/10 hover:border-white/25 text-slate-300 font-mono text-[10px] transition-all"
+        aria-label={`Código de ${game.name} en GitHub`}
+        class="inline-flex items-center justify-center min-h-[44px] min-w-[44px] px-3 py-2 rounded-lg bg-white/5 border border-white/10 hover:border-white/25 text-slate-300 font-mono text-[10px] transition-[border-color]"
       >
         &lt;/&gt;
       </a>

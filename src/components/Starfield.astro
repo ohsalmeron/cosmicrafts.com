@@ -1,4 +1,4 @@
-<div class="starry-background absolute inset-0 overflow-hidden w-full h-full pointer-events-none z-0">
+<div class="starry-background absolute inset-0 overflow-hidden w-full h-full pointer-events-none z-0" aria-hidden="true">
   <canvas id="starfield" class="w-full h-full block bg-transparent opacity-85"></canvas>
 </div>
 
@@ -81,9 +81,12 @@
     init();
   });
 
-  // Start the animation
+  // Start the animation (static backdrop when reduced motion is preferred)
   init();
-  anim();
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (!reduceMotion) {
+    anim();
+  }
 </script>
 
 <style>

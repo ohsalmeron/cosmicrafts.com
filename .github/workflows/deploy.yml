@@ -9,6 +9,14 @@ concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
 
+# How this deploys (mirrors the SOW pipeline pattern):
+# 1. CI builds the static bundle.
+# 2. The bundle goes to a NEW immutable dir: releases/<sha>-<run>.
+# 3. The live path /var/www/cosmicrafts.com/current is a symlink;
+#    it flips to the new release atomically (never a half-written live dir).
+# 4. Only the 5 newest releases are kept (rollback = flip the symlink back).
+# 5. Post-deploy checks hit the real site, including the Unity .br
+#    encoding header that once took the games down. Any check fails the job.
 jobs:
   deploy:
     name: Build Astro & Deploy Static Files
@@ -40,6 +48,36 @@ jobs:
           mkdir -p ~/.ssh
           ssh-keyscan -H -T 10 ${{ secrets.SSH_HOST }} >> ~/.ssh/known_hosts 2>/dev/null || true
 
-      - name: Deploy Static Bundle via Rsync
+      - name: Stage Immutable Release
         run: |
-          rsync -avz --delete -e "ssh -o StrictHostKeyChecking=no" dist/ ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:/var/www/cosmicrafts.com/dist/
+          REL=" releases/${{ github.sha }}-${{ github.run_number }}"
+          REL="$(echo "$REL" | tr -d ' ')"
+          echo "RELEASE=$REL" >> "$GITHUB_ENV"
+          rsync -avz -e "ssh -o StrictHostKeyChecking=no" dist/ "${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:/var/www/cosmicrafts.com/$REL/"
+
+      - name: Activate Release (atomic symlink + retain 5)
+        run: |
+          ssh -o StrictHostKeyChecking=no "${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}" \
+            "ln -sfn '$RELEASE' /var/www/cosmicrafts.com/current.tmp && mv -Tf /var/www/cosmicrafts.com/current.tmp /var/www/cosmicrafts.com/current && cd /var/www/cosmicrafts.com/releases && ls -t | tail -n +6 | xargs -r rm -rf && readlink /var/www/cosmicrafts.com/current"
+
+      - name: Verify Live Site
+        run: |
+          set -e
+          base="https://cosmicrafts.com"
+          check() { code="$(curl -s -o /dev/null -w '%{http_code}' --max-time 30 "$1")"; echo "$1 -> $code"; [ "$code" = "200" ]; }
+          check "$base/"
+          check "$base/games/"
+          check "$base/play/beta-2022/"
+          check "$base/play/stardrifter/"
+          check "$base/play/adventures-bevy/"
+          check "$base/games/beta-2022/CosmicraftsBeta.loader.js"
+          curl -s --max-time 30 "$base/" | grep -q "GAME_LIBRARY"
+          echo "home contains games library: yes"
+          enc="$(curl -sI -H 'Accept-Encoding: gzip, deflate, br, zstd' --max-time 30 "$base/games/adventures-3d/Cosmicrafts.data.br" | tr -d '\r' | grep -i '^content-encoding:' | awk '{print $2}')"
+          echo "unity .br content-encoding: $enc"
+          [ "$enc" = "br" ]
+          curl -s --max-time 30 "$base/games/stardrifter/" | grep -q "_bg.wasm"
+          echo "stardrifter entry references wasm: yes"
+          curl -s --max-time 30 "$base/games/adventures-bevy/" | grep -q "_bg.wasm"
+          echo "adventures-bevy entry references wasm: yes"
+          echo "ALL LIVE CHECKS PASSED"
