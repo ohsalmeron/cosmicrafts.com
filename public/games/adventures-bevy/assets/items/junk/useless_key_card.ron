@@ -1,0 +1,12 @@
+(
+    id: "useless_key_card",
+    label: "Useless Key Card",
+    description: "Opens a door on a decommissioned station.",
+    slot: thrusters,
+    rarity: junk,
+    base_value: 1,
+    icon: Some("X"),
+    icon_path: None,
+    modifiers: [],
+    on_kill: None,
+)

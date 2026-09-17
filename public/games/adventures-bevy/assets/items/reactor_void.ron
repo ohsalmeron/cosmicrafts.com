@@ -1,0 +1,18 @@
+(
+    id: "reactor_void",
+    label: "Void Reactor",
+    description: "Experimental void-tapped core drawing energy from dimensional rifts. Massive energy reserves and regeneration, but the hull whispers when it's active.",
+    slot: reactor,
+    rarity: legendary,
+    base_value: 10000,
+    icon: Some("🌀"),
+    icon_path: Some("icons/items/reactor_void.png"),
+    modifiers: [
+        (stat: max_energy,             op: add(120.0)),
+        (stat: energy_regen,           op: multiply(1.7)),
+        (stat: energy_cost, op: multiply(0.90)),
+        (stat: max_shield,             op: add(15.0)),
+    ],
+    on_kill: None,
+)
+

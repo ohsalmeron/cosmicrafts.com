@@ -1,0 +1,44 @@
+// Galaxy generation config. Edit and restart game to apply.
+// All parameters are seeded — same seed + same config = same galaxy.
+(
+    // Number of sectors (Voronoi cells) in the galaxy. More = denser, more exploration.
+    sector_count_min: 300,
+    sector_count_max: 600,
+
+    // Galaxy radius in world units. Determines the size of the entire galaxy.
+    galaxy_radius: 500000.0,
+
+    // Spiral arm parameters
+    arm_count: 4,
+    arm_tightness: 0.3,         // Logarithmic spiral b parameter. Lower = tighter arms.
+    arm_width: 0.4,             // How wide each arm is (in radians). Higher = fatter arms.
+
+    // Core parameters (supermassive black hole at center)
+    core_radius: 15000.0,       // Inner core radius — extremely dense area
+    core_density: 1.0,          // Star density at core (max)
+
+    // Density falloff
+    density_scale: 0.3,         // Exponential decay scale. Higher = slower density drop-off.
+    inter_arm_density: 0.08,    // Density between spiral arms (0.0 = void, 1.0 = same as arm)
+    dark_rift_density: 0.02,    // Density in Dark Rift void zones
+
+    // Noise perturbation for organic feel
+    noise_scale: 25000.0,       // Spatial frequency of perturbation
+    noise_strength: 0.15,       // How much noise affects density (0.0 = smooth, 1.0 = chaotic)
+
+    // Faction territory parameters
+    // Each faction has a preferred region based on lore. These control the "capital" placement.
+    faction_core_radius: 0.15,      // Cosmicons: within this fraction of galaxy radius from center
+    faction_outer_rim: 0.70,        // Spirats: beyond this fraction = outer rim
+    faction_void_threshold: 0.05,   // Spades: density below this = void zone
+    faction_mid_inner: 0.25,        // Webes/Celestials: mid-range starts here
+    faction_mid_outer: 0.65,        // Webes/Celestials: mid-range ends here
+
+    // Star systems per sector
+    systems_per_sector_min: 3,
+    systems_per_sector_max: 20,     // Actual count scaled by sector density
+
+    // Player spawn: picks a random Neutral sector near the mid-range
+    spawn_radius_min: 0.20,         // Fraction of galaxy radius — inner spawn ring
+    spawn_radius_max: 0.45,         // Fraction of galaxy radius — outer spawn ring
+)

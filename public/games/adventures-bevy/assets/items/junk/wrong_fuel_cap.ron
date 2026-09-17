@@ -1,0 +1,12 @@
+(
+    id: "wrong_fuel_cap",
+    label: "Wrong Fuel Cap",
+    description: "Fits a ship that was discontinued 200 years ago.",
+    slot: thrusters,
+    rarity: junk,
+    base_value: 3,
+    icon: Some("~"),
+    icon_path: None,
+    modifiers: [],
+    on_kill: None,
+)

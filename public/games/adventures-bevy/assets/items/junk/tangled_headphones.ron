@@ -1,0 +1,12 @@
+(
+    id: "tangled_headphones",
+    label: "Tangled Headphones",
+    description: "The knot has achieved sentience.",
+    slot: weapon1,
+    rarity: junk,
+    base_value: 1,
+    icon: Some("%"),
+    icon_path: None,
+    modifiers: [],
+    on_kill: None,
+)

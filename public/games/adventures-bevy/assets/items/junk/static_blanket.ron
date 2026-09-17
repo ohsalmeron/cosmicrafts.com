@@ -1,0 +1,12 @@
+(
+    id: "static_blanket",
+    label: "Static-Charged Blanket",
+    description: "Touch anything after using this. Go ahead. We dare you.",
+    slot: weapon1,
+    rarity: junk,
+    base_value: 3,
+    icon: Some("+"),
+    icon_path: None,
+    modifiers: [],
+    on_kill: None,
+)

@@ -1,0 +1,110 @@
+// World-space health bars, name label, and standmark above units.
+// Layout order (top to bottom): standmark -> name -> bar -> level badge.
+// Player HUD (top-left) is in assets/ui/playerhud.ron. Hot-reload supported.
+//
+// Each color is either solid (r,g,b,a) or a gradient:
+//   ( gradient: "linear", angle_degrees: 90, start: (r,g,b,a), end: (r,g,b,a) )  // angle in degrees
+//   ( gradient: "vertical", start: (r,g,b,a), end: (r,g,b,a) )   // bottom to top
+//   ( gradient: "horizontal", start: (r,g,b,a), end: (r,g,b,a) ) // left to right
+//   ( gradient: "radial", start: (r,g,b,a), end: (r,g,b,a) )     // center to edge
+(
+    // ── Master kill switch ──────────────────────────────────────────
+    // false = entire healthbar/name/standmark system is skipped (zero draws)
+    enabled: true,
+
+    // ── Visibility mode ─────────────────────────────────────────────
+    // Controlled globally via assets/settings.ron `health_bar_visibility`.
+    // "always"           – bars + shields + level badge always shown
+    // "when_damaged"     – bars only visible when HP < max or shield < max
+    // "level_plate_only" – no bars, only level badge
+    // "bar_only"         – bars shown, no level badge, no names
+    // "never"            – nothing rendered at all (same as enabled: false)
+
+    // ── Visibility radius (world units) ─────────────────────────────
+    // Bars, names, and standmarks are only shown for units within this distance of the player.
+    // Increase to see health bars from farther away; decrease for performance or less clutter.
+    visibility_radius: 800.0,
+    // Max number of unit overlays (bars + names + standmarks) to show at once. Closest units win.
+    max_visible_bars: 250,
+
+    // ── Name filtering ──────────────────────────────────────────────
+    // true = only show names for player, allied heroes/companions, and NPCs with standmarks.
+    // Regular enemy mobs get NO name label — only the bar.
+    names_only_important: true,
+
+    world_bar_width: 40.0,
+    world_bar_height: 5.0,
+    world_bar_border_radius: 0.0,
+    world_bar_frame_outline_thickness: 0.5,
+    world_bar_frame_outline_color: (0.0, 0.0, 0.0, 1.0),
+    world_bar_offset_x: 0.0,
+    // World Y above unit origin for bar anchor (positive = up). Lower = bar closer to unit.
+    world_bar_offset_y: 2.5,
+    shield_health_gap: 0.25,
+    level_badge_size: 18.0,
+    level_badge_gap: 0.0,
+    level_badge_font_size: 12.0,
+    level_badge_border_radius: 0.0,
+    // Overlay on top of sprite; use alpha < 1 (e.g. 0.5–0.7) so the level_badge_sprite shows through.
+    level_badge_bg: (0.0, 0.0, 0.0, 0.0),
+    level_badge_offset_x: 4.0,
+    level_badge_offset_y: -6.0,
+    level_badge_sprite: "icons/level-plate.webp",
+    level_badge_sprite_alpha: 1.0,
+    world_bar_track_bg: (0.1, 0.2, 0.45, 0.85),
+    world_bar_track_image: Some("ui/healthbar_track.png"),
+    world_bar_fill_image: Some("ui/healthbar_fill.png"),
+    world_bar_image_borders: Some(12.0),
+
+    // Example: ally health fill as vertical gradient (darker at bottom, brighter at top)
+    world_bar_health_fill_ally: ( gradient: "vertical", start: (0.0, 0.55, 0.25, 1.0), end: (0.0, 1.0, 0.5, 1.0) ),
+    // Enemy HP: bright red top, mid red bottom (lighter than before)
+    world_bar_health_fill_enemy: ( gradient: "vertical", start: (0.55, 0.08, 0.08, 1.0), end: (1.0, 0.35, 0.28, 1.0) ),
+    // Shields: light blue–cyan gradient (ally and enemy)
+    world_bar_shield_fill_ally: ( gradient: "vertical", start: (0.38, 0.62, 0.9, 1.0), end: (0.52, 0.78, 1.0, 1.0) ),
+    world_bar_shield_fill_enemy: ( gradient: "vertical", start: (0.38, 0.62, 0.9, 1.0), end: (0.52, 0.78, 1.0, 1.0) ),
+
+    world_bar_health_damage_ally: ( gradient: "Horizontal", start: (1.0, 0.5, 0.0, 1.0), end: (1.0, 0.0, 0.0, 1.0) ),
+    world_bar_health_damage_enemy: ( gradient: "vertical", start: (1.0, 0.92, 0.2, 1.0), end: (1.0, 1.0, 0.45, 1.0) ),
+    world_bar_shield_damage_ally: ( gradient: "Horizontal", start: (1.0, 0.5, 0.0, 1.0), end: (1.0, 0.0, 0.0, 1.0) ),
+    world_bar_shield_damage_enemy: ( gradient: "Horizontal", start: (0.65, 0.75, 1.0, 1.0), end: (0.85, 0.95, 1.0, 1.0) ),
+
+    world_bar_health_heal_ally: (0.85, 1.0, 0.85, 1.0),
+    world_bar_health_heal_enemy: (0.85, 1.0, 0.85, 1.0),
+    world_bar_shield_heal_ally: (0.3, 0.8, 1.0, 1.0),
+    world_bar_shield_heal_enemy: (0.3, 0.8, 1.0, 1.0),
+
+    // Slightly slower lerp so HP/shield regen from pickups shows a more visible heal band.
+    bar_display_lerp_speed: 3.33,
+
+    // Name label (world Y above unit; per-unit opt-in via nameplate in unit RON)
+    name_offset_y: 5.0,
+    name_font_size: 12.0,
+    name_color_ally: (0.2, 1.0, 0.4, 1.0),
+    name_color_enemy: (1.0, 0.35, 0.28, 1.0),
+    name_outline_thickness: 0.5,
+    name_outline_color: (0.0, 0.0, 0.0, 1.0),
+    name_max_width: None,
+
+    // Standmark (e.g. "!" for NPCs; viewport size and offset in pixels).
+    // Set standmark_sprite to a path (e.g. "ui/standmark_exclamation.png") to show the icon; leave "" until asset exists.
+    standmark_offset_y: 7.5,
+    standmark_width: 72.0,
+    standmark_height: 72.0,
+    standmark_offset_x: 0.0,
+    standmark_sprite: "ui/standmark.webp",
+    standmark_tooltips: { "!": "This NPC has missions for you" },
+
+    // Speech bubble (unit-attached; stacks above standmark/name/bar). Content from gameplay events.
+    speech_bubble_duration: 5.5,
+    speech_bubble_font_size: 18.0,
+    speech_bubble_color: (1.0, 1.0, 1.0, 1.0),
+    speech_bubble_bg: (0.1, 0.09, 0.14, 0.65),
+    speech_bubble_padding_v: 11.0,
+    speech_bubble_padding_h: 116.0,
+    speech_bubble_border_radius: 10.0,
+    speech_bubble_max_width_px: 240.0,
+    speech_bubble_offset_above_unit_y: 5.0,
+    speech_bubble_animation_in_secs: 0.25,
+    speech_bubble_animation_out_secs: 0.65,
+)

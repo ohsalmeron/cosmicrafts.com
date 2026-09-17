@@ -1,0 +1,12 @@
+(
+    id: "broken_cloaking_device",
+    label: "Broken Cloaking Device",
+    description: "Makes everything invisible except itself.",
+    slot: thrusters,
+    rarity: junk,
+    base_value: 4,
+    icon: Some("?"),
+    icon_path: None,
+    modifiers: [],
+    on_kill: None,
+)

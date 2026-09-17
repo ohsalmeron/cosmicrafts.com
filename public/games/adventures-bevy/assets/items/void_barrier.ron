@@ -1,0 +1,17 @@
+(
+    id: "void_barrier",
+    label: "Void Barrier",
+    description: "Void-forged shield emitter drawing on dimensional energy. Dramatically increases shield capacity and regen. The barrier shimmers with an otherworldly purple haze.",
+    slot: shield,
+    rarity: rare,
+    base_value: 500,
+    icon: Some("🔮"),
+    icon_path: Some("icons/items/void_barrier.png"),
+    modifiers: [
+        (stat: max_shield,       op: multiply(1.25)),
+        (stat: shield_regen,     op: add(8.0)),
+        (stat: damage_reduction, op: add(0.02)),
+    ],
+    on_kill: None,
+)
+

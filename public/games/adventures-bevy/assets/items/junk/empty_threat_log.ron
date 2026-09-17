@@ -1,0 +1,12 @@
+(
+    id: "empty_threat_log",
+    label: "Empty Threat Log",
+    description: "No threats logged. Either very safe or the sensor gave up.",
+    slot: shield,
+    rarity: junk,
+    base_value: 3,
+    icon: Some("+"),
+    icon_path: None,
+    modifiers: [],
+    on_kill: None,
+)

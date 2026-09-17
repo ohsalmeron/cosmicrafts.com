@@ -1,0 +1,122 @@
+(
+    id: "rusty",
+    model: "models/rusty.glb",
+    scale: 2.5,
+    nameplate: Some((show_name: true, show_healthbar: true, show_level_badge: false)),
+    faction: "Cosmicons",
+    pushback_resistance: Some(0.55),
+    health: 1500,
+    shield: 1200,
+    energy: Some((
+        max: 1500,
+        regen_rate: 130,
+    )),
+    movement: (
+        max_speed: 20,
+        acceleration: 0.4,
+        rotation_speed: 10,
+    ),
+    combat: (
+        range: 41,
+        cooldown: 0.45,
+        bullet_speed: 85,
+        damage: 38,
+        basic_attack_ability_id: Some("bullet"),
+    ),
+    shield_regen_per_second: Some(12),
+    hp_regen_per_second: Some(5),
+    pickup_attract_radius: Some(18),
+    pickup_collect_radius: Some(2.5),
+    pickup_pull_speed: Some(60),
+    laser_spawn_origin: Some([
+        (0, -0.16, -0.99)
+    ]),
+    bullet_spawn_origins: Some([
+        (0, -0.16, -0.99)
+    ]),
+    thrusters: Some([
+        (
+            position: (0, 0.12, 0.72),
+            rotation_deg: (-90, 0, -90),
+            scale: 1.2,
+        )
+    ]),
+    thruster_visual: Some((
+        spritesheet_path: "sprites/thruster.webp",
+        columns: 2,
+        rows: 2,
+        fps: 24.0,
+        crossed_quads: true,
+        additive: true,
+        emissive_color: (1.0, 0.5, 0.15),
+        emissive_intensity: 8000.0,
+    )),
+    bullet_visual_overrides: Some((
+        projectile: Some((
+            mode: Some(Cylinder),
+            color: Some((1.0, 0.6, 0.1)),
+            emissive_intensity: Some(9000.0),
+            radius: Some(0.04),
+            length: Some(0.8),
+        )),
+        muzzle_flash: Some((
+            mode: Some(SpriteAdditive),
+            color: Some((1.0, 0.55, 0.15)),
+            emissive_intensity: Some(4000.0),
+            scale: Some(2.4),
+            texture_path: Some("icons/burst.webp"),
+            billboard: Some(true),
+        )),
+        impact: Some((
+            mode: Some(SpriteAdditive),
+            color: Some((1.0, 0.5, 0.1)),
+            emissive_intensity: Some(4800.0),
+            scale: Some(2.2),
+            texture_path: Some("icons/burst.webp"),
+            billboard: Some(true),
+        )),
+    )),
+    passive_skills: [
+        (
+            id: "rusty_regen",
+            trigger: "Aura",
+            effect: ShieldRegen(rate: 8.0),
+        ),
+        (
+            id: "rusty_crit",
+            trigger: "OnSpawn",
+            effect: CritBoost(chance: 0.12),
+        ),
+        (
+            id: "rusty_dodge",
+            trigger: "OnSpawn",
+            effect: DodgeBoost(chance: 0.08),
+        ),
+        (
+            id: "rusty_speed",
+            trigger: "OnSpawn",
+            effect: SpeedBoost(factor: 1.1),
+        ),
+    ],
+    status_effect_modifiers: (
+        crit_chance: 0.12,
+        dodge_chance: 0.08,
+        stun_duration_mult: 0.6,
+        slow_resist: 0.4,
+    ),
+    metadata: (
+        display_name: "Rusty",
+        description_short: "Rusty commander. Bullet, dash, laser, and missile with a red-orange theme.",
+        tags: ["hero", "player", "commander", "rusty", "fleet"],
+        icon: Some((
+            path: "icons/rusty.webp",
+        )),
+        preview: Some((
+            scale: 1.0,
+            rotation_speed: 0.5,
+            offset: (0.0, 0.0, 0.0),
+        )),
+        ui_color_hint: Some((1.0, 0.6, 0.1)),
+        authoring_notes: "Rusty fleet. Abilities: bullet (basic), dash, laser, missile. No auto-abilities.",
+    )
+)

@@ -1,0 +1,12 @@
+(
+    id: "deflated_escape_pod",
+    label: "Deflated Escape Pod",
+    description: "Inflatable! Once. Already used. Once.",
+    slot: reactor,
+    rarity: junk,
+    base_value: 5,
+    icon: Some("!"),
+    icon_path: None,
+    modifiers: [],
+    on_kill: None,
+)

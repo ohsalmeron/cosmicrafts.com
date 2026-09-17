@@ -1,0 +1,16 @@
+(
+    id: "warden_barrier",
+    label: "Warden Barrier",
+    description: "Expandable shield emitter that extends protection to the Warden's companions. Increases shield capacity and regen; the barrier shimmers with a teal guardian aura.",
+    slot: shield,
+    rarity: rare,
+    base_value: 500,
+    icon: Some("🛡"),
+    icon_path: Some("icons/items/void_barrier.png"),
+    modifiers: [
+        (stat: max_shield,   op: add(150.0)),
+        (stat: shield_regen, op: add(6.0)),
+    ],
+    on_kill: None,
+)
+

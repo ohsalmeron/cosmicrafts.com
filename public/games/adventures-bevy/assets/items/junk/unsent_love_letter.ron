@@ -1,0 +1,12 @@
+(
+    id: "unsent_love_letter",
+    label: "Unsent Love Letter",
+    description: "Dearest Xylona, I-- rest is laser-scorched. TRAGIC.",
+    slot: reactor,
+    rarity: junk,
+    base_value: 5,
+    icon: Some("!"),
+    icon_path: None,
+    modifiers: [],
+    on_kill: None,
+)

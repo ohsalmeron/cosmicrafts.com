@@ -1,0 +1,12 @@
+(
+    id: "severed_robot_finger",
+    label: "Severed Robot Finger",
+    description: "Still points accusingly at whoever picks it up.",
+    slot: weapon1,
+    rarity: junk,
+    base_value: 2,
+    icon: Some("*"),
+    icon_path: None,
+    modifiers: [],
+    on_kill: None,
+)

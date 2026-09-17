@@ -1,0 +1,26 @@
+(
+    id: "chain_shorter",
+    name: "Arc Snap",
+    energy_cost: 0.0,
+    cooldown: 0.35,
+    hotkey: 6,
+    metadata: (
+        display_name: "Arc Snap",
+        description_short: "Short chain lightning: few jumps, very high damage per hit (RON-only fork of ChainLightning).",
+        tags: ["lightning", "chain_lightning", "damage", "bounce"],
+        ui_color_hint: Some((0.3, 0.5, 1.0)),
+        icon: Some(( path: "icons/beam.webp" )),
+    ),
+    effect: ChainLightning(ChainLightningEffect(
+        damage: 180,
+        range: 48.0,
+        max_bounces: 2,
+        bounce_range: 40.0,
+        spawn_origin: (x: 0.0, y: 0.12, z: -0.55),
+        emissive_color: (0.2, 0.65, 1.0),
+        emissive_intensity: 14000.0,
+        thickness: 0.45,
+        vfx_duration: 0.2,
+        pushback_force: 5.0,
+    )),
+)

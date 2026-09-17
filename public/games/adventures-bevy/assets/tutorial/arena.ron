@@ -1,0 +1,187 @@
+// Cosmic Gladiator: Starblade Arena — Blood Loop
+// All unit_class values must be filename stems from assets/units/spaceships/
+// (those are the combat units with healthbars, balanced stats, and enemy AI)
+//
+// Fibonacci wave sizes: 1 → 1 → 2 → 3 → 5 → 8
+// Upgrade grants are on a timer (NOT all_enemies_defeated — that fires at t=0 with 0 enemies).
+// Generous timers so player can clear each wave before next one hits.
+(
+    id: "arena_coliseum",
+    intro_dialogue: (
+        speaker: "Arena Announcer",
+        line: "Welcome to the Void Coliseum, gladiator. You live by the blade or die by it. Show us what you've got.",
+        duration_secs: 6.0,
+    ),
+    player_start: Some((x: 0.0, y: 0.0, z: 0.0)),
+    player_hero: Some("starblade"),
+    companion_override: None,
+    npcs: [],
+    missions: [],
+    triggers: [
+
+        // ─── WAVE 1: 1 scout — learn movement and auto-attack (t=4s) ───
+        (
+            id: "wave1_spawn",
+            when: timer(4.0),
+            actions: [
+                show_dialogue((
+                    speaker: "Announcer",
+                    line: "Wave 1. One pirate has entered the arena. Don't embarrass yourself.",
+                    duration_secs: 4.0,
+                )),
+                spawn_wave((
+                    unit_class: Some("sunfire_ripper"),
+                    count: 1,
+                    min_distance: Some(40.0),
+                    max_distance: Some(55.0),
+                )),
+            ],
+        ),
+
+        // ─── UPGRADE 1: Grant Charge Shot at t=30s (wave 1 should be dead by then) ───
+        (
+            id: "upgrade_charge_shot",
+            when: timer(30.0),
+            actions: [
+                show_dialogue((
+                    speaker: "Niri",
+                    line: "I unlocked the weapon limiters. Hold [7] to charge a massive shot. Release for maximum pain.",
+                    duration_secs: 5.0,
+                )),
+                grant_ability(ability_id: "charge_shot", slot: 0),
+            ],
+        ),
+
+        // ─── WAVE 2: 1 heavy — test the charge shot (t=40s) ───
+        (
+            id: "wave2_spawn",
+            when: timer(40.0),
+            actions: [
+                show_dialogue((
+                    speaker: "Announcer",
+                    line: "Wave 2. That one's bigger. Maybe use your new toy.",
+                    duration_secs: 4.0,
+                )),
+                spawn_wave((
+                    unit_class: Some("sunfire_wraith"),
+                    count: 1,
+                    min_distance: Some(45.0),
+                    max_distance: Some(60.0),
+                    enemy_power_percent: 150,
+                )),
+            ],
+        ),
+
+        // ─── WAVE 3: 2 flankers (t=75s) ───
+        (
+            id: "wave3_spawn",
+            when: timer(75.0),
+            actions: [
+                show_dialogue((
+                    speaker: "Announcer",
+                    line: "Wave 3. They brought a friend. Cute.",
+                    duration_secs: 3.5,
+                )),
+                spawn_wave((
+                    unit_class: Some("sunfire_needle"),
+                    count: 2,
+                    min_distance: Some(50.0),
+                    max_distance: Some(65.0),
+                )),
+            ],
+        ),
+
+        // ─── UPGRADE 2: Niri deploys mid-session (t=100s) ───
+        (
+            id: "upgrade_companion",
+            when: timer(100.0),
+            actions: [
+                show_dialogue((
+                    speaker: "Niri",
+                    line: "Deploying auxiliary combat chassis. Don't ask where I got it. I'm on your wing.",
+                    duration_secs: 5.0,
+                )),
+                spawn_companion_mid("niri"),
+            ],
+        ),
+
+        // ─── WAVE 4: 3 mixed ships (t=110s) ───
+        (
+            id: "wave4_spawn",
+            when: timer(110.0),
+            actions: [
+                show_dialogue((
+                    speaker: "Announcer",
+                    line: "Wave 4. Three of them. I see you brought backup. How adorable.",
+                    duration_secs: 4.0,
+                )),
+                spawn_wave((
+                    unit_class: Some("sunfire_ripper"),
+                    count: 2,
+                    min_distance: Some(55.0),
+                    max_distance: Some(75.0),
+                )),
+                spawn_wave((
+                    unit_class: Some("sunfire_wraith"),
+                    count: 1,
+                    min_distance: Some(65.0),
+                    max_distance: Some(80.0),
+                    enemy_power_percent: 130,
+                )),
+            ],
+        ),
+
+        // ─── WAVE 5: 5 fighters (t=155s) ───
+        (
+            id: "wave5_spawn",
+            when: timer(155.0),
+            actions: [
+                show_dialogue((
+                    speaker: "Announcer",
+                    line: "Wave 5. The crowd is restless. Five of them. Make it entertaining.",
+                    duration_secs: 4.5,
+                )),
+                spawn_wave((
+                    unit_class: Some("sunfire_comet"),
+                    count: 3,
+                    min_distance: Some(55.0),
+                    max_distance: Some(80.0),
+                )),
+                spawn_wave((
+                    unit_class: Some("sunfire_needle"),
+                    count: 2,
+                    min_distance: Some(70.0),
+                    max_distance: Some(90.0),
+                )),
+            ],
+        ),
+
+        // ─── WAVE 6: 8 elite units (t=210s) ───
+        (
+            id: "wave6_spawn",
+            when: timer(210.0),
+            actions: [
+                show_dialogue((
+                    speaker: "Announcer",
+                    line: "Wave 6! Eight elite units deployed. The crowd smells blood. LET'S GO!",
+                    duration_secs: 5.0,
+                )),
+                spawn_wave((
+                    unit_class: Some("sunfire_comet"),
+                    count: 5,
+                    min_distance: Some(60.0),
+                    max_distance: Some(85.0),
+                    enemy_power_percent: 175,
+                )),
+                spawn_wave((
+                    unit_class: Some("sunfire_shell"),
+                    count: 3,
+                    min_distance: Some(70.0),
+                    max_distance: Some(95.0),
+                    enemy_power_percent: 175,
+                )),
+            ],
+        ),
+
+    ],
+)

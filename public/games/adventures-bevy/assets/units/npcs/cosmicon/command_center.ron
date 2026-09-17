@@ -1,0 +1,78 @@
+(
+    id: "command_center",
+    entity_type: "Station",
+    name: "Command Center",
+    desc: "The central authority of this Cosmicon Safe Zone.",
+    model: "models/stations/reactor.glb",
+    preview_model: "models/stations/reactor.glb",
+    scale: 11.25,
+    nameplate: Some((show_name: true, show_healthbar: true, show_level_badge: false, standmark: "💬", standmark_tooltip: "Command Interface")),
+    collider_radius: 13.5,
+    faction: "Cosmicons",
+    health: 50000,
+    shield: 20000,
+    energy: Some((
+        max: 5000,
+        regen_rate: 200,
+    )),
+    movement: (
+        max_speed: 0,
+        acceleration: 0.0,
+        rotation_speed: 0,
+    ),
+    combat: (
+        range: 150,
+        cooldown: 0.25,
+        bullet_speed: 120,
+        damage: 250,
+        basic_attack_ability_id: Some("laser"),
+    ),
+    death_effect: "Explosion",
+    thrusters: Some([
+        (
+            position: (0.0, 0.0, 0.0),
+            rotation_deg: (0, 0, 0),
+            scale: 0.0,
+        )
+    ]),
+    // Matches global unit point light in assets/lighting.ron (same baseline as the player ship).
+    entity_light: Some((
+        intensity: 250000.0,
+        range: 10.0,
+        color: (0.6, 0.7, 1.0),
+        shadows_enabled: false,
+    )),
+    role: Some(ScriptedNpc),
+    ai_profile: None,
+
+    // The gold exclamation mark for active missions
+    mission_marker: Some("quest_unknown"),
+
+    dialogue: Some(NpcDialogueDef(
+        greetings: [
+            "Pilot. I trust your perimeter sweeps were uneventful.",
+            "Command is reviewing your logs. State your report.",
+            "The Spirat threat grows. Are you prepared to deploy?"
+        ],
+        purposes: [
+            (
+                label: "What's the situation?",
+                value: "intel",
+                action: "informant_intel",
+                responses_success: [
+                    "Receiving updated tactical telemetry.",
+                ],
+                responses_fail: []
+            ),
+            (
+                label: "I'm ready for assignment.",
+                value: "mission",
+                action: "bubble_only",
+                responses_success: [
+                    "No active deployments at this time. Stand by.",
+                ],
+                responses_fail: []
+            )
+        ]
+    )),
+)

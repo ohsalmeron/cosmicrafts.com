@@ -1,0 +1,27 @@
+(
+    // Collision settings: one default, scaled by unit scale (UnitStats.size from unit RON)
+    collision_enabled: true,
+    collision_radius_default: 0.85,  // Effective radius = this * unit scale (or CollisionRadius component)
+    
+    // Push resolution settings
+    push_strength: 44.0,             // How strongly units push each other apart
+    push_damping: 0.65,             // Velocity damping when colliding (0-1, lower = more damping)
+    overlap_resolution_speed: 0.1,  // How fast overlaps resolve (0-1, higher = faster)
+    
+    // Velocity-influenced push (bulldozer effect)
+    // When moving into something, push in movement direction not just radially
+    velocity_push_influence: 0.01,   // 0 = pure radial, 1 = pure velocity direction
+    velocity_push_min_speed: 0.25,   // Minimum speed to activate velocity push
+    
+    // Velocity damping (applies every frame)
+    linear_damping: 0.0,            // Air resistance (0 = none, space has no air!)
+    
+    // Spatial grid settings
+    cell_size: 1.0,                 // Size of spatial hash grid cells
+    
+    // Mass-based push (heavier units push lighter ones more)
+    use_mass_based_push: true,
+    player_mass: 1000.0,             // Player is heavy - bulldozer mode!
+    enemy_mass: 5.0,                // Enemies have medium mass
+    companion_mass: 3.0,            // Companions are light
+)

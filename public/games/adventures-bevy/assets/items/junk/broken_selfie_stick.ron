@@ -1,0 +1,12 @@
+(
+    id: "broken_selfie_stick",
+    label: "Broken Selfie Stick",
+    description: "Extended too far near a black hole. Physics had opinions.",
+    slot: artifact,
+    rarity: junk,
+    base_value: 2,
+    icon: Some("&"),
+    icon_path: None,
+    modifiers: [],
+    on_kill: None,
+)

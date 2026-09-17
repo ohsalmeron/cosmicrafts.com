@@ -1,0 +1,12 @@
+(
+    id: "outdated_nav_chart",
+    label: "Outdated Navigation Chart",
+    description: "Shows 3 planets that no longer exist.",
+    slot: shield,
+    rarity: junk,
+    base_value: 3,
+    icon: Some("+"),
+    icon_path: None,
+    modifiers: [],
+    on_kill: None,
+)

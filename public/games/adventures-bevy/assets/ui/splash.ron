@@ -1,0 +1,33 @@
+// Splash / loading screen settings. Read once per cold boot.
+// All positions/sizes in px before window scaling. Colors are sRGBA (0.0‥1.0).
+(
+    // Background
+    image_path: "textures/splash.webp",
+    bg_color: (0.0, 0.0, 0.0, 1.0),
+
+    // Title text (e.g. studio name or game title). Empty string = hidden.
+    title: "",
+    title_size: 48.0,
+    title_color: (1.0, 1.0, 1.0, 0.9),
+    // Offset from bottom of screen (px). Positive = farther from bottom edge.
+    title_bottom: 140.0,
+
+    // Subtitle (e.g. "Loading..." or a tagline). Empty string = hidden.
+    subtitle: "",
+    subtitle_size: 18.0,
+    subtitle_color: (0.65, 0.65, 0.70, 0.8),
+    subtitle_bottom: 110.0,
+
+    // Progress bar
+    bar_width_frac:     0.55,
+    bar_height:         6.0,
+    bar_border_radius:  3.0,
+    bar_bottom:         48.0,
+    bar_track_color:    (0.12, 0.12, 0.16, 0.80),
+    bar_fill_color:     (0.35, 0.75, 1.0,  1.0),
+
+    // Progress label ("Loading... XX%")
+    label_size:  18.0,
+    label_color: (0.75, 0.75, 0.80, 1.0),
+    label_bottom: 20.0,
+)

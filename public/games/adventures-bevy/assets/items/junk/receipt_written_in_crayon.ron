@@ -1,0 +1,13 @@
+(
+    id: "receipt_written_in_crayon",
+    label: "Receipt (Crayon Edition)",
+    description: "Totally official. The wax proves it.",
+    slot: shield,
+    rarity: junk,
+    junk_grade: noteworthy,
+    base_value: 1,
+    icon: Some("#"),
+    icon_path: None,
+    modifiers: [],
+    on_kill: None,
+)

@@ -1,0 +1,13 @@
+(
+    id: "invisible_ink_manual",
+    label: "Invisible Ink Manual",
+    description: "Chapter one is blank. Chapter two is also blank. Very consistent.",
+    slot: reactor,
+    rarity: junk,
+    junk_grade: curious,
+    base_value: 2,
+    icon: Some("?"),
+    icon_path: None,
+    modifiers: [],
+    on_kill: None,
+)

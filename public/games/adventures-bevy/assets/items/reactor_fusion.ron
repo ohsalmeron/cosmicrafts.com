@@ -1,0 +1,17 @@
+(
+    id: "reactor_fusion",
+    label: "Fusion Reactor",
+    description: "Compact deuterium-tritium fusion core. Major energy pool and regeneration boost. Runs hot — handle with care.",
+    slot: reactor,
+    rarity: epic,
+    base_value: 2500,
+    icon: Some("☢"),
+    icon_path: Some("icons/items/reactor_fusion.png"),
+    modifiers: [
+        (stat: max_energy,           op: add(80.0)),
+        (stat: energy_regen,         op: multiply(1.45)),
+        (stat: energy_cost, op: multiply(0.95)),
+    ],
+    on_kill: None,
+)
+

@@ -1,0 +1,12 @@
+(
+    id: "scratched_viewport",
+    label: "Scratched Viewport Pane",
+    description: "Someone carved WASH ME into it. In space.",
+    slot: reactor,
+    rarity: junk,
+    base_value: 3,
+    icon: Some("+"),
+    icon_path: None,
+    modifiers: [],
+    on_kill: None,
+)

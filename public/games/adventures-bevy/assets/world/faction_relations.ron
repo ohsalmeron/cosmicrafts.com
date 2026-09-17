@@ -1,0 +1,34 @@
+// Faction diplomacy matrix. Overrides defaults from code.
+// Format: (a: "FactionName", b: "FactionName", relation: "Relation")
+// Factions: Cosmicons, SpiratClans, Webes, Celestials, Archs, Spades, Neutral
+// Relations: Hostile, Unfriendly, Neutral, Friendly, Allied
+// Relations are symmetric: setting (A, B) also sets (B, A).
+// Omitted pairs use code defaults (lore-based).
+(
+    relations: [
+        // Cosmicons alliances
+        (a: "Cosmicons", b: "SpiratClans", relation: "Hostile"),
+        (a: "Cosmicons", b: "Webes",       relation: "Friendly"),
+        (a: "Cosmicons", b: "Celestials",  relation: "Neutral"),
+        (a: "Cosmicons", b: "Archs",       relation: "Unfriendly"),
+        (a: "Cosmicons", b: "Spades",      relation: "Hostile"),
+
+        // Spirat Clans
+        (a: "SpiratClans", b: "Webes",       relation: "Unfriendly"),
+        (a: "SpiratClans", b: "Celestials",  relation: "Hostile"),
+        (a: "SpiratClans", b: "Archs",       relation: "Neutral"),
+        (a: "SpiratClans", b: "Spades",      relation: "Friendly"),
+
+        // Webes
+        (a: "Webes", b: "Celestials", relation: "Friendly"),
+        (a: "Webes", b: "Archs",      relation: "Neutral"),
+        (a: "Webes", b: "Spades",     relation: "Unfriendly"),
+
+        // Celestials
+        (a: "Celestials", b: "Archs",  relation: "Unfriendly"),
+        (a: "Celestials", b: "Spades", relation: "Neutral"),
+
+        // Archs vs Spades
+        (a: "Archs", b: "Spades", relation: "Hostile"),
+    ],
+)

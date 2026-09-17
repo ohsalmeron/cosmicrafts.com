@@ -1,0 +1,12 @@
+(
+    id: "rusted_bolt",
+    label: "Rusted Bolt",
+    description: "From someone's landing gear. Explains the crash marks nearby.",
+    slot: thrusters,
+    rarity: junk,
+    base_value: 5,
+    icon: Some("@"),
+    icon_path: None,
+    modifiers: [],
+    on_kill: None,
+)

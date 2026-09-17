@@ -1,0 +1,12 @@
+(
+    id: "broken_vending_token",
+    label: "Broken Vending Token",
+    description: "Worth exactly 0.5 snacks. The machine disagrees.",
+    slot: artifact,
+    rarity: junk,
+    base_value: 2,
+    icon: Some("&"),
+    icon_path: None,
+    modifiers: [],
+    on_kill: None,
+)

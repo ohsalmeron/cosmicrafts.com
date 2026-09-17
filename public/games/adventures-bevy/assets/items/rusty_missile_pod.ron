@@ -1,0 +1,19 @@
+(
+    id: "rusty_missile_pod",
+    label: "Rusty Missile Pod",
+    description: "Quad-launch homing missile pod with Rusty's orange-tipped warheads. Area denial specialist — locks on fast, hits hard, leaves a satisfying orange fireball.",
+    slot: weapon1,
+    rarity: rare,
+    base_value: 500,
+    icon: Some("🚀"),
+    icon_path: Some("icons/items/rusty_missile_pod.png"),
+    modifiers: [
+        (stat: missile_damage, op: multiply(1.10)),
+        (stat: missile_speed,  op: multiply(1.05)),
+        (stat: missile_count,             op: add(1.0)),
+    ],
+    on_kill: None,
+    granted_abilities: ["missile"],
+    granted_ability_slots: Some([(3, "missile")]),
+)
+

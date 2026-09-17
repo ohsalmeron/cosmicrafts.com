@@ -1,0 +1,81 @@
+(
+    id: "engineering_bay",
+    entity_type: "Station",
+    name: "Engineering Bay",
+    desc: "A massive field assembly platform capable of re-configuring Cosmicon loadouts and retrofitting weapons.",
+    model: "models/stations/foxcom.glb",
+    preview_model: "models/stations/foxcom.glb",
+    scale: 7.99,
+    nameplate: Some((show_name: true, show_healthbar: true, show_level_badge: false, standmark: "🔧", standmark_tooltip: "Engineer Platform")),
+    collider_radius: 11.7,
+    faction: "Cosmicons",
+    health: 80000,
+    shield: 30000,
+    energy: Some((
+        max: 6000,
+        regen_rate: 250,
+    )),
+    movement: (
+        max_speed: 0,
+        acceleration: 0.0,
+        rotation_speed: 0,
+    ),
+    combat: (
+        range: 80,
+        cooldown: 0.8,
+        bullet_speed: 90,
+        damage: 100,
+        basic_attack_ability_id: Some("laser"),
+    ),
+    death_effect: "Explosion",
+    thrusters: Some([
+        (
+            position: (0.0, 0.0, 0.0),
+            rotation_deg: (0, 0, 0),
+            scale: 0.0,
+        )
+    ]),
+    // Matches global unit point light in assets/lighting.ron (same baseline as the player ship).
+    entity_light: Some((
+        intensity: 250000.0,
+        range: 10.0,
+        color: (0.6, 0.7, 1.0),
+        shadows_enabled: false,
+    )),
+    role: Some(ScriptedNpc),
+    ai_profile: None,
+
+    // Neutral marker for utility
+    mission_marker: Some("quest_unknown"),
+
+    dialogue: Some(NpcDialogueDef(
+        greetings: [
+            "Keep clear of the plasma vents. What needs adjusting?",
+            "Your loadout is inefficient. Authorization granted to modify.",
+            "Bay 4 is open. We can swap your active modules here."
+        ],
+        purposes: [
+            (
+                label: "Open the loadout bay.",
+                value: "loadout",
+                // Mapped to bubble_only until we hook it to the Loadout UI (which already exists but needs a trigger)
+                action: "bubble_only",
+                responses_success: [
+                    "Engaging mooring clamps. Accessing the forge.",
+                ],
+                responses_fail: []
+            ),
+            (
+                label: "Can you fix this damage?",
+                value: "repair",
+                action: "mechanic_repair",
+                responses_success: [
+                    "Patching hull breaches. Try dodging next time.",
+                ],
+                responses_fail: [
+                    "I don't work for free. Get some Aethereum."
+                ]
+            )
+        ]
+    )),
+)

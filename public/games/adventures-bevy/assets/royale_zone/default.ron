@@ -1,0 +1,29 @@
+// Royale Zone VFX — "Chain Lightning Cage" style
+// Swap the style enum variant to use a different visual effect.
+// Parameters mirror the ability RON pattern (e.g. chain_lightning.ron).
+(
+    style: ChainLightningCage(ChainLightningCageParams(
+        // RGB color for the emissive arcs (cyan-electric)
+        emissive_color: (0.15, 0.6, 1.0),
+        // Emissive intensity (chain_lightning uses 10000)
+        emissive_intensity: 12000.0,
+        // Thickness of each arc quad strip
+        arc_thickness: 0.5,
+        // Number of independent arcs per wall edge
+        arcs_per_edge: 3,
+        // How many sub-segments each arc is split into (more = jaggier)
+        arc_subdivisions: 5,
+        // Max perpendicular jitter as fraction of segment length
+        arc_jitter_factor: 0.3,
+        // Height off ground of the arcs
+        visual_y: 1.25,
+        // Seconds between mesh rebuilds (0 = every frame; 0.08 = ~12 fps crackle)
+        spawn_interval: 0.08,
+        // Pulse speed (radians/sec for emissive oscillation)
+        pulse_speed: 6.0,
+        // Pulse amplitude (fraction of base intensity, 0.3 = ±30%)
+        pulse_amplitude: 0.3,
+        // Corner glow node radius
+        corner_glow_radius: 2.0,
+    )),
+)

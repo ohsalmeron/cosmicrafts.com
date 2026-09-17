@@ -1,0 +1,88 @@
+// cosmicons mechanic NPC
+(
+    id: "cosmicons_mechanic",
+    entity_type: "Ship",
+    faction: "Cosmicons",
+    model: "models/omen/maelstrom.glb",
+    scale: 2.8,
+    health: 4500,
+    shield: 3500,
+    movement: ( max_speed: 4.5, acceleration: 0.25, rotation_speed: 2.0 ),
+    combat: ( range: 0.0, cooldown: 1.0, bullet_speed: 0.0, damage: 0 ),
+    attachments: [],
+    nameplate: Some((
+        show_name: true,
+        show_healthbar: false,
+        show_level_badge: false,
+        standmark: "🔧",
+        standmark_tooltip: "Cosmicon Engineer",
+    )),
+    emissive_color: Some((0.2, 0.5, 0.9)),
+    emissive_intensity: Some(1.5),
+    thrusters: Some([
+        ( position: (0.0, 0.0, 1.0), rotation_deg: (-90, 0, -90), scale: 0.8 ),
+    ]),
+    thruster_visual: Some((
+        spritesheet_path: "sprites/thruster.webp",
+        columns: 2, rows: 2, fps: 24.0, crossed_quads: true, additive: true,
+        emissive_color: (0.2, 0.5, 0.9),
+        emissive_intensity: 5000.0,
+    )),
+    bullet_visual_overrides: None,
+    metadata: (
+        display_name: "Cosmicon Engineer",
+        description_short: "A Cosmicon Engineer roaming the sector.",
+        tags: ["npc", "mechanic", "cosmicons"],
+        ui_color_hint: Some((0.2, 0.5, 0.9)),
+    ),
+    dialogue: Some((
+        greetings: [
+            "Hull integrity compromised? Imperial Engineering at your service.",
+            "That's a lot of battle damage you're flying around with, citizen.",
+            "Engineering diagnostic: your ship needs work. Fortunately, I'm right here.",
+        ],
+        farewells: [
+            "Keep her flying, pilot.",
+            "Don't push your luck out there.",
+            "Come back before it falls apart again.",
+        ],
+        purposes: [
+            (
+                label: "Repair Ship Hull - 150 AETH",
+                value: "mechanic_repair",
+                action: "mechanic_repair",
+                responses_success: [
+                    "Good as new. Cosmicon engineering at its finest.",
+                    "That'll hold. Try not to fly into any asteroids.",
+                    "Repairs complete. She's spaceworthy again.",
+                ],
+                responses_fail: [
+                    "No AETH, no repairs. Imperial policy, not my rule.",
+                    "Come back when your wallet's heavier, citizen.",
+                ],
+            ),
+            (
+                label: "Trade Spare Parts",
+                value: "trade",
+                action: "open_trade",
+                responses_success: [
+                    "Standard-issue components. Nothing fancy, but they'll keep you flying.",
+                    "I've got parts if you need them. Fair prices.",
+                ],
+                responses_fail: [
+                ],
+            ),
+            (
+                label: "I'm fine, thanks",
+                value: "leave",
+                action: "close",
+                responses_success: [
+                    "Your hull, your funeral.",
+                    "Don't say I didn't warn you, pilot.",
+                ],
+                responses_fail: [
+                ],
+            ),
+        ],
+    )),
+)

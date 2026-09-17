@@ -1,0 +1,117 @@
+// =============================================================================
+// PICKUP CONFIG — You tweak this file; no code changes needed.
+// All (min, max) pairs are ranges: a random value is rolled between min and max.
+// Equipment drops (thrusters, reactors, etc.) are separate (item registry).
+// =============================================================================
+
+(
+    // Max simultaneous pickup entities (excluding expiring). Evicts lowest remaining lifetime when exceeded.
+    max_live_pickups: 200,
+    // XZ distance from player beyond which pickups skip bob/spin and are hidden (saves CPU + GPU).
+    movement_cull_distance: 300.0,
+    // ---- Drop chance (one random orb per kill) ----
+    // enemy_value from unit's aeth_reward. chance_high/mid/low = probability to drop an orb.
+    drop_chance: (
+        enemy_value_high: 80,   // value >= this → use chance_high
+        enemy_value_mid: 30,    // value >= this → use chance_mid, else chance_low
+        chance_high: 0.75,      // 0..1
+        chance_mid: 0.55,
+        chance_low: 0.4,
+    ),
+    // ---- Which orb type? Cumulative weights 0..1. Roll in (0,1]; first (Type, weight) where weight >= roll wins. Last entry should be 1.0. ----
+    // critical = player low health / no shield; damaged = low or no shield; healthy = fine.
+    weights: (
+        critical: [
+            ("Health", 0.35),
+            ("Shield", 0.60),
+            ("Energy", 0.76),
+            ("Power", 0.88),
+            ("Speed", 0.96),
+            ("Health", 1.0),
+        ],
+        damaged: [
+            ("Health", 0.36),
+            ("Shield", 0.60),
+            ("Energy", 0.75),
+            ("Power", 0.88),
+            ("Speed", 0.95),
+            ("Health", 1.0),
+        ],
+        healthy: [
+            ("Health", 0.26),
+            ("Shield", 0.46),
+            ("Energy", 0.64),
+            ("Power", 0.82),
+            ("Speed", 0.92),
+            ("Health", 1.0),
+        ],
+    ),
+    // ---- Effect strength: (min, max) = random range. tier_modifier = (critical, damaged, healthy) multiplier at collect. ----
+    effects: Some((
+        // HP: HoT = rate_percent of max HP per second for duration_secs (stacks). instant = small one-shot % of max.
+        health: Some((
+            rate_percent: (8.0, 12.0),       // % of max HP per second
+            duration_secs: (2.0, 5.0),       // HoT duration
+            tier_modifier: Some((critical: 1.25, damaged: 1.0, healthy: 0.85)),
+            instant_heal_percent: Some((2.0, 8.0)),  // one-shot % of max (small bonus)
+        )),
+        // Shield: same idea; stacks.
+        shield: Some((
+            rate_percent: (10.0, 30.0),
+            duration_secs: (2.0, 5.0),
+            tier_modifier: Some((critical: 1.2, damaged: 1.0, healthy: 0.9)),
+            instant_heal_percent: Some((2.0, 8.0)),
+        )),
+        // Energy: HoT only, no instant. Stacks.
+        energy: Some((
+            rate_percent: (15.0, 25.0),
+            duration_secs: (2.0, 5.0),
+            tier_modifier: Some((critical: 1.15, damaged: 1.0, healthy: 0.9)),
+        )),
+        // Power: +1 damage tier. This is the only offensive pickup now.
+        power: Some((
+            max_tier: 5,
+            multiplier_per_tier: 0.15,
+            tier_modifier: Some((critical: 1.0, damaged: 1.0, healthy: 1.0)),
+        )),
+        // Speed: +1 speed tier. multiplier_per_tier = +% max speed per tier.
+        speed: Some((
+            max_tier: 3,
+            multiplier_per_tier: 0.2,
+            tier_modifier: Some((critical: 1.0, damaged: 1.0, healthy: 1.0)),
+        )),
+    )),
+    // When zoom LOD enables use_pickup_glow_billboards (ui/lod.ron): additive emissive quad + this texture.
+    lod_glow_texture: "textures/glow.webp",
+    lod_billboard_scale: 3.2,
+    // Secondary orb (Health/Shield/Energy/Power/Speed) lifetime — lower so orbs do not trail behind a fast-moving player.
+    pickup_lifetime_secs: 14.0,
+    // If current/max >= threshold, that regen orb is excluded (set 1.0 to only exclude when exactly full).
+    resource_full_threshold: (
+        health: 0.92,
+        shield: 0.92,
+        energy: 0.92,
+    ),
+    // Power/Speed: multiply that type’s weight by weight_mult_by_tier[current_tier - 1]. Last entry repeats; 0.0 = no spawn (e.g. at max tier).
+    tier_pickup_weight_mult: (
+        power: (
+            weight_mult_by_tier: [1.0, 0.35, 0.12, 0.03, 0.0],
+        ),
+        speed: (
+            weight_mult_by_tier: [1.0, 0.25, 0.0],
+        ),
+    ),
+    // Max simultaneous non-expiring pickups of each kind (secondary orbs only; Aeth is separate).
+    max_active_by_kind: (
+        health: 3,
+        shield: 3,
+        energy: 3,
+        power: 2,
+        speed: 2,
+    ),
+    // Scale base drop_chance by eligibility: effective = base * lerp(min_multiplier, 1.0, eligible_mass/baseline_mass).
+    secondary_drop_eligibility_scale: (
+        enabled: true,
+        min_multiplier: 0.2,
+    ),
+)

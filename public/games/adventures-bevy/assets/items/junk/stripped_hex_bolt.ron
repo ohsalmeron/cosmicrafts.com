@@ -1,0 +1,12 @@
+(
+    id: "stripped_hex_bolt",
+    label: "Stripped Hex Bolt",
+    description: "Rounded beyond recognition. A monument to frustration.",
+    slot: reactor,
+    rarity: junk,
+    base_value: 4,
+    icon: Some("#"),
+    icon_path: None,
+    modifiers: [],
+    on_kill: None,
+)

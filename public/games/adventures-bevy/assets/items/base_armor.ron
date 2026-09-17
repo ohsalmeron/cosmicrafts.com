@@ -1,0 +1,15 @@
+(
+    id: "base_armor",
+    label: "Standard Armor",
+    description: "Factory-issue hull plating. Basic structural integrity — nothing fancy, but it keeps the vacuum out.",
+    slot: armor,
+    rarity: common,
+    base_value: 100,
+    icon: Some("🛡"),
+    icon_path: Some("icons/items/base_armor.png"),
+    modifiers: [
+        (stat: max_health, op: add(10.0)),
+    ],
+    on_kill: None,
+)
+

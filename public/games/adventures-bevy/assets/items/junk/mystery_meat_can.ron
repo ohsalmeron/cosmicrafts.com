@@ -1,0 +1,12 @@
+(
+    id: "mystery_meat_can",
+    label: "Mystery Meat Can",
+    description: "Label says FOOD. Contents say DEBATABLE.",
+    slot: weapon1,
+    rarity: junk,
+    base_value: 1,
+    icon: Some("%"),
+    icon_path: None,
+    modifiers: [],
+    on_kill: None,
+)

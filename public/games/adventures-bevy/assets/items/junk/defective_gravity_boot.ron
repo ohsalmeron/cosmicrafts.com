@@ -1,0 +1,12 @@
+(
+    id: "defective_gravity_boot",
+    label: "Defective Gravity Boot",
+    description: "LEFT foot only. Locks to literally everything.",
+    slot: artifact,
+    rarity: junk,
+    base_value: 2,
+    icon: Some("&"),
+    icon_path: None,
+    modifiers: [],
+    on_kill: None,
+)

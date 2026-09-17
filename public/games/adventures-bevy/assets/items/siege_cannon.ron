@@ -1,0 +1,20 @@
+(
+    id: "siege_cannon",
+    label: "Siege Cannon",
+    description: "Heavy purple kinetic shells inspired by the Juggernaut fleet. Massive impact damage with a slower firing rate. Each shot leaves a deep purple contrail and shakes the hull.",
+    slot: weapon1,
+    rarity: epic,
+    base_value: 2500,
+    icon: Some("💜"),
+    icon_path: Some("icons/items/siege_cannon.png"),
+    modifiers: [
+        (stat: bullet_damage,   op: multiply(1.60)),
+        (stat: bullet_cooldown, op: multiply(1.40)),
+        (stat: bullet_range,    op: multiply(0.85)),
+        (stat: bullet_speed,    op: multiply(0.90)),
+    ],
+    on_kill: None,
+    granted_abilities: ["bullet"],
+    granted_ability_slots: Some([(1, "bullet")]),
+)
+

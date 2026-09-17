@@ -1,0 +1,26 @@
+(
+    id: "beam",
+    name: "Charged Beam",
+    energy_cost: 40.0,
+    cooldown: 0.25,
+    hotkey: 2,
+    effect: Laser(LaserEffect(
+        damage_per_second: 280,
+        damage_tick_interval_secs: Some(0.5),
+        range: 90.0,
+        width: 0.15,
+        duration: 1.15,
+        emissive_color: (0.4, 0.6, 1.0),
+        emissive_intensity: 8000.0,
+        force_along_beam: 1.0,
+        muzzle_flash_radius: 2.0,
+        muzzle_flash_duration: 0.25,
+        muzzle_flash_emissive_color: (0.9, 0.9, 1.0),
+        muzzle_flash_emissive_intensity: 8000.0,
+    )),
+    metadata: (
+        icon: Some((
+            path: "icons/beam.webp",
+        )),
+    ),
+)

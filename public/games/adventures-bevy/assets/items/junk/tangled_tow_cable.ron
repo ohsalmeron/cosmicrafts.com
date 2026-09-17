@@ -1,0 +1,12 @@
+(
+    id: "tangled_tow_cable",
+    label: "Tangled Tow Cable",
+    description: "The knot is certified by mathematicians as impossible.",
+    slot: armor,
+    rarity: junk,
+    base_value: 3,
+    icon: Some("~"),
+    icon_path: None,
+    modifiers: [],
+    on_kill: None,
+)

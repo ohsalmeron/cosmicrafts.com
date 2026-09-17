@@ -1,0 +1,12 @@
+(
+    id: "empty_ammo_magazine",
+    label: "Empty Ammo Magazine",
+    description: "The most dangerous thing about it is the paper cut risk.",
+    slot: reactor,
+    rarity: junk,
+    base_value: 1,
+    icon: Some("%"),
+    icon_path: None,
+    modifiers: [],
+    on_kill: None,
+)

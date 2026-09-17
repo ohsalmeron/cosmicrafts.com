@@ -1,0 +1,12 @@
+(
+    id: "soggy_star_map",
+    label: "Soggy Star Map",
+    description: "Water damage in space. Some engineer is crying right now.",
+    slot: reactor,
+    rarity: junk,
+    base_value: 1,
+    icon: Some("%"),
+    icon_path: None,
+    modifiers: [],
+    on_kill: None,
+)

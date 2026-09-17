@@ -1,0 +1,12 @@
+(
+    id: "broken_translator",
+    label: "Broken Translator Earpiece",
+    description: "Translates everything to screaming. Even silence.",
+    slot: shield,
+    rarity: junk,
+    base_value: 5,
+    icon: Some("!"),
+    icon_path: None,
+    modifiers: [],
+    on_kill: None,
+)

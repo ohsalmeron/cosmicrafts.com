@@ -1,0 +1,93 @@
+(
+    id: "niri",
+    model: "models/coppercore.glb",
+    scale: 1.5,
+    nameplate: Some((show_name: true, show_healthbar: true, show_level_badge: false)),
+    faction: "Cosmicons",
+    pushback_resistance: Some(0.2),
+    health: 120,
+    shield: 240,
+    movement: (
+        max_speed: 15,
+        acceleration: 1.25,
+        rotation_speed: 12,
+    ),
+    combat: (
+        range: 35,
+        cooldown: 0.8,
+        bullet_speed: 35.5,
+        damage: 22,
+        basic_attack_ability_id: Some("bullet"),
+    ),
+    attack_stance: Some(stop_to_attack),
+    shield_regen_per_second: Some(345.5),
+    hp_regen_per_second: Some(123.5),
+    bullet_spawn_origins: Some([
+        (-0.02, 0.11, -0.63)
+    ]),
+    thrusters: Some([
+        (
+            position: (0, 0.03, 0.65),
+            rotation_deg: (-90, 0, -90),
+            scale: 1,
+        )
+    ]),
+    thruster_visual: Some((
+        spritesheet_path: "sprites/thruster.webp",
+        columns: 2,
+        rows: 2,
+        fps: 24.0,
+        additive: true,
+        emissive_color: (0.4, 0.6, 1.0),
+        emissive_intensity: 8000.0,
+    )),
+    auto_abilities: Some([
+        ( ability_id: "laser", interval_secs: 6.0, only_if_has_target: true ),
+    ]),
+    bullet_visual_overrides: Some((
+        projectile: Some((
+            mode: Some(Sphere),
+            color: Some((0.15, 0.95, 1.0)),
+            emissive_intensity: Some(6000.0),
+            scale: Some(0.16),
+        )),
+        muzzle_flash: Some((
+            mode: Some(Sphere),
+            color: Some((0.15, 0.95, 1.0)),
+            emissive_intensity: Some(2200.0),
+            scale: Some(0.64),
+        )),
+        impact: Some((
+            mode: Some(Sphere),
+            color: Some((0.4, 1.0, 1.0)),
+            emissive_intensity: Some(2800.0),
+            scale: Some(1.28),
+        )),
+    )),
+    xp_reward: 10,
+    aeth_reward: 18,
+    metadata: (
+        display_name: "Niri",
+        description_short: "Utility sidekick. Fast bullets, dash, and missiles when a target is in range.",
+        tags: ["companion", "utility", "cyan"],
+        icon: Some(( path: "icons/drone.webp", )),
+        ui_color_hint: Some((0.15, 0.95, 1.0)),
+    ),
+    summon: Some((
+        energy_cost: 20.0,
+        cooldown: 12.0,
+        hotkey: 7,
+        spawn_offset: (3.5, 0.0, 3.0),
+        max_per_caster: Some(4),
+        metadata: (
+            display_name: "Deploy Companion",
+            description_short: "Deploys a Rusty support companion.",
+            tags: ["ability", "summon", "companion", "rusty"],
+            icon: Some(( path: "icons/spawn_drone.webp" )),
+            ui_color_hint: Some((0.15, 0.95, 1.0)),
+        ),
+    )),
+    laser_spawn_origin: Some([
+        (0, 0.1, -0.59)
+    ])
+)

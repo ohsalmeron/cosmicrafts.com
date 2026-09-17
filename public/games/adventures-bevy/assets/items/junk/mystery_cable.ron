@@ -1,0 +1,12 @@
+(
+    id: "mystery_cable",
+    label: "Mystery Cable",
+    description: "One end is USB. The other end does not exist in known physics.",
+    slot: armor,
+    rarity: junk,
+    base_value: 5,
+    icon: Some("@"),
+    icon_path: None,
+    modifiers: [],
+    on_kill: None,
+)

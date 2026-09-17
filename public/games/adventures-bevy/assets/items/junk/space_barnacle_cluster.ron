@@ -1,0 +1,12 @@
+(
+    id: "space_barnacle_cluster",
+    label: "Space Barnacle Cluster",
+    description: "A family. They pay rent in structural damage.",
+    slot: thrusters,
+    rarity: junk,
+    base_value: 2,
+    icon: Some("&"),
+    icon_path: None,
+    modifiers: [],
+    on_kill: None,
+)

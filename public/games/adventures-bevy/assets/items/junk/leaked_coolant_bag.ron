@@ -1,0 +1,12 @@
+(
+    id: "leaked_coolant_bag",
+    label: "Leaked Coolant Bag",
+    description: "Supposed to be full. Supposed to be sealed. It is neither.",
+    slot: armor,
+    rarity: junk,
+    base_value: 5,
+    icon: Some("@"),
+    icon_path: None,
+    modifiers: [],
+    on_kill: None,
+)

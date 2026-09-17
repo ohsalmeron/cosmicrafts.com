@@ -1,0 +1,148 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Starfield from '../../components/Starfield.astro';
+import Header from '../../components/Header.astro';
+import Panel from '../../components/Panel.astro';
+import { GAMES, getGame } from '../../data/games';
+
+export function getStaticPaths() {
+  return GAMES.map((g) => ({ params: { id: g.id } }));
+}
+
+const { id } = Astro.params;
+const game = getGame(id ?? '');
+
+if (!game) {
+  return Astro.redirect('/games');
+}
+---
+
+<Layout title={`Cosmicrafts | ${game.name}`} description={`Play ${game.name} (${game.year}). ${game.description}`}>
+  <div class="relative min-h-screen w-full flex flex-col p-6 md:p-10 z-10 bg-[#020208]">
+    <div class="fixed inset-0 z-0 pointer-events-none">
+      <Starfield />
+    </div>
+
+    <Header />
+
+    <main class="w-full max-w-6xl mx-auto z-10 py-8 flex flex-col gap-4">
+      <a href="/games" class="font-mono text-[10px] text-slate-400 hover:text-cyan-300 tracking-widest uppercase">← Todos los juegos</a>
+
+      <div class="flex flex-col md:flex-row md:items-end justify-between gap-2">
+        <div>
+          <p class="font-mono text-[10px] text-cyan-400 tracking-[0.3em] uppercase mb-1">[ NOW_PLAYING // {game.year} ]</p>
+          <h1 class="text-3xl md:text-5xl font-black text-white uppercase tracking-tight">{game.name}</h1>
+          <p class="text-xs md:text-sm text-slate-400 font-light mt-2 max-w-2xl">{game.description}</p>
+        </div>
+        <a href={game.repo} target="_blank" rel="noopener" class="font-mono text-[10px] text-slate-400 hover:text-cyan-300 tracking-widest uppercase border border-white/10 rounded-lg px-3 py-2 shrink-0">Código &lt;/&gt;</a>
+      </div>
+
+      <Panel class="p-0 overflow-hidden">
+        <div id="player-wrap" class="relative w-full bg-black" style="aspect-ratio: 16/9;">
+          {game.embed ? (
+            <iframe
+              src={game.embed}
+              title={game.name}
+              class="absolute inset-0 w-full h-full border-0"
+              allow="fullscreen; autoplay; gamepad; xr-spatial-tracking"
+              allowfullscreen
+            />
+          ) : (
+            <>
+              <canvas id="game-canvas" class="absolute inset-0 w-full h-full"></canvas>
+
+              <!-- Loading / fallback overlay -->
+              <div id="player-overlay" class="absolute inset-0 flex flex-col items-center justify-center gap-4 bg-slate-950/90 p-6 text-center">
+                <img src={game.image} alt={game.name} class="absolute inset-0 w-full h-full object-cover opacity-20 pointer-events-none" />
+                <div id="player-spinner" class="relative w-10 h-10 border-2 border-cyan-500/20 border-t-cyan-400 rounded-full animate-spin"></div>
+                <p id="player-status" class="relative font-mono text-[11px] text-slate-300 tracking-widest uppercase">Cargando {game.name}…</p>
+                <div class="relative w-full max-w-md h-1.5 bg-white/10 rounded-full overflow-hidden">
+                  <div id="player-bar" class="h-full w-0 bg-gradient-to-r from-cyan-500 to-indigo-500 transition-all duration-200"></div>
+                </div>
+                <div id="player-fallback" class="relative hidden flex-col items-center gap-3">
+                  <p class="text-xs text-slate-400 font-light max-w-md">
+                    Este build aún no está copiado a la web. Puedes ver el código o volver a la lista.
+                  </p>
+                  <div class="flex gap-2">
+                    <a href={game.repo} target="_blank" rel="noopener" class="px-4 py-2 rounded-lg bg-gradient-to-r from-cyan-500 to-indigo-500 text-white font-mono text-[10px] font-bold tracking-widest uppercase">Ver repo</a>
+                    <a href="/games" class="px-4 py-2 rounded-lg bg-white/5 border border-white/10 text-white font-mono text-[10px] font-bold tracking-widest uppercase">Volver</a>
+                  </div>
+                </div>
+              </div>
+            </>
+          )}
+        </div>
+      </Panel>
+
+      <div class="flex flex-wrap gap-1">
+        {game.features.map((f) => (
+          <span class="px-2 py-1 rounded bg-white/5 border border-white/5 text-[10px] font-mono text-slate-400">{f}</span>
+        ))}
+      </div>
+    </main>
+  </div>
+</Layout>
+
+<script define:vars={{ game }}>
+  const overlay = document.getElementById('player-overlay');
+  const spinner = document.getElementById('player-spinner');
+  const status = document.getElementById('player-status');
+  const bar = document.getElementById('player-bar');
+  const fallback = document.getElementById('player-fallback');
+  const canvas = document.getElementById('game-canvas');
+
+  const showFallback = (msg) => {
+    spinner?.classList.add('hidden');
+    if (bar) bar.style.width = '0%';
+    if (status && msg) status.textContent = msg;
+    fallback?.classList.remove('hidden');
+    fallback?.classList.add('flex');
+  };
+
+  (async () => {
+    // Embed games (Rush static, Bevy WASM) run in the iframe above.
+    if (game.embed) return;
+    // Games without a local Unity build: direct fallback with repo link.
+    if (!game.buildDir) {
+      showFallback(`${game.name} llega en 2026 — mira el repo para el avance.`);
+      return;
+    }
+    const loaderUrl = `${game.buildDir}/${game.loader}`;
+    try {
+      const head = await fetch(loaderUrl, { method: 'HEAD' });
+      if (!head.ok) {
+        showFallback('Build en camino — aún no está en la web.');
+        return;
+      }
+    } catch {
+      showFallback('Sin conexión al build — intenta de nuevo.');
+      return;
+    }
+    const s = document.createElement('script');
+    s.src = loaderUrl;
+    s.onload = () => {
+      try {
+        // @ts-ignore Unity global
+        createUnityInstance(canvas, {
+          dataUrl: `${game.buildDir}/${game.data}`,
+          frameworkUrl: `${game.buildDir}/${game.framework}`,
+          codeUrl: `${game.buildDir}/${game.code}`,
+          streamingAssetsUrl: 'StreamingAssets',
+          companyName: 'World of Unreal',
+          productName: game.productName || game.name,
+          productVersion: '1.0',
+        }, (p) => {
+          if (bar) bar.style.width = `${Math.round(p * 100)}%`;
+        }).then(() => {
+          overlay?.classList.add('hidden');
+        }).catch(() => {
+          showFallback('No se pudo arrancar el juego.');
+        });
+      } catch {
+        showFallback('No se pudo arrancar el juego.');
+      }
+    };
+    s.onerror = () => showFallback('Build en camino — aún no está en la web.');
+    document.body.appendChild(s);
+  })();
+</script>

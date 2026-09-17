@@ -1,0 +1,12 @@
+(
+    id: "melted_circuit_board",
+    label: "Melted Circuit Board",
+    description: "Modern art or engineering failure? Yes.",
+    slot: armor,
+    rarity: junk,
+    base_value: 1,
+    icon: Some("X"),
+    icon_path: None,
+    modifiers: [],
+    on_kill: None,
+)

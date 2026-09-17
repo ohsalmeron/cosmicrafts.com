@@ -1,0 +1,12 @@
+(
+    id: "space_dust_collection",
+    label: "Space Dust Collection",
+    description: "A jar of premium cosmic particles. Also known as: dirt.",
+    slot: shield,
+    rarity: junk,
+    base_value: 1,
+    icon: Some("%"),
+    icon_path: None,
+    modifiers: [],
+    on_kill: None,
+)

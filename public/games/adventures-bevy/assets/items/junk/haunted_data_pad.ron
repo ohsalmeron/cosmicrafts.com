@@ -1,0 +1,12 @@
+(
+    id: "haunted_data_pad",
+    label: "Haunted Data Pad",
+    description: "Displays text nobody typed. Currently showing: BEHIND YOU",
+    slot: reactor,
+    rarity: junk,
+    base_value: 1,
+    icon: Some("%"),
+    icon_path: None,
+    modifiers: [],
+    on_kill: None,
+)

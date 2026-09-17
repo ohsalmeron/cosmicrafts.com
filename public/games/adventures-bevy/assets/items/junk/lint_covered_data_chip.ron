@@ -1,0 +1,12 @@
+(
+    id: "lint_covered_data_chip",
+    label: "Lint-Covered Data Chip",
+    description: "Contains important data. Also lint. The lint won.",
+    slot: thrusters,
+    rarity: junk,
+    base_value: 5,
+    icon: Some("@"),
+    icon_path: None,
+    modifiers: [],
+    on_kill: None,
+)

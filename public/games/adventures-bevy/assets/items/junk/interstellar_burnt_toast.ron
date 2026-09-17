@@ -1,0 +1,12 @@
+(
+    id: "interstellar_burnt_toast",
+    label: "Interstellar Burnt Toast",
+    description: "Somehow toasted by re-entry heat.",
+    slot: artifact,
+    rarity: junk,
+    base_value: 5,
+    icon: Some("@"),
+    icon_path: None,
+    modifiers: [],
+    on_kill: None,
+)

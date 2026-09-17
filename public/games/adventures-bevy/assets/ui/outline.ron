@@ -1,0 +1,18 @@
+// Text outline settings. Hot-reload supported (save to see changes live).
+// Controls the 8-directional offset outline on all outlined text (damage numbers, level badges, etc.)
+(
+    // Whether outlines are enabled at all
+    enabled: true,
+
+    // Outline pixel thickness (higher = thicker ring). 1.0–3.0 recommended.
+    thickness: 1.2,
+
+    // Outline color (r, g, b, a). Use (0,0,0,1) for solid black.
+    color: (0.0, 0.0, 0.0, 1.0),
+
+    // Per-feature toggles: override enabled for specific text types.
+    // Set to false to disable outline for that feature only.
+    damage_text: true,
+    heal_text: true,
+    level_badge: true,
+)

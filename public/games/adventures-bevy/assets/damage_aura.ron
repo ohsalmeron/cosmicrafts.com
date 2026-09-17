@@ -1,0 +1,15 @@
+// Visual for DamageAura (DPS to nearby enemies). Radius comes from the unit's DamageAura component.
+// One flat disc per entity with DamageAura; scale matches aura.radius * scale. Edit and save; restart to apply.
+(
+    sprite_path: Some("textures/aura-radioactive.webp"),
+    emissive_color: (0.5, 0.5, 0.5),
+    emissive_intensity: 1.0,
+    scale: 0.95,
+    position: (0.0, -0.5, 0.0),
+    rotation_deg: (0.0, 0.0, 0.0),
+    billboard: true,
+    rotation_follow: 1.0,
+    radius: 0.95,
+    height: 0.03,
+    additive: true,
+)

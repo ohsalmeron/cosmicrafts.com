@@ -1,0 +1,12 @@
+(
+    id: "void_barnacle",
+    label: "Void Barnacle",
+    description: "It attached to the hull. It is not alive. Probably.",
+    slot: armor,
+    rarity: junk,
+    base_value: 2,
+    icon: Some("&"),
+    icon_path: None,
+    modifiers: [],
+    on_kill: None,
+)

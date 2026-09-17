@@ -1,0 +1,12 @@
+(
+    id: "wrong_size_wrench",
+    label: "Wrong Size Wrench",
+    description: "Metric in an imperial universe. Useless, but with conviction.",
+    slot: thrusters,
+    rarity: junk,
+    base_value: 4,
+    icon: Some("?"),
+    icon_path: None,
+    modifiers: [],
+    on_kill: None,
+)

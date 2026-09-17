@@ -1,0 +1,45 @@
+// Per-biome POI (Point of Interest) content configuration.
+// poi_model: None = use placeholder primitive mesh. Set to Some("models/poi/your_model.glb") for real art.
+// poi_shape: "Cylinder" | "Cuboid" | "Sphere" — only used when poi_model is None.
+// poi_color: (R, G, B) base color.
+// poi_emissive: emissive strength multiplier.
+// poi_scale: (min, max) random scale range.
+// poi_count: (min, max) how many POIs per sector.
+// cache_chance: probability (0.0–1.0) of spawning a hackable cache in this biome.
+// enemy_bonus: multiplier on enemy density in this biome (1.0 = normal).
+(
+    dark_rift: Some((
+        poi_count_min: 2,
+        poi_count_max: 5,
+        poi_model: None,
+        poi_color: (0.4, 0.05, 0.6),
+        poi_emissive: 5.0,
+        poi_scale_min: 8.0,
+        poi_scale_max: 20.0,
+        poi_shape: "Cylinder",
+        cache_chance: 0.20,
+    )),
+    celestial_site: Some((
+        poi_count_min: 3,
+        poi_count_max: 7,
+        poi_model: None,
+        poi_color: (1.0, 0.85, 0.3),
+        poi_emissive: 8.0,
+        poi_scale_min: 5.0,
+        poi_scale_max: 12.0,
+        poi_shape: "Cuboid",
+        cache_chance: 0.10,
+    )),
+    aetherium_field: Some((
+        poi_count_min: 5,
+        poi_count_max: 12,
+        poi_model: None,
+        poi_color: (0.2, 0.7, 0.9),
+        poi_emissive: 4.0,
+        poi_scale_min: 3.0,
+        poi_scale_max: 8.0,
+        poi_shape: "Sphere",
+        cache_chance: 0.25,
+    )),
+)
+

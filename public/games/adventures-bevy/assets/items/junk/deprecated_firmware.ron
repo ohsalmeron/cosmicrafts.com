@@ -1,0 +1,12 @@
+(
+    id: "deprecated_firmware",
+    label: "Deprecated Firmware Chip",
+    description: "Version 0.0.1. Current version: 847.3.",
+    slot: armor,
+    rarity: junk,
+    base_value: 1,
+    icon: Some("X"),
+    icon_path: None,
+    modifiers: [],
+    on_kill: None,
+)

@@ -1,0 +1,57 @@
+// AI behavior profiles: named (chase_style, attack_style, flee_style).
+// Unit .ron can reference these via ai_behavior.profile: Some("turret") or use inline chase_style/attack_style/flee_style.
+// See AI.md for movement style descriptions.
+(
+    profiles: [
+        ("default", (
+            chase_style: seek,
+            attack_style: strafe,
+            flee_style: seek,
+        )),
+        ("turret", (
+            chase_style: seek,
+            attack_style: full_stop,
+            flee_style: seek,
+        )),
+        ("dancer", (
+            chase_style: seek,
+            attack_style: orbit(speed: 1.0, radius_factor: 1.0),
+            flee_style: seek,
+        )),
+        ("weave", (
+            chase_style: seek,
+            attack_style: weave(amplitude: 1.0, frequency: 1.0),
+            flee_style: seek,
+        )),
+        ("weave_chase", (
+            chase_style: weave_on_line(amplitude: 1.0, frequency: 1.0),
+            attack_style: weave(amplitude: 1.0, frequency: 1.0),
+            flee_style: seek,
+        )),
+        ("advance", (
+            chase_style: seek,
+            attack_style: seek,
+            flee_style: seek,
+        )),
+        ("bully", (
+            chase_style: seek,
+            attack_style: bully(rush_duration: 2.0, retreat_duration: 1.5),
+            flee_style: seek,
+        )),
+        ("hit_and_run", (
+            chase_style: weave_on_line(amplitude: 0.8, frequency: 1.5),
+            attack_style: hit_and_run(engage_duration: 2.5, disengage_duration: 2.0, disengage_weave: 0.5),
+            flee_style: seek,
+        )),
+        ("aggressive", (
+            chase_style: seek,
+            attack_style: seek,
+            flee_style: weave_on_line(amplitude: 1.0, frequency: 1.0),
+        )),
+        ("sniper", (
+            chase_style: seek,
+            attack_style: hit_and_run(engage_duration: 2.5, disengage_duration: 2.0, disengage_weave: 0.5),
+            flee_style: weave_on_line(amplitude: 1.0, frequency: 1.0),
+        )),
+    ],
+)

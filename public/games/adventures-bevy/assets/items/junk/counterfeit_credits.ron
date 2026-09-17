@@ -1,0 +1,12 @@
+(
+    id: "counterfeit_credits",
+    label: "Counterfeit Credits",
+    description: "Just drawings of money on napkins. Surprisingly detailed.",
+    slot: artifact,
+    rarity: junk,
+    base_value: 1,
+    icon: Some("X"),
+    icon_path: None,
+    modifiers: [],
+    on_kill: None,
+)

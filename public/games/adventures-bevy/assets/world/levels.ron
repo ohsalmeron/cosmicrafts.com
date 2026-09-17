@@ -1,0 +1,11 @@
+// Per-level procedural event settings. Index 0 = level 1, etc.
+// event_end_distance: when player is this far from nearest enemy, event ends and next spawns.
+(
+    levels: [
+        (min_distance: 80.0, max_distance: 250.0, event_end_distance: 550.0, target_enemies: 12, spawn_per_frame: 3),
+        (min_distance: 100.0, max_distance: 350.0, event_end_distance: 600.0, target_enemies: 18, spawn_per_frame: 4),
+        (min_distance: 100.0, max_distance: 400.0, event_end_distance: 650.0, target_enemies: 25, spawn_per_frame: 5),
+        (min_distance: 120.0, max_distance: 450.0, event_end_distance: 700.0, target_enemies: 35, spawn_per_frame: 6),
+        (min_distance: 150.0, max_distance: 500.0, event_end_distance: 750.0, target_enemies: 50, spawn_per_frame: 8),
+    ],
+)

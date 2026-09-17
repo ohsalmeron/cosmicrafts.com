@@ -1,0 +1,12 @@
+(
+    id: "stale_coffee_thermos",
+    label: "Stale Coffee Thermos",
+    description: "The coffee has evolved. It does not want to be drunk.",
+    slot: armor,
+    rarity: junk,
+    base_value: 3,
+    icon: Some("~"),
+    icon_path: None,
+    modifiers: [],
+    on_kill: None,
+)

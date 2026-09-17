@@ -1,0 +1,12 @@
+(
+    id: "depleted_battery_cell",
+    label: "Depleted Battery Cell",
+    description: "0% charge. 100% paperweight potential.",
+    slot: weapon1,
+    rarity: junk,
+    base_value: 3,
+    icon: Some("+"),
+    icon_path: None,
+    modifiers: [],
+    on_kill: None,
+)

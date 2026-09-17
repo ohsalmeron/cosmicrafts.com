@@ -1,0 +1,12 @@
+(
+    id: "faded_wanted_poster",
+    label: "Faded Wanted Poster",
+    description: "The crime was aggressive parking.",
+    slot: weapon1,
+    rarity: junk,
+    base_value: 5,
+    icon: Some("!"),
+    icon_path: None,
+    modifiers: [],
+    on_kill: None,
+)

@@ -1,0 +1,12 @@
+(
+    id: "somebody_elses_sock",
+    label: "Somebody Else's Sock",
+    description: "Found floating near the airlock. Nobody claimed it.",
+    slot: shield,
+    rarity: junk,
+    base_value: 5,
+    icon: Some("!"),
+    icon_path: None,
+    modifiers: [],
+    on_kill: None,
+)

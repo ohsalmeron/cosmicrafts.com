@@ -1,0 +1,22 @@
+// Mission template for Cosmicons faction.
+// The procedural generator picks from these pools to create random missions.
+(
+    enemy_pool: ["sunfire_tick", "sunfire_drone", "sunfire_ripper", "sunfire_needle"],
+    lore_lines: [
+        "Cosmicons automated scouts have gone rogue and are blocking our shipping lanes. We've been trying to suppress them for days.",
+        "These AI combat drones stopped responding to their command codes. Corporate says they'll handle it — they haven't. You handle it.",
+        "Rogue Cosmicons units are harassing our miners. Civilian casualties are mounting. We need them cleared, fast.",
+        "An automated patrol fleet went offline and rebooted hostile. Nobody knows why, but they're shooting at everything that moves.",
+        "Cosmicons factory bots escaped containment. They're building more of themselves out there — take them down before they multiply.",
+    ],
+    difficulties: [
+        (stars: 1, min_count: 3, max_count: 6, aeth_per_kill: 12, xp_per_kill: 6),
+        (stars: 2, min_count: 6, max_count: 10, aeth_per_kill: 16, xp_per_kill: 8),
+        (stars: 3, min_count: 10, max_count: 16, aeth_per_kill: 20, xp_per_kill: 10),
+        (stars: 4, min_count: 16, max_count: 24, aeth_per_kill: 24, xp_per_kill: 12),
+    ],
+    spawn_distance: (min: 80.0, max: 180.0),
+    spawn_radius: 80.0,
+    spawn_multiplier: 4,
+    missions_per_visit: (min: 2, max: 3),
+)

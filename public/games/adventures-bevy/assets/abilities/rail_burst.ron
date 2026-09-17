@@ -1,0 +1,27 @@
+(
+    id: "rail_burst",
+    name: "Rail Burst",
+    energy_cost: 0.0,
+    cooldown: 0.5,
+    hotkey: 5,
+    metadata: (
+        display_name: "Rail Burst",
+        description_short: "Straight-line burst: heavy hit on the first enemy in the beam.",
+        tags: ["damage", "beam", "rail_burst"],
+        ui_color_hint: Some((0.25, 0.55, 1.0)),
+        icon: Some(( path: "icons/beam.webp" )),
+    ),
+    effect: RailBurst(RailBurstEffect(
+        damage: 120,
+        range: 72.0,
+        segments: 5,
+        jitter: 0.3,
+        spawn_origin: (x: 0.0, y: 0.12, z: -0.55),
+        emissive_color: (0.15, 0.55, 1.0),
+        emissive_intensity: 11000.0,
+        thickness: 0.5,
+        vfx_duration: 0.22,
+        pushback_force: 8.0,
+        hit_half_width: 5.0,
+    )),
+)

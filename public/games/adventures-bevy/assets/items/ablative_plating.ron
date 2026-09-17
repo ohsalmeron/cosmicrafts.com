@@ -1,0 +1,17 @@
+(
+    id: "ablative_plating",
+    label: "Ablative Plating",
+    description: "Sacrificial armor layers that ablate on impact, boosting HP and providing passive hull repair. The outermost plates vaporize to absorb kinetic energy.",
+    slot: armor,
+    rarity: rare,
+    base_value: 500,
+    icon: Some("🛡"),
+    icon_path: Some("icons/items/ablative_plating.png"),
+    modifiers: [
+        (stat: max_health,   op: multiply(1.15)),
+        (stat: health_regen, op: add(5.0)),
+        (stat: damage_reduction, op: add(0.03)),
+    ],
+    on_kill: None,
+)
+

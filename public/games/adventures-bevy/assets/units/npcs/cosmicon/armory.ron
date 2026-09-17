@@ -1,0 +1,81 @@
+(
+    id: "armory",
+    entity_type: "Station",
+    name: "Armory",
+    desc: "A sprawling Cosmicon supply freighter. The official source for authorized armaments and field repairs.",
+    model: "models/stations/router.glb",
+    preview_model: "models/stations/router.glb",
+    scale: 9.675,
+    nameplate: Some((show_name: true, show_healthbar: true, show_level_badge: false, standmark: "📦", standmark_tooltip: "Exchange UI")),
+    collider_radius: 12.15,
+    faction: "Cosmicons",
+    health: 15000,
+    shield: 5000,
+    energy: Some((
+        max: 2000,
+        regen_rate: 100,
+    )),
+    movement: (
+        max_speed: 0,
+        acceleration: 0.0,
+        rotation_speed: 0,
+    ),
+    combat: (
+        range: 120,
+        cooldown: 0.5,
+        bullet_speed: 80,
+        damage: 150,
+        basic_attack_ability_id: Some("laser"),
+    ),
+    death_effect: "Explosion",
+    thrusters: Some([
+        (
+            position: (0.0, 0.0, 0.0),
+            rotation_deg: (0, 0, 0),
+            scale: 0.0,
+        )
+    ]),
+    // Matches global unit point light in assets/lighting.ron (same baseline as the player ship).
+    entity_light: Some((
+        intensity: 250000.0,
+        range: 10.0,
+        color: (0.6, 0.7, 1.0),
+        shadows_enabled: false,
+    )),
+    role: Some(ScriptedNpc),
+    ai_profile: None,
+
+    // The gold question mark used for traders/quests
+    mission_marker: Some("quest_unknown"),
+
+    dialogue: Some(NpcDialogueDef(
+        greetings: [
+            "Welcome to the Cosmicon Exchange. Authorized personnel only.",
+            "Requisition forms better be signed. What do you need?",
+            "State your business. We have quotas to meet."
+        ],
+        purposes: [
+            (
+                label: "I need supplies.",
+                value: "trade",
+                action: "open_trade",
+                responses_success: [
+                    "Logging transaction...",
+                    "Approved. Browsing authorized.",
+                ],
+                responses_fail: []
+            ),
+            (
+                label: "I need repairs.",
+                value: "repair",
+                action: "mechanic_repair",
+                responses_success: [
+                    "Armor integrity restored. Try not to scratch it.",
+                ],
+                responses_fail: [
+                    "Insufficient Aethereum for maintenance.",
+                ]
+            )
+        ]
+    )),
+)

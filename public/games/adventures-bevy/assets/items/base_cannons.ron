@@ -1,0 +1,17 @@
+(
+    id: "base_cannons",
+    label: "Standard Cannons",
+    description: "Factory-issue weapon array. Reliable multi-purpose armament providing bullet, laser, and missile capabilities.",
+    slot: weapon1,
+    rarity: common,
+    base_value: 100,
+    icon: Some("💥"),
+    icon_path: Some("icons/items/base_cannons.png"),
+    modifiers: [
+        (stat: bullet_damage, op: add(0.0)),
+    ],
+    on_kill: None,
+    granted_abilities: ["bullet", "laser", "missile"],
+    granted_ability_slots: Some([(1, "bullet"), (2, "laser"), (3, "missile")]),
+)
+

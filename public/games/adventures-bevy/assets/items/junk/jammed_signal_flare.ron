@@ -1,0 +1,12 @@
+(
+    id: "jammed_signal_flare",
+    label: "Jammed Signal Flare",
+    description: "Pull the cord! Nothing happens! Pull harder!",
+    slot: weapon1,
+    rarity: junk,
+    base_value: 4,
+    icon: Some("#"),
+    icon_path: None,
+    modifiers: [],
+    on_kill: None,
+)

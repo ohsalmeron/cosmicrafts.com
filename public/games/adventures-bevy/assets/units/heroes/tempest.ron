@@ -1,0 +1,143 @@
+(
+    id: "tempest",
+    model: "models/tempest/neonwyrm.glb",
+    scale: 3,
+    nameplate: Some((show_name: true, show_healthbar: true, show_level_badge: false)),
+    faction: "Cosmicons",
+    pushback_resistance: Some(0.55),
+    health: 800,
+    shield: 1500,
+    energy: Some((
+        max: 1200,
+        regen_rate: 120,
+    )),
+    movement: (
+        max_speed: 10,
+        acceleration: 0.5,
+        rotation_speed: 10,
+    ),
+    combat: (
+        range: 13,
+        cooldown: 0.65,
+        bullet_speed: 80,
+        damage: 145,
+        basic_attack_ability_id: Some("bullet"),
+    ),
+    shield_regen_per_second: Some(120),
+    hp_regen_per_second: Some(100),
+    pickup_attract_radius: Some(45),
+    pickup_collect_radius: Some(2.5),
+    pickup_pull_speed: Some(145),
+    ability_modifiers: (
+        laser_damage_multiplier: 1,
+        laser_range_multiplier: 1,
+        laser_duration_multiplier: 1,
+        laser_cooldown_multiplier: 1,
+        missile_damage_multiplier: 1,
+        missile_speed_multiplier: 1,
+        missile_radius_multiplier: 1,
+        missile_cooldown_multiplier: 1,
+        bullet_damage_multiplier: 1,
+        bullet_speed_multiplier: 1,
+        bullet_range_multiplier: 1,
+        bullet_cooldown_multiplier: 1,
+        dash_distance_multiplier: 1,
+        dash_duration_multiplier: 1,
+        dash_cooldown_multiplier: 1,
+        spawn_unit_health_multiplier: 1,
+        spawn_unit_damage_multiplier: 1,
+        spawn_cooldown_multiplier: 1,
+        beam_cooldown_multiplier: 1,
+        beam_damage_multiplier: 1,
+        beam_range_multiplier: 1,
+        orb_cooldown_multiplier: 1,
+        orb_damage_multiplier: 1,
+        burst_cooldown_multiplier: 1,
+        burst_damage_multiplier: 1,
+        shockwave_cooldown_multiplier: 1,
+        shockwave_damage_multiplier: 1,
+    ),
+    bullet_spawn_origins: Some([
+        (-0.4, -0.05, -0.15),
+        (0.4, -0.05, -0.15)
+    ]),
+    laser_spawn_origin: Some([
+        (0, -0.35, -0.75)
+    ]),
+    thrusters: Some([
+        (
+            position: (0, 0.08, 0.75),
+            rotation_deg: (-90, 0, -90),
+            scale: 1,
+        )
+    ]),
+    bullet_visual_overrides: Some((
+        projectile: Some((
+            mode: Some(Cylinder),
+            color: Some((0.1, 0.3, 0.7)),
+            emissive_intensity: Some(4500.0),
+            radius: Some(0.06),
+            length: Some(0.95),
+        )),
+        muzzle_flash: Some((
+            mode: Some(Sphere),
+            color: Some((0.1, 0.3, 0.7)),
+            emissive_intensity: Some(2600.0),
+            scale: Some(1.2),
+        )),
+        impact: Some((
+            mode: Some(Sphere),
+            color: Some((0.1, 0.3, 0.7)),
+            emissive_intensity: Some(3200.0),
+            scale: Some(1.4),
+        )),
+    )),
+    passive_skills: [
+        (
+            id: "berserker_regen",
+            trigger: "Aura",
+            effect: ShieldRegen(rate: 5.0),
+        ),
+        (
+            id: "close_combat_crit",
+            trigger: "OnSpawn",
+            effect: CritBoost(chance: 0.10),
+        ),
+        (
+            id: "brawler_dodge",
+            trigger: "OnSpawn",
+            effect: DodgeBoost(chance: 0.12),
+        ),
+        (
+            id: "vanguard_speed",
+            trigger: "OnSpawn",
+            effect: SpeedBoost(factor: 1.15),
+        ),
+        (
+            id: "vanguard_stun",
+            trigger: "OnHit",
+            effect: StunOnHit(chance: 0.1, duration: 1.0),
+        ),
+    ],
+    status_effect_modifiers: (
+        crit_chance: 0.10,
+        dodge_chance: 0.05,
+        stun_duration_mult: 0.5,
+        slow_resist: 0.5,
+    ),
+    metadata: (
+        display_name: "Tempest",
+        description_short: "Commander of the Tempest fleet. Deploys Whistle, Scythe, and Violet to overwhelm the enemy.",
+        tags: ["hero", "player", "commander", "tempest", "fleet"],
+        icon: Some((
+            path: "icons/tempest.webp",
+        )),
+        preview: Some((
+            scale: 1.0,
+            rotation_speed: 0.5,
+            offset: (0.0, 0.0, 0.0),
+        )),
+        ui_color_hint: Some((0.5, 0.2, 0.9)),
+        authoring_notes: "Tempest fleet commander. Summons Whistle (fast), Scythe (heavy), and Violet (spawner).",
+    )
+)

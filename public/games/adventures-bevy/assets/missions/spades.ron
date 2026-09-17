@@ -1,0 +1,21 @@
+// Mission template for Spades faction.
+(
+    enemy_pool: ["sunfire_wraith", "sunfire_shell", "sunfire_sawship"],
+    lore_lines: [
+        "Spades enforcers have been extorting ships in this sector. They need a hard lesson about territory.",
+        "These Spades units are operating outside their sanctioned zone — and they know it. Clear them out.",
+        "Spades assault wings showed up suddenly and haven't moved. Intel suggests they're casing this station.",
+        "A Spades smuggling ring is using this corridor as a dead drop. The escorts are expendable — make them prove it.",
+        "Spades mercenaries were hired for a job that's already done. Now they're freelancing. Shut it down.",
+    ],
+    difficulties: [
+        (stars: 1, min_count: 3, max_count: 6, aeth_per_kill: 12, xp_per_kill: 6),
+        (stars: 2, min_count: 6, max_count: 10, aeth_per_kill: 16, xp_per_kill: 8),
+        (stars: 3, min_count: 10, max_count: 16, aeth_per_kill: 20, xp_per_kill: 10),
+        (stars: 4, min_count: 16, max_count: 24, aeth_per_kill: 24, xp_per_kill: 12),
+    ],
+    spawn_distance: (min: 80.0, max: 180.0),
+    spawn_radius: 80.0,
+    spawn_multiplier: 4,
+    missions_per_visit: (min: 2, max: 3),
+)

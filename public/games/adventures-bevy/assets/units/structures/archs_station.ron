@@ -1,0 +1,28 @@
+// Archs Trading Post — ancient tech monolith
+(
+    id: "archs_station",
+    entity_type: "Station",
+    faction: "Archs",
+    model: "models/spirat/fortress3.glb",
+    scale: 24.0,
+    health: 45000,
+    shield: 35000,
+    movement: ( max_speed: 0.0, acceleration: 0.0, rotation_speed: 0.1 ),
+    combat: ( range: 170.0, cooldown: 0.8, bullet_speed: 220.0, damage: 150, basic_attack_ability_id: Some("bullet") ),
+    attachments: [],
+    nameplate: Some((
+        show_name: true,
+        show_healthbar: true,
+        show_level_badge: false,
+        standmark: "🏪",
+        standmark_tooltip: "Archs Archive — Press [F] to Dock",
+    )),
+    emissive_color: Some((0.1, 0.9, 0.5)),
+    emissive_intensity: Some(3.0),
+    metadata: (
+        display_name: "Archs Archive",
+        description_short: "An ancient repository maintained by the Archs. Precision-engineered gear.",
+        tags: ["station", "trading", "archs", "dockable"],
+        ui_color_hint: Some((0.1, 0.9, 0.5)),
+    ),
+)

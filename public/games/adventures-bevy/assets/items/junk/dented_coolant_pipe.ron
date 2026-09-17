@@ -1,0 +1,12 @@
+(
+    id: "dented_coolant_pipe",
+    label: "Dented Coolant Pipe",
+    description: "The dent is load-bearing. Do not undent.",
+    slot: thrusters,
+    rarity: junk,
+    base_value: 1,
+    icon: Some("X"),
+    icon_path: None,
+    modifiers: [],
+    on_kill: None,
+)

@@ -1,0 +1,12 @@
+(
+    id: "cracked_fuel_injector",
+    label: "Cracked Fuel Injector",
+    description: "Injects fuel into space. Not your engine.",
+    slot: weapon1,
+    rarity: junk,
+    base_value: 1,
+    icon: Some("%"),
+    icon_path: None,
+    modifiers: [],
+    on_kill: None,
+)

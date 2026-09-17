@@ -1,0 +1,9 @@
+// Optional UI copy for hero selection and other screens. Omit file or keys to use built-in defaults.
+(
+    select_ship: "SELECT SHIP",
+    launch_mission: "GO",
+    ship_specifications: "DETAILS",
+    pilot_name: "PILOT NAME",
+    list_subtitle_fallback: "Fighter",
+    preview_subtitle_default: "STARSOUND SERIES CLASS",
+)

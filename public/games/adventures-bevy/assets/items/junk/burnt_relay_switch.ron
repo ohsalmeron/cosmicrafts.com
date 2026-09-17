@@ -1,0 +1,12 @@
+(
+    id: "burnt_relay_switch",
+    label: "Burnt Relay Switch",
+    description: "Flipping it does nothing. But you WILL flip it.",
+    slot: shield,
+    rarity: junk,
+    base_value: 4,
+    icon: Some("#"),
+    icon_path: None,
+    modifiers: [],
+    on_kill: None,
+)

@@ -1,0 +1,17 @@
+(
+    id: "nanoweave_hull",
+    label: "Nanoweave Hull",
+    description: "Self-replicating hull plating woven at the nano scale. Continuously repairs micro-fractures, providing massive HP and passive regeneration.",
+    slot: armor,
+    rarity: epic,
+    base_value: 2500,
+    icon: Some("🔬"),
+    icon_path: Some("icons/items/nanoweave_hull.png"),
+    modifiers: [
+        (stat: max_health,      op: multiply(1.30)),
+        (stat: health_regen,    op: add(3.0)),
+        (stat: damage_reduction, op: add(0.05)),
+    ],
+    on_kill: None,
+)
+

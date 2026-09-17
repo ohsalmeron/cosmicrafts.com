@@ -1,0 +1,19 @@
+(
+    id: "implosion",
+    name: "Implosion",
+    energy_cost: 55.0,
+    cooldown: 0.5,
+    hotkey: 5,
+    effect: Shockwave(ShockwaveEffect(
+        radius: 22.0,
+        damage: 1400,
+        vfx_duration: 0.35,
+        radial_force: Some(-1.0),
+        pushback_force: 0.0,
+    )),
+    metadata: (
+        icon: Some((
+            path: "icons/shockwave.webp",
+        )),
+    ),
+)

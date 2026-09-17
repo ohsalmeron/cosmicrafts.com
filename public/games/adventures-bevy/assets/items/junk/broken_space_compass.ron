@@ -1,0 +1,12 @@
+(
+    id: "broken_space_compass",
+    label: "Broken Space Compass",
+    description: "Points confidently in the wrong direction.",
+    slot: weapon1,
+    rarity: junk,
+    base_value: 2,
+    icon: Some("*"),
+    icon_path: None,
+    modifiers: [],
+    on_kill: None,
+)

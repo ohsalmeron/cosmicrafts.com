@@ -1,0 +1,18 @@
+(
+    id: "base_thruster",
+    label: "Standard Thruster",
+    description: "Factory-issue plasma drive. Basic propulsion with a simple dash maneuver. Gets you where you need to go — eventually.",
+    slot: thrusters,
+    rarity: common,
+    base_value: 100,
+    icon: Some("⚡"),
+    icon_path: Some("icons/items/base_thruster.png"),
+    modifiers: [
+        (stat: max_speed,    op: add(5.0)),
+        (stat: acceleration, op: add(2.0)),
+    ],
+    on_kill: None,
+    granted_abilities: ["dash"],
+    granted_ability_slots: Some([(0, "dash")]),
+)
+

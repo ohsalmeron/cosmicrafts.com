@@ -1,0 +1,26 @@
+(
+    id: "chain_lightning",
+    name: "Lightning Arc",
+    energy_cost: 0.0,
+    cooldown: 0.8,
+    hotkey: 1,
+    metadata: (
+        display_name: "Lightning Arc",
+        description_short: "Fires a bolt of lightning that bounces between up to 4 enemies.",
+        tags: ["lightning", "chain_lightning", "damage", "bounce"],
+        ui_color_hint: Some((0.2, 0.4, 1.0)),
+        authoring_notes: "Brutally casual auto-targeting chain lightning",
+    ),
+    effect: ChainLightning(ChainLightningEffect(
+        damage: 64,
+        range: 64.0,
+        max_bounces: 64,
+        bounce_range: 64.0,
+        spawn_origin: (x: 0.0, y: 0.0, z: -1.0),
+        emissive_color: (0.1, 0.6, 1.0),
+        emissive_intensity: 10000.0,
+        thickness: 0.64,
+        vfx_duration: 0.25,
+        pushback_force: 6.4,
+    )),
+)

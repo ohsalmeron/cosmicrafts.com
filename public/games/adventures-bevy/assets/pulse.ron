@@ -1,0 +1,24 @@
+// Pulse Index Configuration
+(
+    pressure_decay: 0.3,
+    target_kps: 0.5,
+    target_dps: 200.0,
+    target_speed: 30.0,
+
+    // Weights for composite calculation
+    weight_kps: 0.25,
+    weight_dps: 0.20,
+    weight_hp: 0.15,
+    weight_shield: 0.10,
+    weight_speed: 0.10,
+    weight_pressure: 0.15,
+
+    struggling_threshold: 0.75,
+    struggling_mult: 10.0,
+    average_threshold: 1.0,
+    average_mult: 25.0,
+    good_threshold: 1.15,
+    good_mult: 50.0,
+    insane_threshold: 1.30,
+    max_cap: 144.0,
+)

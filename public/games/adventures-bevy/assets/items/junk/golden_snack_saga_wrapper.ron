@@ -1,0 +1,13 @@
+(
+    id: "golden_snack_saga_wrapper",
+    label: "Golden Wrapper (The Snack Is Gone)",
+    description: "Legend says the crunch was real. The wrapper is all that believed in you.",
+    slot: artifact,
+    rarity: junk,
+    junk_grade: mythic,
+    base_value: 4,
+    icon: Some("!"),
+    icon_path: None,
+    modifiers: [],
+    on_kill: None,
+)

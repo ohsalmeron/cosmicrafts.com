@@ -1,0 +1,12 @@
+(
+    id: "half_used_duct_tape",
+    label: "Half-Used Duct Tape",
+    description: "The other half holds an ENTIRE ship together.",
+    slot: reactor,
+    rarity: junk,
+    base_value: 1,
+    icon: Some("%"),
+    icon_path: None,
+    modifiers: [],
+    on_kill: None,
+)

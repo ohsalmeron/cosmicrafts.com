@@ -1,0 +1,12 @@
+(
+    id: "jammed_airlock_handle",
+    label: "Jammed Airlock Handle",
+    description: "Stuck in the open position. That is the bad position.",
+    slot: reactor,
+    rarity: junk,
+    base_value: 2,
+    icon: Some("*"),
+    icon_path: None,
+    modifiers: [],
+    on_kill: None,
+)

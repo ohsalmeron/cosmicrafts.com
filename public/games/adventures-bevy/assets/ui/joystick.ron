@@ -1,0 +1,23 @@
+// Virtual joystick: graphics paths, sensitivity, dead zone, rotation, and emissive/additive visuals.
+// Edit and save; restart game to apply. Same emissive style as abilities (e.g. missile.ron).
+// sensitivity: axis multiplier (1.0 = normal, 1.15 = snappier). dead_zone: 0..1, input below is zeroed.
+// additive + emissive_* give a bright, glowing tint (like missile.ron).
+(
+    graphics: (
+        bg_path: "ui/joystick_bg.png",
+        knob_path: "ui/joystick_knob.png",
+        direction_indicator_path: "ui/joystick_dir.png",
+    ),
+    sensitivity: 1.15,
+    dead_zone: 0.12,
+    show_direction_indicator: true,
+    direction_indicator_scale: 0.5,
+    direction_indicator_height_ratio: 0.15,
+    additive: true,
+    emissive_color: (0.15, 0.75, 1.0),
+    emissive_intensity: 8000.0,
+    emissive_color_knob: (0.2, 0.85, 1.0),
+    emissive_intensity_knob: 12000.0,
+    emissive_color_indicator: (0.4, 0.9, 1.0),
+    emissive_intensity_indicator: 10000.0,
+)

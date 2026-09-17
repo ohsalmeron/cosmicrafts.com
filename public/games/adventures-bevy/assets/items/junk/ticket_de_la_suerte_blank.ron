@@ -1,0 +1,13 @@
+(
+    id: "ticket_de_la_suerte_blank",
+    label: "Ticket de la Suerte (Blank)",
+    description: "Good for one luck. Luck sold separately. Maybe at the next station.",
+    slot: weapon1,
+    rarity: junk,
+    junk_grade: noteworthy,
+    base_value: 2,
+    icon: Some("+"),
+    icon_path: None,
+    modifiers: [],
+    on_kill: None,
+)

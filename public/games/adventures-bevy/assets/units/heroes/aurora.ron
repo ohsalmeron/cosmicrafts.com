@@ -1,0 +1,163 @@
+(
+    id: "aurora",
+    model: "models/spirat/sunfire/aurora.glb",
+    scale: 3.5,
+    nameplate: Some((show_name: true, show_healthbar: true, show_level_badge: false)),
+    faction: "Cosmicons",
+    pushback_resistance: Some(0.55),
+    health: 2200,
+    shield: 200,
+    energy: Some((
+        max: 1500,
+        regen_rate: 130,
+    )),
+    movement: (
+        max_speed: 16,
+        acceleration: 0.4,
+        rotation_speed: 12,
+    ),
+    combat: (
+        range: 50,
+        cooldown: 1.25,
+        bullet_speed: 45,
+        damage: 38,
+        basic_attack_ability_id: Some("bullet"),
+    ),
+    shield_regen_per_second: Some(12),
+    hp_regen_per_second: Some(5),
+    pickup_attract_radius: Some(18),
+    pickup_collect_radius: Some(2.5),
+    pickup_pull_speed: Some(60),
+    attack_stance: Some(stop_to_attack),
+    ability_modifiers: (
+        laser_damage_multiplier: 1,
+        laser_range_multiplier: 1,
+        laser_duration_multiplier: 1,
+        laser_cooldown_multiplier: 1,
+        missile_damage_multiplier: 1,
+        missile_speed_multiplier: 1,
+        missile_radius_multiplier: 1,
+        missile_cooldown_multiplier: 1,
+        bullet_damage_multiplier: 1,
+        bullet_speed_multiplier: 1,
+        bullet_range_multiplier: 1,
+        bullet_cooldown_multiplier: 1,
+        dash_distance_multiplier: 1,
+        dash_duration_multiplier: 1,
+        dash_cooldown_multiplier: 1,
+        spawn_unit_health_multiplier: 1,
+        spawn_unit_damage_multiplier: 1,
+        spawn_cooldown_multiplier: 1,
+        beam_cooldown_multiplier: 1,
+        beam_damage_multiplier: 1,
+        beam_range_multiplier: 1,
+        orb_cooldown_multiplier: 1,
+        orb_damage_multiplier: 1,
+        burst_cooldown_multiplier: 1,
+        burst_damage_multiplier: 1,
+        shockwave_cooldown_multiplier: 1,
+        shockwave_damage_multiplier: 1,
+    ),
+    bullet_spawn_origins: Some([
+        (0.15, -0.08, -0.46),
+        (-0.14, -0.08, -0.47)
+    ]),
+    thrusters: Some([
+        (
+            position: (-0.19, 0.03, 0.45),
+            rotation_deg: (-90, 0, -90),
+            scale: 0.25,
+        ),
+        (
+            position: (-0.23, -0.12, 0.5),
+            rotation_deg: (-90, 0, -90),
+            scale: 0.25,
+        ),
+        (
+            position: (0.24, -0.14, 0.49),
+            rotation_deg: (-90, 0, -90),
+            scale: 0.25,
+        ),
+        (
+            position: (0.25, 0.03, 0.45),
+            rotation_deg: (-90, 0, -90),
+            scale: 0.25,
+        )
+    ]),
+    bullet_visual_overrides: Some((
+        projectile: Some((
+            mode: Some(Sphere),
+            color: Some((0.2, 1.0, 0.0)),
+            emissive_intensity: Some(8000.0),
+            scale: Some(0.15),
+        )),
+        muzzle_flash: Some((
+            mode: Some(Sphere),
+            color: Some((0.3, 1.0, 0.0)),
+            emissive_intensity: Some(12000.0),
+            scale: Some(2.0),
+        )),
+        impact: Some((
+            mode: Some(Sphere),
+            color: Some((0.25, 1.0, 0.0)),
+            emissive_intensity: Some(6000.0),
+            scale: Some(0.4),
+        )),
+    )),
+    passive_skills: [
+        (
+            id: "sunfire_regen",
+            trigger: "Aura",
+            effect: ShieldRegen(rate: 8.0),
+        ),
+        (
+            id: "sunfire_crit",
+            trigger: "OnSpawn",
+            effect: CritBoost(chance: 0.12),
+        ),
+        (
+            id: "sunfire_dodge",
+            trigger: "OnSpawn",
+            effect: DodgeBoost(chance: 0.08),
+        ),
+        (
+            id: "sunfire_speed",
+            trigger: "OnSpawn",
+            effect: SpeedBoost(factor: 1.1),
+        ),
+    ],
+    status_effect_modifiers: (
+        crit_chance: 0.12,
+        dodge_chance: 0.08,
+        stun_duration_mult: 0.6,
+        slow_resist: 0.4,
+    ),
+    metadata: (
+        display_name: "Aurora",
+        description_short: "Sunfire Clan commander. Deploys a fleet of specialized units: tanks, strikers, and support ships.",
+        tags: ["hero", "player", "commander", "sunfire", "fleet"],
+        icon: Some((
+            path: "icons/aurora.webp",
+        )),
+        preview: Some((
+            scale: 1.0,
+            rotation_speed: 0.5,
+            offset: (0.0, 0.0, 0.0),
+        )),
+        ui_color_hint: Some((1.0, 0.6, 0.1)),
+        authoring_notes: "Sunfire fleet commander. Summons Shell (tank), Wraith (DPS), Tick (support), and Comet (companion).",
+    ),
+    laser_spawn_origin: Some([
+        (0.01, -0.08, -0.47)
+    ]),
+    auto_abilities: Some([
+        (ability_id: "laser", interval_secs: 0.5, only_if_has_target: true),
+        (ability_id: "missile", interval_secs: 2.5, only_if_has_target: true)
+    ]),
+    hull_material: Some((
+        base_color_texture: None,
+        base_color_factor: Some((1.0, 0.7, 0.45, 1.0)),
+        emissive_color: Some((1.0, 0.5, 0.15)),
+        emissive_intensity: Some(0.35),
+    ))
+)

@@ -1,0 +1,48 @@
+// minion_spawner.ron
+// Piñata / Minion wave config shared by Royale and DOTA modes.
+//
+// Hot-reloaded on desktop while the game is running — just save this file.
+//
+// unit_pool:  list of unit-def IDs to spawn. Must exist in units/*.ron.
+//             Picked randomly (uniform). Add multiple entries to vary the wave.
+//
+// origins:    optional fixed spawn points (offset from map centre, XZ).
+//             If empty, minions spawn in a ring around the player.
+(
+    enabled: true,
+
+    // How many minions per wave tick
+    minions_per_wave: 15,
+
+    // Seconds between waves
+    wave_interval_secs: 25.0,
+
+    // Hard cap on simultaneously alive minions
+    max_minions: 400,
+
+    // Minions spawned per Update frame (spread cost across frames)
+    spawn_per_frame: 5,
+
+    // Stat handicap (100 = full power, 60 = 60% HP/DMG)
+    handicap_percent: 60,
+
+    // How far from the spawn origin each minion scatters
+    scatter_radius_min: 30.0,
+    scatter_radius_max: 70.0,
+
+    // Unit definitions to pick from — must match IDs in assets/units/*.ron
+    unit_pool: [
+        "drone",
+        "drone",         // duplicated = higher weight
+    ],
+
+    // (Optional) fixed origins.  Empty list = ring around player.
+    // Format: { offset: (x, z), unit_pool: [] }
+    // Example DOTA lanes:
+    // origins: [
+    //     ( offset: (-600.0,    0.0), unit_pool: [] ),   // lane 1
+    //     ( offset: (   0.0, -600.0), unit_pool: [] ),   // lane 2
+    //     ( offset: ( 600.0,    0.0), unit_pool: [] ),   // lane 3
+    // ],
+    origins: [],
+)

@@ -1,0 +1,12 @@
+(
+    id: "unidentified_goo",
+    label: "Unidentified Goo",
+    description: "It is warm. It should not be warm.",
+    slot: armor,
+    rarity: junk,
+    base_value: 4,
+    icon: Some("?"),
+    icon_path: None,
+    modifiers: [],
+    on_kill: None,
+)

@@ -1,0 +1,28 @@
+// Unclaimed Outpost — neutral trading relay
+(
+    id: "neutral_station",
+    entity_type: "Station",
+    faction: "Neutral",
+    model: "models/spirat/fortress3.glb",
+    scale: 16.0,
+    health: 20000,
+    shield: 8000,
+    movement: ( max_speed: 0.0, acceleration: 0.0, rotation_speed: 0.5 ),
+    combat: ( range: 170.0, cooldown: 0.8, bullet_speed: 220.0, damage: 150, basic_attack_ability_id: Some("bullet") ),
+    attachments: [],
+    nameplate: Some((
+        show_name: true,
+        show_healthbar: true,
+        show_level_badge: false,
+        standmark: "🏪",
+        standmark_tooltip: "Frontier Relay — Press [F] to Dock",
+    )),
+    emissive_color: Some((0.5, 0.5, 0.5)),
+    emissive_intensity: Some(1.5),
+    metadata: (
+        display_name: "Frontier Relay",
+        description_short: "An abandoned relay station in unclaimed space. Basic supplies available.",
+        tags: ["station", "trading", "unclaimed", "dockable"],
+        ui_color_hint: Some((0.5, 0.5, 0.5)),
+    ),
+)

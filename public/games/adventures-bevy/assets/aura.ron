@@ -1,0 +1,20 @@
+// Glow disc under all units. Edit and save; restart game to apply.
+// The aura follows the unit position. When billboard is true and rotation_follow > 0,
+// the aura tilts slightly with the ship (movement/targeting) for a nice grounded feel.
+// Glow comes from Bloom post-processing: emissive_intensity makes the aura bright in HDR;
+// visible halo is controlled by bloom intensity in lighting.ron (higher = more glow).
+// Set sprite_path to None to use the cylinder fallback.
+(
+    sprite_path: Some("textures/aura.webp"),
+    emissive_color_friend: (0.1, 0.6, 0.3),
+    emissive_color_enemy: (0.6, 0.2, 0.1),
+    emissive_intensity: 120000.0,
+    scale: 2.00,
+    position: (0.0, -0.75, 0.0),
+    rotation_deg: (0.0, 0.0, 0.0),
+    billboard: true,
+    rotation_follow: -0.35,
+    radius: 0.0,
+    height: 0.0,
+    additive: true,
+)

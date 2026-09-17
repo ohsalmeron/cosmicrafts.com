@@ -1,0 +1,33 @@
+(
+    id: "replicant_burst",
+    name: "Scatter Shot",
+    energy_cost: 25.0,
+    cooldown: 0.0,
+    hotkey: 4,
+    effect: Burst(BurstEffect(
+        count: 5,
+        spread_angle_deg: 22.0,
+        damage: 20,
+        speed: 55.0,
+        range: 55.0,
+        impact_radius: 2.5,
+        spawn_origin: ( x: 0.0, y: 0.0, z: -0.0 ),
+        emissive_color: (0.85, 0.2, 0.85),
+        emissive_intensity: 1000.0,
+        impact_visual_scale: 1.0,
+        impact_explosion_duration: 0.1,
+        impact_force: 0.25,
+        muzzle_flash_radius: 1.0,
+        muzzle_flash_duration: 0.15,
+        muzzle_flash_emissive_color: (0.75, 0.15, 0.75),
+        muzzle_flash_emissive_intensity: 10000.0,
+        impact_inward_lerp_min: 0.5,
+        impact_inward_lerp_max: 0.8,
+        movement_style: Straight
+    )),
+    metadata: (
+        icon: Some((
+            path: "icons/burst.webp",
+        )),
+    )
+)

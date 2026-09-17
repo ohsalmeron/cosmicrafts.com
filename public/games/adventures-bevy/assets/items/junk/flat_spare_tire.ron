@@ -1,0 +1,12 @@
+(
+    id: "flat_spare_tire",
+    label: "Flat Spare Tire",
+    description: "For a vehicle that does not use tires. In space.",
+    slot: artifact,
+    rarity: junk,
+    base_value: 4,
+    icon: Some("?"),
+    icon_path: None,
+    modifiers: [],
+    on_kill: None,
+)

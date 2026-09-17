@@ -1,0 +1,12 @@
+(
+    id: "used_bandage",
+    label: "Used Bandage",
+    description: "Previously owned. VERY previously owned. Do not smell.",
+    slot: weapon1,
+    rarity: junk,
+    base_value: 5,
+    icon: Some("!"),
+    icon_path: None,
+    modifiers: [],
+    on_kill: None,
+)

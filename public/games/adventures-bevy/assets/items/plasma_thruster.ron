@@ -1,0 +1,19 @@
+(
+    id: "plasma_thruster",
+    label: "Plasma Thruster",
+    description: "High-output plasma drive with superheated exhaust. Dramatically increases max speed and acceleration. The glowing exhaust plume is unmistakable.",
+    slot: thrusters,
+    rarity: rare,
+    base_value: 500,
+    icon: Some("🔥"),
+    icon_path: Some("icons/items/plasma_thruster.png"),
+    modifiers: [
+        (stat: max_speed,    op: multiply(1.25)),
+        (stat: acceleration, op: multiply(1.10)),
+        (stat: turn_speed,   op: multiply(1.05)),
+    ],
+    on_kill: None,
+    granted_abilities: ["dash"],
+    granted_ability_slots: Some([(0, "dash")]),
+)
+

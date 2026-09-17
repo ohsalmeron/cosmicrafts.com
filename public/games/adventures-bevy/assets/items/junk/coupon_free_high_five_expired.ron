@@ -1,0 +1,13 @@
+(
+    id: "coupon_free_high_five_expired",
+    label: "Coupon: One Free High-Five",
+    description: "Expired yesterday. The high-five industry moves fast.",
+    slot: artifact,
+    rarity: junk,
+    junk_grade: absurd,
+    base_value: 2,
+    icon: Some("%"),
+    icon_path: None,
+    modifiers: [],
+    on_kill: None,
+)

@@ -1,0 +1,12 @@
+(
+    id: "cracked_helmet_visor",
+    label: "Cracked Helmet Visor",
+    description: "Provides a lovely view of incoming space.",
+    slot: artifact,
+    rarity: junk,
+    base_value: 5,
+    icon: Some("@"),
+    icon_path: None,
+    modifiers: [],
+    on_kill: None,
+)

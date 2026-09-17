@@ -1,0 +1,12 @@
+(
+    id: "expired_ration_pack",
+    label: "Expired Ration Pack",
+    description: "Best before: 3 centuries ago. Smells like regret.",
+    slot: weapon1,
+    rarity: junk,
+    base_value: 2,
+    icon: Some("*"),
+    icon_path: None,
+    modifiers: [],
+    on_kill: None,
+)

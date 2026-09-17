@@ -1,0 +1,12 @@
+(
+    id: "broken_hyperdrive_fuse",
+    label: "Broken Hyperdrive Fuse",
+    description: "The previous owner jumped too hard. Way too hard.",
+    slot: armor,
+    rarity: junk,
+    base_value: 3,
+    icon: Some("~"),
+    icon_path: None,
+    modifiers: [],
+    on_kill: None,
+)

@@ -1,0 +1,12 @@
+(
+    id: "wobbling_gyroscope",
+    label: "Wobbling Gyroscope",
+    description: "Wobbles with intent. Malicious intent.",
+    slot: artifact,
+    rarity: junk,
+    base_value: 1,
+    icon: Some("X"),
+    icon_path: None,
+    modifiers: [],
+    on_kill: None,
+)

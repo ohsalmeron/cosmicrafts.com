@@ -1,0 +1,40 @@
+// Cosmicon Safe Zone Hub: Between-mission home base.
+// No enemies spawn here. NPCs offer dialogue and deployment.
+// Uses Elite NPCs in assets/units/npcs/cosmicon/ (command_center, armory, database, engineering_bay)
+(
+    id: "safe_zone",
+    intro_dialogue: (
+        speaker: "Cosmicon Commander",
+        line: "Welcome to the Hub, pilot. Resupply and check your logs before deploying.",
+        duration_secs: 4.0,
+    ),
+    player_start: Some((x: 0.0, y: 0.0, z: 0.0)),
+    npcs: [
+        (
+            id: "command_center",
+            display_name: "Command Center",
+            position: (x: -22.0, y: 0.0, z: -14.0),
+            unit_id: Some("command_center"),
+        ),
+        (
+            id: "armory",
+            display_name: "Armory",
+            position: (x: 14.0, y: 0.0, z: 22.0),
+            unit_id: Some("armory"),
+        ),
+        (
+            id: "database",
+            display_name: "Database",
+            position: (x: 28.0, y: 0.0, z: -28.0),
+            unit_id: Some("database"),
+        ),
+        (
+            id: "engineering_bay",
+            display_name: "Engineering Bay",
+            position: (x: -28.0, y: 0.0, z: 28.0),
+            unit_id: Some("engineering_bay"),
+        ),
+    ],
+    missions: [],
+    triggers: [],
+)

@@ -1,0 +1,79 @@
+(
+    id: "database",
+    entity_type: "Station",
+    name: "Database",
+    desc: "A sprawling dormant mainframe containing the encoded consciousness and flight records of fallen Cosmicon pilots.",
+    model: "models/stations/cosmicon_database.glb", // Using a solid looking station model
+    preview_model: "models/stations/cosmicon_database.glb",
+    scale: 8.325,
+    nameplate: Some((show_name: true, show_healthbar: true, show_level_badge: false, standmark: "💬", standmark_tooltip: "Terminal Access")),
+    collider_radius: 10.8,
+    faction: "Cosmicons",
+    health: 100000,
+    shield: 50000,
+    energy: Some((
+        max: 8000,
+        regen_rate: 300,
+    )),
+    movement: (
+        max_speed: 0,
+        acceleration: 0.0,
+        rotation_speed: 0,
+    ),
+    combat: (
+        range: 100,
+        cooldown: 1.0,
+        bullet_speed: 60,
+        damage: 80,
+        basic_attack_ability_id: Some("laser"),
+    ),
+    death_effect: "Explosion",
+    thrusters: Some([
+        (
+            position: (0.0, 0.0, 0.0),
+            rotation_deg: (0, 0, 0),
+            scale: 0.0,
+        )
+    ]),
+    // Matches global unit point light in assets/lighting.ron (same baseline as the player ship).
+    entity_light: Some((
+        intensity: 250000.0,
+        range: 10.0,
+        color: (0.6, 0.7, 1.0),
+        shadows_enabled: false,
+    )),
+    role: Some(ScriptedNpc),
+    ai_profile: None,
+
+    // Neutral icon marking for stats
+    mission_marker: Some("quest_unknown"),
+
+    dialogue: Some(NpcDialogueDef(
+        greetings: [
+            "*A synthetic voice chimes from the terminal:* Welcome to the Archives.",
+            "Identity verified. Accessing flight logs...",
+            "Honoring the fallen. How may the Archives serve you today?"
+        ],
+        purposes: [
+            (
+                label: "Show me my records.",
+                value: "stats",
+                // For now, mapping this to 'bubble_only' until the Stats UI logic is mapped here
+                action: "bubble_only",
+                responses_success: [
+                    "Retrieving your operational history. Terminal unlocked.",
+                ],
+                responses_fail: []
+            ),
+            (
+                label: "Who are the fallen?",
+                value: "lore",
+                action: "informant_intel",
+                responses_success: [
+                    "Accessing the memorial databanks. Downloading context.",
+                ],
+                responses_fail: []
+            )
+        ]
+    )),
+)

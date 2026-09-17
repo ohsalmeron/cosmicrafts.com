@@ -1,0 +1,13 @@
+// Trading Post configuration — controls docking, store, and minimap behavior
+(
+    docking_range: 400.0,
+    store_item_count: 15,
+    buy_markup: 2.0,
+    npc_count_min: 2,
+    npc_count_max: 5,
+    npc_orbit_radius_min: 1.5,
+    npc_orbit_radius_max: 2.5,
+    station_collision_radius_scale: 0.75,
+    minimap_scale: 5.0,
+    minimap_tint: (0.2, 0.6, 1.0, 1.0),
+)

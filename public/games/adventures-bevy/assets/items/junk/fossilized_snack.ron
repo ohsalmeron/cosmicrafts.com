@@ -1,0 +1,12 @@
+(
+    id: "fossilized_snack",
+    label: "Fossilized Asteroid Snack",
+    description: "Crunchy. Your dentist would not approve.",
+    slot: reactor,
+    rarity: junk,
+    base_value: 3,
+    icon: Some("+"),
+    icon_path: None,
+    modifiers: [],
+    on_kill: None,
+)

@@ -1,0 +1,19 @@
+(
+    id: "rusty_autocannon",
+    label: "Rusty Autocannon",
+    description: "Rapid-fire orange kinetic slugs. Standard-issue sidearm for the Rusty fleet. The barrel glows hot after sustained fire with Rusty's signature amber hue.",
+    slot: weapon1,
+    rarity: rare,
+    base_value: 500,
+    icon: Some("💥"),
+    icon_path: Some("icons/items/rusty_autocannon.png"),
+    modifiers: [
+        (stat: bullet_damage,   op: multiply(1.15)),
+        (stat: bullet_speed,    op: multiply(1.05)),
+        (stat: bullet_cooldown, op: multiply(0.95)),
+    ],
+    on_kill: None,
+    granted_abilities: ["bullet"],
+    granted_ability_slots: Some([(1, "bullet")]),
+)
+

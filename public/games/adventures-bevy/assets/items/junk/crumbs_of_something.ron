@@ -1,0 +1,12 @@
+(
+    id: "crumbs_of_something",
+    label: "Crumbs of Something",
+    description: "Could be food. Could be hull plating. Tastes like both.",
+    slot: thrusters,
+    rarity: junk,
+    base_value: 5,
+    icon: Some("@"),
+    icon_path: None,
+    modifiers: [],
+    on_kill: None,
+)

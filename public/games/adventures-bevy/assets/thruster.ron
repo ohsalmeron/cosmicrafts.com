@@ -1,0 +1,8 @@
+// Thruster VFX: spritesheet animation. Edit and save; restart game to apply.
+// When spritesheet_path is Some, thrusters use the animated sprite (4 frames @ 8 fps).
+// When None, thrusters use the default cylinder glow (textures/glow.webp).
+(
+    spritesheet_path: Some("sprites/thruster.webp"),
+    frame_count: 4,
+    fps: 8.0,
+)

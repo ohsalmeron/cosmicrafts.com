@@ -1,0 +1,12 @@
+(
+    id: "dismantled_toaster",
+    label: "Dismantled Toaster",
+    description: "47 parts. You have 46.",
+    slot: artifact,
+    rarity: junk,
+    base_value: 4,
+    icon: Some("?"),
+    icon_path: None,
+    modifiers: [],
+    on_kill: None,
+)

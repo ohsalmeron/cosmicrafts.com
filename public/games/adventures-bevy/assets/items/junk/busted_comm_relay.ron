@@ -1,0 +1,12 @@
+(
+    id: "busted_comm_relay",
+    label: "Busted Comm Relay",
+    description: "Last transmission received: AAAAAAA",
+    slot: artifact,
+    rarity: junk,
+    base_value: 3,
+    icon: Some("~"),
+    icon_path: None,
+    modifiers: [],
+    on_kill: None,
+)

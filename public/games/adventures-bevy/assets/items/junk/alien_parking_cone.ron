@@ -1,0 +1,12 @@
+(
+    id: "alien_parking_cone",
+    label: "Alien Parking Cone",
+    description: "Fluorescent purple. 7 sides. Screams when touched.",
+    slot: artifact,
+    rarity: junk,
+    base_value: 1,
+    icon: Some("X"),
+    icon_path: None,
+    modifiers: [],
+    on_kill: None,
+)

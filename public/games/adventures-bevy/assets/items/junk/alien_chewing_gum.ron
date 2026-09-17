@@ -1,0 +1,12 @@
+(
+    id: "alien_chewing_gum",
+    label: "Alien Chewing Gum",
+    description: "Still has teeth marks. Not human teeth marks.",
+    slot: reactor,
+    rarity: junk,
+    base_value: 2,
+    icon: Some("*"),
+    icon_path: None,
+    modifiers: [],
+    on_kill: None,
+)

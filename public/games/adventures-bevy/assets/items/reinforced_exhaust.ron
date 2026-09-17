@@ -1,0 +1,19 @@
+(
+    id: "reinforced_exhaust",
+    label: "Reinforced Exhaust",
+    description: "Reinforced exhaust ports with armored cowlings. Moderate speed boost with improved structural integrity. Built to survive asteroid impacts.",
+    slot: thrusters,
+    rarity: common,
+    base_value: 100,
+    icon: Some("🔧"),
+    icon_path: Some("icons/items/reinforced_exhaust.png"),
+    modifiers: [
+        (stat: max_speed,    op: multiply(1.15)),
+        (stat: max_health,   op: multiply(1.05)),
+        (stat: acceleration, op: multiply(1.05)),
+    ],
+    on_kill: None,
+    granted_abilities: ["dash"],
+    granted_ability_slots: Some([(0, "dash")]),
+)
+

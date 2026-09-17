@@ -1,0 +1,31 @@
+(
+    id: "laser",
+    name: "Laser Beam",
+    energy_cost: 30.0,
+    cooldown: 0.5,
+    hotkey: 0,
+    effect: Laser(LaserEffect(
+        damage_per_second: 260,
+        damage_tick_interval_secs: Some(0.1),
+        range: 600.0,
+        width: 0.35,
+        duration: 1.0,
+        emissive_color: (0.1, 0.2, 0.7),
+        emissive_intensity: 10000.0,
+        force_along_beam: 0.5,
+        muzzle_flash_radius: 1.0,
+        muzzle_flash_duration: 0.12,
+        muzzle_flash_emissive_color: (0.1, 0.2, 0.7),
+        muzzle_flash_emissive_intensity: 8000.0,
+    )),
+    metadata: (
+        icon: Some((
+            path: "icons/laser.webp",
+        )),
+    ),
+    passives: Some([
+        (id: "laser_crit", trigger: "OnHit", effect: CritBoost(chance: 0.35)),
+        (id: "antievasion", trigger: "OnHit", effect: Antievasion),
+    ]),
+    hold_repeat_interval_secs: Some(0.5),
+)

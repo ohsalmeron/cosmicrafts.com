@@ -1,0 +1,12 @@
+(
+    id: "fake_distress_beacon",
+    label: "Fake Distress Beacon",
+    description: "Broadcasts: Help! My ship is--just kidding lol",
+    slot: armor,
+    rarity: junk,
+    base_value: 1,
+    icon: Some("X"),
+    icon_path: None,
+    modifiers: [],
+    on_kill: None,
+)

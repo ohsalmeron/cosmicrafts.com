@@ -1,0 +1,12 @@
+(
+    id: "deflated_space_balloon",
+    label: "Deflated Space Balloon",
+    description: "It said CONGRATULATIONS before the void claimed it.",
+    slot: shield,
+    rarity: junk,
+    base_value: 4,
+    icon: Some("#"),
+    icon_path: None,
+    modifiers: [],
+    on_kill: None,
+)

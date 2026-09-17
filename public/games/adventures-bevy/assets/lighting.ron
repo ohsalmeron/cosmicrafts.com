@@ -1,0 +1,67 @@
+// Lighting and volumetric fog.
+// Stress test: with many entities (e.g. dev stress spawn) each has a point light; set entity.shadows_enabled: false if needed for perf.
+// Fog: The fog volume is centered on the camera each frame, so it stays around the battlefield.
+//      scale = size of the fog box in world units (centered on camera).
+// Volumetric fog needs: sun has VolumetricLight + shadows; optional: point/spot with same for shafts.
+// Player lights: Both the point light and flashlight are children of the ship, so they rotate with
+//      the ship (e.g. when turning). Flashlight points in the ship’s forward direction (-Z local).
+(
+    ambient: (
+        brightness: 150.0,
+        color: (1.0, 1.0, 1.0),
+    ),
+    sun: (
+        illuminance: 3000,
+        color: (0.6, 0.7, 1.0),
+        rotation: 0.45,   // yaw (time-of-day direction)
+        pitch: 0.1,    // elevation in radians (e.g. 0.785 ≈ 45°)
+    ),
+    // Point light for every unit (player, enemies, companions, drones). Unit RON can override with entity_light: Some(...).
+    // shadows_enabled: false = better perf with many units (each shadow-casting light is costly).
+    entity: Some((
+        intensity: 250000.0,
+        range: 10.0,
+        color: (0.6, 0.7, 1.0),
+        shadows_enabled: false,
+        position: (0.0, 1.0, 0.0),  // local offset (x, y, z); Y=5 = above mesh
+    )),
+    flashlight: (
+        intensity: 20000000.0,
+        range: 45.0,
+        color: (0.6, 0.7, 1.0),
+        outer_angle: .95,
+        inner_angle: .5,
+    ),
+    // Camera: VolumetricFog (raymarch quality, ambient in fog). Set ambient_intensity to 0 if no env map.
+    // RON Option fields must be written as Some(...) or omitted for None.
+    volumetric_fog: Some((
+        ambient_color: (0.9, 0.92, 1.0),
+        ambient_intensity: 0.05,
+        jitter: 0.0,
+        step_count: 32,  // lower = faster, less quality (e.g. 64 for quality)
+    )),
+    // World: FogVolume (color, density, scattering). scale = size of the fog box in world units.
+    // scale: 0 = disabled (fog volume entity not spawned). Higher density_factor = visible shafts.
+    fog_volume: Some((
+        fog_color: (0.82, 0.86, 0.95),
+        density_factor: 0.02,
+        absorption: 0.15,
+        scattering: 0.35,
+        scattering_asymmetry: 0.6,
+        light_tint: (0.5, 0.98, 0.95),
+        light_intensity: 1.0,
+        scale: 0.00,
+    )),
+    // Bloom post-processing. Use None to disable. Requires HDR (auto-added); TonyMcMapface tonemapping recommended.
+    // intensity: higher = stronger glow on emissive materials (e.g. aura, thrusters, beams).
+    bloom: Some((
+        intensity: 0.01,
+        low_frequency_boost: 0.7,
+        low_frequency_boost_curvature: 0.95,
+        high_pass_frequency: 1.0,
+        prefilter_threshold: 0.0,
+        prefilter_threshold_softness: 0.0,
+        composite_mode: "EnergyConserving",
+        scale: (1.0, 1.0),
+    )),
+)

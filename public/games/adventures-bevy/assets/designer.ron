@@ -1,0 +1,46 @@
+// Adventure Event Director configuration.
+// Event sequence is event-driven (completion -> next pick), not timer-state-driven.
+(
+    start_radius: 120.0,
+    completion_debounce_secs: 2.0,
+    gap_between_events_secs: 4.0,
+    // NpcShip / cluster need this long before proximity can finish (avoids 1s "blink" completes).
+    min_proximity_event_secs: 12.0,
+    // Keep scripted spawns in the world after an event ends so space doesn't go empty.
+    despawn_scripted_on_finish: false,
+    combat: (
+        base_weight: 8,
+        unit_classes: ["sunfire_tick", "drone", "rusty"],
+        count_min: 3,
+        count_max: 4,
+        min_distance: 140.0,
+        max_distance: 170.0,
+        enemy_handicap_min: 35,
+        enemy_handicap_max: 65,
+        power_percent_min: 100,
+        power_percent_max: 170,
+        pulse_scaling: (
+            struggling_threshold: 0.75,
+            struggling_mult: 10.0,
+            average_threshold: 1.0,
+            average_mult: 25.0,
+            good_threshold: 1.15,
+            good_mult: 50.0,
+            insane_threshold: 1.30,
+            max_cap: 144.0,
+        ),
+    ),
+    npc_ship: (
+        base_weight: 4,
+        unit_ids: ["engineering_bay", "database", "armory"],
+        min_distance: 120.0,
+        max_distance: 220.0,
+        complete_distance: 90.0,
+    ),
+    safe_zone_cluster: (
+        base_weight: 3,
+        min_distance: 260.0,
+        max_distance: 420.0,
+        complete_distance: 160.0,
+    ),
+)

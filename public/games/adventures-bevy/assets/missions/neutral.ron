@@ -1,0 +1,16 @@
+(
+    enemy_pool: ["rusty", "tempest", "voyager", "outlaw"],
+    lore_lines: [
+        "A group of unaffiliated scavengers have set up an illegal blockade in this sector. We need them cleared out.",
+        "Unregistered drones have been attacking our convoys. They don't fly any faction colors.",
+        "Freelance mercenaries are harassing the local mining operations.",
+    ],
+    difficulties: [
+        (stars: 1, min_count: 3, max_count: 6, aeth_per_kill: 10, xp_per_kill: 5),
+        (stars: 2, min_count: 6, max_count: 10, aeth_per_kill: 12, xp_per_kill: 7),
+    ],
+    spawn_distance: (min: 80.0, max: 180.0),
+    spawn_radius: 80.0,
+    spawn_multiplier: 3,
+    missions_per_visit: (min: 1, max: 2),
+)

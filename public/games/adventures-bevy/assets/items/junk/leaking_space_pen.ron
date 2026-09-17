@@ -1,0 +1,12 @@
+(
+    id: "leaking_space_pen",
+    label: "Leaking Space Pen",
+    description: "Writes in zero gravity! Also writes on your pants.",
+    slot: shield,
+    rarity: junk,
+    base_value: 2,
+    icon: Some("*"),
+    icon_path: None,
+    modifiers: [],
+    on_kill: None,
+)

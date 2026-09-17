@@ -1,0 +1,19 @@
+(
+    id: "rusty_beam_array",
+    label: "Rusty Beam Array",
+    description: "Focused orange laser beam emitter with precision optics. Continuous damage at extreme range. The beam cuts through debris like a hot knife through butter.",
+    slot: weapon1,
+    rarity: rare,
+    base_value: 500,
+    icon: Some("🔶"),
+    icon_path: Some("icons/items/rusty_beam_array.png"),
+    modifiers: [
+        (stat: laser_damage, op: multiply(1.10)),
+        (stat: laser_range,  op: multiply(1.10)),
+        (stat: energy_cost,  op: multiply(0.95)),
+    ],
+    on_kill: None,
+    granted_abilities: ["laser"],
+    granted_ability_slots: Some([(2, "laser")]),
+)
+

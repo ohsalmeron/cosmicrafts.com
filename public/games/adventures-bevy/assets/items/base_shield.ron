@@ -1,0 +1,16 @@
+(
+    id: "base_shield",
+    label: "Standard Shield",
+    description: "Factory-issue shield emitter. Thin deflector barrier — better than nothing against stray debris.",
+    slot: shield,
+    rarity: common,
+    base_value: 100,
+    icon: Some("✨"),
+    icon_path: Some("icons/items/base_shield.png"),
+    modifiers: [
+        (stat: max_shield,   op: add(5.0)),
+        (stat: shield_regen, op: add(1.0)),
+    ],
+    on_kill: None,
+)
+

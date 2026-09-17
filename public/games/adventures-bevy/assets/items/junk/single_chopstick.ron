@@ -1,0 +1,12 @@
+(
+    id: "single_chopstick",
+    label: "Single Chopstick",
+    description: "Its partner is in the Andromeda galaxy. Probably.",
+    slot: thrusters,
+    rarity: junk,
+    base_value: 1,
+    icon: Some("X"),
+    icon_path: None,
+    modifiers: [],
+    on_kill: None,
+)

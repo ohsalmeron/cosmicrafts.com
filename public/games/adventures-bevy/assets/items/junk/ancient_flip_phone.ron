@@ -1,0 +1,12 @@
+(
+    id: "ancient_flip_phone",
+    label: "Ancient Flip Phone",
+    description: "Found in a capsule from Old Earth. Still has 2 bars.",
+    slot: thrusters,
+    rarity: junk,
+    base_value: 3,
+    icon: Some("~"),
+    icon_path: None,
+    modifiers: [],
+    on_kill: None,
+)

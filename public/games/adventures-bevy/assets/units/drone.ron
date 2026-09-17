@@ -1,0 +1,73 @@
+(
+    id: "drone",
+    name: "Support Drone",
+    description: "Autonomous support unit. Follows its owner and provides covering fire.",
+    faction: "Cosmicons",
+    rarity: "Rare",
+    level: 1,
+    entity_type: "Drone",
+    model: "models/spirat/sunfire/nautilus.glb",
+    scale: 2.00,
+    nameplate: Some((show_name: true, show_healthbar: true, show_level_badge: false)),
+    health: 100,
+    shield: 200,
+    energy: Some((
+        max: 80.0,
+        regen_rate: 18.0,
+    )),
+    movement: (
+        max_speed: 2.5,
+        acceleration: 0.175,
+        rotation_speed: 20.0,
+    ),
+    combat: (
+        range: 10.0,
+        cooldown: 1.0,
+        bullet_speed: 90.0,
+        damage: 10,
+        basic_attack_ability_id: Some("bullet"),
+    ),
+    attachments: [],
+    thrusters: Some([
+        (
+            position: (0.0, 0.0, 1.0),
+            rotation_deg: (-90, 0, -90),
+            scale: 1.0,
+        ),
+    ]),
+    thruster_visual: Some((
+        spritesheet_path: "sprites/thruster.webp",
+        columns: 2,
+        rows: 2,
+        fps: 24.0,
+        additive: true,
+        emissive_color: (0.4, 0.6, 1.0),
+        emissive_intensity: 8000.0,
+    )),
+    auto_abilities: Some([
+        ( ability_id: "burst", interval_secs: 5.0, only_if_has_target: true ),
+    ]),
+    stance: Some(Normal),
+    passive_skills: [
+        ( id: "crit_support", trigger: "OnSpawn", effect: CritBoost(chance: 0.1) ),
+    ],
+    metadata: (
+        icon: Some((
+            path: "icons/drone.webp",
+        )),
+    ),
+    summon: Some((
+        energy_cost: 10.0,
+        cooldown: 10.0,
+        hotkey: 7,
+        spawn_offset: (5.0, 0.0, 5.0),
+        max_per_caster: Some(4),
+        metadata: (
+            display_name: "Drone",
+            description_short: "Deploys a support drone companion.",
+            tags: ["ability", "summon", "companion"],
+            icon: Some(( path: "icons/spawn_drone.webp" )),
+            ui_color_hint: Some((0.45, 0.78, 1.0)),
+        ),
+    )),
+)

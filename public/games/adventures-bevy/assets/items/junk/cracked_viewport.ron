@@ -1,0 +1,12 @@
+(
+    id: "cracked_viewport",
+    label: "Cracked Viewport",
+    description: "You can see space through it. You can also see space WITHOUT it.",
+    slot: artifact,
+    rarity: junk,
+    base_value: 2,
+    icon: Some("&"),
+    icon_path: None,
+    modifiers: [],
+    on_kill: None,
+)

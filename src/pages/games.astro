@@ -1,0 +1,51 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Starfield from '../components/Starfield.astro';
+import Header from '../components/Header.astro';
+import GameCard from '../components/GameCard.astro';
+import Panel from '../components/Panel.astro';
+import { GAMES, BATTLEGROUNDS } from '../data/games';
+---
+
+<Layout title="Cosmicrafts | Games" description="Play the Cosmicrafts game library: Star Drifter, Adventures Bevy, Rush, Adventures 3D, 2D classic, Alpha and Beta.">
+  <div class="relative min-h-screen w-full flex flex-col p-6 md:p-10 z-10 bg-[#020208]">
+    <div class="fixed inset-0 z-0 pointer-events-none">
+      <Starfield />
+    </div>
+
+    <Header />
+
+    <main class="w-full max-w-7xl mx-auto z-10 py-8">
+      <p class="font-mono text-[10px] text-cyan-400 tracking-[0.3em] uppercase mb-1">[ GAME_LIBRARY ]</p>
+      <h1 class="text-3xl md:text-5xl font-black text-white uppercase tracking-tight">Juegos</h1>
+      <p class="text-xs md:text-sm text-slate-400 font-light mt-2 max-w-2xl">
+        Toda la colección en un solo lugar. Los clásicos del DAO siguen jugables en el navegador,
+        Rush está en vivo y los nuevos de 2026 llegan con Bevy.
+      </p>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 mt-8">
+        {GAMES.map((g, i) => <GameCard game={g} index={i} />)}
+      </div>
+
+      <Panel variant="purple" class="mt-6 overflow-hidden">
+        <div class="relative flex flex-col md:flex-row items-center gap-5 p-5 md:p-6">
+          <img src={BATTLEGROUNDS.image} alt="" aria-hidden="true" class="absolute inset-0 w-full h-full object-cover opacity-25 pointer-events-none" />
+          <img src={BATTLEGROUNDS.logo} alt="Battlegrounds" class="relative w-24 h-24 md:w-32 md:h-32 object-contain rounded-xl shrink-0" />
+          <div class="relative flex-1 text-center md:text-left">
+            <h2 class="text-lg md:text-2xl font-black text-white uppercase tracking-tight">{BATTLEGROUNDS.name}</h2>
+            <p class="text-[11px] md:text-xs text-slate-300 font-light mt-1">{BATTLEGROUNDS.description}</p>
+            <div class="flex flex-col sm:flex-row gap-2 mt-4 justify-center md:justify-start">
+              <a href={BATTLEGROUNDS.epicUrl} target="_blank" rel="noopener" class="px-4 py-2 rounded-lg bg-gradient-to-r from-cyan-500 to-indigo-500 text-white font-mono text-[10px] font-bold tracking-widest uppercase text-center">Wishlist en Epic</a>
+              <a href={BATTLEGROUNDS.itchUrl} target="_blank" rel="noopener" class="px-4 py-2 rounded-lg bg-white/5 border border-white/10 text-white font-mono text-[10px] font-bold tracking-widest uppercase text-center">Demo en itch.io</a>
+            </div>
+          </div>
+        </div>
+      </Panel>
+    </main>
+
+    <footer class="w-full max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center z-10 gap-4 border-t border-white/5 pt-4 font-mono text-[9px] md:text-xs text-slate-500 mt-6">
+      <a href="https://worldofunreal.com/" target="_blank" class="hover:text-cyan-400 transition-colors uppercase">&copy; 2026 WORLD OF UNREAL. ALL RIGHTS RESERVED.</a>
+      <a href="/" class="hover:text-cyan-400 transition-colors uppercase">← Volver</a>
+    </footer>
+  </div>
+</Layout>

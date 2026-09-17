@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Cosmicrafts — Star Drifter</title>
+  
+  <style>
+    html, body { margin: 0; padding: 0; height: 100%; background: #05050f; overflow: hidden; }
+    canvas { display: block; width: 100vw !important; height: 100vh !important; }
+  </style>
+<link rel="modulepreload" href="/star-drifter-1f93cfe728fdad15.js" crossorigin="anonymous" integrity="sha384-8hwaebxEz5WEHvOz+RxQ6wpTdIIt7ympEd+KerI6/zJS6RnF4MdfBMbtHMHpt3q/"><link rel="preload" href="/star-drifter-1f93cfe728fdad15_bg.wasm" crossorigin="anonymous" integrity="sha384-nj2V+cRYB6qQaBvah2TmLsocfsDGglOCzORMRUXuJ2IaJ9nMJo8vS6a+UpxRUK3G" as="fetch" type="application/wasm"></head>
+<body>
+
+<script type="module">
+import init, * as bindings from '/star-drifter-1f93cfe728fdad15.js';
+const wasm = await init({ module_or_path: '/star-drifter-1f93cfe728fdad15_bg.wasm' });
+
+
+window.wasmBindings = bindings;
+
+
+dispatchEvent(new CustomEvent("TrunkApplicationStarted", {detail: {wasm}}));
+
+</script></body>
+</html>

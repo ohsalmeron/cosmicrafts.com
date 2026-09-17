@@ -1,0 +1,27 @@
+// Procedural zone generation. Loaded by world_generator; defaults used if missing.
+// zone_types: weighted biomes. difficulty_curve: base + radius_scale * distance_from_origin.
+// name_generation: prefixes/roots/suffixes for deterministic sector names.
+(
+    zone_types: [
+        (biome: "empty", weight: 5),
+        (biome: "nebula_sparse", weight: 5),
+        (biome: "nebula_dense", weight: 5),
+        (biome: "asteroid_field", weight: 5),
+        (biome: "pirate_outpost", weight: 20),
+        (biome: "friendly_station", weight: 100), // Boosted massively for Trading UI testing!
+        (biome: "abandoned_ship", weight: 10),
+        // New rare biomes from Star-Drifter port
+        (biome: "dark_rift", weight: 3),
+        (biome: "celestial_site", weight: 2),
+        (biome: "aetherium_field", weight: 2),
+    ],
+    difficulty_curve: (
+        base: 0.0,
+        radius_scale: 0.001,
+    ),
+    name_generation: (
+        prefixes: ["Xor", "Nar", "Kel", "Zan", "Vor", "Kry", "Vex"],
+        roots: ["'ven", "'tak", "'zon", "mar", "dex", "thar", "vol"],
+        suffixes: ["", " Prime", " IX", " Alpha", " Beta", " Outpost"],
+    ),
+)

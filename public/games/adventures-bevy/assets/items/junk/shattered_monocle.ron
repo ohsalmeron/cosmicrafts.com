@@ -1,0 +1,12 @@
+(
+    id: "shattered_monocle",
+    label: "Shattered Monocle",
+    description: "Previously worn by a very classy, very exploded gentleman.",
+    slot: weapon1,
+    rarity: junk,
+    base_value: 2,
+    icon: Some("*"),
+    icon_path: None,
+    modifiers: [],
+    on_kill: None,
+)

@@ -1,0 +1,12 @@
+(
+    id: "broken_targeting_lens",
+    label: "Broken Targeting Lens",
+    description: "Shows exactly where you WOULD have hit, if it worked.",
+    slot: thrusters,
+    rarity: junk,
+    base_value: 2,
+    icon: Some("&"),
+    icon_path: None,
+    modifiers: [],
+    on_kill: None,
+)

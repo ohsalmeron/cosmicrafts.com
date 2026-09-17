@@ -1,0 +1,12 @@
+(
+    id: "decorative_meteor_chunk",
+    label: "Decorative Meteor Chunk",
+    description: "It is a rock. In space, everything is a rock.",
+    slot: armor,
+    rarity: junk,
+    base_value: 4,
+    icon: Some("?"),
+    icon_path: None,
+    modifiers: [],
+    on_kill: None,
+)

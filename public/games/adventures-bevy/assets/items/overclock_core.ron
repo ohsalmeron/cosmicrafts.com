@@ -1,0 +1,20 @@
+(
+    id: "overclock_core",
+    label: "Overclock Core",
+    description: "Overclocks your laser emitters beyond safe tolerances. All laser stats boosted significantly, but burns through energy reserves faster.",
+    slot: weapon1,
+    rarity: legendary,
+    base_value: 10000,
+    icon: Some("⚙"),
+    icon_path: Some("icons/items/overclock_core.png"),
+    modifiers: [
+        (stat: laser_damage,   op: multiply(1.35)),
+        (stat: laser_cooldown, op: multiply(0.80)),
+        (stat: laser_range,    op: multiply(1.20)),
+        (stat: energy_cost,    op: multiply(1.15)),
+    ],
+    on_kill: None,
+    granted_abilities: ["laser"],
+    granted_ability_slots: Some([(2, "laser")]),
+)
+

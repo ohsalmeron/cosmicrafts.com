@@ -1,0 +1,12 @@
+(
+    id: "broken_hologram",
+    label: "Broken Hologram Projector",
+    description: "Projects a 3D image of itself being broken.",
+    slot: reactor,
+    rarity: junk,
+    base_value: 3,
+    icon: Some("+"),
+    icon_path: None,
+    modifiers: [],
+    on_kill: None,
+)

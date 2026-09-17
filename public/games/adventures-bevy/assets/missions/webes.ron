@@ -1,0 +1,21 @@
+// Mission template for Webes faction.
+(
+    enemy_pool: ["sunfire_aen", "sunfire_aeon", "sunfire_aveno", "sunfire_gradel"],
+    lore_lines: [
+        "Webes swarm units have been harassing our perimeter. They move fast and scatter under pressure — but there are a lot of them.",
+        "Something's driving these Webes units into our territory. I don't know what, but we need the pressure off while we figure it out.",
+        "Webes probe fighters have been testing our defenses. Time to send them a message.",
+        "A Webes hive-mind relay was spotted nearby. The drones won't stop until the relay is surrounded by wreckage.",
+        "Webes bioships are evolving faster than we expected. Take out the current generation before the next one hatches.",
+    ],
+    difficulties: [
+        (stars: 1, min_count: 3, max_count: 6, aeth_per_kill: 12, xp_per_kill: 6),
+        (stars: 2, min_count: 6, max_count: 10, aeth_per_kill: 16, xp_per_kill: 8),
+        (stars: 3, min_count: 10, max_count: 16, aeth_per_kill: 20, xp_per_kill: 10),
+        (stars: 4, min_count: 16, max_count: 24, aeth_per_kill: 24, xp_per_kill: 12),
+    ],
+    spawn_distance: (min: 80.0, max: 180.0),
+    spawn_radius: 80.0,
+    spawn_multiplier: 4,
+    missions_per_visit: (min: 2, max: 3),
+)

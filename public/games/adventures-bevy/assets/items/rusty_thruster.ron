@@ -1,0 +1,19 @@
+(
+    id: "rusty_thruster",
+    label: "Rusty Plasma Thruster",
+    description: "Orange plasma-driven thruster from the Rusty fleet. Grants a quick dash maneuver with a warm amber exhaust trail. The signature engine roar is unmistakable.",
+    slot: thrusters,
+    rarity: rare,
+    base_value: 500,
+    icon: Some("🔥"),
+    icon_path: Some("icons/items/rusty_thruster.png"),
+    modifiers: [
+        (stat: max_speed,    op: multiply(1.10)),
+        (stat: acceleration, op: multiply(1.05)),
+        (stat: turn_speed,   op: multiply(1.03)),
+    ],
+    on_kill: None,
+    granted_abilities: ["dash"],
+    granted_ability_slots: Some([(0, "dash")]),
+)
+

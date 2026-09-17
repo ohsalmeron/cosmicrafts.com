@@ -1,0 +1,12 @@
+(
+    id: "out_of_date_warranty",
+    label: "Out-of-Date Warranty",
+    description: "Covered your ship against laser damage. Expired last Tuesday.",
+    slot: shield,
+    rarity: junk,
+    base_value: 5,
+    icon: Some("!"),
+    icon_path: None,
+    modifiers: [],
+    on_kill: None,
+)

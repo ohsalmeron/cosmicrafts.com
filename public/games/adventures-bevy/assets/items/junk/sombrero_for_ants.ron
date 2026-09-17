@@ -1,0 +1,13 @@
+(
+    id: "sombrero_for_ants",
+    label: "Sombrero for Ants",
+    description: "Fashion-forward. Population: zero ants, maximum style.",
+    slot: thrusters,
+    rarity: junk,
+    junk_grade: curious,
+    base_value: 2,
+    icon: Some("@"),
+    icon_path: None,
+    modifiers: [],
+    on_kill: None,
+)

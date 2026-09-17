@@ -1,0 +1,12 @@
+(
+    id: "alien_fortune_cookie",
+    label: "Alien Fortune Cookie",
+    description: "Your fortune: ERRORS WILL COMPOUND.",
+    slot: armor,
+    rarity: junk,
+    base_value: 4,
+    icon: Some("?"),
+    icon_path: None,
+    modifiers: [],
+    on_kill: None,
+)

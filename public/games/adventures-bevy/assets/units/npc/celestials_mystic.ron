@@ -1,0 +1,77 @@
+// celestials mystic NPC
+(
+    id: "celestials_mystic",
+    entity_type: "Ship",
+    faction: "Celestials",
+    model: "models/omen/maelstrom.glb",
+    scale: 2.8,
+    health: 4500,
+    shield: 3500,
+    movement: ( max_speed: 4.5, acceleration: 0.25, rotation_speed: 2.0 ),
+    combat: ( range: 0.0, cooldown: 1.0, bullet_speed: 0.0, damage: 0 ),
+    attachments: [],
+    nameplate: Some((
+        show_name: true,
+        show_healthbar: false,
+        show_level_badge: false,
+        standmark: "✨",
+        standmark_tooltip: "Celestial Emissary",
+    )),
+    emissive_color: Some((0.9, 0.85, 0.3)),
+    emissive_intensity: Some(1.5),
+    thrusters: Some([
+        ( position: (0.0, 0.0, 1.0), rotation_deg: (-90, 0, -90), scale: 0.8 ),
+    ]),
+    thruster_visual: Some((
+        spritesheet_path: "sprites/thruster.webp",
+        columns: 2, rows: 2, fps: 24.0, crossed_quads: true, additive: true,
+        emissive_color: (0.9, 0.85, 0.3),
+        emissive_intensity: 5000.0,
+    )),
+    bullet_visual_overrides: None,
+    metadata: (
+        display_name: "Celestial Emissary",
+        description_short: "A Celestial Emissary roaming the sector.",
+        tags: ["npc", "mystic", "celestials"],
+        ui_color_hint: Some((0.9, 0.85, 0.3)),
+    ),
+    dialogue: Some((
+        greetings: [
+            "The cosmic balance calls to you, traveler. Your vessel hungers for the Ethereum's grace.",
+            "I sense the weight of battle upon you. Allow the Spiral Force to restore your strength.",
+            "The Light has guided you here for renewal. Will you accept the blessing?",
+        ],
+        farewells: [
+            "May the cosmic equilibrium hold.",
+            "The Ethereum walks beside you now.",
+            "Return when the dark encroaches again.",
+        ],
+        purposes: [
+            (
+                label: "Receive Spiral Blessing - 200 AETH",
+                value: "mystic_bless",
+                action: "mystic_bless",
+                responses_success: [
+                    "The Ethereum accepts your offering. Your shields shimmer with starlight.",
+                    "The Spiral Force flows through your vessel. You are protected.",
+                    "Blessed by the Light. Your enemies will falter in your radiance.",
+                ],
+                responses_fail: [
+                    "The stars require tribute. Your pockets are empty, traveler.",
+                    "Without an offering, the blessing cannot flow. Return prosperous.",
+                ],
+            ),
+            (
+                label: "I seek only information",
+                value: "leave",
+                action: "close",
+                responses_success: [
+                    "The Light fades for those who turn away. Return when you are ready.",
+                    "Perhaps the Spiral has other plans for you today.",
+                ],
+                responses_fail: [
+                ],
+            ),
+        ],
+    )),
+)

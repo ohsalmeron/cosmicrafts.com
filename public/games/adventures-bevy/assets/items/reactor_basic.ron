@@ -1,0 +1,16 @@
+(
+    id: "reactor_basic",
+    label: "Basic Reactor",
+    description: "Standard power core with improved fuel cells. Slightly increases max energy and regeneration — a reliable workhorse.",
+    slot: reactor,
+    rarity: common,
+    base_value: 100,
+    icon: Some("🔋"),
+    icon_path: Some("icons/items/reactor_basic.png"),
+    modifiers: [
+        (stat: max_energy,   op: add(20.0)),
+        (stat: energy_regen, op: multiply(1.1)),
+    ],
+    on_kill: None,
+)
+

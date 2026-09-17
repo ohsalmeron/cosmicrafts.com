@@ -1,0 +1,135 @@
+// Game settings. Edit and restart game to apply (no recompile needed).
+// For Option fields (e.g. ui.font_path) use Some("value") or None — see docs/RON.md.
+//
+// Enemy AI / performance: enemy_activation_radius — distance beyond which enemies are dormant
+// (no AI, combat, abilities, physics). Tune for performance vs engagement range.
+(
+    enemies_enabled: true,
+    abilities_enabled: true,
+    combat_enabled: true,
+    // Damage aura: tick rate (sec). 0.1 ≈ 10 Hz; higher = cheaper, coarser DoT.
+    damage_aura_tick_interval_secs: 0.2,
+    physics_enabled: true,
+    companions_enabled: true,
+    vfx_enabled: true,
+    movement_enabled: true,
+    ui_enabled: true,
+    // Enemies beyond this distance are dormant (no AI, combat, abilities, physics). Increase for more aggro range; decrease for performance.
+    enemy_activation_radius: 220.0,
+    // Cursor scale relative to source art size (0.25 = quarter width/height).
+    cursor_display_scale: 0.05,
+    vfx_quality: High,
+    shaders: (
+        shield_impact: true
+    ),
+    camera: (
+        // Pitch controls how "tilted" the view is (0.25 = more perspective, 0.65 = more top-down)
+        iso_pitch: 0.65,          // Default pitch (adjustable via Shift+scroll)
+        min_pitch: 0.65,          // Minimum (more perspective, closer to horizon)
+        max_pitch: 0.65,          // Maximum (more top-down)
+        pitch_sensitivity: 0.01,  // How fast pitch changes with scroll
+        iso_height: 24.0,
+        iso_distance: 16.0,
+        lerp_speed: 4.0,
+        zoom: 3.5,
+        current_zoom: 3.5,
+        min_zoom: 2.0,
+        max_zoom: 24.0,
+        zoom_speed: 12.0,
+        // Nebulas stay at authored alpha through zoom 10, then ease out until fully gone at zoom 24.
+        nebula_fade_start_zoom: 8.0,
+        nebula_fade_end_zoom: 28.0,
+        nebula_fade_smoothness: 8.0,
+    ),
+    controls: (
+        // Movement (WASD / Arrow keys)
+        move_up: "W",
+        move_down: "S",
+        move_left: "A",
+        move_right: "D",
+        // Abilities (right hand friendly: 7, 8, 9, 0)
+        ability_1: "Key7",
+        ability_2: "Key8",
+        ability_3: "Key9",
+        ability_4: "Key0",
+        // UI toggles
+        toggle_dev_hud: "F3",
+        toggle_settings: "Escape",
+        toggle_joystick: "J",
+    ),
+    // Battle royale shrinking square (world XZ). Restart to apply. `final_area` is square world units of area, not side length (side ≈ sqrt(final_area)).
+    royale_zone: (
+        map_half_extent: 2000.0,
+        // Safe zone half-width at match start (world units); shrink begins here toward final_area. Full map is still map_half_extent.
+        zone_start_half_extent: 600.0,
+        shrink_duration_secs: 60.0,
+        // ~250×250 end zone (62500 = 250²). Smaller arena → lower value; larger final fight → higher.
+        final_area: 62500.0,
+        // sRGB 0–1. `barrier` = thin edge line; `glow` = softer band inside the safe square (see inner_glow_width in code).
+        colors: (
+            barrier: (r: 0.1, g: 0.9, b: 0.4, a: 0.95),
+            glow: (r: 0.1, g: 0.9, b: 0.4, a: 0.1),
+        ),
+    ),
+    ui: (
+        // "always" | "when_damaged" | "never"
+        health_bar_visibility: "when_damaged",
+        hud_lod_close_max_zoom: 8.0,
+        hud_lod_mid_max_zoom: 20.0,
+        font_path: Some("fonts/LilitaOne-Regular.ttf"),
+        title_font_path: None,
+        sdf_font_path: None,
+        manual_pickup_threshold: "Legendary",
+        equipment_pickup_range: 24.0,
+        // Ground loot nameplate XZ cull; effective radius is max(this, equipment_pickup_range).
+        loot_label_max_distance: 120.0,
+        auto_loot_min_rarity: "Rare",
+    ),
+    physics_animation: (
+        // Tilt/Pitch: Lean forward/backward when moving (reduced so shooting trajectory feels right)
+        max_pitch: 0.25,          // ~20 degrees (radians)
+        
+        // Roll/Bank: Bank into turns
+        max_roll: 0.85,            // ~17 degrees (radians)
+        bank_factor: 0.4,         // How much yaw velocity flows into roll
+        
+        // Idle/Waver: "Floating" feel
+        waver_frequency: 1.0,     // Speed of idle wobble
+        waver_magnitude: 0.15,    // Strength of idle wobble
+        
+        // Physics feel (Spring-Damper)
+        spring_stiffness: 40.0,   // Higher = snappier, Lower = lazier
+        damping: 0.7,             // Control overshoot (0.6-0.8 is best)
+        
+        // Death Animation (Death Throes)
+        death_duration_min: 0.22,
+        death_duration_max: 0.33,
+        death_spin_speed_min: 12.0,
+        death_spin_speed_max: 16.0,
+        death_drift_min: 4.0,
+        death_drift_max: 8.0,
+
+        // Knockback ownership / simulation (defaults match current behavior)
+        knockback_active_threshold_sq: 4.0,   // Above this, AI/companions yield movement
+        knockback_yield_lerp_speed: 8.0,      // How quickly steering velocity fades while yielding
+        knockback_gravity: 10.0,              // Vertical pull during knockback
+        knockback_ground_bounce: 0.5,         // Bounce retention on ground impact
+        knockback_ground_stop_vertical: 1.0,  // Vertical cutoff after small bounce
+        knockback_vertical_decay_scale: 0.1,  // Vertical decay multiplier vs horizontal decay
+        knockback_remove_velocity_sq: 7.5,    // Remove Knockback below this speed on ground
+    ),
+    // --- Combat feedback (restart to apply) — toggles independientes ---
+    // shake_enabled:        mueve la cámara (ruido + impactos). false = cámara estable (útil para medir FPS o accesibilidad).
+    // hit_stop_enabled:     micro-pausa del tiempo de juego en críticos (ralentiza Time<Virtual>). false = sin congelación.
+    // hurt_flash_enabled:   overlay rojizo en pantalla al recibir daño (UI). false = sin flash; no afecta daño real.
+    shake_enabled: true,
+    hit_stop_enabled: true,
+    hurt_flash_enabled: true,
+    // Solo críticos a enemigos: espacio mínimo entre micro-pausas; no afecta shake ni un solo crítico aislado.
+    hit_stop_min_interval_secs: 10.0,
+    shake_intensity: 1.0,
+    shake_linger: 1.0,
+    shake_smoothness: 0.5,
+    shake_amplitude_power: 2.28,
+    shake_max_translation: 99.0,
+)

@@ -1,0 +1,429 @@
+// Full tutorial: wake up, Niri companion, report to Aldrin, holdout wave, follow to rally,
+// Spirat boss dialogue and choice (join vs destroy pirates), branch (Aldrin as enemy if join),
+// massive war, victory only after all enemies defeated.
+(
+    id: "tutorial1",
+    intro_dialogue: (
+        speaker: "Niri",
+        line: "The crew's gone. You're in command now. Try not to fly us into a star.",
+        duration_secs: 5.0,
+    ),
+    player_start: Some((x: 0.0, y: 0.0, z: 0.0)),
+    player_hero: Some("replicant"),
+    companion_override: Some("niri"),
+    npcs: [
+        (
+            id: "general",
+            display_name: "General Aldrin",
+            position: (x: 0.0, y: 0.0, z: -100.0),
+            unit_id: Some("juggernaut"),
+        ),
+        (
+            id: "spirat_boss",
+            display_name: "Spirat",
+            position: (x: 55.0, y: 0.0, z: -185.0),
+            unit_id: Some("tempest"),
+        ),
+    ],
+    missions: [
+        (
+            id: "go_to_general",
+            title: "Report to command",
+            description: "Go to General Aldrin",
+            objective_npc_id: "general",
+            complete_by: proximity(15.0),
+            rewards: (aethereum: 50, xp: 25),
+            complete_dialogue: (
+                speaker: "General Aldrin",
+                line: "Good. This sector is falling apart. I don't know if we can hold much longer. Follow me to the rally point—now.",
+                duration_secs: 4.0,
+            ),
+        ),
+        (
+            id: "follow_aldrin",
+            title: "Follow the General",
+            description: "Follow Aldrin to the rally point",
+            objective_npc_id: "general",
+            objective_position: Some((x: 50.0, y: 0.0, z: -180.0)),
+            complete_by: reach_position(25.0),
+            rewards: (aethereum: 75, xp: 50),
+            complete_dialogue: (
+                speaker: "General Aldrin",
+                line: "Rally point secured. Hold position.",
+                duration_secs: 3.0,
+            ),
+        ),
+        (
+            id: "tutorial_win",
+            title: "Secure the sector",
+            description: "Defeat all hostiles",
+            objective_npc_id: "general",
+            complete_by: interact,
+            rewards: (aethereum: 100, xp: 100),
+            complete_dialogue: (
+                speaker: "Niri",
+                line: "Sector clear. Try to look a little less surprised next time.",
+                duration_secs: 4.0,
+            ),
+        ),
+    ],
+    triggers: [
+        (
+            id: "controls_hint",
+            when: timer(7.0),
+            actions: [
+                show_dialogue((
+                    speaker: "Niri",
+                    line: "WASD or arrows to move. Scroll to zoom. The big ship with the flag is the General. Go say hi.",
+                    duration_secs: 5.0,
+                )),
+            ],
+        ),
+        (
+            id: "niri_early",
+            when: timer(3.0),
+            actions: [
+                show_unit_dialogue("companion", (
+                    speaker: "Niri",
+                    line: "Hey. Let's go up there. Yes, that way. I'll wait.",
+                    duration_secs: 3.0,
+                )),
+            ],
+        ),
+        (
+            id: "niri_nudge_1",
+            when: timer_unless_mission_complete(12.0, "go_to_general"),
+            actions: [
+                show_unit_dialogue("companion", (
+                    speaker: "Niri",
+                    line: "YEAH buddy up there!",
+                    duration_secs: 3.0,
+                )),
+            ],
+        ),
+        (
+            id: "niri_nudge_2",
+            when: timer_unless_mission_complete(24.0, "go_to_general"),
+            actions: [
+                show_unit_dialogue("companion", (
+                    speaker: "Niri",
+                    line: "Hey UP. Arriba, vamos!",
+                    duration_secs: 3.0,
+                )),
+            ],
+        ),
+        (
+            id: "niri_nudge_3",
+            when: timer_unless_mission_complete(36.0, "go_to_general"),
+            actions: [
+                show_unit_dialogue("companion", (
+                    speaker: "Niri",
+                    line: "I think we should probably go up there.",
+                    duration_secs: 3.0,
+                )),
+            ],
+        ),
+        (
+            id: "niri_nudge_4",
+            when: timer_unless_mission_complete(48.0, "go_to_general"),
+            actions: [
+                show_unit_dialogue("companion", (
+                    speaker: "Niri",
+                    line: "The big ship with the flag. That way.",
+                    duration_secs: 5.0,
+                )),
+            ],
+        ),
+        (
+            id: "phase2_start",
+            when: mission_complete("go_to_general"),
+            actions: [
+                show_dialogue((
+                    speaker: "General Aldrin",
+                    line: "Incoming hostiles! Stay close and cover me.",
+                    duration_secs: 5.0,
+                )),
+                set_enemy_target("general"),
+                spawn_wave((
+                    unit_class: Some("sunfire_tick"),
+                    count: 16,
+                    position: Some((x: 0.0, y: 0.0, z: -130.0)),
+                    min_distance: Some(50.0),
+                    max_distance: Some(80.0),
+                )),
+                add_npc_waypoints("general", [
+                    (x: 0.0, y: 0.0, z: -120.0),
+                    (x: 25.0, y: 0.0, z: -150.0),
+                    (x: 50.0, y: 0.0, z: -180.0),
+                ], 25.0),
+            ],
+        ),
+        (
+            id: "niri_phase2_bark",
+            when: mission_complete("go_to_general"),
+            actions: [
+                show_unit_dialogue("companion", (
+                    speaker: "Niri",
+                    line: "Oh great, more hostiles. My favorite.",
+                    duration_secs: 2.5,
+                )),
+            ],
+        ),
+        (
+            id: "niri_follow_1",
+            when: phase_timer(0.25),
+            actions: [
+                show_unit_dialogue("companion", (
+                    speaker: "Niri",
+                    line: "Should we really follow him?",
+                    duration_secs: 2.5,
+                )),
+            ],
+        ),
+        (
+            id: "niri_bark_phase",
+            when: phase_timer(0.5),
+            actions: [
+                show_unit_dialogue("companion", (
+                    speaker: "Niri",
+                    line: "Stay close to the General. He's the one paying for the repairs.",
+                    duration_secs: 2.5,
+                )),
+            ],
+        ),
+        (
+            id: "ability_hint",
+            when: phase_timer(2.0),
+            actions: [
+                show_dialogue((
+                    speaker: "Niri",
+                    line: "Keys 1–4 fire abilities. Try them on the hostiles. Yes, the ones shooting at us.",
+                    duration_secs: 5.0,
+                )),
+            ],
+        ),
+        (
+            id: "niri_follow_2",
+            when: phase_timer(3.5),
+            actions: [
+                show_unit_dialogue("companion", (
+                    speaker: "Niri",
+                    line: "Do you know this guy?",
+                    duration_secs: 2.5,
+                )),
+            ],
+        ),
+        (
+            id: "aldrin_bark_1",
+            when: phase_timer(1.0),
+            actions: [
+                show_unit_dialogue("general", (
+                    speaker: "General Aldrin",
+                    line: "They're on us! Move!",
+                    duration_secs: 2.5,
+                )),
+            ],
+        ),
+        (
+            id: "aldrin_bark_2",
+            when: phase_timer(6.0),
+            actions: [
+                show_unit_dialogue("general", (
+                    speaker: "General Aldrin",
+                    line: "Keep moving! Don't stop at the rally until I say.",
+                    duration_secs: 2.5,
+                )),
+            ],
+        ),
+        (
+            id: "niri_follow_3",
+            when: phase_timer(7.5),
+            actions: [
+                show_unit_dialogue("companion", (
+                    speaker: "Niri",
+                    line: "You know… being kind of like that.",
+                    duration_secs: 2.5,
+                )),
+            ],
+        ),
+        (
+            id: "niri_follow_5",
+            when: phase_timer(8.0),
+            actions: [
+                show_unit_dialogue("companion", (
+                    speaker: "Niri",
+                    line: "Remind me why we're not the ones getting paid.",
+                    duration_secs: 2.5,
+                )),
+            ],
+        ),
+        (
+            id: "aldrin_bark_mid",
+            when: phase_timer(8.5),
+            actions: [
+                show_unit_dialogue("general", (
+                    speaker: "General Aldrin",
+                    line: "Watch your six!",
+                    duration_secs: 2.0,
+                )),
+            ],
+        ),
+        (
+            id: "niri_bark_2",
+            when: phase_timer(4.0),
+            actions: [
+                show_unit_dialogue("companion", (
+                    speaker: "Niri",
+                    line: "This would be a great time for one of those abilities.",
+                    duration_secs: 2.5,
+                )),
+            ],
+        ),
+        (
+            id: "niri_follow_4",
+            when: phase_timer(5.0),
+            actions: [
+                show_unit_dialogue("companion", (
+                    speaker: "Niri",
+                    line: "My ship, my rules. Mostly.",
+                    duration_secs: 2.5,
+                )),
+            ],
+        ),
+        (
+            id: "aldrin_bark_3",
+            when: phase_timer(11.0),
+            actions: [
+                show_unit_dialogue("general", (
+                    speaker: "General Aldrin",
+                    line: "Almost there. Hold the line.",
+                    duration_secs: 2.5,
+                )),
+            ],
+        ),
+        (
+            id: "niri_bark_3",
+            when: phase_timer(9.0),
+            actions: [
+                show_unit_dialogue("companion", (
+                    speaker: "Niri",
+                    line: "Rally point in sight. Try not to die before we get the good dialogue.",
+                    duration_secs: 2.5,
+                )),
+            ],
+        ),
+        (
+            id: "boss_arrival",
+            when: mission_complete("follow_aldrin"),
+            actions: [
+                show_dialogue((
+                    speaker: "Spirat",
+                    line: "Well. The Cosmicos' pet and their newest recruit. You don't even know us—you used to work for them, and now they're using you. Do you really believe in 'freedom'? Or just following the next order?",
+                    duration_secs: 8.0,
+                )),
+                show_choice_dialogue(
+                    id: "spirat_choice",
+                    speaker: "Spirat",
+                    line: "Join the Spirats. Real freedom. Or die with the General. Your call.",
+                    options: [
+                        (label: "Join the pirates", value: "join_pirates"),
+                        (label: "Destroy the pirates", value: "destroy_pirates"),
+                    ],
+                ),
+            ],
+        ),
+        (
+            id: "niri_join_bark",
+            when: when_choice_value("spirat_choice", "join_pirates"),
+            actions: [
+                show_unit_dialogue("companion", (
+                    speaker: "Niri",
+                    line: "I can't believe we're doing this.",
+                    duration_secs: 2.5,
+                )),
+            ],
+        ),
+        (
+            id: "choice_join",
+            when: when_choice_value("spirat_choice", "join_pirates"),
+            actions: [
+                show_dialogue((
+                    speaker: "Niri",
+                    line: "You're kidding. Okay. New plan: don't get us killed.",
+                    duration_secs: 4.0,
+                )),
+                convert_npc_to_enemy("general"),
+                spawn_wave((
+                    unit_class: Some("drone"),
+                    count: 24,
+                    position: Some((x: 50.0, y: 0.0, z: -180.0)),
+                    min_distance: Some(40.0),
+                    max_distance: Some(120.0),
+                )),
+            ],
+        ),
+        (
+            id: "niri_destroy_bark",
+            when: when_choice_value("spirat_choice", "destroy_pirates"),
+            actions: [
+                show_unit_dialogue("companion", (
+                    speaker: "Niri",
+                    line: "Fine. Let's shoot the pirate.",
+                    duration_secs: 2.5,
+                )),
+            ],
+        ),
+        (
+            id: "choice_destroy",
+            when: when_choice_value("spirat_choice", "destroy_pirates"),
+            actions: [
+                show_dialogue((
+                    speaker: "General Aldrin",
+                    line: "Good call. Take them down.",
+                    duration_secs: 3.0,
+                )),
+                spawn_wave((
+                    unit_class: Some("drone"),
+                    count: 24,
+                    position: Some((x: 55.0, y: 0.0, z: -185.0)),
+                    min_distance: Some(40.0),
+                    max_distance: Some(120.0),
+                )),
+            ],
+        ),
+        (
+            id: "war_niri_bark",
+            when: when_choice("spirat_choice"),
+            actions: [
+                show_unit_dialogue("companion", (
+                    speaker: "Niri",
+                    line: "Here we go. Try to keep the ship in one piece.",
+                    duration_secs: 2.5,
+                )),
+            ],
+        ),
+        (
+            id: "niri_victory_bark",
+            when: all_enemies_defeated_after_choice("spirat_choice"),
+            actions: [
+                show_unit_dialogue("companion", (
+                    speaker: "Niri",
+                    line: "We actually made it. I'm as shocked as you are.",
+                    duration_secs: 3.0,
+                )),
+            ],
+        ),
+        (
+            id: "tutorial_victory",
+            when: all_enemies_defeated_after_choice("spirat_choice"),
+            actions: [
+                complete_mission("tutorial_win"),
+                show_dialogue((
+                    speaker: "Niri",
+                    line: "Tutorial complete. Sector secured. You can keep exploring or return to base. Don't expect a parade.",
+                    duration_secs: 6.0,
+                )),
+            ],
+        ),
+    ],
+)

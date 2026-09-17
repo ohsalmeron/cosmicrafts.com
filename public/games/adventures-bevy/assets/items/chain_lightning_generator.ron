@@ -1,0 +1,14 @@
+(
+    id: "chain_lightning_generator",
+    label: "Arc Generator",
+    description: "An experimental generator that zaps multiple enemies automatically.",
+    slot: weapon1,
+    rarity: rare,
+    base_value: 300,
+    icon: Some("⚡"),
+    icon_path: None,
+    modifiers: [],
+    on_kill: None,
+    granted_abilities: ["chain_lightning"],
+    granted_ability_slots: Some([(7, "chain_lightning")]),
+)

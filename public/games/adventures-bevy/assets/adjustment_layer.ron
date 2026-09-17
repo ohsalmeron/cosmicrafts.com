@@ -1,0 +1,45 @@
+// Color grading / adjustment layer. Hot-reload supported.
+// Maps to Bevy ColorGrading: curves/levels/hue/color balance like AE/PS/GIMP.
+// Values at 0 or 1.0 = neutral (no change). Restart not required; edit and save to preview.
+
+(
+    // === GLOBAL (whole image) ===
+    // Exposure: EV stops. Positive = brighter, negative = darker.
+    exposure: 1.0,
+    // Temperature: + = warmer/redder, - = cooler/bluer (like white balance).
+    temperature: 0.0,
+    // Tint: + = magenta, - = green.
+    tint: 0.025,
+    // Hue: rotation in radians (2*PI = full cycle). 0 = no shift.
+    hue: 0.0,
+    // Post-saturation: after tonemapping. 1.0 = no change, 0 = grayscale, >1 = more vivid.
+    post_saturation: 1.0,
+    // Midtones range: (min, max) luminance for shadow/mid/highlight blend. Default 0.2..0.7.
+    midtones_range: (0.5, 0.7),
+
+    // === SHADOWS (dark tones) ===
+    // Saturation: 1.0 = neutral, 0 = desaturate, >1 = boost.
+    shadows_saturation: 1.1,
+    // Contrast: 0.5= neutral, <1 = flatten, >1 = punch.
+    shadows_contrast: 1.01,
+    // Gamma: mid-tone curve. 1.0 = neutral, <1 = lift shadows, >1 = darken.
+    shadows_gamma: 0.95,
+    // Gain: linear scale (like levels mid). 1.0 = neutral.
+    shadows_gain: 1.0,
+    // Lift: add to blacks (like levels black point). 0 = neutral.
+    shadows_lift: 0.002,
+
+    // === MIDTONES ===
+    midtones_saturation: 1.0,
+    midtones_contrast: 1.0,
+    midtones_gamma: 1.0,
+    midtones_gain: 1.0,
+    midtones_lift: 0.0,
+
+    // === HIGHLIGHTS (bright tones) ===
+    highlights_saturation: 1.0,
+    highlights_contrast: 1.0,
+    highlights_gamma: 1.0,
+    highlights_gain: 1.0,
+    highlights_lift: 0.0,
+)

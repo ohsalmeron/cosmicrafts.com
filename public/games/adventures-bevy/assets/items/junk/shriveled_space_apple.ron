@@ -1,0 +1,12 @@
+(
+    id: "shriveled_space_apple",
+    label: "Shriveled Space Apple",
+    description: "Grown in zero-G. Looks like a tiny sad planet.",
+    slot: weapon1,
+    rarity: junk,
+    base_value: 3,
+    icon: Some("+"),
+    icon_path: None,
+    modifiers: [],
+    on_kill: None,
+)

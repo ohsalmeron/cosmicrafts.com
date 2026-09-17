@@ -1,0 +1,12 @@
+(
+    id: "crumpled_parking_ticket",
+    label: "Crumpled Parking Ticket",
+    description: "Fine: 5,000 credits. Unpaid.",
+    slot: shield,
+    rarity: junk,
+    base_value: 4,
+    icon: Some("#"),
+    icon_path: None,
+    modifiers: [],
+    on_kill: None,
+)

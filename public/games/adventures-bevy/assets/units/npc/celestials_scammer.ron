@@ -1,0 +1,76 @@
+// celestials scammer NPC
+(
+    id: "celestials_scammer",
+    entity_type: "Ship",
+    faction: "Celestials",
+    model: "models/omen/maelstrom.glb",
+    scale: 2.8,
+    health: 4500,
+    shield: 3500,
+    movement: ( max_speed: 4.5, acceleration: 0.25, rotation_speed: 2.0 ),
+    combat: ( range: 0.0, cooldown: 1.0, bullet_speed: 0.0, damage: 0 ),
+    attachments: [],
+    nameplate: Some((
+        show_name: true,
+        show_healthbar: false,
+        show_level_badge: false,
+        standmark: "💰",
+        standmark_tooltip: "Celestial Hustler",
+    )),
+    emissive_color: Some((0.9, 0.85, 0.3)),
+    emissive_intensity: Some(1.5),
+    thrusters: Some([
+        ( position: (0.0, 0.0, 1.0), rotation_deg: (-90, 0, -90), scale: 0.8 ),
+    ]),
+    thruster_visual: Some((
+        spritesheet_path: "sprites/thruster.webp",
+        columns: 2, rows: 2, fps: 24.0, crossed_quads: true, additive: true,
+        emissive_color: (0.9, 0.85, 0.3),
+        emissive_intensity: 5000.0,
+    )),
+    bullet_visual_overrides: None,
+    metadata: (
+        display_name: "Celestial Hustler",
+        description_short: "A Celestial Hustler roaming the sector.",
+        tags: ["npc", "scammer", "celestials"],
+        ui_color_hint: Some((0.9, 0.85, 0.3)),
+    ),
+    dialogue: Some((
+        greetings: [
+            "The Light reveals hidden truths... for a modest offering to the Spiral's keepers.",
+            "I sense GREAT fortune in your future! Perhaps I can hasten it... for AETH.",
+            "The Spiral whispers of rare opportunity near this very location. Will you listen?",
+        ],
+        farewells: [
+            "The Light fades for the unworthy.",
+            "Your skepticism blinds you to true opportunity.",
+            "We shall meet again when the stars align once more.",
+        ],
+        purposes: [
+            (
+                label: "Receive the Oracle's Guidance",
+                value: "scam_trade",
+                action: "scam_trade",
+                responses_success: [
+                    "The Spiral guides this exchange to mutual benefit.",
+                    "Blessed goods, I absolutely assure you.",
+                ],
+                responses_fail: [
+                    "The Light giveth, and the Light taketh. Mostly taketh.",
+                    "Consider it a cosmic tax. The Ethereum demands it.",
+                ],
+            ),
+            (
+                label: "The Spiral disapproves of you",
+                value: "leave",
+                action: "close",
+                responses_success: [
+                    "The Spiral notes your doubt. It will remember.",
+                    "Walk in your own darkness, then.",
+                ],
+                responses_fail: [
+                ],
+            ),
+        ],
+    )),
+)

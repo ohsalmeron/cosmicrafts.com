@@ -1,0 +1,12 @@
+(
+    id: "moth_eaten_manual",
+    label: "Moth-Eaten Flight Manual",
+    description: "Chapter 1: Takeoff. Chapter 2: eaten. Chapter 3: Crash.",
+    slot: armor,
+    rarity: junk,
+    base_value: 2,
+    icon: Some("&"),
+    icon_path: None,
+    modifiers: [],
+    on_kill: None,
+)

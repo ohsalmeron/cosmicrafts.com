@@ -1,0 +1,12 @@
+(
+    id: "malfunctioning_door_chime",
+    label: "Malfunctioning Door Chime",
+    description: "Dings randomly at 3 AM ship time. Cannot be silenced.",
+    slot: shield,
+    rarity: junk,
+    base_value: 2,
+    icon: Some("*"),
+    icon_path: None,
+    modifiers: [],
+    on_kill: None,
+)

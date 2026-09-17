@@ -1,0 +1,12 @@
+(
+    id: "empty_fuel_canister",
+    label: "Empty Fuel Canister",
+    description: "The fumes alone could power a calculator. Briefly.",
+    slot: weapon1,
+    rarity: junk,
+    base_value: 4,
+    icon: Some("#"),
+    icon_path: None,
+    modifiers: [],
+    on_kill: None,
+)

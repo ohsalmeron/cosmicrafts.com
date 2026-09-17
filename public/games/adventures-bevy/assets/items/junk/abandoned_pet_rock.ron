@@ -1,0 +1,12 @@
+(
+    id: "abandoned_pet_rock",
+    label: "Abandoned Pet Rock",
+    description: "Has googly eyes. Appears sad.",
+    slot: reactor,
+    rarity: junk,
+    base_value: 2,
+    icon: Some("*"),
+    icon_path: None,
+    modifiers: [],
+    on_kill: None,
+)

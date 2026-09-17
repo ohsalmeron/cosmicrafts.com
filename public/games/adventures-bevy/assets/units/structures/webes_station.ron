@@ -1,0 +1,28 @@
+// Webes Trading Post — web-like orbital structure
+(
+    id: "webes_station",
+    entity_type: "Station",
+    faction: "Webes",
+    model: "models/stations/webe_post01.glb",
+    scale: 20.0,
+    health: 35000,
+    shield: 25000,
+    movement: ( max_speed: 0.0, acceleration: 0.0, rotation_speed: 0.4 ),
+    combat: ( range: 170.0, cooldown: 0.8, bullet_speed: 220.0, damage: 150, basic_attack_ability_id: Some("bullet") ),
+    attachments: [],
+    nameplate: Some((
+        show_name: true,
+        show_healthbar: true,
+        show_level_badge: false,
+        standmark: "🏪",
+        standmark_tooltip: "Webes Nexus — Press [F] to Dock",
+    )),
+    emissive_color: Some((0.6, 0.1, 0.8)),
+    emissive_intensity: Some(3.0),
+    metadata: (
+        display_name: "Webes Nexus",
+        description_short: "A shimmering nexus woven by the Webes. Exotic tech and rare components.",
+        tags: ["station", "trading", "webes", "dockable"],
+        ui_color_hint: Some((0.6, 0.1, 0.8)),
+    ),
+)

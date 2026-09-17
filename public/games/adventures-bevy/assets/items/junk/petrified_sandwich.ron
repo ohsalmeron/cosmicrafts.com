@@ -1,0 +1,12 @@
+(
+    id: "petrified_sandwich",
+    label: "Petrified Sandwich",
+    description: "Carbon dated to 300 years ago. Still technically a sandwich.",
+    slot: thrusters,
+    rarity: junk,
+    base_value: 3,
+    icon: Some("~"),
+    icon_path: None,
+    modifiers: [],
+    on_kill: None,
+)

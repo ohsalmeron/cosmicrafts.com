@@ -1,0 +1,12 @@
+(
+    id: "bent_antenna",
+    label: "Bent Antenna",
+    description: "It used to receive signals. Now it receives disappointment.",
+    slot: artifact,
+    rarity: junk,
+    base_value: 1,
+    icon: Some("X"),
+    icon_path: None,
+    modifiers: [],
+    on_kill: None,
+)

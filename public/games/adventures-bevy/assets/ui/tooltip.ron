@@ -1,0 +1,21 @@
+// Generic info panel (tooltip) — used for inventory items, unit/standmark hover, etc.
+// Layout: title, subtitle, divider, body, extra lines.
+(
+    width: 360.0,
+    height: 480.0,
+    padding: 16.0,
+    row_gap: 8.0,
+    border_thickness: 0.25,
+    border_radius: 24.0,
+    bg: (0.07, 0.09, 0.14, 0.58),
+    border_color: (0.20, 0.80, 0.90, 0.90),
+    divider_color: (0.20, 0.80, 0.90, 0.10),
+    title_font_size: 18.0,
+    subtitle_font_size: 14.0,
+    body_font_size: 12.5,
+    extra_font_size: 10.0,
+    title_color: (0.95, 0.96, 0.98, 1.0),
+    subtitle_color: (0.20, 0.80, 0.90, 0.90),
+    body_color: (0.68, 0.72, 0.82, 1.0),
+    extra_color: (0.32, 0.95, 0.62, 1.0),
+)

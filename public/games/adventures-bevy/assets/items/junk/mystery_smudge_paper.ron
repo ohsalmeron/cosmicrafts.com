@@ -1,0 +1,13 @@
+(
+    id: "mystery_smudge_paper",
+    label: "Very Important Paper",
+    description: "It looks like a doodle of a star. Or a potato. Jury is still out.",
+    slot: artifact,
+    rarity: junk,
+    junk_grade: ordinary,
+    base_value: 1,
+    icon: Some("~"),
+    icon_path: None,
+    modifiers: [],
+    on_kill: None,
+)

@@ -1,0 +1,12 @@
+(
+    id: "fried_coffee_maker",
+    label: "Fried Coffee Maker",
+    description: "The heart of any ship. This one has no heart.",
+    slot: armor,
+    rarity: junk,
+    base_value: 3,
+    icon: Some("~"),
+    icon_path: None,
+    modifiers: [],
+    on_kill: None,
+)

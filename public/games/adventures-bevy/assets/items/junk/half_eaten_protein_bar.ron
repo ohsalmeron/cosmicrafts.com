@@ -1,0 +1,12 @@
+(
+    id: "half_eaten_protein_bar",
+    label: "Half-Eaten Protein Bar",
+    description: "Who stops halfway? A psychopath.",
+    slot: reactor,
+    rarity: junk,
+    base_value: 4,
+    icon: Some("#"),
+    icon_path: None,
+    modifiers: [],
+    on_kill: None,
+)

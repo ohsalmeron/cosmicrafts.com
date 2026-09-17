@@ -1,0 +1,12 @@
+(
+    id: "rusty_hull_patch",
+    label: "Rusty Hull Patch",
+    description: "Apply to hull breach. Creates a DIFFERENT hull breach.",
+    slot: weapon1,
+    rarity: junk,
+    base_value: 5,
+    icon: Some("!"),
+    icon_path: None,
+    modifiers: [],
+    on_kill: None,
+)

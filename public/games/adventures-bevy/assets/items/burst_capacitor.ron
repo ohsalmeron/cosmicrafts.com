@@ -1,0 +1,19 @@
+(
+    id: "burst_capacitor",
+    label: "Burst Capacitor",
+    description: "High-discharge capacitor banks that dump energy in rapid pulses. Reduces bullet fire delay and cranks up projectile velocity at the cost of slightly higher energy drain.",
+    slot: weapon1,
+    rarity: common,
+    base_value: 100,
+    icon: Some("⚡"),
+    icon_path: Some("icons/items/burst_capacitor.png"),
+    modifiers: [
+        (stat: bullet_cooldown, op: multiply(0.85)),
+        (stat: bullet_speed,    op: multiply(1.10)),
+        (stat: energy_cost,     op: multiply(1.05)),
+    ],
+    on_kill: None,
+    granted_abilities: ["bullet"],
+    granted_ability_slots: Some([(1, "bullet")]),
+)
+

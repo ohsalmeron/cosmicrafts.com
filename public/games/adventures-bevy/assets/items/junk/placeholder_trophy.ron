@@ -1,0 +1,12 @@
+(
+    id: "placeholder_trophy",
+    label: "Placeholder Trophy",
+    description: "Engraved: INSERT ACHIEVEMENT HERE.",
+    slot: artifact,
+    rarity: junk,
+    base_value: 3,
+    icon: Some("~"),
+    icon_path: None,
+    modifiers: [],
+    on_kill: None,
+)

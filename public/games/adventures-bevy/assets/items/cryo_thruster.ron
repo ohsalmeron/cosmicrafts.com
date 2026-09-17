@@ -1,0 +1,21 @@
+(
+    id: "cryo_thruster",
+    label: "Cryo Thruster",
+    description: "Blue-ice plasma drive cooled to near-zero temperatures. Shorter but faster dash with a cold blue trail. The cryogenic exhaust flash-freezes nearby debris.",
+    slot: thrusters,
+    rarity: epic,
+    base_value: 2500,
+    icon: Some("❄"),
+    icon_path: Some("icons/items/cryo_thruster.png"),
+    modifiers: [
+        (stat: max_speed,                op: multiply(1.05)),
+        (stat: acceleration,             op: multiply(1.15)),
+        (stat: turn_speed,               op: multiply(1.08)),
+        (stat: dash_distance, op: multiply(0.75)),
+        (stat: dash_cooldown, op: multiply(0.80)),
+    ],
+    on_kill: None,
+    granted_abilities: ["dash"],
+    granted_ability_slots: Some([(0, "dash")]),
+)
+

@@ -1,0 +1,15 @@
+// Death explosion: emissive sphere that shrinks to zero. Duration and scale vary by unit; optional radial gradient.
+(
+    shape: Sphere,
+    color: (1.0, 0.4, 0.2),
+    emissive_intensity: 1000.0,
+    duration: 0.25,
+    duration_min: Some(0.2),
+    duration_max: Some(0.4),
+    scale_start: 2.0,
+    scale_end: 0.0,
+    gradient: Some((
+        color_center: (1.0, 0.6, 0.25),
+        color_edge: (0.8, 0.25, 0.1),
+    )),
+)

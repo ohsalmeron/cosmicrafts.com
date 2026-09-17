@@ -1,0 +1,12 @@
+(
+    id: "loose_screw",
+    label: "Loose Screw",
+    description: "There is always one. From your ship. That is concerning.",
+    slot: artifact,
+    rarity: junk,
+    base_value: 4,
+    icon: Some("?"),
+    icon_path: None,
+    modifiers: [],
+    on_kill: None,
+)

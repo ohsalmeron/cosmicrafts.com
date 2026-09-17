@@ -1,0 +1,212 @@
+// parallax.ron
+// Stars  → tiling grid (quad_size controls tile size, tiling_radius = grid extent)
+// Nebula → procedural hash scatter (quad_size_min/max, rotation, biome_range for noise-driven fading)
+// Planet / Asteroid → per-sector from biome palette
+// Lower noise_scale = coarser noise = more noticeable change between sectors (distinct regions).
+// nebula_intensity_mult: scales all procedural Nebula layers (base_color alpha + emissive). 1.0 = as authored per-layer color_a; lower = more transparent.
+// nebula_zoom_fade_y_split: each nebula uses spawn Y = y_offset + z_index_offset. Above this (higher world Y, closer to play plane) → zoom fade to 0; deeper layers → fade only to nebula_zoom_background_fade_floor.
+// nebula_zoom_background_fade_floor: at max camera zoom, deep nebulas keep this fraction of strength (e.g. 0.5 = half).
+(
+    enabled: true,
+    sector_spawn_radius: 2,
+    noise_scale: 3000.0,
+    noise_octaves: 1,
+    nebula_intensity_mult: 0.7,
+    nebula_zoom_fade_y_split: -200.0,
+    nebula_zoom_background_fade_floor: 0.5,
+
+    layers: [
+        (
+            y_offset: -1500.0,
+            parallax_factor: 0.01,
+            color_r: 0.5, color_g: 0.5, color_b: 0.3,
+            emissive_strength: 1.0,
+            quad_size: 500.0,
+            tiling_radius: 4,
+            texture: "sprites/starfield3.jpg",
+            blend_mode: Add,
+        ),
+        (
+            y_offset: -1000.0,
+            parallax_factor: 0.65,
+            color_r: 0.3, color_g: 0.5, color_b: 0.5,
+            emissive_strength: 1.0,
+            quad_size: 2000.0,
+            tiling_radius: 1,
+            texture: "sprites/starfield2.jpg",
+            blend_mode: Add,
+        ),
+        (
+            y_offset: -750.0,
+            parallax_factor: 0.01,
+            color_r: 0.25, color_g: 0.25, color_b: 0.25,
+            emissive_strength: 1.0,
+            quad_size: 900.0,
+            tiling_radius: 4,
+            texture: "sprites/starfield.jpg",
+            blend_mode: Add,
+        ),
+    ],
+
+    decoration_layers: [
+
+        // ── Nebula deep (appears in noise 0.0..0.5 = half the universe) ───────
+        (
+            decoration_type: Nebula,
+            quad_size_min: 2800.0,
+            quad_size_max: 3400.0,
+            y_offset: -600.0,
+            z_index_offset: 0.0,
+            parallax_factor: 0.05,
+            color_r: 1.0, color_g: 1.0, color_b: 1.0, color_a: 0.01,
+            texture: "textures/nebulas/low",
+            blend_mode: Add,
+            unlit: true,
+            spawn_probability: 1.0,
+            emissive_r: 1.0, emissive_g: 1.0, emissive_b: 1.0, emissive_strength: 1.0,
+            rotation_speed_min: -0.0003, rotation_speed_max: -0.0003,
+            rotation_axis: None,
+            tiling_radius: 2,
+            biome_range_min: 0.25, biome_range_max: 0.5,
+        ),
+
+        // ── Nebula mid (appears in noise 0.0..0.65, slightly wider) ──────────
+        (
+            decoration_type: Nebula,
+            quad_size_min: 4800.0,
+            quad_size_max: 5800.0,
+            y_offset: -400.0,
+            z_index_offset: 0.0,
+            parallax_factor: 0.45,
+            color_r: 1.0, color_g: 1.0, color_b: 1.0, color_a: 0.05,
+            texture: "textures/nebulas/low",
+            blend_mode: Add,
+            unlit: true,
+            spawn_probability: 1.0,
+            emissive_r: 1.0, emissive_g: 1.0, emissive_b: 1.0, emissive_strength: 1.0,
+            rotation_speed_min: 0.0001, rotation_speed_max: 0.0003,
+            rotation_axis: None,
+            tiling_radius: 2,
+            biome_range_min: 0.0, biome_range_max: 0.65,
+        ),
+
+        // ── Ion Storm (appears in noise 0.55..0.85 — violent energy clouds) ──
+        (
+            decoration_type: Nebula,
+            quad_size_min: 5000.0,
+            quad_size_max: 6000.0,
+            y_offset: -25.0,
+            z_index_offset: 10.0,
+            parallax_factor: 0.12,
+            color_r: 0.6, color_g: 0.2, color_b: 1.0, color_a: 1.18,
+            texture: "textures/nebulas/low",
+            blend_mode: Add,
+            unlit: true,
+            spawn_probability: 1.0,
+            emissive_r: 1.0, emissive_g: 1.0, emissive_b: 1.0, emissive_strength: 3000.0,
+            rotation_speed_min: -0.8, rotation_speed_max: 0.8,
+            rotation_axis: None,
+            tiling_radius: 2,
+            biome_range_min: 0.55, biome_range_max: 0.85,
+        ),
+
+        // ── Dense Nebula Core (appears in noise 0.7..1.0 — thick gas) ────────
+        (
+            decoration_type: Nebula,
+            quad_size_min: 8000.0,
+            quad_size_max: 14000.0,
+            y_offset: -550.0,
+            z_index_offset: 5.0,
+            parallax_factor: 0.03,
+            color_r: 1.0, color_g: 0.4, color_b: 0.2, color_a: 0.3,
+            texture: "textures/nebulas/low",
+            blend_mode: Add,
+            unlit: true,
+            spawn_probability: 1.0,
+            emissive_r: 1.0, emissive_g: 0.3, emissive_b: 0.1, emissive_strength: 2.0,
+            rotation_speed_min: -0.02, rotation_speed_max: 0.02,
+            rotation_axis: None,
+            tiling_radius: 2,
+            biome_range_min: 0.7, biome_range_max: 1.0,
+        ),
+
+        // ── Dust Corridor (appears in noise 0.35..0.55 — fast whipping dust) ─
+        (
+            decoration_type: Nebula,
+            quad_size_min: 800.0,
+            quad_size_max: 2000.0,
+            y_offset: -300.0,
+            z_index_offset: 50.0,
+            parallax_factor: 0.85,
+            color_r: 0.8, color_g: 0.7, color_b: 0.5, color_a: 0.06,
+            texture: "textures/nebulas/low",
+            blend_mode: Add,
+            unlit: true,
+            spawn_probability: 1.0,
+            emissive_r: 0.5, emissive_g: 0.4, emissive_b: 0.3, emissive_strength: 0.5,
+            rotation_speed_min: -0.01, rotation_speed_max: 0.01,
+            rotation_axis: None,
+            tiling_radius: 3,
+            biome_range_min: 0.35, biome_range_max: 0.55,
+        ),
+
+        // ── Planet ───────────────────────────────────────────────────────────
+        // Surface uses texture folder + procedural tint. Halo (planet_atmosphere) sits behind;
+        // planet_clouds is the foreground wispy layer. Omit either block for engine defaults.
+        (
+            decoration_type: Planet,
+            quad_size_min: 500.0,
+            quad_size_max: 750.0,
+            y_offset: -300.0,
+            z_index_offset: 15.0,
+            parallax_factor: 0.15,
+            color_r: 1.0, color_g: 1.0, color_b: 1.0, color_a: 1.0,
+            texture: "textures/planets",
+            blend_mode: Blend,
+            unlit: false,
+            spawn_probability: 0.25,
+            emissive_r: 0.0, emissive_g: 0.0, emissive_b: 0.0, emissive_strength: 0.0,
+            rotation_speed_min: 0.001, rotation_speed_max: 0.004,
+            rotation_axis: None,
+            tiling_radius: 1,
+            planet_atmosphere: Some((
+                texture: "textures/nebulas/low/nebula01.webp",
+                color_r: 1.0, color_g: 1.0, color_b: 1.0, color_a: 0.4,
+                scale: 1.5,
+                blend_mode: Add,
+                emissive_strength: 2.0,
+                y_offset: -10.0,
+                multiply_surface_tint: true,
+                unlit: true,
+            )),
+            planet_clouds: Some((
+                texture: "textures/nebulas/low/nebula01.webp",
+                color_r: 1.0, color_g: 1.0, color_b: 1.0, color_a: 0.5,
+                scale: 1.05,
+                blend_mode: Blend,
+                y_offset: 5.0,
+                rotation_speed_multiplier: 3.0,
+                unlit: true,
+            )),
+        ),
+
+        // ── Asteroid ─────────────────────────────────────────────────────────
+        (
+            decoration_type: Asteroid,
+            quad_size_min: 100.0,
+            quad_size_max: 250.0,
+            y_offset: -250.0,
+            z_index_offset: 100.0,
+            parallax_factor: 0.4,
+            color_r: 1.0, color_g: 1.0, color_b: 1.0, color_a: 1.0,
+            texture: "textures/asteroids",
+            blend_mode: Blend,
+            unlit: false,
+            spawn_probability: 0.1,
+            emissive_r: 0.0, emissive_g: 0.0, emissive_b: 0.0, emissive_strength: 0.0,
+            rotation_speed_min: -0.35, rotation_speed_max: 0.35,
+            rotation_axis: None,
+            tiling_radius: 1,
+        ),
+    ],
+)

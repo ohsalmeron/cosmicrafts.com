@@ -1,0 +1,53 @@
+// =============================================================================
+// ZOOM LOD BANDS — Restart game to apply.
+// First band where current_zoom <= max_zoom wins (bands are sorted by max_zoom).
+// Camera zoom comes from settings.ron → camera.current_zoom (scroll / pinch).
+// Pickup orb visuals: use_pickup_glow_billboards uses textured additive quads (see ui/pickups.ron).
+// Far-LOD billboards: far_lod_scale multiplies ui/far_lod.ron world_scale × unit scale.
+// far_lod_player_reference_only: when true, only the player ship gets a billboard.
+// =============================================================================
+
+(
+    lod_bands: [
+        // --- Band 0 — main gameplay LOD (zoom <= 12): lighter world UI, full meshes ---
+        (
+            max_zoom: 18.0,
+            show_world_overlays: true,
+            show_enemy_world_healthbars: false,
+            show_player_allied_world_healthbars: true,
+            show_player_allied_world_nameplates: false,
+            show_gameplay_hud: true,
+            show_combat_text: true,
+            show_ground_loot_labels: false,
+            show_unit_meshes: true,
+            show_unit_thrusters: true,
+            show_unit_impostors: false,
+            show_enemy_names: false,
+            show_galaxy_stars: false,
+            show_galaxy_sectors: false,
+            use_pickup_glow_billboards: false,
+            far_lod_scale: 1.0,
+            far_lod_player_reference_only: false,
+        ),
+        // --- Band 1 — far sprite LOD (zoom > 12): impostors only, nebulas fade out by zoom 24 ---
+        (
+            max_zoom: 24.0,
+            show_world_overlays: false,
+            show_enemy_world_healthbars: false,
+            show_player_allied_world_healthbars: false,
+            show_player_allied_world_nameplates: false,
+            show_gameplay_hud: true,
+            show_combat_text: false,
+            show_ground_loot_labels: false,
+            show_unit_meshes: false,
+            show_unit_thrusters: false,
+            show_unit_impostors: true,
+            show_enemy_names: true,
+            show_galaxy_stars: false,
+            show_galaxy_sectors: false,
+            use_pickup_glow_billboards: true,
+            far_lod_scale: 0.5,
+            far_lod_player_reference_only: false,
+        ),
+    ],
+)

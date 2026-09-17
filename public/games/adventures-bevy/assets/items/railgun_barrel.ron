@@ -1,0 +1,19 @@
+(
+    id: "railgun_barrel",
+    label: "Railgun Barrel",
+    description: "Precision-machined magnetic accelerator barrel. Bullets hit harder and reach further, with a satisfying electromagnetic crack on each shot.",
+    slot: weapon1,
+    rarity: rare,
+    base_value: 500,
+    icon: Some("🎯"),
+    icon_path: Some("icons/items/railgun_barrel.png"),
+    modifiers: [
+        (stat: bullet_damage, op: multiply(1.25)),
+        (stat: bullet_range,  op: multiply(1.20)),
+        (stat: bullet_speed,  op: multiply(1.10)),
+    ],
+    on_kill: None,
+    granted_abilities: ["bullet"],
+    granted_ability_slots: Some([(1, "bullet")]),
+)
+

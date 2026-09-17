@@ -1,0 +1,18 @@
+// Player HUD bars (top-left): HP, shield, track/fill/damage/heal colors.
+// Matches assets/ui/healthbar.ron style (track, fill palette, lerp). Hot-reload: save to apply.
+// Colors are solid (r,g,b,a); world bars in healthbar.ron use gradients for the same palette.
+(
+    player_track_border_radius: 0.0,
+    player_fill_border_radius: 0.0,
+    player_track_bg: (0.1, 0.1, 0.15, 0.65),
+    player_shield_track_bg: (0.1, 0.1, 0.15, 0.65),
+    // Ally health: same green as healthbar world_bar_health_fill_ally (vertical gradient midpoint)
+    player_health_fill: (0.0, 0.78, 0.38, 1.0),
+    player_health_damage_layer: (1.0, 0.25, 0.0, 1.0),
+    player_health_heal_layer: (0.85, 1.0, 0.85, 1.0),
+    // Ally shield: same blue as healthbar world_bar_shield_fill_ally
+    player_shield_fill: (0.4, 0.62, 1.0, 1.0),
+    player_shield_damage_layer: (0.75, 0.85, 1.0, 1.0),
+    player_shield_heal_layer: (0.3, 0.8, 1.0, 1.0),
+    player_bar_display_lerp_speed: 1.35,
+)

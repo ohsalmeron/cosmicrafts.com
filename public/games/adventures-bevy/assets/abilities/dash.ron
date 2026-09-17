@@ -1,0 +1,36 @@
+(
+    id: "dash",
+    name: "Dash",
+    energy_cost: 20.0,
+    cooldown: 0.25,
+    hotkey: 8,
+    effect: Dash(DashEffect(
+        distance: 25.0,
+        duration: 0.25,
+        // Keep the classic line trail.
+        ribbon_mode: true,
+        // Add emissive donuts on top of the line trail.
+        donut_mode: true,
+        trail_length: 10.0,
+        trail_width: 2.5,
+        trail_start_width: Some(0.5),
+        trail_end_width: Some(0.01),
+        trail_start_intensity: Some(14000.0),
+        trail_end_intensity: Some(800.0),
+        emissive_color: (0.7, 0.0, 0.35),
+        emissive_intensity: 12000.0,
+        donut_interval: 0.03,
+        donut_lifetime: 0.35,
+        donut_radius: 0.25,
+        donut_thickness: 0.12,
+        donut_start_scale: 1.9,
+        donut_end_scale: 0.2,
+        // Donut mesh local rotation in degrees (XYZ).
+        donut_rotation_deg: (0.0, 0.0, 0.0),
+    )),
+    metadata: (
+        icon: Some((
+            path: "icons/dash.webp",
+        )),
+    ),
+)

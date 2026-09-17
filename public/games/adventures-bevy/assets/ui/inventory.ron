@@ -1,0 +1,45 @@
+// Inventory Panel configuration.
+// Edit values to tweak the panel without recompiling.
+(
+    // ── Panel position & size ────────────────────────────────
+    panel_right:       0.0,   // px from right edge
+    panel_top:         0.0,   // px from top
+    panel_bottom:      50.0,   // px from bottom
+    panel_width_vw:    70.0,   // % of viewport width
+    panel_max_width:   1000.0, // px cap
+
+    // ── Ship render (3D preview) ─────────────────────────────
+    ship_render_width:  380.0, // px
+    ship_render_height: 500.0, // px
+    ship_render_margin_top: 30.0,
+
+    // ── Equip slot cards (around ship) ───────────────────────
+    equip_card_width:   96.0,
+    equip_card_height:  96.0,
+    equip_icon_size:    36.0,
+    equip_name_size:    11.0,
+
+    // ── Bag grid (right column) ──────────────────────────────
+    bag_cols:           5,
+    bag_cell_size:      80.0,
+    slot_gap:           6.0,
+
+    // ── Palette: slots ───────────────────────────────────────
+    slot_border:       (0.20, 0.80, 0.90, 0.14),
+    slot_empty_bg:     (0.08, 0.11, 0.17, 0.60),
+    slot_filled_bg:    (0.09, 0.16, 0.22, 0.85),
+    slot_selected_bg:  (0.05, 0.22, 0.28, 0.92),
+    slot_drag_bg:      (0.12, 0.50, 0.62, 0.80),
+    empty_icon_alpha:  0.12,
+
+    // ── Palette: tabs ────────────────────────────────────────
+    tab_active_bg:     (0.06, 0.22, 0.28, 0.95),
+    tab_inactive_bg:   (0.08, 0.10, 0.16, 0.80),
+    tab_active_border: (0.20, 0.80, 0.90, 0.90),
+    tab_inactive_border:(0.20, 0.80, 0.90, 0.15),
+
+    // ── Palette: misc ────────────────────────────────────────
+    section_label:     (0.20, 0.80, 0.90, 0.70),
+    divider_color:     (0.20, 0.80, 0.90, 0.10),
+    info_bg:           (0.07, 0.09, 0.14, 0.98),
+)

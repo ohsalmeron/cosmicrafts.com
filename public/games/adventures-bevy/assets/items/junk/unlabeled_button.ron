@@ -1,0 +1,12 @@
+(
+    id: "unlabeled_button",
+    label: "Unlabeled Button",
+    description: "It does something. Nobody has been brave enough to find out.",
+    slot: shield,
+    rarity: junk,
+    base_value: 3,
+    icon: Some("+"),
+    icon_path: None,
+    modifiers: [],
+    on_kill: None,
+)

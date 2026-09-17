@@ -1,0 +1,16 @@
+(
+    id: "base_reactor",
+    label: "Standard Reactor",
+    description: "Factory-issue power core. Baseline energy capacity and regeneration. Keeps the lights on and the guns firing.",
+    slot: reactor,
+    rarity: common,
+    base_value: 100,
+    icon: Some("🔋"),
+    icon_path: Some("icons/items/base_reactor.png"),
+    modifiers: [
+        (stat: max_energy,   op: add(10.0)),
+        (stat: energy_regen, op: add(1.0)),
+    ],
+    on_kill: None,
+)
+

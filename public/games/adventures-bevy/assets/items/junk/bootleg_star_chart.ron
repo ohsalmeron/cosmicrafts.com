@@ -1,0 +1,12 @@
+(
+    id: "bootleg_star_chart",
+    label: "Bootleg Star Chart",
+    description: "Hand-drawn. Stars labeled Bob and Steve.",
+    slot: artifact,
+    rarity: junk,
+    base_value: 5,
+    icon: Some("@"),
+    icon_path: None,
+    modifiers: [],
+    on_kill: None,
+)

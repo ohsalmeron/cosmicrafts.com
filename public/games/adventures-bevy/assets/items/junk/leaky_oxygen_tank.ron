@@ -1,0 +1,12 @@
+(
+    id: "leaky_oxygen_tank",
+    label: "Leaky Oxygen Tank",
+    description: "It hisses softly. A gentle reminder of your mortality.",
+    slot: shield,
+    rarity: junk,
+    base_value: 2,
+    icon: Some("*"),
+    icon_path: None,
+    modifiers: [],
+    on_kill: None,
+)

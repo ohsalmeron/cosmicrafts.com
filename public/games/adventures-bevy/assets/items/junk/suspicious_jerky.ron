@@ -1,0 +1,12 @@
+(
+    id: "suspicious_jerky",
+    label: "Suspicious Jerky",
+    description: "Beef flavored. There are no cows in this sector.",
+    slot: weapon1,
+    rarity: junk,
+    base_value: 3,
+    icon: Some("+"),
+    icon_path: None,
+    modifiers: [],
+    on_kill: None,
+)

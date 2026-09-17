@@ -1,0 +1,10 @@
+// Waypoint graph configuration. Controls how discovered stations
+// connect to each other on the sector map.
+(
+    // Max sector distance (Chebyshev) to auto-connect two waypoints.
+    connection_range_sectors: Some(8),
+    // Max connections per waypoint node.
+    max_connections: Some(4),
+    // Min sector distance between waypoints (prevents visual clutter).
+    min_separation: Some(3),
+)

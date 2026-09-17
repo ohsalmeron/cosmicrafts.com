@@ -1,0 +1,12 @@
+(
+    id: "corroded_badge",
+    label: "Corroded Badge",
+    description: "Reads: Employee of the Mon--. The rest dissolved.",
+    slot: armor,
+    rarity: junk,
+    base_value: 4,
+    icon: Some("?"),
+    icon_path: None,
+    modifiers: [],
+    on_kill: None,
+)

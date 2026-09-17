@@ -1,0 +1,13 @@
+(
+    id: "tiny_trophy_for_showing_up",
+    label: "Tiny Trophy for Showing Up",
+    description: "Participation: legendary. Size: debatable. Pride: intact.",
+    slot: artifact,
+    rarity: junk,
+    junk_grade: absurd,
+    base_value: 3,
+    icon: Some("*"),
+    icon_path: None,
+    modifiers: [],
+    on_kill: None,
+)

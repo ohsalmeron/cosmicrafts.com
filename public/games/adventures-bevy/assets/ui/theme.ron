@@ -1,0 +1,23 @@
+// UI theme: colors, borders, shadows. Edit and restart to apply (no recompile).
+// Used by: main menu, pause menu, settings panel, hero selection, HUD panels.
+// Sci-fi style: cyan accent, dark semi-transparent buttons, bright cyan on hover.
+// Font is controlled by assets/settings.ron (ui.font_path, ui.title_font_path), not here.
+// Optional: hero_selection_accent; shadow_outer_color, shadow_outer_blur, shadow_glow_color, shadow_glow_blur.
+(
+    panel_bg: (0.14, 0.16, 0.20, 1.0),
+    panel_outline: (0.2, 0.8, 0.9, 0.6),
+    panel_border_px: 1.0,
+    text_bright: (1.0, 1.0, 1.0, 1.0),
+    text_secondary: (0.55, 0.58, 0.62, 1.0),
+    accent: (0.2, 0.8, 0.9, 1.0),
+    button_bg: (0.06, 0.10, 0.18, 0.85),
+    button_hover: (0.0, 0.75, 0.9, 0.95),
+    button_pressed: (0.0, 0.65, 0.82, 1.0),
+    danger_bg: (0.45, 0.10, 0.12, 0.85),
+    success_bg: (0.12, 0.45, 0.22, 0.85),
+    warning_text: (1.0, 0.42, 0.42, 1.0),
+    currency: (0.90, 0.85, 0.35, 1.0),
+    item_bg: (0.08, 0.10, 0.14, 0.85),
+    shadow_glow_color: Some((0.2, 0.8, 0.9, 0.25)),
+    shadow_glow_blur: Some(12.0),
+)

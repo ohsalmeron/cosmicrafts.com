@@ -1,0 +1,17 @@
+(
+    id: "reactor_plasma",
+    label: "Plasma Reactor",
+    description: "Plasma-fed core running at extreme temperatures. Substantial energy capacity and faster recharge. The containment field glows faintly orange.",
+    slot: reactor,
+    rarity: rare,
+    base_value: 500,
+    icon: Some("🔥"),
+    icon_path: Some("icons/items/reactor_plasma.png"),
+    modifiers: [
+        (stat: max_energy,   op: add(50.0)),
+        (stat: energy_regen, op: multiply(1.25)),
+        (stat: max_speed,    op: add(3.0)),
+    ],
+    on_kill: None,
+)
+

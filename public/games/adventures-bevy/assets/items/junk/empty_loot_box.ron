@@ -1,0 +1,12 @@
+(
+    id: "empty_loot_box",
+    label: "Empty Loot Box",
+    description: "The pride and accomplishment is INSIDE you. The box is empty.",
+    slot: armor,
+    rarity: junk,
+    base_value: 5,
+    icon: Some("@"),
+    icon_path: None,
+    modifiers: [],
+    on_kill: None,
+)

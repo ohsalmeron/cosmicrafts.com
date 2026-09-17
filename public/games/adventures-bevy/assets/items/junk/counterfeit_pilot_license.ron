@@ -1,0 +1,12 @@
+(
+    id: "counterfeit_pilot_license",
+    label: "Counterfeit Pilot License",
+    description: "Name: Definitely A. Real-Pilot. Photo: a potato.",
+    slot: thrusters,
+    rarity: junk,
+    base_value: 5,
+    icon: Some("@"),
+    icon_path: None,
+    modifiers: [],
+    on_kill: None,
+)
