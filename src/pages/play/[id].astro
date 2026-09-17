@@ -102,9 +102,9 @@ if (!game) {
   (async () => {
     // Embed games (Rush static, Bevy WASM) run in the iframe above.
     if (game.embed) return;
-    // Games without a local Unity build: direct fallback with repo link.
+    // Archive games have no web build yet: direct fallback with repo link.
     if (!game.buildDir) {
-      showFallback(`${game.name} llega en 2026 — mira el repo para el avance.`);
+      showFallback(game.status === 'soon' ? `${game.name} aún no tiene versión web — mira el repo.` : `${game.name} llega en 2026 — mira el repo para el avance.`);
       return;
     }
     const loaderUrl = `${game.buildDir}/${game.loader}`;
