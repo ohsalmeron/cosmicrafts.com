@@ -58,7 +58,7 @@ jobs:
       - name: Activate Release (atomic symlink + retain 5)
         run: |
           ssh -o StrictHostKeyChecking=no "${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}" \
-            "ln -sfn '$RELEASE' /var/www/cosmicrafts.com/current.tmp && mv -Tf /var/www/cosmicrafts.com/current.tmp /var/www/cosmicrafts.com/current && cd /var/www/cosmicrafts.com/releases && ls -t | tail -n +6 | xargs -r rm -rf && readlink /var/www/cosmicrafts.com/current"
+            "link=/var/www/cosmicrafts.com/.current.$$; ln -sfn '$RELEASE' $link && mv -hf $link /var/www/cosmicrafts.com/current && cd /var/www/cosmicrafts.com/releases && old=$(ls -t | tail -n +6); [ -n "$old" ] && echo "$old" | xargs -I{} rm -rf {} ; readlink /var/www/cosmicrafts.com/current"
 
       - name: Verify Live Site
         run: |
