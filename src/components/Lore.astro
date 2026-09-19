@@ -1,0 +1,69 @@
+---
+/**
+ * 1:1 port of the Vue DAO Lore.vue parallax scene (Dark Rift layers + mask reveal).
+ */
+const layers = [
+  { cls: 'sky', src: '/assets/webp/go.webp', y: -390, x: 200, scale: 0.85, rotation: -4 },
+  { cls: 'darkrift', src: '/assets/webp/darkrift.webp', y: -390, x: 200, scale: 0.85, rotation: -4 },
+  { cls: 'stars', src: '/assets/webp/starsbig.webp', y: 100, x: 150, scale: 1.85, rotation: -25 },
+  { cls: 'cloud1', src: '/assets/webp/asteroids.webp', y: -800, x: 0, scale: 1, rotation: 0 },
+  { cls: 'nebula', src: '/assets/webp/nebula1.webp', y: 0, x: 0, scale: 0.25, rotation: 0 },
+  { cls: 'cloud3', src: '/assets/webp/cloud1Mask.webp', y: -650, x: 0, scale: 1, rotation: 0 },
+  { cls: 'planet1', src: '/assets/webp/planet1.webp', y: 0, x: -200, scale: 0.25, rotation: -25 },
+  { cls: 'planet2', src: '/assets/webp/planet3.webp', y: 350, x: 1200, scale: 0.25, rotation: 25 },
+];
+---
+<link rel="stylesheet" href="/assets/css/lore.css" />
+
+<div class="parallax-wrapper" id="lore-scene">
+  <div class="color-overlay"></div>
+  <div class="parallax-scene">
+    <div class="scrollDist"></div>
+    <main>
+      <svg viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" width="100%" height="100%" aria-hidden="true">
+        <mask id="m">
+          <g class="cloud1">
+            <rect fill="#fff" width="100%" height="800" y="799"></rect>
+            <image href="/assets/webp/cloud1Mask.webp" width="100%" height="100%"></image>
+          </g>
+        </mask>
+        {layers.map((l) => (
+          <g><image class={l.cls} href={l.src} width="100%" height="100%" preserveAspectRatio="xMidYMid slice" data-px={l.x} data-py={l.y} data-ps={l.scale} data-pr={l.rotation}></image></g>
+        ))}
+        <text class="explore-text" x="50%" y="45%" text-anchor="middle" dominant-baseline="middle" data-i18n="darkRift.discover">Discover</text>
+        <g mask="url(#m)">
+          <rect fill="#fff" width="1200" height="800"></rect>
+          <text class="further-text" x="50%" y="45%" text-anchor="middle" dominant-baseline="middle" data-i18n="darkRift.title">The Dark Rift</text>
+        </g>
+      </svg>
+    </main>
+  </div>
+</div>
+
+<script>
+  const scene = document.getElementById('lore-scene');
+  if (scene && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    const imgs = [...scene.querySelectorAll('svg image[data-px]')];
+    const explore = scene.querySelector('.explore-text');
+    const further = scene.querySelector('.further-text');
+    const onScroll = () => {
+      const sy = window.scrollY;
+      imgs.forEach((el) => {
+        const x = sy * (Number(el.getAttribute('data-px')) / 1000);
+        const y = sy * (Number(el.getAttribute('data-py')) / 1000);
+        const s = 1 + sy * (Number(el.getAttribute('data-ps')) / 10000);
+        const r = sy * (Number(el.getAttribute('data-pr')) / 1000);
+        el.style.transform = `translate(${x}px, ${y}px) scale(${s}) rotate(${r}deg)`;
+      });
+      if (explore) {
+        explore.style.transform = `translateY(${sy * 0.05}px)`;
+        explore.style.opacity = String(Math.min(1, sy / 300));
+      }
+      if (further) {
+        further.style.transform = `translateY(${sy * 0.1}px)`;
+        further.style.opacity = String(Math.min(1, sy / 400));
+      }
+    };
+    window.addEventListener('scroll', onScroll, { passive: true });
+  }
+</script>

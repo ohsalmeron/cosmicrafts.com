@@ -1,0 +1,43 @@
+/* Main Wrapper Styling */
+.parallax-wrapper {
+  position: relative;
+  width: 100%;
+  height: 400vh; /* Large scrollable height */
+  background: linear-gradient(to bottom, #ffffff, #ffffffb8, #f0f0f000);
+  overflow: hidden;
+  z-index: 10;
+}
+
+.parallax-scene {
+  position: relative;
+}
+
+main {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  background: #111b29;
+}
+
+svg {
+  width: 100%;
+  height: 100%;
+}
+
+.explore-text,
+.further-text {
+  font-size: 6vw;
+  font-weight: 800;
+  text-transform: uppercase;
+  fill: #fff;
+}
+
+.explore-text {
+  text-shadow: -2px 2px 4px rgb(0, 0, 0);
+}
+
+.further-text {
+  fill: #242424;
+  mix-blend-mode: soft-light;
+}
+

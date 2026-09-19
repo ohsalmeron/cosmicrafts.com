@@ -1,0 +1,64 @@
+---
+/**
+ * 1:1 port of the Vue DAO Lore2.vue parallax video lines.
+ */
+const lines = [
+  { video: '/assets/webm/darkrift.webm', text: 'Amidst the cosmic chaos', speed: -0.1, videoSpeed: -0.05 },
+  { video: '/assets/webm/output.webm', text: 'the remnants of ancient civilizations', speed: -0.2, videoSpeed: -0.1 },
+  { video: '/assets/webm/output2.webm', text: 'as the Metaverse collapses', speed: -0.3, videoSpeed: -0.15 },
+  { video: '/assets/webm/darkrift.webm', text: 'clash in a desperate struggle for supremacy.', speed: -0.4, videoSpeed: -0.2 },
+];
+---
+<link rel="stylesheet" href="/assets/css/lore2.css" />
+
+<div class="parallax-wrapper" id="lore2-scene">
+  <div class="background-layer" data-lore2-bg></div>
+  <div class="white-layer" data-lore2-white>
+    <svg viewBox="0 0 1200 200" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" width="100%" height="100%" aria-hidden="true">
+      <polygon points="0,0 1200,0 1200,100 0,50" fill="white"></polygon>
+    </svg>
+  </div>
+  <div class="content">
+    <div class="parallax-text">
+      {lines.map((l, i) => (
+        <div class="line-wrapper" data-speed={l.speed} data-index={i}>
+          <video class="parallax-video" src={l.video} autoplay loop muted playsinline data-vspeed={l.videoSpeed} aria-hidden="true"></video>
+          <span class="line">{l.text}</span>
+        </div>
+      ))}
+    </div>
+  </div>
+</div>
+
+<script>
+  const scene = document.getElementById('lore2-scene');
+  if (scene && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    const bg = scene.querySelector('[data-lore2-bg]');
+    const white = scene.querySelector('[data-lore2-white]');
+    const wraps = [...scene.querySelectorAll('.line-wrapper')];
+    const opacity = (sy, i) => Math.min(1, 0.1 * (i + 1) + sy * 0.001);
+    const onScroll = () => {
+      const sy = window.scrollY;
+      if (bg) bg.style.transform = `translateY(${sy * -0.5}px)`;
+      if (white) white.style.opacity = String(Math.min(1, sy / 300));
+      wraps.forEach((w) => {
+        const i = Number(w.getAttribute('data-index'));
+        const sp = Number(w.getAttribute('data-speed'));
+        w.style.transform = `translateY(${sy * sp}px)`;
+        w.style.opacity = String(opacity(sy, i));
+        const v = w.querySelector('video');
+        if (v) {
+          const vs = Number(v.getAttribute('data-vspeed'));
+          v.style.transform = `translateY(${sy * vs}px) scale(${1 + sy * 0.00001})`;
+          v.style.opacity = String(opacity(sy, i));
+        }
+        const line = w.querySelector('.line');
+        if (line) {
+          line.style.transform = `scale(${0.75 + sy * 0.0001})`;
+          line.style.opacity = String(opacity(sy, i));
+        }
+      });
+    };
+    window.addEventListener('scroll', onScroll, { passive: true });
+  }
+</script>

@@ -29,6 +29,11 @@ export interface Game {
   externalUrl?: string;
   repo: string;
   features: string[];
+  /** Vue DAO card fields (1:1 port) */
+  badge: string;
+  badgeClass: 'prototype' | 'classic' | 'alpha' | 'beta' | 'live' | 'new';
+  genre: string;
+  release: string;
 }
 
 export const GAMES: Game[] = [
@@ -46,6 +51,10 @@ export const GAMES: Game[] = [
     playRoute: '/play/stardrifter',
     repo: 'https://github.com/cosmicrafts/Star-Drifter',
     features: ['Drift', 'Bevy', 'Arcade'],
+    badge: 'New',
+    badgeClass: 'new',
+    genre: 'Arcade Drift',
+    release: 'Released: 2026',
   },
   {
     id: 'adventures-bevy',
@@ -61,6 +70,10 @@ export const GAMES: Game[] = [
     playRoute: '/play/adventures-bevy',
     repo: 'https://github.com/cosmicrafts/Adventures-Bevy',
     features: ['Historia', 'Bevy', 'WASM'],
+    badge: 'New',
+    badgeClass: 'new',
+    genre: '3D RPG',
+    release: 'Released: 2026',
   },
   {
     id: 'rush',
@@ -76,6 +89,10 @@ export const GAMES: Game[] = [
     playRoute: '/play/rush',
     repo: 'https://github.com/cosmicrafts/Rush',
     features: ['Carreras', 'On-chain', 'Apuestas'],
+    badge: 'Live',
+    badgeClass: 'live',
+    genre: 'Racing',
+    release: 'Live',
   },
   {
     id: 'adventures-3d',
@@ -96,6 +113,10 @@ export const GAMES: Game[] = [
     playRoute: '/play/adventures-3d',
     repo: 'https://github.com/cosmicrafts/Adventures',
     features: ['Aventura', '3D', 'RPG'],
+    badge: 'Prototype',
+    badgeClass: 'prototype',
+    genre: '3D RPG',
+    release: 'Prototype',
   },
   {
     id: 'cosmicrafts-2d',
@@ -116,6 +137,10 @@ export const GAMES: Game[] = [
     playRoute: '/play/cosmicrafts-2d',
     repo: 'https://github.com/cosmicrafts/Cosmicrafts-2D',
     features: ['RTS', 'Retro', '2D'],
+    badge: 'Classic',
+    badgeClass: 'classic',
+    genre: '2D RTS',
+    release: 'Classic',
   },
   {
     id: 'alpha-2021',
@@ -130,6 +155,10 @@ export const GAMES: Game[] = [
     playRoute: '/play/alpha-2021',
     repo: 'https://github.com/cosmicrafts/Cosmicrafts3D-2021-DSCVR-Hackathon',
     features: ['RTS 3D', 'Prototipo', 'Histórico'],
+    badge: 'Alpha',
+    badgeClass: 'alpha',
+    genre: '3D RTS',
+    release: 'Released: 2021',
   },
   {
     id: 'beta-2022',
@@ -144,6 +173,10 @@ export const GAMES: Game[] = [
     playRoute: '/play/beta-2022',
     repo: 'https://github.com/cosmicrafts/Cosmicrafts-2022',
     features: ['Multijugador', 'Héroes', 'Beta-NFTs'],
+    badge: 'Beta',
+    badgeClass: 'beta',
+    genre: '3D RTS',
+    release: 'Released: 2022',
   },
 ];
 

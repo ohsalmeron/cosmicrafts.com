@@ -1,53 +1,53 @@
 ---
-import Panel from './Panel.astro';
-import GameCard from './GameCard.astro';
-import { GAMES, BATTLEGROUNDS } from '../data/games';
+import { GAMES } from '../data/games';
 
-const featured = GAMES.slice(0, 3);
-const classics = GAMES.slice(3);
+/**
+ * Home games grid — 1:1 markup port of the Vue DAO Games.vue cards.
+ * Clicking a playable card opens the game directly on its /play route.
+ */
 ---
+<link rel="stylesheet" href="/assets/css/games-vue.css" />
 
-<section id="juegos" class="w-full max-w-7xl mx-auto z-10 px-1 pt-14 pb-4">
-  <div class="flex items-end justify-between mb-5">
-    <div>
-      <p class="font-mono text-[10px] text-cyan-400 tracking-[0.3em] uppercase mb-1">[ GAME_LIBRARY ]</p>
-      <h2 class="text-2xl md:text-4xl font-black text-white uppercase tracking-tight text-balance">Juegos</h2>
-      <p class="text-xs md:text-sm text-slate-400 font-light mt-1">Del clásico 2019 a los nuevos de 2026. Elige y juega.</p>
-    </div>
-    <a href="/games" class="hidden sm:inline-block font-mono text-[10px] text-slate-400 hover:text-cyan-300 tracking-widest uppercase border border-white/10 hover:border-cyan-400/40 rounded-lg px-3 py-2 transition-[color,border-color]">
-      Ver todos →
-    </a>
+<section id="juegos" class="games-home">
+  <div class="games-home-head">
+    <h2 data-i18n="games.title">Our Games</h2>
+    <a href="/games" class="games-home-more">→</a>
   </div>
-
-  <!-- Destacados 2026 + live -->
-  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
-    {featured.map((g, i) => <GameCard game={g} index={i} />)}
-  </div>
-
-  <!-- Clásicos DAO -->
-  <p class="font-mono text-[10px] text-slate-500 tracking-[0.3em] uppercase mt-8 mb-3">[ CLASSICS_FROM_DAO ]</p>
-  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
-    {classics.map((g, i) => <GameCard game={g} index={i} />)}
-  </div>
-
-  <!-- Battlegrounds banner -->
-  <Panel variant="purple" class="mt-6 overflow-hidden">
-    <div class="relative flex flex-col md:flex-row items-center gap-5 p-5 md:p-6">
-      <img src={BATTLEGROUNDS.image} alt="" aria-hidden="true" loading="lazy" class="absolute inset-0 w-full h-full object-cover opacity-25 pointer-events-none" />
-      <img src={BATTLEGROUNDS.logo} alt="Battlegrounds" width="128" height="128" loading="lazy" class="relative w-24 h-24 md:w-32 md:h-32 object-contain rounded-xl shrink-0" />
-      <div class="relative flex-1 text-center md:text-left">
-        <p class="font-mono text-[9px] text-purple-300 tracking-[0.3em] uppercase mb-1">[ NEXT_EVOLUTION ]</p>
-        <h3 class="text-lg md:text-2xl font-black text-white uppercase tracking-tight text-balance">{BATTLEGROUNDS.name}</h3>
-        <p class="text-[11px] md:text-xs text-slate-300 font-light mt-1">{BATTLEGROUNDS.description}</p>
-        <div class="flex flex-col sm:flex-row gap-2 mt-4 justify-center md:justify-start">
-          <a href={BATTLEGROUNDS.epicUrl} target="_blank" rel="noopener" class="inline-flex items-center justify-center min-h-[44px] px-4 py-2 rounded-lg bg-gradient-to-r from-cyan-500 to-indigo-500 hover:from-cyan-400 hover:to-indigo-400 text-white font-mono text-[10px] font-bold tracking-widest uppercase transition-[background-color,transform] active:scale-95 text-center">
-            Wishlist en Epic
-          </a>
-          <a href={BATTLEGROUNDS.itchUrl} target="_blank" rel="noopener" class="inline-flex items-center justify-center min-h-[44px] px-4 py-2 rounded-lg bg-white/5 border border-white/10 hover:border-purple-400/40 text-white font-mono text-[10px] font-bold tracking-widest uppercase transition-[border-color] text-center">
-            Demo en itch.io
-          </a>
+  <div class="games-grid">
+    {GAMES.map((g) => (
+      <a class="game-card" href={g.status === 'soon' ? undefined : (g.playRoute || g.externalUrl)} aria-disabled={g.status === 'soon' ? 'true' : undefined}>
+        <div class="game-image">
+          <div class={`game-badge ${g.badgeClass}`}>{g.badge}</div>
+          <img src={g.image} alt={g.name} loading="lazy" />
         </div>
-      </div>
-    </div>
-  </Panel>
+        <div class="game-info">
+          <h3 class="game-title">{g.name} ({g.year})</h3>
+          <p class="game-description">{g.description}</p>
+          <div class="game-meta">
+            <span class="release-date">{g.release}</span>
+            <span class="game-type">{g.genre}</span>
+          </div>
+          <div class="game-features">
+            {g.features.map((f) => <span class="feature">{f}</span>)}
+          </div>
+        </div>
+        <div class="game-cta">
+          <span class="play-button">{g.status === 'soon' ? g.statusLabel : `Play ${g.name}`}</span>
+        </div>
+      </a>
+    ))}
+  </div>
 </section>
+
+<style>
+  .games-home { max-width: 1200px; margin: 0 auto; padding: 3rem 1rem; }
+  .games-home-head { display: flex; align-items: center; justify-content: space-between; padding: 0 1rem; }
+  .games-home-head h2 { font-size: 2rem; font-weight: 900; color: var(--cosmic-text-primary, #fff); margin: 0; }
+  .games-home-more { color: var(--cosmic-blue-light, #4fd2ff); font-size: 1.5rem; text-decoration: none; min-height: 44px; min-width: 44px; display: inline-flex; align-items: center; justify-content: center; }
+  .games-home .games-grid { padding: 1rem; }
+  .game-card { text-decoration: none; display: block; }
+  .game-card[aria-disabled="true"] { cursor: default; opacity: 0.85; }
+  .game-card[aria-disabled="true"]:hover { transform: none; }
+  .game-badge.live { background: linear-gradient(135deg, #00e5ff, #2979ff); color: white; }
+  .game-badge.new { background: linear-gradient(135deg, #00e676, #00b0ff); color: white; }
+</style>

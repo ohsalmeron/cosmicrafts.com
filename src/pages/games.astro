@@ -2,50 +2,153 @@
 import Layout from '../layouts/Layout.astro';
 import Starfield from '../components/Starfield.astro';
 import Header from '../components/Header.astro';
-import GameCard from '../components/GameCard.astro';
-import Panel from '../components/Panel.astro';
+import Footer from '../components/Footer.astro';
 import { GAMES, BATTLEGROUNDS } from '../data/games';
+
+/**
+ * Games library — 1:1 behavior port of the Vue DAO Games.vue:
+ * Battlegrounds banner, game cards, and the launcher modal.
+ */
+const cards = GAMES.map((g) => ({
+  id: g.id,
+  title: `${g.name} (${g.year})`,
+  image: g.image,
+  description: g.description,
+  badge: g.badge,
+  badgeClass: g.badgeClass,
+  release: g.release,
+  genre: g.genre,
+  features: g.features,
+  route: g.status === 'soon' ? '' : (g.playRoute || g.externalUrl || ''),
+  cta: g.status === 'soon' ? g.statusLabel : `Play ${g.name}`,
+}));
 ---
+<link rel="stylesheet" href="/assets/css/games-vue.css" />
 
 <Layout title="Cosmicrafts | Games" description="Play the Cosmicrafts game library: Star Drifter, Adventures Bevy, Rush, Adventures 3D, 2D classic, Alpha and Beta.">
-  <div class="relative min-h-screen w-full flex flex-col p-6 md:p-10 z-10 bg-[#020208]">
-    <div class="fixed inset-0 z-0 pointer-events-none">
+  <div class="relative min-h-screen w-full flex flex-col z-10">
+    <div class="fixed inset-0 z-0 pointer-events-none" aria-hidden="true">
       <Starfield />
     </div>
 
-    <Header />
+    <div class="relative z-10 w-full max-w-7xl mx-auto px-4 md:px-6">
+      <Header />
+    </div>
 
-    <main class="w-full max-w-7xl mx-auto z-10 py-8">
-      <p class="font-mono text-[10px] text-cyan-400 tracking-[0.3em] uppercase mb-1">[ GAME_LIBRARY ]</p>
-      <h1 class="text-3xl md:text-5xl font-black text-white uppercase tracking-tight text-balance">Juegos</h1>
-      <p class="text-xs md:text-sm text-slate-400 font-light mt-2 max-w-2xl">
-        Toda la colección en un solo lugar. Los clásicos del DAO siguen jugables en el navegador,
-        Rush está en vivo y los nuevos de 2026 llegan con Bevy.
-      </p>
-
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 mt-8">
-        {GAMES.map((g, i) => <GameCard game={g} index={i} />)}
-      </div>
-
-      <Panel variant="purple" class="mt-6 overflow-hidden">
-        <div class="relative flex flex-col md:flex-row items-center gap-5 p-5 md:p-6">
-          <img src={BATTLEGROUNDS.image} alt="" aria-hidden="true" loading="lazy" class="absolute inset-0 w-full h-full object-cover opacity-25 pointer-events-none" />
-          <img src={BATTLEGROUNDS.logo} alt="Battlegrounds" width="128" height="128" loading="lazy" class="relative w-24 h-24 md:w-32 md:h-32 object-contain rounded-xl shrink-0" />
-          <div class="relative flex-1 text-center md:text-left">
-            <h2 class="text-lg md:text-2xl font-black text-white uppercase tracking-tight text-balance">{BATTLEGROUNDS.name}</h2>
-            <p class="text-[11px] md:text-xs text-slate-300 font-light mt-1">{BATTLEGROUNDS.description}</p>
-            <div class="flex flex-col sm:flex-row gap-2 mt-4 justify-center md:justify-start">
-              <a href={BATTLEGROUNDS.epicUrl} target="_blank" rel="noopener" class="inline-flex items-center justify-center min-h-[44px] px-4 py-2 rounded-lg bg-gradient-to-r from-cyan-500 to-indigo-500 text-white font-mono text-[10px] font-bold tracking-widest uppercase text-center">Wishlist en Epic</a>
-              <a href={BATTLEGROUNDS.itchUrl} target="_blank" rel="noopener" class="inline-flex items-center justify-center min-h-[44px] px-4 py-2 rounded-lg bg-white/5 border border-white/10 text-white font-mono text-[10px] font-bold tracking-widest uppercase text-center">Demo en itch.io</a>
+    <main class="games-container relative z-10">
+      <section class="battlegrounds-banner cosmic-panel cosmic-float">
+        <img class="banner-bg-image" src="/assets/webp/banner-battlegrounds.webp" alt="" aria-hidden="true" loading="lazy" />
+        <div class="banner-content">
+          <img class="banner-logo" src="/assets/webp/battlegrounds.webp" alt="Cosmicrafts Battlegrounds Logo" loading="lazy" />
+          <div class="banner-text">
+            <h1 class="banner-title text-gradient" data-i18n="games.battlegrounds.title">Cosmicrafts Battlegrounds</h1>
+            <p class="banner-subtitle text-secondary">Launching Q4 2025 — The next evolution in on-chain RTS. Wishlist and play the demo now!</p>
+            <div class="banner-ctas">
+              <a class="cosmic-button cosmic-button-primary min-h-[44px]" href={BATTLEGROUNDS.epicUrl} target="_blank" rel="noopener">
+                <span class="button-text">Wishlist on Epic Games</span>
+                <span class="button-glow"></span>
+                <span class="button-particles"></span>
+              </a>
+              <a class="cosmic-button cosmic-button-secondary min-h-[44px]" href={BATTLEGROUNDS.itchUrl} target="_blank" rel="noopener">
+                <span class="button-text">Play Demo on itch.io</span>
+                <span class="button-glow"></span>
+                <span class="button-particles"></span>
+              </a>
             </div>
           </div>
         </div>
-      </Panel>
+      </section>
+
+      <section class="games-grid" id="games-grid">
+        {cards.map((c) => (
+          <article class="game-card" data-game={c.id} tabindex={c.route ? '0' : undefined} role={c.route ? 'button' : undefined} aria-disabled={c.route ? undefined : 'true'}>
+            <div class="game-image">
+              <div class={`game-badge ${c.badgeClass}`}>{c.badge}</div>
+              <img src={c.image} alt={c.title} loading="lazy" />
+            </div>
+            <div class="game-info">
+              <h3 class="game-title">{c.title}</h3>
+              <p class="game-description">{c.description}</p>
+              <div class="game-meta">
+                <span class="release-date">{c.release}</span>
+                <span class="game-type">{c.genre}</span>
+              </div>
+              <div class="game-features">
+                {c.features.map((f) => <span class="feature">{f}</span>)}
+              </div>
+            </div>
+            <div class="game-cta">
+              <span class="play-button">{c.cta}</span>
+            </div>
+          </article>
+        ))}
+      </section>
+
+      <div id="game-launcher" class="game-launcher-modal" hidden>
+        <div class="launcher-content" role="dialog" aria-modal="true" aria-labelledby="launcher-title">
+          <div class="launcher-header">
+            <h2 id="launcher-title">Launching</h2>
+            <button class="close-button min-h-[44px] min-w-[44px]" id="launcher-close" aria-label="Close">×</button>
+          </div>
+          <div class="launcher-body">
+            <div class="game-preview">
+              <img id="launcher-img" src="" alt="" />
+            </div>
+            <div class="launch-options">
+              <div class="option-group">
+                <h4>Launch Options</h4>
+                <div class="option">
+                  <input type="radio" id="launch-web" name="launchType" value="web" checked />
+                  <label for="launch-web">Web Browser (Recommended)</label>
+                </div>
+              </div>
+              <div class="launch-button-container">
+                <button class="launch-button min-h-[44px]" id="launcher-go">Launch</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </main>
 
-    <footer class="w-full max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center z-10 gap-4 border-t border-white/5 pt-4 font-mono text-[9px] md:text-xs text-slate-500 mt-6">
-      <a href="https://worldofunreal.com/" target="_blank" class="hover:text-cyan-400 transition-colors uppercase">&copy; 2026 WORLD OF UNREAL. ALL RIGHTS RESERVED.</a>
-      <a href="/" class="hover:text-cyan-400 transition-colors uppercase">← Volver</a>
-    </footer>
+    <div class="relative z-10">
+      <Footer />
+    </div>
   </div>
 </Layout>
+
+<script define:vars={{ cards }}>
+  const modal = document.getElementById('game-launcher');
+  const title = document.getElementById('launcher-title');
+  const img = document.getElementById('launcher-img');
+  const go = document.getElementById('launcher-go');
+  let route = '';
+  const open = (c) => {
+    if (!c.route) return;
+    route = c.route;
+    title.textContent = 'Launching ' + c.title;
+    img.src = c.image; img.alt = c.title;
+    go.textContent = 'Launch ' + c.title;
+    modal.hidden = false;
+    document.body.style.overflow = 'hidden';
+  };
+  const close = () => { modal.hidden = true; document.body.style.overflow = ''; };
+  document.querySelectorAll('#games-grid .game-card[data-game]').forEach((el) => {
+    const c = cards.find((x) => x.id === el.getAttribute('data-game'));
+    if (!c || !c.route) return;
+    el.addEventListener('click', () => open(c));
+    el.addEventListener('keydown', (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); open(c); } });
+  });
+  document.getElementById('launcher-close')?.addEventListener('click', close);
+  modal?.addEventListener('click', (e) => { if (e.target === modal) close(); });
+  document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && !modal.hidden) close(); });
+  go?.addEventListener('click', () => { if (route) window.location.href = route; close(); });
+</script>
+
+<style>
+  .game-badge.live { background: linear-gradient(135deg, #00e5ff, #2979ff); color: white; }
+  .game-badge.new { background: linear-gradient(135deg, #00e676, #00b0ff); color: white; }
+  .game-launcher-modal[hidden] { display: none; }
+  .game-card { text-decoration: none; }
+  .game-card[aria-disabled="true"] { cursor: default; }
+</style>

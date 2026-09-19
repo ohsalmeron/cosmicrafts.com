@@ -1,6 +1,7 @@
 ---
 import Panel from './Panel.astro';
 import AuthModal from './AuthModal.astro';
+import LanguageSelector from './LanguageSelector.astro';
 ---
 
 <header class="w-full max-w-7xl mx-auto flex justify-between items-center z-20 pb-4 border-b border-white/5 relative">
@@ -34,8 +35,19 @@ import AuthModal from './AuthModal.astro';
     </div>
   </div>
 
+  <!-- Center: DAO navigation (same links as the Vue header) -->
+  <nav class="hidden lg:flex items-center gap-6 font-mono text-[10px] tracking-[0.25em] uppercase" aria-label="Primary">
+    <a href="/games" class="text-slate-300 hover:text-cyan-300 transition-colors" data-i18n="header.games">Games</a>
+    <a href="/governance" class="text-slate-300 hover:text-cyan-300 transition-colors" data-i18n="header.dao">DAO</a>
+    <a href="/whitepaper" class="text-slate-300 hover:text-cyan-300 transition-colors" data-i18n="header.whitepaper">Whitepaper</a>
+    <a href="/docs/introduction" class="text-slate-300 hover:text-cyan-300 transition-colors" data-i18n="header.roadmap">Roadmap</a>
+  </nav>
+
   <!-- Right: Web3 Wallet & Token Readout -->
   <div class="flex items-center space-x-3 sm:space-x-4">
+    <div class="hidden md:block">
+      <LanguageSelector context="header" />
+    </div>
     <!-- Logged In Content -->
     <div id="logged-in-container" class="hidden items-center space-x-3 sm:space-x-4">
       <!-- Spiral Token Balance -->
@@ -121,7 +133,7 @@ import AuthModal from './AuthModal.astro';
 </header>
 
 <script>
-  import { wouAuth, type WouAccount } from '@worldofunreal/id';
+  import { wouAuth, type PlayerAccount } from '@worldofunreal/id';
   wouAuth.setDefaultContext('cosmicrafts');
 
   // UI selectors
@@ -149,7 +161,7 @@ import AuthModal from './AuthModal.astro';
   const copySolBtn = document.getElementById('copy-sol-btn');
   const copyIcpBtn = document.getElementById('copy-icp-btn');
 
-  function renderHeaderAuth(user: WouAccount | null) {
+  function renderHeaderAuth(user: PlayerAccount | null) {
     if (user) {
       loggedInContainer?.classList.remove('hidden');
       loggedInContainer?.classList.add('flex');

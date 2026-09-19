@@ -1,0 +1,645 @@
+{
+  "login": {
+  "connectWith": "欢迎来到元宇宙",
+  "internetIdentity": "使用 Internet Identity 登录",
+  "google": "使用 Google 登录",
+  "guestAccount": "以访客身份继续",
+  "signInClarification": "已经有种子短语了吗？",
+  "loginWith": "使用 {method} 登录",
+  "enterSeedPhrase": "输入种子短语",
+  "accountRecovery": "找回账户",
+  "recoverAccount": "用此种子登录",
+  "seedValid": "您的种子短语似乎有效！",
+  "invalidSeedPhrase": "种子短语无效。",
+  "invalidSeedLength": "种子短语必须正好包含 12 个词。",
+  "guestLoginError": "哎呀，出了点问题！",
+  "recoverySuccess": "账户恢复成功！",
+  "recovering": "正在恢复..."
+},
+"register": {
+  "usernameLabel": "用户名：",
+  "usernamePlaceholder": "最多 12 个字符",
+  "referralCodeLabel": "推荐码：",
+  "referralCodePlaceholder": "（可选）",
+  "noReferralCode": "没有推荐码？",
+  "getReferralCode": "在这里获取！",
+  "acceptTerms": "我接受",
+  "privacyPolicy": "隐私政策",
+  "termsOfService": "服务条款",
+  "and": "和",
+  "continueButton": "继续",
+  "successMessage": "欢迎, {username}!",
+  "failureMessage": "注册失败。",
+  "newPlayer": "新玩家",
+  "selectedAvatarAlt": "已选择的头像",
+  "projectedAvatarAlt": "预计的头像",
+  "avatarIconAlt": "头像图标",
+  "avatarGridTitle": "选择头像",
+  "avatarAlt": "头像 {index}"
+},
+"header": {
+  "home": "主页",
+  "features": "功能",
+  "play": "开始游戏",
+  "games": "游戏",
+  "community": "社区",
+  "contact": "联系我们",
+  "support": "支持",
+  "language": "语言",
+  "marketplace": "市场",
+  "spiral": "螺旋",
+  "dao": "DAO",
+  "dashboard": "控制面板",
+  "connect": "连接",
+  "whitepaper": "白皮书",
+  "login": "登录",
+  "myProfile": "我的资料",
+  "settings": "设置",
+  "signout": "退出",
+  "profile": "个人资料",
+  "roadmap": "路线图"
+},
+"error": {
+      "title": "哇塞!",
+      "description": "这个页面好像去太空旅行了！"
+,
+      "homeButton": "⏪ 返回"
+    },
+  "hero": {
+    "slides": [
+      {
+        "title": "一切从这里开始。Alpha上线啦，快来加入！",
+        "ctaButtons": [
+          { "text": "立刻玩！" },
+          { "text": "添加到Epic Games愿望清单" }
+        ]
+      },
+      {
+        "title": "派对就在这儿！你来不来？",
+        "ctaButtons": [
+          { "text": "前往NNS" },
+          { "text": "查看白皮书" }
+        ]
+      },
+      {
+        "title": "区块链上的RTS。星际漂移，银河混乱",
+        "ctaButtons": [
+          { "text": "立刻下载！" },
+          { "text": "了解更多！" }
+        ]
+      },
+      {
+        "title": "快来互动！邀请好友一起拿独家奖励！",
+        "ctaButtons": [
+          { "text": "进入控制面板" },
+          { "text": "获取推荐码" }
+        ]
+      }
+    ]
+  },
+  "cta": "尝试一下Cosmicrafts Adventures",
+  "lore": {
+    "title": "Cosmicrafts传说",
+    "description": "跟我们一起探索Cosmicrafts的精彩故事 – 英雄、传奇战斗，还有等你发现的秘密！"
+  },
+  "games": {
+    "title": "我们的游戏",
+    "battlegrounds": {
+      "title": "Cosmicrafts战场",
+      "description": "和朋友们一起加入Cosmicrafts宇宙的史诗级多人对战！"
+    },
+    "adventures": {
+      "title": "Cosmicrafts冒险",
+      "description": "展开刺激的太空任务，一起探索银河的秘密！"
+    }
+  },
+  "carousel": {
+    "slides": [
+      {
+        "title": "Cosmicrafts冒险",
+        "description": "跟随Cosmicrafts Adventures探索开发中的新宇宙！",
+        "buttonText": "了解更多",
+        "action": "adventures"
+      },
+      {
+        "title": "Cosmicrafts战场",
+        "description": "立刻加入战斗，现在就玩Cosmicrafts战场！",
+        "buttonText": "立刻玩",
+        "action": "battleground"
+      },
+      {
+        "title": "最新资讯",
+        "description": "随时了解Cosmicrafts的最新新闻和动态。",
+        "buttonText": "查看新闻",
+        "action": "news"
+      },
+      {
+        "title": "ICP科技",
+        "description": "了解更多支持Cosmicrafts的创新ICP科技。",
+        "buttonText": "探索ICP",
+        "action": "technology"
+      }
+    ]
+  },
+  "footer": {
+    "stayConnected": "保持联系",
+    "explore": "探索",
+    "careers": "招聘信息",
+    "about": "关于我们",
+    "support": "支持",
+    "press": "媒体",
+    "creators": "创作者",
+    "privacy": "隐私政策",
+    "legal": "法律信息",
+    "terms": "使用条款",
+    "cookiePolicy": "Cookie政策",
+    "cookieSettings": "Cookie设置",
+    "language": "语言",
+    "trademarks": "此处提到的所有商标均为其各自所有者的财产。"
+  },
+  "darkRift": {
+  "title": "黑暗裂隙",
+  "discover": "发现"
+},
+"loadingScreen": {
+    "messages": {
+      "initializingQuantumShenanigans": "启动量子魔法",
+      "chargingHyperdrive": "充能超光速引擎",
+      "generatingCosmicChaos": "生成宇宙混沌",
+      "decodingAlienSignals": "解码外星信号",
+      "calibratingFluxCapacitor": "校准通量电容器",
+      "initiatingSelfDestruct": "启动自毁程序",
+      "fuelingRocket": "为火箭加燃料",
+      "generatingWormholes": "生成虫洞",
+      "conjuringBlackHole": "召唤黑洞",
+      "syncingHiveMind": "同步集体意识",
+      "reticulatingSplines": "整理曲线网格",
+      "summoningSpaceHamsters": "召唤太空仓鼠",
+      "defragmentingSpaceTime": "碎片整理时空",
+      "transmogrifyingMatter": "转化物质形态",
+      "brewingNebula": "酿造星云",
+      "lubricatingGears": "润滑齿轮",
+      "tighteningRealityBolts": "拧紧现实螺栓",
+      "chargingStardustReserves": "充填星尘储备",
+      "calibratingLaserBeams": "校准激光束",
+      "summoningFriendlyAliens": "召唤友好的外星人",
+      "spinningUpWormhole": "旋转虫洞",
+      "tamingBlackHoles": "驯服黑洞",
+      "polishingStars": "抛光星星",
+      "clearingAsteroidBelt": "清理小行星带",
+      "rewritingGalacticCode": "重写银河代码",
+      "encryptingCosmos": "加密宇宙",
+      "quantumJuggling": "量子杂耍",
+      "debuggingAliens": "调试外星技术",
+      "hackingGravity": "破解重力",
+      "warmingUpWarpDrive": "预热曲速引擎",
+      "tamingComets": "驯服彗星",
+      "aligningPhotonBeams": "对齐光子束",
+      "overclockingStellarEngine": "超频恒星引擎",
+      "stirringCosmicSoup": "搅拌宇宙汤",
+      "buffingRocketPaint": "打磨火箭涂层",
+      "resettingWormholePhysics": "重置虫洞物理",
+      "aligningNebulas": "对齐星云",
+      "herdingAsteroids": "赶小行星",
+      "debuggingStardust": "调试星尘",
+      "uploadingTheUniverse": "上传宇宙",
+      "turningOffInertia": "关闭惯性",
+      "pluckingSuperstrings": "拨动超弦",
+      "paintingNebulas": "绘制星云",
+      "scanningForLife": "扫描生命迹象",
+      "reversingPolarity": "反转极性",
+      "quantumDancing": "量子跳舞",
+      "herdingWormholes": "赶虫洞",
+      "encryptingReality": "加密现实",
+      "debuggingTheMultiverse": "调试多元宇宙"
+    }
+  },
+  "notifications": {
+    "title": "通知",
+    "noNotifications": "暂无通知",
+    "viewAll": "查看全部",
+    "friendRequests": "好友请求",
+    "noFriendRequests": "暂无好友请求",
+    "accept": "接受",
+    "decline": "拒绝",
+    "accepted": "已接受",
+    "declined": "已拒绝",
+    "sentYouFriendRequest": "向您发送了好友请求",
+    "acceptedYourFriendRequest": "接受了您的好友请求",
+    "newFriendRequest": "您有一个来自以下用户的新好友请求",
+    "privacySettingsUpdated": "您的隐私设置已更新。",
+    "tabs": {
+      "all": "全部",
+      "friendRequests": "好友请求",
+      "notifications": "通知"
+    },
+    "timeAgo": {
+      "justNow": "刚刚",
+      "minutesAgo": "{minutes}分钟前",
+      "hoursAgo": "{hours}小时前",
+      "daysAgo": "{days}天前"
+    }
+  },
+  "profilePage": {
+    "profileError": "个人资料错误",
+    "retry": "重试",
+    "goHome": "返回首页",
+    "errorHelp": "此个人资料可能不存在或暂时不可用。如果您输入了用户名，请尝试使用Principal ID访问，反之亦然。",
+    "tabs": {
+      "profile": "个人资料",
+      "stats": "统计数据",
+      "collection": "收藏品",
+      "social": "社交"
+    },
+    "unknownPlayer": "未知玩家",
+    "defaultTitle": "银河冒险家",
+    "registrationDate": "注册时间：{date}",
+    "unknownRegistrationDate": "注册日期未知",
+    "friendActions": {
+      "addFriend": "添加好友",
+      "requestSent": "请求已发送",
+      "removeFriend": "删除好友"
+    },
+    "noDescription": "暂无描述",
+    "edit": "编辑",
+    "playerStats": {
+      "elo": "ELO积分",
+      "winRate": "胜率",
+      "games": "游戏场次"
+    },
+    "editProfile": "编辑个人资料",
+    "playerId": "玩家ID",
+    "quickStats": "快速统计",
+    "statsCards": {
+      "totalKills": "总击杀数",
+      "energyEfficiency": "能量效率",
+      "criticalHits": "暴击次数"
+    },
+    "combatStatistics": "战斗统计",
+    "statsDetails": {
+      "damageDealt": "造成伤害",
+      "damageEvaded": "闪避伤害",
+      "energyGenerated": "产生能量",
+      "energyUsed": "使用能量"
+    },
+    "nftCollection": "NFT收藏",
+    "nftCategories": {
+      "all": "所有NFT",
+      "characters": "角色",
+      "units": "单位",
+      "avatars": "头像",
+      "trophies": "奖杯",
+      "chests": "宝箱"
+    },
+    "noNfts": "尚未收集{category}",
+    "achievements": "成就",
+    "achievementStats": {
+      "completedBy": "完成率",
+      "points": "点数"
+    },
+    "friends": "好友",
+    "friendStatus": {
+      "online": "在线",
+      "offline": "离线"
+    },
+    "editProfileModal": {
+      "title": "编辑个人资料",
+      "username": "用户名",
+      "title": "头衔",
+      "description": "描述",
+      "cancel": "取消",
+      "saveChanges": "保存更改"
+    },
+    "confirmRemoveFriend": "您确定要将 {username} 从您的好友列表中删除吗？"
+  },
+  "months": {
+    "0": "一月",
+    "1": "二月",
+    "2": "三月",
+    "3": "四月",
+    "4": "五月",
+    "5": "六月",
+    "6": "七月",
+    "7": "八月",
+    "8": "九月",
+    "9": "十月",
+    "10": "十一月",
+    "11": "十二月"
+  },
+  "whitepaper": {
+    "title": "白皮书",
+    "navigation": {
+      "sections": {
+        "introduction": {
+          "title": "简介",
+          "description": "概述和价值主张"
+        },
+        "tokenomics": {
+          "title": "代币经济",
+          "description": "代币分配和经济模型"
+        },
+        "governance": {
+          "title": "治理",
+          "description": "决策系统"
+        },
+        "community": {
+          "title": "社区",
+          "description": "参与和发展"
+        },
+        "architecture": {
+          "title": "架构",
+          "description": "技术基础设施"
+        },
+        "core-features": {
+          "title": "核心功能",
+          "description": "产品特性"
+        }
+      },
+      "documentation": "文档",
+      "previous": "上一页",
+      "next": "下一页",
+      "chapters": "章节",
+      "mobileTitle": "白皮书章节",
+      "mobileSubtitle": "浏览章节"
+    }
+  },
+  "dao": {
+    "headline": {
+      "title": "遗产的黎明",
+      "subtitle": "现在是DAO，否则永远不会！",
+      "stakeholder_cta": "成为利益相关者",
+      "whitepaper_cta": "阅读白皮书"
+    },
+    "explainer": {
+      "title": "什么是Cosmicrafts DAO？",
+      "description": "Cosmicrafts DAO（去中心化自治组织）使社区能够集体管理Cosmicrafts游戏生态系统的未来。通过持有SPIRAL代币，利益相关者可以参与影响平台开发、资金管理和经济政策的关键决策。",
+      "pillars": {
+        "governance": {
+          "title": "社区治理",
+          "description": "对提案进行投票，通过民主决策塑造平台的未来方向。"
+        },
+        "treasury": {
+          "title": "共享金库",
+          "description": "集体管理7.6亿SPIRAL代币的金库，专注于生态系统的增长和发展。"
+        },
+        "rewards": {
+          "title": "质押奖励",
+          "description": "通过积极参与和对平台增长的长期承诺获得奖励。"
+        }
+      },
+      "links": {
+        "roadmap": "查看我们的路线图",
+        "whitepaper": "阅读白皮书"
+      }
+    },
+    "distribution": {
+      "title": "代币分配",
+      "treasury": {
+        "title": "金库",
+        "description": "生态系统增长和DAO控制的资金"
+      },
+      "swap": {
+        "title": "SNS交换",
+        "description": "8次季度发布的公开销售"
+      },
+      "team": {
+        "title": "开发团队",
+        "description": "核心团队8年解锁期"
+      },
+      "investors": {
+        "title": "种子投资者",
+        "description": "拥有不同解锁期的早期支持者"
+      }
+    },
+    "governance": {
+      "title": "治理模型",
+      "proposal_creation": {
+        "title": "提案创建",
+        "requirement": "1,000 SPIRAL",
+        "description": "提交提案所需的最低质押"
+      },
+      "voting_period": {
+        "title": "投票期",
+        "requirement": "7天",
+        "description": "提案的标准审议时间"
+      },
+      "voting_power": {
+        "title": "投票权",
+        "requirement": "最高3倍",
+        "description": "通过质押和年龄获得的最大乘数"
+      },
+      "lock_period": {
+        "title": "锁定期",
+        "requirement": "30天-8年",
+        "description": "灵活的解锁选项"
+      }
+    },
+    "metrics": {
+      "title": "代币指标",
+      "total_supply": "总供应量",
+      "treasury_size": "金库规模",
+      "min_proposal": "提案最低质押",
+      "initial_apy": "初始APY"
+    },
+    "staking": {
+      "title": "质押福利",
+      "subtitle": "通过参与获得收益",
+      "description": "锁定你的SPIRAL代币以获得奖励并增加你的治理权力",
+      "benefits": {
+        "initial_apy": {
+          "title": "初始APY"
+        },
+        "transition": {
+          "title": "过渡期"
+        },
+        "final_apy": {
+          "title": "最终APY"
+        }
+      },
+      "multipliers": {
+        "title": "权力乘数",
+        "dissolve": {
+          "title": "解散延迟"
+        },
+        "age": {
+          "title": "神经元年龄"
+        }
+      }
+    },
+    "rights": {
+      "title": "利益相关者权利",
+      "treasury": {
+        "title": "金库管理",
+        "description": "对DAO金库资金用于开发、营销和社区计划的分配进行投票",
+        "items": {
+          "marketing": "营销活动",
+          "development": "开发资金",
+          "partnerships": "战略伙伴关系"
+        }
+      },
+      "economic": {
+        "title": "经济政策",
+        "description": "通过集体决策塑造生态系统的经济框架",
+        "items": {
+          "tokenomics": "代币经济学调整",
+          "staking": "质押率变更",
+          "fees": "费用结构"
+        }
+      },
+      "roadmap": {
+        "title": "开发路线图",
+        "description": "影响平台的技术和产品开发优先事项",
+        "items": {
+          "features": "功能优先级",
+          "expansions": "游戏扩展",
+          "improvements": "技术改进"
+        }
+      },
+      "community": {
+        "title": "社区项目",
+        "description": "建立和管理社区主导的计划，以发展生态系统",
+        "items": {
+          "creators": "内容创作者资金",
+          "events": "活动和比赛",
+          "education": "教育项目"
+        }
+      }
+    },
+    "join": {
+      "title": "主张你的宇宙力量！",
+      "description": "加入DAO并参与管理第一个完全链上的游戏特许经营权",
+      "stats": {
+        "voting": "最大投票权",
+        "apy": "APY范围",
+        "period": "投票期"
+      },
+      "stakeholder_cta": "成为利益相关者",
+      "whitepaper_cta": "阅读白皮书"
+    }
+  },
+  "proposals": {
+    "title": "活跃提案",
+    "for": "支持",
+    "against": "反对",
+    "vote_for": "投票支持",
+    "vote_against": "投票反对",
+    "status": {
+      "active": "活跃",
+      "passed": "通过",
+      "rejected": "拒绝",
+      "executed": "已执行",
+      "pending": "待定"
+    },
+    "examples": {
+      "creator": {
+        "title": "社区内容创作者计划",
+        "summary": "建立框架，使内容创作者能够获得资金，推广Cosmicrafts生态系统"
+      },
+      "treasury": {
+        "title": "金库多元化战略",
+        "summary": "将5%的金库资金分配给与生态系统一致的协议进行战略投资"
+      }
+    }
+  },
+  "meta": {
+    "dao": {
+      "title": "Cosmicrafts DAO - 游戏未来的去中心化治理",
+      "description": "加入Cosmicrafts DAO，参与宇宙游戏未来的去中心化治理。质押SPIRAL代币获得奖励和投票权。"
+    }
+  },
+  "wallet": {
+    "title": "钱包",
+    "subtitle": "管理您的代币和资产",
+    "principalId": "主体ID",
+    "accountId": "账户ID",
+    "showPrincipalId": "显示主体ID",
+    "showAccountId": "显示账户ID",
+    "tokens": "代币",
+    "loadingTokens": "正在加载代币...",
+    "noTokens": "未找到代币",
+    "addToken": "添加代币",
+    "addTokenTooltip": "添加自定义代币",
+    "level": "等级",
+    "balance": "余额",
+    "max": "最大",
+
+    "actions": "操作",
+    "send": "发送",
+    "sendTooltip": "向其他账户发送代币",
+    "sendTokens": "发送代币",
+    "sending": "正在发送...",
+    "receive": "接收",
+    "receiveTooltip": "从他人处接收代币",
+    "receiveTokens": "接收代币",
+    "receiveDescription": "分享您的地址以接收代币",
+    "scanToSend": "扫描以发送代币",
+    "receiveTokensNotice": "确保发送方使用正确的网络。只发送此钱包支持的代币。",
+    "yourAddress": "您的地址",
+    "swap": "兑换",
+    "swapTooltip": "在不同代币之间兑换",
+    "stake": "质押",
+    "stakeTooltip": "质押代币以获取奖励",
+
+    "recipient": "接收方",
+    "enterRecipient": "输入接收方地址",
+    "amount": "金额",
+    "enterAmount": "输入金额",
+    "memo": "备注",
+    "optional": "可选",
+    "enterMemo": "输入备注或信息（可选）",
+    "transactionFee": "交易费用",
+
+    "token": "代币",
+    "tokenId": "代币ID",
+    "enterTokenId": "输入代币容器ID",
+    "tokenIdHint": "您要添加的代币的容器ID",
+    "tokenStandard": "代币标准",
+    "tokenName": "代币名称",
+    "tokenSymbol": "代币符号",
+    "tokenDecimals": "代币小数位",
+    "showAdvanced": "显示高级选项",
+    "hideAdvanced": "隐藏高级选项",
+
+    "nftCollection": "NFT收藏",
+    "loadingNfts": "正在加载NFT...",
+    "noNfts": "未找到NFT",
+    "openChest": "打开",
+    "openingChest": "正在打开宝箱",
+    "chestRewards": "您的奖励",
+    "noRewardsFound": "未找到奖励",
+    "tapToReveal": "点击以揭示",
+
+    "activityLog": "活动日志",
+    "clearLogs": "清除日志",
+    "noLogs": "没有活动日志显示",
+
+    "copy": "复制",
+    "comingSoon": "即将推出",
+
+    "closeDialog": "关闭",
+
+    "loading": "加载中...",
+    "error": "错误"
+  },
+  "common": {
+    "cancel": "取消",
+    "close": "关闭",
+    "submit": "提交",
+    "loading": "加载中...",
+    "comingSoon": "即将推出"
+  },
+  "esc_menu": {
+    "title": "菜单",
+    "game": "游戏",
+    "social": "社交",
+    "settings": "设置",
+    "continue_game": "继续",
+    "main_menu": "主菜单",
+    "friends": "朋友",
+    "messages": "消息",
+    "audio": "音频",
+    "video": "视频",
+    "interface": "界面",
+    "logout": "退出登录"
+  }
+}

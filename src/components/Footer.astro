@@ -1,0 +1,123 @@
+---
+import LanguageSelector from './LanguageSelector.astro';
+
+/** 1:1 port of the Vue DAO Footer (social row, explore/legal nav, language, copyright). */
+const year = new Date().getFullYear();
+---
+<link rel="stylesheet" href="/assets/css/footer.css" />
+
+<footer class="cosmic-footer">
+  <div class="footer-cosmic-bg"></div>
+
+  <div class="social-top-row">
+    <div class="social-top-container">
+      <h4 class="cosmic-text-glow" data-i18n="footer.stayConnected">Let's Stay Connected</h4>
+      <div class="social-icons-group">
+        <a href="https://discord.com/invite/cosmicrafts-884272584491941888" class="cosmic-social-icon" target="_blank" rel="noopener noreferrer" aria-label="Discord">
+          <img src="/assets/icons/discord.svg" alt="Discord" width="20" height="20" loading="lazy" />
+        </a>
+        <a href="https://x.com/cosmicrafts" class="cosmic-social-icon" target="_blank" rel="noopener noreferrer" aria-label="X">
+          <img src="/assets/icons/x.svg" alt="X" width="20" height="20" loading="lazy" />
+        </a>
+        <a href="https://facebook.com/cosmicrafts" class="cosmic-social-icon" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+          <img src="/assets/icons/facebook.svg" alt="Facebook" width="20" height="20" loading="lazy" />
+        </a>
+        <a href="https://dscvr.one/p/cosmicrafts" class="cosmic-social-icon" target="_blank" rel="noopener noreferrer" aria-label="DSCVR">
+          <img src="/assets/icons/dscvr.svg" alt="DSCVR" width="20" height="20" loading="lazy" />
+        </a>
+        <a href="https://distrikt.app/u/cosmicrafts" class="cosmic-social-icon" target="_blank" rel="noopener noreferrer" aria-label="Distrikt">
+          <img src="/assets/icons/distrikt.svg" alt="Distrikt" width="20" height="20" loading="lazy" />
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <div class="desktop-nav-container">
+    <div class="desktop-nav-row">
+      <div class="desktop-nav-column cosmic-panel">
+        <h4 class="cosmic-text-glow desktop-nav-title" data-i18n="footer.explore">Explore</h4>
+        <ul class="desktop-link-list">
+          <li><a href="/games" class="cosmic-nav-link" data-i18n="footer.careers">Careers</a></li>
+          <li><a href="/docs/introduction" class="cosmic-nav-link" data-i18n="footer.about">About</a></li>
+          <li><a href="/docs/introduction" class="cosmic-nav-link" data-i18n="footer.support">Support</a></li>
+        </ul>
+      </div>
+      <div class="desktop-nav-column cosmic-panel">
+        <h4 class="cosmic-text-glow desktop-nav-title" data-i18n="footer.legal">Legal</h4>
+        <ul class="desktop-link-list">
+          <li><a href="/privacy" class="cosmic-nav-link" data-i18n="footer.privacy">Privacy</a></li>
+          <li><a href="/terms" class="cosmic-nav-link" data-i18n="footer.legal">Legal</a></li>
+          <li><a href="/terms" class="cosmic-nav-link" data-i18n="footer.terms">Terms</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="accordion-container" data-footer-accordion>
+    <div class="nav-row">
+      <div class="accordion cosmic-panel">
+        <div class="accordion-header" data-acc="explore" tabindex="0" role="button">
+          <h4 class="cosmic-text-glow" data-i18n="footer.explore">Explore</h4>
+          <span aria-hidden="true">▾</span>
+        </div>
+        <div class="accordion-content" data-acc-panel="explore" style="max-height: 0">
+          <ul class="link-list">
+            <li><a href="/games" class="cosmic-nav-link" data-i18n="footer.careers">Careers</a></li>
+            <li><a href="/docs/introduction" class="cosmic-nav-link" data-i18n="footer.about">About</a></li>
+            <li><a href="/docs/introduction" class="cosmic-nav-link" data-i18n="footer.support">Support</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="accordion cosmic-panel">
+        <div class="accordion-header" data-acc="legal" tabindex="0" role="button">
+          <h4 class="cosmic-text-glow" data-i18n="footer.legal">Legal</h4>
+          <span aria-hidden="true">▾</span>
+        </div>
+        <div class="accordion-content" data-acc-panel="legal" style="max-height: 0">
+          <ul class="link-list">
+            <li><a href="/privacy" class="cosmic-nav-link" data-i18n="footer.privacy">Privacy</a></li>
+            <li><a href="/terms" class="cosmic-nav-link" data-i18n="footer.legal">Legal</a></li>
+            <li><a href="/terms" class="cosmic-nav-link" data-i18n="footer.terms">Terms</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="language-row">
+    <LanguageSelector context="footer" />
+  </div>
+
+  <div class="copyright-container">
+    <img src="/assets/icons/wou.svg" alt="World of Unreal" class="copyright-logo" width="32" height="32" loading="lazy" />
+    <div class="copyright">
+      <p>© {year} World of Unreal, LLC.</p>
+      <p data-i18n="footer.trademarks">All trademarks referenced herein are the properties of their respective owners.</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+  document.querySelectorAll('[data-footer-accordion]').forEach((root) => {
+    const open = new Set();
+    if (window.innerWidth > 768) { open.add('explore'); open.add('legal'); }
+    const paint = () => {
+      root.querySelectorAll('[data-acc]').forEach((h) => {
+        const id = h.getAttribute('data-acc');
+        const panel = root.querySelector(`[data-acc-panel="${id}"]`);
+        h.classList.toggle('active', open.has(id));
+        if (panel) panel.style.maxHeight = open.has(id) ? '200px' : '0';
+      });
+    };
+    root.querySelectorAll('[data-acc]').forEach((h) => {
+      const toggle = () => {
+        const id = h.getAttribute('data-acc');
+        if (open.has(id)) open.delete(id); else open.add(id);
+        paint();
+      };
+      h.addEventListener('click', toggle);
+      h.addEventListener('keydown', (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggle(); } });
+    });
+    paint();
+  });
+</script>

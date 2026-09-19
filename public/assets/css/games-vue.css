@@ -1,0 +1,416 @@
+.games-container {
+  min-height: 100vh;
+  background: linear-gradient(135deg, var(--cosmic-bg-darkest) 0%, var(--cosmic-bg-dark) 100%);
+  color: var(--cosmic-text-primary);
+}
+
+/* Battlegrounds Banner */
+.battlegrounds-banner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  top: 6rem;
+  margin: 0rem auto 3rem auto;
+  padding: 2.5rem 2rem 2.5rem 2rem;
+  max-width: 1200px;
+  position: relative;
+  overflow: hidden;
+  animation: fadeIn 0.7s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+/* Full-width background image for banner */
+.banner-bg-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+  opacity: 0.32;
+  pointer-events: none;
+  transition: opacity 0.3s;
+}
+
+.battlegrounds-banner .banner-content {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  gap: 2.5rem;
+  width: 100%;
+}
+
+.banner-logo {
+  width: 180px;
+  height: 180px;
+  object-fit: contain;
+  border-radius: var(--cosmic-radius-lg);
+  box-shadow: var(--cosmic-shadow-md), var(--cosmic-glow-blue-md);
+  background: rgba(0,0,0,0.15);
+  flex-shrink: 0;
+}
+
+.banner-text {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.banner-title {
+  font-size: 2.7rem;
+  font-weight: 900;
+  background: var(--cosmic-gradient-blue);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: var(--cosmic-glow-blue-md);
+  margin: 0 0 0.5rem 0;
+}
+
+.banner-subtitle {
+  font-size: 1.25rem;
+  color: var(--cosmic-text-secondary);
+  margin-bottom: 0.5rem;
+  max-width: 600px;
+}
+
+.banner-ctas {
+  display: flex;
+  gap: 1.5rem;
+  margin-top: 0.5rem;
+}
+
+/* Responsive adjustments for banner */
+@media (max-width: 900px) {
+  .banner-content {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1.5rem;
+  }
+  .banner-logo {
+    width: 120px;
+    height: 120px;
+  }
+  .banner-title {
+    font-size: 2rem;
+  }
+}
+@media (max-width: 600px) {
+  .battlegrounds-banner {
+    padding: 1.2rem 0.5rem;
+  }
+  .banner-title {
+    font-size: 1.3rem;
+  }
+  .banner-logo {
+    width: 80px;
+    height: 80px;
+  }
+  .banner-ctas {
+    flex-direction: column;
+    gap: 0.75rem;
+    width: 100%;
+  }
+}
+
+/* Games Grid and Cards (unchanged, but ensure cosmic style) */
+.games-grid {
+  display: grid;
+  padding: 4rem;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 3rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.game-card {
+  background: var(--cosmic-glass-bg);
+  backdrop-filter: var(--cosmic-glass-blur);
+  border: 1px solid var(--cosmic-glass-border);
+  border-radius: 16px;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  position: relative;
+  margin-top: 1rem;
+}
+
+.game-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 40px rgba(0, 183, 255, 0.2);
+  border-color: var(--cosmic-blue-light);
+}
+
+.game-image {
+  position: relative;
+  height: 200px;
+  overflow: hidden;
+}
+
+.game-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.game-card:hover .game-image img {
+  transform: scale(1.05);
+}
+
+.game-badge {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  font-weight: bold;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  z-index: 2;
+}
+
+.game-badge.alpha {
+  background: linear-gradient(135deg, #ff6b6b, #ee5a24);
+  color: white;
+}
+
+.game-badge.beta {
+  background: linear-gradient(135deg, #feca57, #ff9ff3);
+  color: #2c3e50;
+}
+
+.game-badge.classic {
+  background: linear-gradient(135deg, #d448fb, #e30a9b);
+  color: white;
+}
+
+.game-badge.prototype {
+  background: linear-gradient(135deg, #48fb51, #2fa704);
+  color: white;
+}
+
+.game-info {
+  padding: 1.5rem;
+}
+
+.game-title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+  color: var(--cosmic-text-primary);
+}
+
+.game-description {
+  color: var(--cosmic-text-secondary);
+  line-height: 1.5;
+  margin-bottom: 1rem;
+}
+
+.game-meta {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+  font-size: 0.9rem;
+}
+
+.release-date {
+  color: var(--cosmic-blue-light);
+}
+
+.game-type {
+  background: rgba(0, 183, 255, 0.1);
+  color: var(--cosmic-blue-light);
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+}
+
+.game-features {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.feature {
+  background: rgba(255, 255, 255, 0.1);
+  color: var(--cosmic-text-secondary);
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+  font-size: 0.8rem;
+}
+
+.game-cta {
+  padding: 0 1.5rem 1.5rem;
+}
+
+.play-button {
+  width: 100%;
+  padding: 0.75rem;
+  background: linear-gradient(135deg, var(--cosmic-blue-light), var(--cosmic-purple-light));
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.play-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(0, 183, 255, 0.3);
+}
+
+/* Game Launcher Modal */
+.game-launcher-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  backdrop-filter: blur(10px);
+}
+
+.launcher-content {
+  background: var(--cosmic-glass-bg);
+  backdrop-filter: var(--cosmic-glass-blur);
+  border: 1px solid var(--cosmic-glass-border);
+  border-radius: 16px;
+  max-width: 600px;
+  width: 90%;
+  max-height: 80vh;
+  overflow-y: auto;
+}
+
+.launcher-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem;
+  border-bottom: 1px solid var(--cosmic-glass-border);
+}
+
+.launcher-header h2 {
+  margin: 0;
+  color: var(--cosmic-text-primary);
+}
+
+.close-button {
+  background: none;
+  border: none;
+  color: var(--cosmic-text-secondary);
+  font-size: 2rem;
+  cursor: pointer;
+  padding: 0;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: all 0.3s ease;
+}
+
+.close-button:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: var(--cosmic-text-primary);
+}
+
+.launcher-body {
+  padding: 1.5rem;
+}
+
+.game-preview {
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+.game-preview img {
+  max-width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.launch-options {
+  margin-bottom: 1.5rem;
+}
+
+.option-group h4 {
+  margin-bottom: 1rem;
+  color: var(--cosmic-text-primary);
+}
+
+.option {
+  display: flex;
+  align-items: center;
+  margin-bottom: 0.75rem;
+  padding: 0.75rem;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 8px;
+  transition: all 0.3s ease;
+}
+
+.option:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.option input[type="radio"] {
+  margin-right: 0.75rem;
+}
+
+.option label {
+  cursor: pointer;
+  color: var(--cosmic-text-primary);
+}
+
+.launch-button-container {
+  text-align: center;
+}
+
+.launch-button {
+  padding: 1rem 2rem;
+  background: linear-gradient(135deg, var(--cosmic-blue-light), var(--cosmic-purple-light));
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-weight: bold;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.launch-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(0, 183, 255, 0.3);
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+  .hero-title {
+    font-size: 2.5rem;
+  }
+  
+  .hero-subtitle {
+    font-size: 1.2rem;
+  }
+  
+  .games-grid {
+    grid-template-columns: 1fr;
+    padding: 1rem;
+  }
+  
+  .launcher-content {
+    width: 95%;
+    margin: 1rem;
+  }
+}
+

@@ -1,0 +1,238 @@
+---
+import Starfield from './Starfield.astro';
+
+// 1:1 port of the Vue DAO HeroSection carousel (5 slides, autoplay, parallax, referral).
+const slides = [
+  {
+    heroImage: '/assets/webp/hero.webp',
+    logo: '/assets/webp/adventures.webp',
+    cta: [
+      { link: '/play/adventures-3d', style: 'primary', referral: false },
+      { link: 'https://store.epicgames.com/en-US/p/cosmicrafts-499a8f', style: 'secondary', referral: false },
+    ],
+  },
+  {
+    heroImage: '/assets/icons/logo.svg',
+    heroImageLocales: { zh: '/assets/icons/logo-cn.svg', ko: '/assets/icons/logo-kr.svg', ja: '/assets/icons/logo-jp.svg', ru: '/assets/icons/logo-ru.svg', ar: '/assets/icons/logo-ar.svg' },
+    logo: '/assets/icons/DAO-1.svg',
+    cta: [
+      { link: 'https://nns.ic0.app/', style: 'primary', referral: false },
+      { link: '/whitepaper', style: 'secondary', referral: false },
+    ],
+  },
+  {
+    heroImage: '/assets/webp/hero-battlegrounds.webp',
+    logo: '/assets/webp/battlegrounds.webp',
+    cta: [
+      { link: 'https://ohsalmeron.itch.io/cosmicrafts', style: 'primary', referral: false },
+      { link: 'https://cosmicrafts.fandom.com/wiki/Cosmicrafts_Wiki', style: 'secondary', referral: false },
+    ],
+  },
+  {
+    heroImage: '/assets/webp/classics-hero.webp',
+    logo: '/assets/webp/classics-logo.webp',
+    cta: [
+      { link: '/games', style: 'primary', referral: false },
+      { link: 'https://x.com/cosmicrafts/highlights', style: 'secondary', referral: false },
+    ],
+  },
+  {
+    heroImage: '/assets/webp/hero4.webp',
+    logo: '/assets/icons/dashboard.svg',
+    cta: [
+      { link: '/governance', style: 'primary', referral: false },
+      { link: '#', style: 'secondary', referral: true },
+    ],
+  },
+];
+
+const socials = [
+  { href: 'https://x.com/cosmicrafts', icon: '/assets/icons/x.svg', alt: 'X' },
+  { href: 'https://discord.com/invite/cosmicrafts-884272584491941888', icon: '/assets/icons/discord.svg', alt: 'Discord' },
+  { href: 'https://www.youtube.com/@cosmicrafts', icon: '/assets/icons/youtube.svg', alt: 'YouTube' },
+  { href: 'https://instagram.com/cosmicrafts', icon: '/assets/icons/instagram.svg', alt: 'Instagram' },
+  { href: 'https://facebook.com/cosmicrafts', icon: '/assets/icons/facebook.svg', alt: 'Facebook' },
+];
+---
+
+<section class="hero" id="hero-carousel" aria-label="Cosmicrafts highlights">
+  <div class="hero-starfield" aria-hidden="true">
+    <Starfield />
+  </div>
+
+  <div class="slide" id="hero-slide">
+    <div class="hero-content">
+      <img id="hero-image" src={slides[0].heroImage} alt="Hero Image" class="hero-image initial-load" />
+      <img id="hero-logo" src={slides[0].logo} alt="Game Logo" class="hero-logo initial-load" />
+      <div class="title-indicator-wrapper">
+        <h1 id="hero-title" class="hero-title initial-load" data-i18n="hero.slides[0].title">It all starts here. Alpha's live—get in now!</h1>
+      </div>
+    </div>
+
+    <div class="slide-indicators initial-load" id="hero-dots" role="tablist" aria-label="Slides">
+      {slides.map((_, i) => (
+        <span role="tab" tabindex="0" aria-label={`Slide ${i + 1}`} class={i === 0 ? 'active' : ''} data-slide={i}></span>
+      ))}
+    </div>
+
+    <div class="cta-panel initial-load">
+      <div class="cta-buttons" id="hero-ctas">
+        {slides[0].cta.map((b, i) => (
+          <button
+            class={`cosmic-button ${b.style === 'primary' ? 'cosmic-button-primary' : 'cosmic-button-secondary'} initial-load min-h-[44px]`}
+            data-link={b.link}
+            data-referral={b.referral ? '1' : ''}
+          >
+            <span class="button-text" data-i18n={`hero.slides[0].ctaButtons[${i}].text`}>{i === 0 ? 'Play Now!' : 'Wishlist on Epic Games'}</span>
+            <span class="button-glow"></span>
+            <span class="button-particles"></span>
+          </button>
+        ))}
+      </div>
+      <div class="social-links">
+        {socials.map((s) => (
+          <a href={s.href} target="_blank" rel="noopener" class="cosmic-social-icon initial-load" aria-label={s.alt}>
+            <img src={s.icon} alt={s.alt} width="20" height="20" loading="lazy" />
+          </a>
+        ))}
+      </div>
+    </div>
+  </div>
+
+  <div class="nav-controls initial-load">
+    <button class="cosmic-nav-arrow min-h-[44px] min-w-[44px]" id="hero-prev" aria-label="Previous slide">
+      <span class="nav-arrow-glow"></span>
+      &#10094;
+    </button>
+    <button class="cosmic-nav-arrow min-h-[44px] min-w-[44px]" id="hero-next" aria-label="Next slide">
+      <span class="nav-arrow-glow"></span>
+      &#10095;
+    </button>
+  </div>
+
+  <div id="hero-referral" class="referral-notification" hidden>
+    <div class="notification-content">
+      <i class="notification-icon">✓</i>
+      <div class="notification-text">
+        <p class="notification-title">Referral code copied</p>
+        <p class="notification-message" id="hero-referral-code"></p>
+      </div>
+      <button class="notification-close" id="hero-referral-close" aria-label="Close">×</button>
+    </div>
+  </div>
+</section>
+
+<script define:vars={{ slides }}>
+  const root = document.getElementById('hero-carousel');
+  const img = document.getElementById('hero-image');
+  const logo = document.getElementById('hero-logo');
+  const title = document.getElementById('hero-title');
+  const ctas = document.getElementById('hero-ctas');
+  const dots = [...document.querySelectorAll('#hero-dots span')];
+  const referral = document.getElementById('hero-referral');
+  const referralCode = document.getElementById('hero-referral-code');
+  let current = 0, entering = false, timer = null, loadedOnce = false, sy = 0;
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  const heroImageFor = (i) => {
+    const s = slides[i];
+    if (s.heroImageLocales && s.heroImageLocales[window.CC?.lang]) return s.heroImageLocales[window.CC.lang];
+    return s.heroImage;
+  };
+
+  const render = (i) => {
+    img.src = heroImageFor(i);
+    logo.src = slides[i].logo;
+    title.setAttribute('data-i18n', `hero.slides[${i}].title`);
+    title.textContent = window.CC ? CC.t(`hero.slides[${i}].title`) : title.textContent;
+    ctas.innerHTML = '';
+    slides[i].cta.forEach((b, bi) => {
+      const btn = document.createElement('button');
+      btn.className = `cosmic-button ${b.style === 'primary' ? 'cosmic-button-primary' : 'cosmic-button-secondary'} min-h-[44px]`;
+      btn.setAttribute('data-link', b.link);
+      if (b.referral) btn.setAttribute('data-referral', '1');
+      const key = `hero.slides[${i}].ctaButtons[${bi}].text`;
+      btn.innerHTML = `<span class="button-text" data-i18n="${key}"></span><span class="button-glow"></span><span class="button-particles"></span>`;
+      btn.querySelector('.button-text').textContent = window.CC ? CC.t(key) : '';
+      btn.addEventListener('click', onCta);
+      ctas.appendChild(btn);
+    });
+    dots.forEach((d, di) => d.classList.toggle('active', di === i));
+  };
+
+  const swap = (next, dir) => {
+    img.classList.add(dir === 'next' ? 'leave-animation-next' : 'leave-animation-prev');
+    logo.classList.add('leave-animation');
+    title.classList.add('leave-animation');
+    setTimeout(() => {
+      current = next;
+      ['leave-animation-next', 'leave-animation-prev'].forEach((c) => img.classList.remove(c));
+      logo.classList.remove('leave-animation');
+      title.classList.remove('leave-animation');
+      render(current);
+      img.classList.add(dir === 'next' ? 'enter-animation-next' : 'enter-animation-prev');
+      logo.classList.add('enter-animation');
+      title.classList.add('enter-animation');
+      entering = true;
+      setTimeout(() => {
+        ['enter-animation-next', 'enter-animation-prev'].forEach((c) => img.classList.remove(c));
+        logo.classList.remove('enter-animation');
+        title.classList.remove('enter-animation');
+        entering = false;
+      }, 60);
+    }, 40);
+  };
+
+  const go = (i, dir) => { if (i === current || entering) return; swap((i + slides.length) % slides.length, dir || (i > current ? 'next' : 'prev')); restart(); };
+  const next = () => go(current + 1, 'next');
+  const prev = () => go(current - 1, 'prev');
+  const restart = () => { stop(); if (!reduceMotion) timer = setInterval(next, 5000); };
+  const stop = () => { if (timer) clearInterval(timer); };
+
+  const onCta = (e) => {
+    const btn = e.currentTarget;
+    const link = btn.getAttribute('data-link');
+    if (btn.hasAttribute('data-referral')) {
+      const code = 'COSMIC' + Math.floor(1000 + Math.random() * 9000);
+      navigator.clipboard?.writeText(code).then(() => {
+        referralCode.textContent = code;
+        referral.hidden = false;
+        referral.classList.toggle('mobile', window.innerWidth <= 768);
+        setTimeout(() => { referral.hidden = true; }, 3000);
+      });
+      restart();
+      return;
+    }
+    if (link.startsWith('http')) window.open(link, '_blank');
+    else window.location.href = link;
+  };
+
+  document.getElementById('hero-next')?.addEventListener('click', next);
+  document.getElementById('hero-prev')?.addEventListener('click', prev);
+  dots.forEach((d) => {
+    const i = Number(d.getAttribute('data-slide'));
+    d.addEventListener('click', () => go(i));
+    d.addEventListener('keydown', (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); go(i); } });
+  });
+  document.getElementById('hero-referral-close')?.addEventListener('click', () => { referral.hidden = true; });
+
+  // Parallax on scroll (same factors as the Vue hero)
+  const parallax = () => {
+    sy = window.scrollY;
+    img.style.transform = `translateY(${sy * -0.05}px) scale(${1 - sy * 0.000825})`;
+    logo.style.transform = `translateY(${sy * -0.05}px) scale(${1 - sy * -0.00055})`;
+    title.style.transform = `translateY(${sy * -0.055}px) scale(${1 - sy * -0.00055})`;
+  };
+  if (!reduceMotion) window.addEventListener('scroll', parallax, { passive: true });
+
+  // Re-render texts when the language changes
+  document.addEventListener('cc:lang', () => render(current));
+
+  img.addEventListener('animationend', () => { if (!loadedOnce) { loadedOnce = true; } });
+  setTimeout(() => {
+    loadedOnce = true;
+    root.querySelectorAll('.initial-load').forEach((el) => el.classList.remove('initial-load'));
+    render(current);
+    restart();
+  }, 700);
+</script>

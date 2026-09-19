@@ -21,9 +21,53 @@ const { title, description = 'Cosmicrafts — space RTS strategy game by World o
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@200;300;400;500;600;700;800&display=swap" rel="stylesheet" />
+    <!-- Cosmic theme ported 1:1 from the Vue DAO frontend -->
+    <link rel="stylesheet" href="/assets/css/cosmic-theme.css" />
+    <link rel="stylesheet" href="/assets/css/universal.css" />
+    <link rel="stylesheet" href="/assets/css/hero-section.css" />
   </head>
   <body class="min-h-screen w-full bg-[#05050f] text-white font-sans antialiased m-0 p-0 overflow-x-hidden">
     <slot />
+    <script is:inline>
+      // Minimal i18n runtime ported from the Vue DAO frontend (vue-i18n JSON dicts).
+      // Elements opt in with data-i18n="path.to.key" (text) or data-i18n-ph="path" (placeholder).
+      window.CC = window.CC || {};
+      CC.lang = (() => { try { return localStorage.getItem('cc-lang') || 'en'; } catch { return 'en'; } })();
+      CC.dict = {}; CC.fallback = {};
+      CC.t = (path) => {
+        const get = (o) => String(path).split('.').reduce((a, k) => (a && a[k] !== undefined ? a[k] : undefined), o);
+        const v = get(CC.dict); if (v !== undefined) return v;
+        const f = get(CC.fallback); if (f !== undefined) return f;
+        return path;
+      };
+      CC.applyI18n = (root) => {
+        (root || document).querySelectorAll('[data-i18n]').forEach((el) => { el.textContent = CC.t(el.getAttribute('data-i18n')); });
+        (root || document).querySelectorAll('[data-i18n-ph]').forEach((el) => { el.setAttribute('placeholder', CC.t(el.getAttribute('data-i18n-ph'))); });
+      };
+      CC.setLang = async (lang) => {
+        CC.lang = lang;
+        try { localStorage.setItem('cc-lang', lang); } catch {}
+        try {
+          const r = await fetch('/i18n/' + lang + '.json');
+          if (r.ok) CC.dict = await r.json();
+        } catch {}
+        document.documentElement.lang = lang;
+        CC.applyI18n(document);
+        document.dispatchEvent(new CustomEvent('cc:lang', { detail: { lang } }));
+      };
+      (async () => {
+        try {
+          const [fb, cur] = await Promise.all([
+            fetch('/i18n/en.json').then((r) => (r.ok ? r.json() : {})),
+            CC.lang === 'en' ? Promise.resolve(null) : fetch('/i18n/' + CC.lang + '.json').then((r) => (r.ok ? r.json() : null)).catch(() => null),
+          ]);
+          CC.fallback = fb || {}; CC.dict = cur || fb || {};
+        } catch {}
+        document.documentElement.lang = CC.lang;
+        CC.applyI18n(document);
+        document.dispatchEvent(new CustomEvent('cc:lang', { detail: { lang: CC.lang } }));
+      })();
+    </script>
   </body>
 </html>
 

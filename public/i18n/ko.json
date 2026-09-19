@@ -1,0 +1,643 @@
+{
+  "login": {
+    "connectWith": "메타버스에 오신 것을 환영합니다",
+    "internetIdentity": "Internet Identity로 로그인",
+    "google": "Google로 로그인",
+    "guestAccount": "게스트로 계속하기",
+    "signInClarification": "시드가 있으신가요?",
+    "loginWith": "{method}로 로그인",
+    "enterSeedPhrase": "시드 구문 입력",
+    "accountRecovery": "계정 복구",
+    "recoverAccount": "이 시드로 로그인",
+    "seedValid": "시드 구문이 유효해 보입니다!",
+    "invalidSeedPhrase": "유효하지 않은 시드 구문입니다.",
+    "invalidSeedLength": "시드 구문은 정확히 12개의 단어여야 합니다.",
+    "guestLoginError": "죄송합니다! 오류가 발생했습니다.",
+    "recoverySuccess": "계정 복구 성공!",
+    "recovering": "복구 중..."
+  },
+  "register": {
+    "usernameLabel": "사용자 이름:",
+    "usernamePlaceholder": "최대 12자",
+    "referralCodeLabel": "추천 코드:",
+    "referralCodePlaceholder": "(선택사항)",
+    "noReferralCode": "코드가 없으신가요?",
+    "getReferralCode": "여기서 받으세요!",
+    "acceptTerms": "다음에 동의합니다",
+    "privacyPolicy": "개인정보 보호정책",
+    "termsOfService": "서비스 약관",
+    "and": "및",
+    "continueButton": "계속하기",
+    "successMessage": "환영합니다, {username}님!",
+    "failureMessage": "등록 실패.",
+    "newPlayer": "신규 플레이어",
+    "selectedAvatarAlt": "선택된 아바타",
+    "projectedAvatarAlt": "투영된 아바타",
+    "avatarIconAlt": "아바타 아이콘",
+    "avatarGridTitle": "아바타 선택",
+    "avatarAlt": "아바타 {index}"
+  },
+  "header": {
+    "home": "홈",
+    "features": "기능",
+    "play": "플레이",
+    "games": "게임",
+    "community": "커뮤니티",
+    "contact": "연락처",
+    "support": "지원",
+    "language": "언어",
+    "marketplace": "마켓플레이스",
+    "spiral": "스파이럴",
+    "dao": "DAO",
+    "dashboard": "대시보드",
+    "connect": "연결",
+    "whitepaper": "백서",
+    "login": "로그인",
+    "myProfile": "내 프로필",
+    "settings": "설정",
+    "signout": "로그아웃",
+    "profile": "프로필",
+    "roadmap": "로드맵"
+  },
+  "error": {
+    "title": "이런!",
+    "description": "이 페이지가 사라졌네요!",
+    "homeButton": "⏪ 돌아가기"
+  },
+  "hero": {
+    "slides": [
+      {
+        "title": "모든 것이 여기서 시작됩니다. 알파가 준비되었습니다. 지금 참여하세요!",
+        "ctaButtons": [
+          { "text": "지금 플레이!" },
+          { "text": "Epic Games에서 위시리스트에 추가" }
+        ]
+      },
+      {
+        "title": "파티가 시작됩니다! 참여하시겠습니까?",
+        "ctaButtons": [
+          { "text": "NNS로 이동" },
+          { "text": "백서 보기" }
+        ]
+      },
+      {
+        "title": "블록체인 상의 RTS. 별간 이동, 은하계 혼돈",
+        "ctaButtons": [
+          { "text": "지금 다운로드!" },
+          { "text": "더 알아보기!" }
+        ]
+      },
+      {
+        "title": "연결하세요! 친구를 초대하고 독점 보상을 받으세요!",
+        "ctaButtons": [
+          { "text": "대시보드로 이동" },
+          { "text": "추천 코드 받기" }
+        ]
+      }
+    ]
+  },
+  "cta": "Cosmicrafts Adventures를 지금 체험해보세요",
+  "lore": {
+    "title": "Cosmicrafts의 전설",
+    "description": "영웅들, 전설적인 전투, 그리고 당신이 발견할 수 있는 신비가 가득한 Cosmicrafts의 전설로 함께 빠져들어보세요!"
+  },
+  "games": {
+    "title": "우리의 게임",
+    "battlegrounds": {
+      "title": "Cosmicrafts Battlegrounds",
+      "description": "Cosmicrafts 우주에서 친구들과 함께 짜릿한 전투에 참여하세요!"
+    },
+    "adventures": {
+      "title": "Cosmicrafts Adventures",
+      "description": "흥미진진한 우주 임무를 탐험하고 함께 은하계의 신비를 밝혀보세요!"
+    }
+  },
+  "carousel": {
+    "slides": [
+      {
+        "title": "Cosmicrafts Adventures",
+        "description": "Cosmicrafts Adventures와 함께 발전하는 새로운 우주를 탐험하세요!",
+        "buttonText": "더 알아보기",
+        "action": "adventures"
+      },
+      {
+        "title": "Cosmicrafts Battleground",
+        "description": "액션에 참여하고 지금 바로 Cosmicrafts Battleground를 플레이하세요!",
+        "buttonText": "지금 플레이",
+        "action": "battleground"
+      },
+      {
+        "title": "최신 뉴스",
+        "description": "Cosmicrafts의 최신 뉴스와 정보를 계속 확인하세요.",
+        "buttonText": "뉴스 보기",
+        "action": "news"
+      },
+      {
+        "title": "ICP 기술",
+        "description": "Cosmicrafts를 구동하는 혁신적인 ICP 기술에 대해 자세히 알아보세요.",
+        "buttonText": "ICP 탐험",
+        "action": "technology"
+      }
+    ]
+  },
+  "footer": {
+    "stayConnected": "연결을 유지하세요",
+    "explore": "탐험",
+    "careers": "채용",
+    "about": "소개",
+    "support": "지원",
+    "press": "언론",
+    "creators": "크리에이터",
+    "privacy": "개인정보",
+    "legal": "법률",
+    "terms": "약관",
+    "cookiePolicy": "쿠키 정책",
+    "cookieSettings": "쿠키 설정",
+    "language": "언어",
+    "trademarks": "여기에 언급된 모든 상표는 해당 소유자의 재산입니다."
+  },
+  "darkRift": {
+    "title": "다크 리프트",
+    "discover": "발견"
+  },
+  "loadingScreen": {
+    "messages": {
+      "initializingQuantumShenanigans": "양자 장난감 초기화 중",
+      "chargingHyperdrive": "하이퍼드라이브 충전 중",
+      "generatingCosmicChaos": "우주적 혼돈 생성 중",
+      "decodingAlienSignals": "외계 신호 해독 중",
+      "calibratingFluxCapacitor": "플럭스 커패시터 보정 중",
+      "initiatingSelfDestruct": "자가 파괴 시작 중",
+      "fuelingRocket": "로켓 연료 주입 중",
+      "generatingWormholes": "웜홀 생성 중",
+      "conjuringBlackHole": "블랙홀 소환 중",
+      "syncingHiveMind": "집단 지성 동기화 중",
+      "reticulatingSplines": "스플라인 재구성 중",
+      "summoningSpaceHamsters": "우주 햄스터 소환 중",
+      "defragmentingSpaceTime": "시공간 조각 모음 중",
+      "transmogrifyingMatter": "물질 변형 중",
+      "brewingNebula": "성운 양조 중",
+      "lubricatingGears": "기어 윤활 중",
+      "tighteningRealityBolts": "현실 볼트 조이는 중",
+      "chargingStardustReserves": "별먼지 예비 충전 중",
+      "calibratingLaserBeams": "레이저 빔 보정 중",
+      "summoningFriendlyAliens": "친근한 외계인 소환 중",
+      "spinningUpWormhole": "웜홀 회전 중",
+      "tamingBlackHoles": "블랙홀 길들이기 중",
+      "polishingStars": "별 광내기 중",
+      "clearingAsteroidBelt": "소행성대 정리 중",
+      "rewritingGalacticCode": "은하계 코드 재작성 중",
+      "encryptingCosmos": "우주 암호화 중",
+      "quantumJuggling": "양자 저글링 중",
+      "debuggingAliens": "외계인 디버깅 중",
+      "hackingGravity": "중력 해킹 중",
+      "warmingUpWarpDrive": "워프 드라이브 예열 중",
+      "tamingComets": "혜성 길들이기 중",
+      "aligningPhotonBeams": "광자 빔 정렬 중",
+      "overclockingStellarEngine": "항성 엔진 오버클럭 중",
+      "stirringCosmicSoup": "우주 수프 저어 중",
+      "buffingRocketPaint": "로켓 도색 광내기 중",
+      "resettingWormholePhysics": "웜홀 물리학 재설정 중",
+      "aligningNebulas": "성운 정렬 중",
+      "herdingAsteroids": "소행성 몰이 중",
+      "debuggingStardust": "별먼지 디버깅 중",
+      "uploadingTheUniverse": "우주 업로드 중",
+      "turningOffInertia": "관성 끄는 중",
+      "pluckingSuperstrings": "초끈 튕기는 중",
+      "paintingNebulas": "성운 채색 중",
+      "scanningForLife": "생명체 스캔 중",
+      "reversingPolarity": "극성 반전 중",
+      "quantumDancing": "양자 춤추기 중",
+      "herdingWormholes": "웜홀 몰이 중",
+      "encryptingReality": "현실 암호화 중",
+      "debuggingTheMultiverse": "다중우주 디버깅 중"
+    }
+  },
+  "notifications": {
+    "title": "알림",
+    "noNotifications": "알림 없음",
+    "viewAll": "모두 보기",
+    "friendRequests": "친구 요청",
+    "noFriendRequests": "친구 요청 없음",
+    "accept": "수락",
+    "decline": "거절",
+    "accepted": "수락됨",
+    "declined": "거절됨",
+    "sentYouFriendRequest": "님이 친구 요청을 보냈습니다",
+    "acceptedYourFriendRequest": "님이 친구 요청을 수락했습니다",
+    "newFriendRequest": "새로운 친구 요청이 있습니다",
+    "privacySettingsUpdated": "개인정보 설정이 업데이트되었습니다.",
+    "tabs": {
+      "all": "전체",
+      "friendRequests": "친구 요청",
+      "notifications": "알림"
+    },
+    "timeAgo": {
+      "justNow": "방금 전",
+      "minutesAgo": "{minutes}분 전",
+      "hoursAgo": "{hours}시간 전",
+      "daysAgo": "{days}일 전"
+    }
+  },
+  "profilePage": {
+    "profileError": "프로필 오류",
+    "retry": "다시 시도",
+    "goHome": "홈으로 가기",
+    "errorHelp": "이 프로필이 존재하지 않거나 일시적으로 사용할 수 없습니다. 사용자 이름을 입력한 경우 Principal ID로 접근을 시도하거나 그 반대로 시도해보세요.",
+    "tabs": {
+      "profile": "프로필",
+      "stats": "통계",
+      "collection": "컬렉션",
+      "social": "소셜"
+    },
+    "unknownPlayer": "알 수 없는 플레이어",
+    "defaultTitle": "은하계 탐험가",
+    "registrationDate": "{date}부터 회원",
+    "friendActions": {
+      "addFriend": "친구 추가",
+      "requestSent": "요청 전송됨",
+      "removeFriend": "친구 삭제"
+    },
+    "noDescription": "설명 없음",
+    "edit": "편집",
+    "playerStats": {
+      "elo": "ELO",
+      "winRate": "승률",
+      "games": "게임"
+    },
+    "editProfile": "프로필 편집",
+    "playerId": "플레이어 ID",
+    "quickStats": "빠른 통계",
+    "statsCards": {
+      "totalKills": "총 처치",
+      "energyEfficiency": "에너지 효율",
+      "criticalHits": "치명타"
+    },
+    "combatStatistics": "전투 통계",
+    "statsDetails": {
+      "damageDealt": "가한 피해",
+      "damageEvaded": "회피한 피해",
+      "energyGenerated": "생성된 에너지",
+      "energyUsed": "사용된 에너지"
+    },
+    "nftCollection": "NFT 컬렉션",
+    "nftCategories": {
+      "all": "모든 NFT",
+      "characters": "캐릭터",
+      "units": "유닛",
+      "avatars": "아바타",
+      "trophies": "트로피",
+      "chests": "상자"
+    },
+    "noNfts": "수집된 {category} 없음",
+    "achievements": "업적",
+    "achievementStats": {
+      "completedBy": "완료자",
+      "points": "포인트"
+    },
+    "friends": "친구",
+    "friendStatus": {
+      "online": "온라인",
+      "offline": "오프라인"
+    },
+    "editProfileModal": {
+      "title": "프로필 편집",
+      "username": "사용자 이름",
+      "title": "제목",
+      "description": "설명",
+      "cancel": "취소",
+      "saveChanges": "변경사항 저장"
+    },
+    "confirmRemoveFriend": "{username}님을 친구 목록에서 삭제하시겠습니까?"
+  },
+  "months": {
+    "0": "1월",
+    "1": "2월",
+    "2": "3월",
+    "3": "4월",
+    "4": "5월",
+    "5": "6월",
+    "6": "7월",
+    "7": "8월",
+    "8": "9월",
+    "9": "10월",
+    "10": "11월",
+    "11": "12월"
+  },
+  "whitepaper": {
+    "title": "백서",
+    "navigation": {
+      "sections": {
+        "introduction": {
+          "title": "소개",
+          "description": "개요 및 가치 제안"
+        },
+        "tokenomics": {
+          "title": "토큰노믹스",
+          "description": "토큰 분배 및 경제"
+        },
+        "governance": {
+          "title": "거버넌스",
+          "description": "의사결정 시스템"
+        },
+        "community": {
+          "title": "커뮤니티",
+          "description": "참여 및 성장"
+        },
+        "architecture": {
+          "title": "기술 아키텍처",
+          "description": "기술 인프라"
+        },
+        "core-features": {
+          "title": "핵심 기능",
+          "description": "제품 기능"
+        }
+      },
+      "documentation": "문서",
+      "previous": "이전",
+      "next": "다음",
+      "chapters": "챕터",
+      "mobileTitle": "백서 섹션",
+      "mobileSubtitle": "챕터 탐색"
+    }
+  },
+  "dao": {
+    "headline": {
+      "title": "유산의 여명",
+      "subtitle": "지금이 DAO다, 아니면 절대 안 된다!",
+      "stakeholder_cta": "이해관계자 되기",
+      "whitepaper_cta": "백서 읽기"
+    },
+    "explainer": {
+      "title": "코스믹크래프트 DAO란 무엇인가요?",
+      "description": "코스믹크래프트 DAO(탈중앙화 자율조직)는 커뮤니티가 코스믹크래프트 게임 생태계의 미래를 집단적으로 관리할 수 있게 합니다. SPIRAL 토큰을 소유함으로써, 이해관계자들은 플랫폼 개발, 자금 관리, 경제 정책에 영향을 미치는 주요 결정에 참여할 수 있습니다.",
+      "pillars": {
+        "governance": {
+          "title": "커뮤니티 거버넌스",
+          "description": "제안에 투표하고 민주적 의사결정을 통해 플랫폼의 미래 방향을 형성하세요."
+        },
+        "treasury": {
+          "title": "공유 재정",
+          "description": "생태계 성장과 개발에 전념하는 7억6천만 SPIRAL 토큰의 자금을 공동으로 관리하세요."
+        },
+        "rewards": {
+          "title": "스테이킹 보상",
+          "description": "적극적인 참여와 플랫폼 성장에 대한 장기적인 헌신을 통해 보상을 얻으세요."
+        }
+      },
+      "links": {
+        "roadmap": "로드맵 보기",
+        "whitepaper": "백서 읽기"
+      }
+    },
+    "distribution": {
+      "title": "토큰 분배",
+      "treasury": {
+        "title": "재정",
+        "description": "생태계 성장 및 DAO 통제 자금"
+      },
+      "swap": {
+        "title": "SNS 스왑",
+        "description": "8회 분기별 출시와 함께 공개 판매"
+      },
+      "team": {
+        "title": "개발팀",
+        "description": "핵심 팀을 위한 8년 베스팅"
+      },
+      "investors": {
+        "title": "초기 투자자",
+        "description": "다양한 베스팅을 가진 초기 후원자"
+      }
+    },
+    "governance": {
+      "title": "거버넌스 모델",
+      "proposal_creation": {
+        "title": "제안 생성",
+        "requirement": "1,000 SPIRAL",
+        "description": "제안 제출에 필요한 최소 스테이크"
+      },
+      "voting_period": {
+        "title": "투표 기간",
+        "requirement": "7일",
+        "description": "제안에 대한 표준 심의 시간"
+      },
+      "voting_power": {
+        "title": "투표력",
+        "requirement": "최대 3배",
+        "description": "스테이킹과 연령을 통한 최대 승수"
+      },
+      "lock_period": {
+        "title": "잠금 기간",
+        "requirement": "30일-8년",
+        "description": "잠금 해제를 위한 유연한 옵션"
+      }
+    },
+    "metrics": {
+      "title": "토큰 메트릭스",
+      "total_supply": "총 공급량",
+      "treasury_size": "재정 규모",
+      "min_proposal": "제안용 최소 스테이크",
+      "initial_apy": "초기 APY"
+    },
+    "staking": {
+      "title": "스테이킹 혜택",
+      "subtitle": "참여를 통한 수익",
+      "description": "SPIRAL 토큰을 잠그고 보상을 얻고 거버넌스 파워를 높이세요",
+      "benefits": {
+        "initial_apy": {
+          "title": "초기 APY"
+        },
+        "transition": {
+          "title": "전환 기간"
+        },
+        "final_apy": {
+          "title": "최종 APY"
+        }
+      },
+      "multipliers": {
+        "title": "파워 승수",
+        "dissolve": {
+          "title": "해제 지연"
+        },
+        "age": {
+          "title": "뉴런 나이"
+        }
+      }
+    },
+    "rights": {
+      "title": "이해관계자 권리",
+      "treasury": {
+        "title": "재정 관리",
+        "description": "개발, 마케팅 및 커뮤니티 이니셔티브를 위한 DAO 재정 자금 할당에 투표하세요",
+        "items": {
+          "marketing": "마케팅 캠페인",
+          "development": "개발 자금",
+          "partnerships": "전략적 파트너십"
+        }
+      },
+      "economic": {
+        "title": "경제 정책",
+        "description": "집단적 의사 결정을 통해 생태계의 경제적 프레임워크를 형성하세요",
+        "items": {
+          "tokenomics": "토크노믹스 조정",
+          "staking": "스테이킹 비율 변경",
+          "fees": "수수료 구조"
+        }
+      },
+      "roadmap": {
+        "title": "개발 로드맵",
+        "description": "플랫폼의 기술 및 제품 개발 우선순위에 영향을 미치세요",
+        "items": {
+          "features": "기능 우선순위 지정",
+          "expansions": "게임 확장",
+          "improvements": "기술 개선"
+        }
+      },
+      "community": {
+        "title": "커뮤니티 프로그램",
+        "description": "생태계를 성장시키기 위한 커뮤니티 주도 이니셔티브를 설정하고 관리하세요",
+        "items": {
+          "creators": "콘텐츠 크리에이터 자금 지원",
+          "events": "이벤트 및 토너먼트",
+          "education": "교육 프로그램"
+        }
+      }
+    },
+    "join": {
+      "title": "당신의 우주적 힘을 주장하세요!",
+      "description": "DAO에 참여하고 최초의 완전한 온체인 게임 프랜차이즈 거버넌스에 참여하세요",
+      "stats": {
+        "voting": "최대 투표력",
+        "apy": "APY 범위",
+        "period": "투표 기간"
+      },
+      "stakeholder_cta": "이해관계자 되기",
+      "whitepaper_cta": "백서 읽기"
+    }
+  },
+  "proposals": {
+    "title": "활성 제안",
+    "for": "찬성",
+    "against": "반대",
+    "vote_for": "찬성 투표",
+    "vote_against": "반대 투표",
+    "status": {
+      "active": "활성",
+      "passed": "통과",
+      "rejected": "거부",
+      "executed": "실행됨",
+      "pending": "대기중"
+    },
+    "examples": {
+      "creator": {
+        "title": "커뮤니티 콘텐츠 크리에이터 프로그램",
+        "summary": "콘텐츠 크리에이터가 코스믹크래프트 생태계를 홍보하기 위한 자금을 받을 수 있는 프레임워크 구축"
+      },
+      "treasury": {
+        "title": "재정 다각화 전략",
+        "summary": "생태계와 연계된 프로토콜에 대한 전략적 투자에 자금의 5%를 할당"
+      }
+    }
+  },
+  "meta": {
+    "dao": {
+      "title": "코스믹크래프트 DAO - 게임의 미래를 위한 탈중앙화 거버넌스",
+      "description": "코스믹크래프트 DAO에 참여하고 우주 게임의 미래를 위한 탈중앙화 거버넌스에 참여하세요. SPIRAL 토큰을 스테이킹하여 보상과 투표력을 얻으세요."
+    }
+  },
+  "wallet": {
+    "title": "지갑",
+    "subtitle": "토큰과 자산 관리",
+    "principalId": "프린시펄 ID",
+    "accountId": "계정 ID",
+    "showPrincipalId": "프린시펄 ID 표시",
+    "showAccountId": "계정 ID 표시",
+    "tokens": "토큰",
+    "loadingTokens": "토큰 로딩 중...",
+    "noTokens": "토큰을 찾을 수 없음",
+    "addToken": "토큰 추가",
+    "addTokenTooltip": "사용자 정의 토큰 추가",
+    "level": "레벨",
+    "balance": "잔액",
+    "max": "최대",
+
+    "actions": "작업",
+    "send": "보내기",
+    "sendTooltip": "다른 계정으로 토큰 보내기",
+    "sendTokens": "토큰 보내기",
+    "sending": "보내는 중...",
+    "receive": "받기",
+    "receiveTooltip": "다른 사람으로부터 토큰 받기",
+    "receiveTokens": "토큰 받기",
+    "receiveDescription": "토큰을 받으려면 주소를 공유하세요",
+    "scanToSend": "스캔하여 토큰 보내기",
+    "receiveTokensNotice": "보낸 사람이 올바른 네트워크를 사용하고 있는지 확인하세요. 이 지갑에서 지원하는 토큰만 보내세요.",
+    "yourAddress": "내 주소",
+    "swap": "스왑",
+    "swapTooltip": "다른 토큰과 교환",
+    "stake": "스테이킹",
+    "stakeTooltip": "보상을 받기 위한 토큰 스테이킹",
+
+    "recipient": "수신자",
+    "enterRecipient": "수신자 주소 입력",
+    "amount": "금액",
+    "enterAmount": "금액 입력",
+    "memo": "메모",
+    "optional": "선택사항",
+    "enterMemo": "메모 또는 메시지 입력 (선택사항)",
+    "transactionFee": "거래 수수료",
+
+    "token": "토큰",
+    "tokenId": "토큰 ID",
+    "enterTokenId": "토큰 캐니스터 ID 입력",
+    "tokenIdHint": "추가하려는 토큰의 캐니스터 ID",
+    "tokenStandard": "토큰 표준",
+    "tokenName": "토큰 이름",
+    "tokenSymbol": "토큰 심볼",
+    "tokenDecimals": "토큰 소수점",
+    "showAdvanced": "고급 옵션 표시",
+    "hideAdvanced": "고급 옵션 숨기기",
+
+    "nftCollection": "NFT 컬렉션",
+    "loadingNfts": "NFT 로딩 중...",
+    "noNfts": "NFT를 찾을 수 없음",
+    "openChest": "열기",
+    "openingChest": "상자 여는 중",
+    "chestRewards": "보상",
+    "noRewardsFound": "보상을 찾을 수 없음",
+    "tapToReveal": "탭하여 확인",
+
+    "activityLog": "활동 로그",
+    "clearLogs": "로그 지우기",
+    "noLogs": "표시할 활동이 없습니다",
+
+    "copy": "복사",
+    "comingSoon": "곧 출시 예정",
+
+    "closeDialog": "닫기",
+
+    "loading": "로딩 중...",
+    "error": "오류"
+  },
+  "common": {
+    "cancel": "취소",
+    "close": "닫기",
+    "submit": "제출",
+    "loading": "로딩 중...",
+    "comingSoon": "곧 출시 예정"
+  },
+  "esc_menu": {
+    "title": "메뉴",
+    "game": "게임",
+    "social": "소셜",
+    "settings": "설정",
+    "continue_game": "계속하기",
+    "main_menu": "메인 메뉴",
+    "friends": "친구",
+    "messages": "메시지",
+    "audio": "오디오",
+    "video": "비디오",
+    "interface": "인터페이스",
+    "logout": "로그아웃"
+  }
+}

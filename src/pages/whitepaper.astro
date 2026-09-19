@@ -1,0 +1,258 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Starfield from '../components/Starfield.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+
+/** Whitepaper reader — 1:1 behavior port of the Vue DAO Whitepaper.vue. */
+const sections = [
+  { id: 'introduction', icon: '★' },
+  { id: 'tokenomics', icon: '●' },
+  { id: 'governance', icon: '⚖' },
+  { id: 'community', icon: '👥' },
+  { id: 'architecture', icon: '◫' },
+  { id: 'core-features', icon: '◧' },
+];
+---
+<link rel="stylesheet" href="/assets/css/whitepaper.css" />
+
+<Layout title="Cosmicrafts | Whitepaper" description="Cosmicrafts whitepaper: introduction, tokenomics, governance, community, architecture and core features.">
+  <div class="relative min-h-screen w-full flex flex-col z-10">
+    <div class="fixed inset-0 z-0 pointer-events-none" aria-hidden="true">
+      <Starfield />
+    </div>
+
+    <div class="relative z-10 w-full max-w-7xl mx-auto px-4 md:px-6">
+      <Header />
+    </div>
+
+    <div class="whitepaper-container cosmic-sidepanel-layout relative z-10">
+      <aside class="sidebar left-sidebar">
+        <div class="sidebar-content">
+          <div class="sidebar-header">
+            <span aria-hidden="true">📖</span>
+            <span class="header-text">
+              <strong data-i18n="whitepaper.title">Whitepaper</strong>
+              <small data-i18n="whitepaper.navigation.documentation">Documentation</small>
+            </span>
+          </div>
+          <ul id="wp-sections">
+            {sections.map((s) => (
+              <li class="sidebar-nav-item left" data-section={s.id} tabindex="0" role="button">
+                <span aria-hidden="true">{s.icon}</span>
+                <span class="section-text">
+                  <strong data-i18n={`whitepaper.navigation.sections.${s.id}.title`}>{s.id}</strong>
+                  <small data-i18n={`whitepaper.navigation.sections.${s.id}.description`}></small>
+                </span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </aside>
+
+      <main class="main-content">
+        <div class="content-wrapper">
+          <div class="content-container">
+            <div class="markdown-container" id="wp-content">
+              <p>Loading…</p>
+            </div>
+            <div class="navigation-buttons">
+              <button class="button outline prev min-h-[44px]" id="wp-prev" hidden>
+                <span class="arrow"><img src="/assets/icons/prev.svg" alt="" width="16" height="16" loading="lazy" /></span>
+                <small data-i18n="whitepaper.navigation.previous">Previous</small>
+                <span id="wp-prev-label"></span>
+              </button>
+              <button class="button outline next min-h-[44px]" id="wp-next" hidden>
+                <small data-i18n="whitepaper.navigation.next">Next</small>
+                <span id="wp-next-label"></span>
+                <span class="arrow"><img src="/assets/icons/next.svg" alt="" width="16" height="16" loading="lazy" /></span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </main>
+
+      <aside class="sidebar right-sidebar">
+        <div class="sidebar-content">
+          <ul id="wp-toc"></ul>
+        </div>
+      </aside>
+
+      <div class="mobile-navigation-container">
+        <button class="mobile-nav-button min-h-[44px]" id="wp-mobile-btn">
+          <div class="button-content">
+            <span aria-hidden="true">📖</span>
+            <span class="button-text">
+              <strong data-i18n="whitepaper.navigation.mobileTitle">Whitepaper</strong>
+              <small data-i18n="whitepaper.navigation.mobileSubtitle">Select a section</small>
+            </span>
+          </div>
+          <span aria-hidden="true">▾</span>
+        </button>
+        <div class="mobile-nav-menu" id="wp-mobile-menu" hidden>
+          <ul>
+            {sections.map((s) => (
+              <li data-section={s.id} tabindex="0" role="button">
+                <span aria-hidden="true">{s.icon}</span>
+                <span class="section-text">
+                  <strong data-i18n={`whitepaper.navigation.sections.${s.id}.title`}>{s.id}</strong>
+                  <small data-i18n={`whitepaper.navigation.sections.${s.id}.description`}></small>
+                </span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="relative z-10">
+      <Footer />
+    </div>
+  </div>
+</Layout>
+
+<script define:vars={{ sections }}>
+  const ids = sections.map((s) => s.id);
+  const content = document.getElementById('wp-content');
+  const toc = document.getElementById('wp-toc');
+  const prevBtn = document.getElementById('wp-prev');
+  const nextBtn = document.getElementById('wp-next');
+  const prevLabel = document.getElementById('wp-prev-label');
+  const nextLabel = document.getElementById('wp-next-label');
+  const mobileMenu = document.getElementById('wp-mobile-menu');
+  let active = 'introduction';
+  let tocItems = [];
+
+  const esc = (s) => s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+  const inline = (s) => {
+    let h = esc(s);
+    h = h.replace(/!\[([^\]]*)\]\(([^)]+)\)/g, (_, alt, src) => {
+      const u = src.startsWith('http') || src.startsWith('/') ? src : '/assets/webp/' + src;
+      return `<img src="${u}" alt="${alt}" loading="lazy" />`;
+    });
+    h = h.replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2">$1</a>');
+    h = h.replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>');
+    h = h.replace(/\*([^*]+)\*/g, '<em>$1</em>');
+    h = h.replace(/`([^`]+)`/g, '<code>$1</code>');
+    return h;
+  };
+  const slug = (s) => s.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
+
+  const renderMd = (md) => {
+    const lines = md.split('\n');
+    let html = '', inCode = false, codeLang = '', list = null, para = [];
+    const flushPara = () => { if (para.length) { html += `<p>${inline(para.join(' '))}</p>`; para = []; } };
+    const closeList = () => { if (list) { html += list === 'ul' ? '</ul>' : '</ol>'; list = null; } };
+    for (const raw of lines) {
+      const line = raw.replace(/\s+$/, '');
+      const fence = line.match(/^```(\w*)/);
+      if (fence) {
+        if (inCode) { html += '</code></pre>'; inCode = false; }
+        else { flushPara(); closeList(); html += `<pre><code class="language-${fence[1] || 'text'}">`; inCode = true; }
+        continue;
+      }
+      if (inCode) { html += esc(raw) + '\n'; continue; }
+      const h = line.match(/^(#{1,4})\s+(.*)/);
+      if (h) {
+        flushPara(); closeList();
+        const lvl = h[1].length, id = slug(h[2].replace(/[*_`]/g, ''));
+        html += `<h${lvl} id="${id}">${inline(h[2])}</h${lvl}>`;
+        if (lvl <= 3) tocItems.push({ id, text: h[2].replace(/[*_`]/g, '') });
+        continue;
+      }
+      if (/^---+$/.test(line)) { flushPara(); closeList(); html += '<hr />'; continue; }
+      if (/^>\s?/.test(line)) { flushPara(); closeList(); html += `<blockquote>${inline(line.replace(/^>\s?/, ''))}</blockquote>`; continue; }
+      const ul = line.match(/^[-*]\s+(.*)/);
+      if (ul) { flushPara(); if (list !== 'ul') { closeList(); html += '<ul>'; list = 'ul'; } html += `<li>${inline(ul[1])}</li>`; continue; }
+      const ol = line.match(/^\d+[.)]\s+(.*)/);
+      if (ol) { flushPara(); if (list !== 'ol') { closeList(); html += '<ol>'; list = 'ol'; } html += `<li>${inline(ol[1])}</li>`; continue; }
+      if (/^\|/.test(line)) { flushPara(); closeList(); html += `<p>${inline(line)}</p>`; continue; }
+      if (line.trim() === '') { flushPara(); closeList(); continue; }
+      para.push(line.trim());
+    }
+    flushPara(); closeList();
+    return html;
+  };
+
+  const paintToc = () => {
+    toc.innerHTML = '';
+    tocItems.forEach((c) => {
+      const li = document.createElement('li');
+      li.className = 'sidebar-nav-item right';
+      li.textContent = c.text;
+      li.tabIndex = 0;
+      li.addEventListener('click', () => scrollToHeading(c.id));
+      li.addEventListener('keydown', (e) => { if (e.key === 'Enter') scrollToHeading(c.id); });
+      toc.appendChild(li);
+    });
+  };
+
+  const scrollToHeading = (id) => {
+    const el = document.getElementById(id);
+    if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    history.replaceState(history.state, '', `#${active}#${id}`);
+  };
+
+  const paintNav = () => {
+    document.querySelectorAll('[data-section]').forEach((el) => el.classList.toggle('active', el.getAttribute('data-section') === active));
+    const i = ids.indexOf(active);
+    const prev = i > 0 ? ids[i - 1] : null;
+    const next = i < ids.length - 1 ? ids[i + 1] : null;
+    prevBtn.hidden = !prev; nextBtn.hidden = !next;
+    if (prev && window.CC) prevLabel.textContent = CC.t(`whitepaper.navigation.sections.${prev}.title`);
+    if (next && window.CC) nextLabel.textContent = CC.t(`whitepaper.navigation.sections.${next}.title`);
+    prevBtn.onclick = () => prev && changeSection(prev);
+    nextBtn.onclick = () => next && changeSection(next);
+  };
+
+  const load = async (section) => {
+    content.innerHTML = '<p>Loading…</p>';
+    tocItems = []; paintToc();
+    const lang = window.CC?.lang || 'en';
+    let md = null;
+    for (const l of [lang, 'en']) {
+      try {
+        const r = await fetch(`/whitepaper/${l}/${section}.md`);
+        if (r.ok) { md = await r.text(); break; }
+      } catch {}
+    }
+    content.innerHTML = md ? renderMd(md) : '<div class="error-message">Failed to load content.</div>';
+    paintToc();
+    content.querySelectorAll('a[href^="/whitepaper#"]').forEach((a) => {
+      a.addEventListener('click', (e) => {
+        const parts = a.getAttribute('href').replace('/whitepaper#', '').split('#');
+        if (parts[0] && ids.includes(parts[0])) {
+          e.preventDefault();
+          if (parts[0] !== active) { changeSection(parts[0]).then(() => parts[1] && scrollToHeading(parts[1])); }
+          else if (parts[1]) scrollToHeading(parts[1]);
+        }
+      });
+    });
+  };
+
+  const changeSection = async (section) => {
+    if (!ids.includes(section)) section = 'introduction';
+    active = section;
+    paintNav();
+    history.replaceState(history.state, '', `#${section}`);
+    mobileMenu.hidden = true;
+    await load(section);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  document.querySelectorAll('[data-section]').forEach((el) => {
+    const pick = () => changeSection(el.getAttribute('data-section'));
+    el.addEventListener('click', pick);
+    el.addEventListener('keydown', (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); pick(); } });
+  });
+  document.getElementById('wp-mobile-btn')?.addEventListener('click', () => { mobileMenu.hidden = !mobileMenu.hidden; });
+  document.addEventListener('cc:lang', () => { paintNav(); load(active); });
+
+  const init = () => {
+    const hash = window.location.hash.replace(/^#/, '');
+    const [sec, head] = hash.split('#');
+    changeSection(ids.includes(sec) ? sec : 'introduction').then(() => { if (head) scrollToHeading(head); });
+  };
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init);
+  else init();
+</script>

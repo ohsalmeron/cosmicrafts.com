@@ -1,0 +1,128 @@
+---
+interface Props {
+  context?: 'header' | 'footer' | 'mobile';
+}
+const { context = 'header' } = Astro.props;
+const languages = [
+  { code: 'en', label: 'English' },
+  { code: 'es', label: 'Español' },
+  { code: 'fr', label: 'Français' },
+  { code: 'de', label: 'Deutsch' },
+  { code: 'pt', label: 'Português' },
+  { code: 'ru', label: 'Русский' },
+  { code: 'ar', label: 'العربية' },
+  { code: 'tr', label: 'Türkçe' },
+  { code: 'vi', label: 'Tiếng Việt' },
+  { code: 'ko', label: '한국어' },
+  { code: 'ja', label: '日本語' },
+  { code: 'zh', label: '中文' },
+];
+const pos = context === 'footer' ? 'dropdown-top' : context === 'mobile' ? 'dropdown-mobile' : 'dropdown-bottom';
+---
+
+<div class={`language-selector ${context}`} data-lang-selector>
+  <img src="/assets/icons/lang.svg" alt="Language" class="lang-icon" width="20" height="20" loading="lazy" />
+  <span class="lang-label" data-lang-label>English</span>
+  <ul class={`dropdown-menu ${pos}`} data-lang-menu hidden>
+    {languages.map((l) => (
+      <li class="lang-item" data-lang={l.code} tabindex="0" role="option">{l.label}</li>
+    ))}
+  </ul>
+</div>
+
+<script>
+  const labels = {
+    en: 'English', es: 'Español', fr: 'Français', de: 'Deutsch', pt: 'Português',
+    ru: 'Русский', ar: 'العربية', tr: 'Türkçe', vi: 'Tiếng Việt', ko: '한국어', ja: '日本語', zh: '中文',
+  };
+  document.querySelectorAll('[data-lang-selector]').forEach((root) => {
+    const menu = root.querySelector('[data-lang-menu]');
+    const label = root.querySelector('[data-lang-label]');
+    const paint = () => {
+      const cur = window.CC?.lang || 'en';
+      if (label) label.textContent = labels[cur] || 'English';
+      menu?.querySelectorAll('[data-lang]').forEach((li) => li.classList.toggle('active', li.getAttribute('data-lang') === cur));
+    };
+    root.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const open = menu.hidden;
+      document.querySelectorAll('[data-lang-menu]').forEach((m) => { m.hidden = true; });
+      menu.hidden = !open;
+    });
+    menu?.querySelectorAll('[data-lang]').forEach((li) => {
+      const pick = (e) => { e.stopPropagation(); menu.hidden = true; window.CC?.setLang(li.getAttribute('data-lang')); };
+      li.addEventListener('click', pick);
+      li.addEventListener('keydown', (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); pick(e); } });
+    });
+    document.addEventListener('cc:lang', paint);
+    paint();
+  });
+  document.addEventListener('click', () => {
+    document.querySelectorAll('[data-lang-menu]').forEach((m) => { m.hidden = true; });
+  });
+</script>
+
+<style>
+  .language-selector {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 0.65rem;
+    cursor: pointer;
+    padding: 0.5rem;
+    font-size: 0.8rem;
+    font-weight: 600;
+    z-index: 60;
+  }
+  .lang-icon {
+    width: 1.25rem;
+    height: 1.25rem;
+    filter: drop-shadow(var(--cosmic-glow-blue-sm, 0 0 6px rgba(0, 183, 255, 0.5)));
+  }
+  .lang-label {
+    display: inline;
+    color: var(--cosmic-text-primary, #fff);
+  }
+  .language-selector:hover .lang-label {
+    color: var(--cosmic-blue, #00b7ff);
+    text-shadow: var(--cosmic-glow-blue-sm, 0 0 6px rgba(0, 183, 255, 0.5));
+  }
+  .dropdown-menu {
+    position: absolute;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    padding: 1rem;
+    background: var(--cosmic-glass-bg-darker, rgba(4, 7, 18, 0.97));
+    border: 1px solid rgba(0, 183, 255, 0.25);
+    border-radius: var(--cosmic-radius-md, 12px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5), 0 0 12px rgba(0, 183, 255, 0.15);
+    width: max-content;
+    min-width: 320px;
+    backdrop-filter: blur(12px);
+    list-style: none;
+    margin: 0;
+  }
+  .dropdown-menu[hidden] { display: none; }
+  .dropdown-top { bottom: 120%; left: 50%; transform: translateX(-50%); }
+  .dropdown-bottom { top: 120%; right: 0; }
+  .dropdown-mobile { bottom: 120%; left: 0; }
+  .lang-item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.5rem;
+    color: var(--cosmic-text-primary, #fff);
+    font-size: 0.9rem;
+    border-radius: var(--cosmic-radius-sm, 8px);
+    cursor: pointer;
+  }
+  .lang-item:hover { background: rgba(15, 185, 253, 0.1); color: var(--cosmic-blue, #00b7ff); }
+  .lang-item.active { background: rgba(15, 185, 253, 0.15); color: var(--cosmic-blue, #00b7ff); }
+  @media (min-width: 767px) {
+    .header .language-selector .lang-label { display: none; }
+  }
+  @media (max-width: 576px) {
+    .dropdown-menu { grid-template-columns: repeat(3, 1fr); min-width: 280px; gap: 0.75rem; padding: 0.75rem; }
+  }
+</style>
