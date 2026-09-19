@@ -12,14 +12,14 @@
   position: relative;
 }
 
-main {
+#lore-scene main {
   position: relative;
   width: 100%;
   height: 100vh;
   background: #111b29;
 }
 
-svg {
+#lore-scene svg {
   width: 100%;
   height: 100%;
 }
