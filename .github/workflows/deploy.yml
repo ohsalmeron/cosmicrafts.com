@@ -87,7 +87,7 @@ jobs:
           check "$base/play/stardrifter/"
           check "$base/play/adventures-bevy/"
           check "$base/games/adventures-3d/Cosmicrafts.loader.js"
-          check "$base/whitepaper"
+          check "$base/whitepaper/"
           curl -s --max-time 30 "$base/" | grep -q "hero-carousel"
           echo "home contains hero carousel: yes"
           curl -s --max-time 30 "$base/" | grep -q 'id="juegos"'
