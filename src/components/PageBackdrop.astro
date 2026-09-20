@@ -1,0 +1,18 @@
+---
+import Starfield from './Starfield.astro';
+
+/** Shared fixed background for every page: hero starfield over the cosmic gradient. */
+---
+<div class="page-backdrop" aria-hidden="true">
+  <Starfield />
+</div>
+
+<style>
+  .page-backdrop {
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    background: radial-gradient(circle at 30% 30%, var(--cosmic-bg-dark, #0b1020), var(--cosmic-bg-darkest, #04060d) 70%);
+  }
+</style>
