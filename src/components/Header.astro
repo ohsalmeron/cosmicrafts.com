@@ -2,9 +2,26 @@
 import Panel from './Panel.astro';
 import AuthModal from './AuthModal.astro';
 import LanguageSelector from './LanguageSelector.astro';
+
+interface Props {
+  /** Fixed overlay floating above full-screen heroes, like the original Vue header. */
+  overlay?: boolean;
+}
+const { overlay = false } = Astro.props;
 ---
 
-<header class="w-full max-w-7xl mx-auto flex justify-between items-center z-20 pb-4 border-b border-white/5 relative">
+<header class={`w-full max-w-7xl mx-auto flex justify-between items-center z-20 pb-4 border-b border-white/5 relative${overlay ? ' header-overlay' : ''}`}>
+<style>
+  /* Original Vue header floats fixed above the hero instead of pushing it down. */
+  .header-overlay {
+    position: fixed;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: var(--cosmic-z-header, 100);
+    background: transparent;
+  }
+</style>
   <!-- Left: Cosmicrafts Logo & Global Player Search -->
   <div class="flex items-center gap-4 sm:gap-6">
     <a href="/" class="flex flex-col gap-0.5 select-none group">
@@ -35,12 +52,12 @@ import LanguageSelector from './LanguageSelector.astro';
     </div>
   </div>
 
-  <!-- Center: DAO navigation (same links as the Vue header) -->
+  <!-- Center: DAO navigation (same links + same hover as the Vue header) -->
   <nav class="hidden lg:flex items-center gap-6 font-mono text-[10px] tracking-[0.25em] uppercase" aria-label="Primary">
-    <a href="/games" class="text-slate-300 hover:text-cyan-300 transition-colors" data-i18n="header.games">Games</a>
-    <a href="/governance" class="text-slate-300 hover:text-cyan-300 transition-colors" data-i18n="header.dao">DAO</a>
-    <a href="/whitepaper" class="text-slate-300 hover:text-cyan-300 transition-colors" data-i18n="header.whitepaper">Whitepaper</a>
-    <a href="/docs/introduction" class="text-slate-300 hover:text-cyan-300 transition-colors" data-i18n="header.roadmap">Roadmap</a>
+    <a href="/games" class="cosmic-hover" data-i18n="header.games">Games</a>
+    <a href="/governance" class="cosmic-hover" data-i18n="header.dao">DAO</a>
+    <a href="/whitepaper" class="cosmic-hover" data-i18n="header.whitepaper">Whitepaper</a>
+    <a href="/docs/introduction" class="cosmic-hover" data-i18n="header.roadmap">Roadmap</a>
   </nav>
 
   <!-- Right: Web3 Wallet & Token Readout -->

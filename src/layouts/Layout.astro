@@ -24,6 +24,7 @@ const { title, description = 'Cosmicrafts — space RTS strategy game by World o
     <!-- Cosmic theme ported 1:1 from the Vue DAO frontend -->
     <link rel="stylesheet" href="/assets/css/cosmic-theme.css" />
     <link rel="stylesheet" href="/assets/css/universal.css" />
+    <link rel="stylesheet" href="/assets/css/vue-hover.css" />
     <link rel="stylesheet" href="/assets/css/hero-section.css" />
   </head>
   <body class="min-h-screen w-full bg-[#05050f] text-white font-sans antialiased m-0 p-0 overflow-x-hidden">
@@ -35,7 +36,12 @@ const { title, description = 'Cosmicrafts — space RTS strategy game by World o
       CC.lang = (() => { try { return localStorage.getItem('cc-lang') || 'en'; } catch { return 'en'; } })();
       CC.dict = {}; CC.fallback = {};
       CC.t = (path) => {
-        const get = (o) => String(path).split('.').reduce((a, k) => (a && a[k] !== undefined ? a[k] : undefined), o);
+        const get = (o) => String(path).split('.').reduce((a, k) => {
+          if (a === undefined || a === null) return undefined;
+          const m = k.match(/^([A-Za-z0-9_-]+)\[(\d+)\]$/);
+          if (m) { const arr = a[m[1]]; return Array.isArray(arr) ? arr[Number(m[2])] : undefined; }
+          return a[k];
+        }, o);
         const v = get(CC.dict); if (v !== undefined) return v;
         const f = get(CC.fallback); if (f !== undefined) return f;
         return path;
