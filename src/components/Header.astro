@@ -10,22 +10,40 @@ interface Props {
 const { overlay = false } = Astro.props;
 ---
 
-<header class={`w-full max-w-7xl mx-auto flex justify-between items-center z-20 pb-4 relative${overlay ? ' header-overlay' : ' border-b border-white/5'}`}>
+<header class={`flex justify-between items-center z-20 relative${overlay ? ' header-overlay' : ' w-full max-w-7xl mx-auto pb-4 border-b border-white/5'}`}>
 <style>
-  /* Original Vue header floats fixed above the hero instead of pushing it down. */
+  /* Original Vue header: fixed glass bar floating above the hero. */
   .header-overlay {
     position: fixed;
     top: 0;
-    left: 50%;
-    transform: translateX(-50%);
+    left: 2rem;
+    right: 2rem;
+    margin-top: 1rem;
+    height: 3.75rem;
+    padding: 0 1.75rem;
+    box-sizing: border-box;
+    background: var(--cosmic-glass-bg);
+    border: 1px solid var(--cosmic-glass-border);
+    border-radius: 12px;
+    backdrop-filter: var(--cosmic-glass-blur);
     z-index: var(--cosmic-z-header, 100);
-    background: transparent;
+  }
+  .header-overlay:hover {
+    box-shadow: var(--cosmic-shadow-md), var(--cosmic-glow-blue-sm);
+    border-color: rgba(15, 185, 253, 0.2);
+  }
+  .header-logo { display: flex; align-items: center; cursor: pointer; }
+  .header-logo-icon { width: 2.5rem; height: 2.5rem; }
+  .header-logo-text { width: 4.25rem; margin-left: 0.5rem; }
+  @media (max-width: 768px) {
+    .header-overlay { left: 0.5rem; right: 0.5rem; margin-top: 0.5rem; padding: 0 1rem; border-radius: 8px; }
   }
 </style>
   <!-- Left: Cosmicrafts Logo & Global Player Search -->
   <div class="flex items-center gap-4 sm:gap-6">
-    <a href="/" class="flex flex-col gap-0.5 select-none group">
-      <img src="/logo.svg" alt="Cosmicrafts Logo" class="h-8 md:h-10 opacity-90 group-hover:scale-[1.01] transition-transform duration-300" />
+    <a href="/" class="header-logo group" aria-label="Cosmicrafts home">
+      <img src="/assets/icons/cosmicrafts.svg" alt="Cosmicrafts Logo" class="header-logo-icon" />
+      <img id="header-additional-logo" src="/assets/icons/logo.svg" alt="Cosmicrafts" class="header-logo-text" />
     </a>
 
     <!-- Global Player Search Bar -->
@@ -53,7 +71,7 @@ const { overlay = false } = Astro.props;
   </div>
 
   <!-- Center: DAO navigation (same links + same hover as the Vue header) -->
-  <nav class="hidden lg:flex items-center gap-6 font-mono text-[10px] tracking-[0.25em] uppercase" aria-label="Primary">
+  <nav class="hidden lg:flex items-center gap-8" aria-label="Primary">
     <a href="/games" class="cosmic-hover" data-i18n="header.games">Games</a>
     <a href="/governance" class="cosmic-hover" data-i18n="header.dao">DAO</a>
     <a href="/whitepaper" class="cosmic-hover" data-i18n="header.whitepaper">Whitepaper</a>
@@ -139,8 +157,10 @@ const { overlay = false } = Astro.props;
 
     <!-- Logged Out Content -->
     <div id="logged-out-container" class="flex items-center">
-      <button id="btn-open-login" type="button" class="px-4 py-2 bg-gradient-to-r from-cyan-500 to-indigo-500 hover:from-cyan-400 hover:to-indigo-400 text-white font-mono text-[10px] md:text-xs tracking-widest uppercase rounded-lg shadow-[0_0_20px_rgba(6,182,212,0.2)] transition-all duration-300 transform active:scale-95 cursor-pointer">
-        Connect Wallet
+      <button id="btn-open-login" type="button" class="cosmic-button cosmic-button-outline-primary min-h-[44px]">
+        <span class="button-text" data-i18n="header.connect">Connect</span>
+        <span class="button-glow"></span>
+        <span class="button-particles"></span>
       </button>
     </div>
   </div>
@@ -349,6 +369,23 @@ const { overlay = false } = Astro.props;
       searchResults?.classList.add('hidden');
     }
   });
+
+  // Header text logo follows the language (same map as the Vue header)
+  const headerLogoMap = {
+    zh: '/assets/icons/logo-cn.svg',
+    ko: '/assets/icons/logo-kr.svg',
+    ja: '/assets/icons/logo-jp.svg',
+    ru: '/assets/icons/logo-ru.svg',
+    ar: '/assets/icons/logo-ar.svg',
+  };
+  const headerLogoImg = document.getElementById('header-additional-logo') as HTMLImageElement;
+  const paintHeaderLogo = () => {
+    if (!headerLogoImg) return;
+    const lang = (window as any).CC?.lang || 'en';
+    headerLogoImg.src = headerLogoMap[lang] || '/assets/icons/logo.svg';
+  };
+  document.addEventListener('cc:lang', paintHeaderLogo);
+  paintHeaderLogo();
 
   // Listen to Auth State Changes
   window.addEventListener('wou:auth-state-change', (e: any) => {
