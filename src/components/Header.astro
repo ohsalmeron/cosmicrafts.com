@@ -10,7 +10,7 @@ interface Props {
 const { overlay = false } = Astro.props;
 ---
 
-<header class={`w-full max-w-7xl mx-auto flex justify-between items-center z-20 pb-4 border-b border-white/5 relative${overlay ? ' header-overlay' : ''}`}>
+<header class={`w-full max-w-7xl mx-auto flex justify-between items-center z-20 pb-4 relative${overlay ? ' header-overlay' : ' border-b border-white/5'}`}>
 <style>
   /* Original Vue header floats fixed above the hero instead of pushing it down. */
   .header-overlay {
