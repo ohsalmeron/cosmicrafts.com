@@ -1,6 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import Starfield from '../components/Starfield.astro';
+import PageBackdrop from '../components/PageBackdrop.astro';
 import Header from '../components/Header.astro';
 import Panel from '../components/Panel.astro';
 ---
@@ -9,17 +9,17 @@ import Panel from '../components/Panel.astro';
   <!-- Viewport-Locked Container -->
   <div class="fixed inset-0 h-screen w-screen overflow-hidden flex flex-col justify-between p-4 sm:p-6 md:p-10 select-none z-10 bg-[#020208]">
     <!-- Starfield Background -->
-    <Starfield />
+    <PageBackdrop />
 
     <!-- Ambient glows -->
     <div class="absolute top-1/4 left-1/4 w-[500px] h-[500px] bg-cyan-500/5 rounded-full blur-[140px] pointer-events-none z-0"></div>
     <div class="absolute bottom-1/4 right-1/4 w-[500px] h-[500px] bg-indigo-500/5 rounded-full blur-[140px] pointer-events-none z-0"></div>
 
     <!-- Header component -->
-    <Header />
+    <Header overlay />
 
     <!-- Main Profile Card Content Area -->
-    <main class="w-full max-w-7xl mx-auto flex-1 flex flex-col my-3 sm:my-4 overflow-hidden z-10 justify-center">
+    <main class="w-full max-w-7xl mx-auto flex-1 flex flex-col my-3 sm:my-4 overflow-hidden z-10 justify-center pt-20">
 
       <!-- Loading State -->
       <div id="profile-loading" class="flex flex-col items-center justify-center py-20 space-y-4 font-mono">
@@ -110,32 +110,6 @@ import Panel from '../components/Panel.astro';
 
           <!-- Right side: Achievements and Inventory -->
           <div class="flex-1 flex flex-col gap-5 overflow-y-auto max-h-[50vh] md:max-h-[480px] scrollbar-thin text-left pr-1">
-            <!-- Cross-Game Battle Stats -->
-            <div class="space-y-2.5">
-              <h3 class="text-[11px] text-cyan-400 font-mono tracking-widest uppercase border-b border-white/5 pb-1.5 flex items-center justify-between">
-                <span>[ COMBAT TELEMETRY & STATS ]</span>
-                <span class="text-slate-500 text-[9px]">CROSS-GAME ECOSYSTEM</span>
-              </h3>
-              <div class="grid grid-cols-2 sm:grid-cols-4 gap-2 font-mono text-[10px]">
-                <div class="p-2.5 rounded-lg bg-slate-950/60 border border-white/5">
-                  <span class="text-slate-500 block text-[8px]">SOW RANK</span>
-                  <span id="stat-sow-rank" class="text-white font-bold">Recruit</span>
-                </div>
-                <div class="p-2.5 rounded-lg bg-slate-950/60 border border-white/5">
-                  <span class="text-slate-500 block text-[8px]">SOW ELO</span>
-                  <span id="stat-sow-elo" class="text-cyan-400 font-bold">1200</span>
-                </div>
-                <div class="p-2.5 rounded-lg bg-slate-950/60 border border-white/5">
-                  <span class="text-slate-500 block text-[8px]">FLEET POWER</span>
-                  <span id="stat-fleet-power" class="text-amber-400 font-bold">1,500</span>
-                </div>
-                <div class="p-2.5 rounded-lg bg-slate-950/60 border border-white/5">
-                  <span class="text-slate-500 block text-[8px]">NFTROPOLY WORTH</span>
-                  <span id="stat-nft-worth" class="text-purple-400 font-bold">$0</span>
-                </div>
-              </div>
-            </div>
-
             <!-- Inventory Section -->
             <div class="space-y-2.5">
               <h3 class="text-[11px] text-cyan-400 font-mono tracking-widest uppercase border-b border-white/5 pb-1.5 flex items-center justify-between">
@@ -230,7 +204,7 @@ import Panel from '../components/Panel.astro';
 </Layout>
 
 <script>
-  import { wouAuth, type WouAccount } from '@worldofunreal/id';
+  import { wouAuth, type PlayerAccount } from '@worldofunreal/id';
   wouAuth.setDefaultContext('cosmicrafts');
 
   const loadingEl = document.getElementById('profile-loading');
@@ -249,11 +223,6 @@ import Panel from '../components/Panel.astro';
   const vaultEvm = document.getElementById('vault-evm');
   const vaultSol = document.getElementById('vault-sol');
   const vaultIcp = document.getElementById('vault-icp');
-
-  const statSowRank = document.getElementById('stat-sow-rank');
-  const statSowElo = document.getElementById('stat-sow-elo');
-  const statFleetPower = document.getElementById('stat-fleet-power');
-  const statNftWorth = document.getElementById('stat-nft-worth');
 
   const invContainer = document.getElementById('inventory-container');
 
@@ -300,7 +269,7 @@ import Panel from '../components/Panel.astro';
   btnCloseVisor?.addEventListener('click', closeVisor);
   nftVisorBackdrop?.addEventListener('click', closeVisor);
 
-  function renderProfile(user: WouAccount) {
+  function renderProfile(user: PlayerAccount) {
     loadingEl?.classList.add('hidden');
     guestEl?.classList.add('hidden');
     contentEl?.classList.remove('hidden');
@@ -341,14 +310,6 @@ import Panel from '../components/Panel.astro';
         const a = user.embedded_wallets.icp_principal;
         vaultIcp.textContent = a ? `${a.slice(0, 5)}...${a.slice(-3)}` : 'N/A';
       }
-    }
-
-    // Stats
-    if (user.game_stats) {
-      if (statSowRank) statSowRank.textContent = user.game_stats.sow_rank || 'Recruit';
-      if (statSowElo) statSowElo.textContent = String(user.game_stats.sow_elo || 1200);
-      if (statFleetPower) statFleetPower.textContent = `${user.game_stats.cosmicrafts_fleet_power || 1500} FP`;
-      if (statNftWorth) statNftWorth.textContent = `$${user.game_stats.nftropoly_net_worth || 0}`;
     }
 
     // Render Fleet Inventory Cards

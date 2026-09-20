@@ -1,19 +1,19 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import Starfield from '../components/Starfield.astro';
+import PageBackdrop from '../components/PageBackdrop.astro';
 import Header from '../components/Header.astro';
 import Panel from '../components/Panel.astro';
 ---
 
 <Layout title="Cosmicrafts | GitOps DAO Terminal" description="Cosmicrafts DAO governance terminal. Vote on code merges and treasury decisions.">
   <div class="fixed inset-0 h-screen w-screen overflow-hidden flex flex-col justify-between p-4 md:p-6 select-none z-10">
-    <Starfield />
+    <PageBackdrop />
 
     <!-- Header component -->
-    <Header />
+    <Header overlay />
 
     <!-- Main governance interface -->
-    <main class="w-full max-w-7xl mx-auto flex-1 flex flex-col lg:flex-row gap-4 md:gap-6 my-2 overflow-hidden z-10 items-stretch justify-center py-2 h-[calc(100vh-140px)]">
+    <main class="w-full max-w-7xl mx-auto flex-1 flex flex-col lg:flex-row gap-4 md:gap-6 my-2 overflow-hidden z-10 items-stretch justify-center py-2 pt-24 h-[calc(100vh-140px)]">
       
       <!-- Left Panel: Proposal Directory -->
       <Panel class="w-full lg:w-[450px] p-4 flex flex-col justify-between h-full">

@@ -1,0 +1,472 @@
+---
+import Layout from '../layouts/Layout.astro';
+import PageBackdrop from '../components/PageBackdrop.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+
+/** Cosmic Roadmap — 1:1 port of the Vue DAO Roadmap.vue (quarters tracker, JSON-driven). */
+const mods = import.meta.glob('../data/roadmap/*.json', { eager: true });
+const qnum = (q: string) => parseInt(String(q).replace('Q', ''), 10);
+
+const tagColor = (tag: string) => {
+  const h = tag.split('').reduce((acc, c) => c.charCodeAt(0) + ((acc << 5) - acc), 0);
+  return `hsl(${Math.abs(h) % 360}, 70%, 60%)`;
+};
+const pct = (c: number, t: number) => Math.round(Math.min(100, Math.max(0, ((Number(c) || 0) / (Number(t) || 1)) * 100)));
+const statusCls = (s?: string) => (s || 'Pending').toLowerCase().replace(/\s+/g, '-');
+
+let quarters: any[] = Object.entries(mods)
+  .map(([path, mod]: any) => {
+    const base = (path.split('/').pop() || '').replace('.json', '');
+    const [q, y] = base.split('-');
+    return { ...(mod.default ?? mod), year: parseInt(y, 10), quarterNum: qnum(q), open: false };
+  })
+  .sort((a, b) => a.year - b.year || a.quarterNum - b.quarterNum);
+
+for (const q of quarters) {
+  q.milestones = (q.milestones ?? []).map((m: any) => ({
+    ...m, open: false,
+    tasks: (m.tasks ?? []).map((t: any) => ({ ...t, open: false, subtasks: t.subtasks ?? [] })),
+  }));
+  for (const m of q.milestones) {
+    for (const t of m.tasks) {
+      if (!t.status) t.status = t.total > 0 && t.completed === t.total ? 'Completed' : t.completed > 0 ? 'In Progress' : 'ToDo';
+    }
+    if (!m.status) m.status = m.total > 0 && m.completed === m.total ? 'Completed' : m.completed > 0 ? 'In Progress' : 'ToDo';
+  }
+  if (!q.status) q.status = q.total > 0 && q.completed === q.total ? 'Completed' : q.completed > 0 ? 'In Progress' : 'ToDo';
+}
+---
+<link rel="stylesheet" href="/assets/css/roadmap.css" />
+
+<Layout title="Cosmicrafts | Roadmap" description="Cosmic Roadmap: follow the milestones, track the progress, and watch history unfold.">
+  <div class="relative min-h-screen w-full flex flex-col z-10">
+    <PageBackdrop />
+
+    <div class="relative z-20 w-full px-4 md:px-6">
+      <Header overlay />
+    </div>
+
+    <div class="roadmap-page relative z-10">
+      <div class="cosmic-background"></div>
+      <div class="roadmap-page-content">
+        <div class="desktop-hero-section">
+          <div class="desktop-hero-content">
+            <div class="logo-area">
+              <img src="/assets/icons/cosmicrafts.svg" alt="Cosmicrafts Logo" class="hero-logo" width="96" height="96" />
+            </div>
+            <div class="title-area">
+              <h1 class="cosmic-title">Cosmic Roadmap</h1>
+              <p class="cosmic-subtitle">Follow the milestones, track the progress, and watch history unfold.</p>
+            </div>
+            <div class="hero-actions">
+              <button class="current-quarter-btn min-h-[44px]" data-act="current">
+                <span class="pulse-ring"></span>
+                <span class="btn-text">Current Quarter</span>
+                <span class="btn-icon">→</span>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="roadmap-content">
+          <div class="roadmap-header-section">
+            <header class="compact-hero">
+              <div class="compact-hero-content">
+                <div class="compact-hero-left">
+                  <img src="/assets/icons/cosmicrafts.svg" alt="Cosmicrafts Logo" class="compact-hero-logo" width="48" height="48" />
+                </div>
+                <div class="compact-hero-center">
+                  <h1 class="compact-title">Cosmic Roadmap</h1>
+                  <p class="compact-subtitle">Follow the cosmic journey</p>
+                </div>
+                <div class="compact-hero-right">
+                  <button class="compact-quarter-btn min-h-[44px]" data-act="current">
+                    <span class="pulse-ring"></span>
+                    <span class="btn-text">Current</span>
+                    <span class="btn-icon">→</span>
+                  </button>
+                </div>
+              </div>
+            </header>
+            <div class="search-container" role="search">
+              <div class="search-input-wrapper">
+                <div class="search-icon" aria-hidden="true">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                  </svg>
+                </div>
+                <input type="text" id="roadmap-search" class="search-input min-h-[44px]" placeholder="Search milestones or tasks..." />
+              </div>
+            </div>
+          </div>
+
+          <div class="scrollable-content">
+            <section class="quarters-container" id="quarters">
+              {quarters.map((q, qi) => (
+                <div class="quarter" data-q={qi}>
+                  <div class="quarter-header" data-act="toggle-quarter" data-q={qi} tabindex="0" role="button">
+                    <div class="header-content">
+                      <div class="title-with-status">
+                        <div class="status-icon" data-act="toggle-quarter-status" data-q={qi} tabindex="0" role="button" aria-label="Toggle status"></div>
+                        <h2>{q.period}</h2>
+                      </div>
+                      <p class="description">{q.description}</p>
+                    </div>
+                    <div class="status-indicators">
+                      <div class="task-status-wrapper">
+                        <span class={`task-status ${statusCls(q.status)}`}>{q.status || 'Pending'}</span>
+                        <span class="progress-text">{q.completed}/{q.total}</span>
+                      </div>
+                      <div class="progress-wrapper">
+                        <div class="progress-container">
+                          <div class="progress-bar" style={`width: ${pct(q.completed, q.total)}%`}></div>
+                        </div>
+                        <div class="toggle-icon">
+                          <div class="icon-line horizontal"></div>
+                          <div class="icon-line vertical"></div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="milestones" hidden>
+                    {(q.milestones ?? []).map((m: any, mi: number) => (
+                      <div class="milestone">
+                        <div class="milestone-header" data-act="toggle-milestone" data-q={qi} data-m={mi} tabindex="0" role="button">
+                          <div class="header-content">
+                            <div class="title-with-status">
+                              <div class="status-icon" data-act="toggle-milestone-status" data-q={qi} data-m={mi} tabindex="0" role="button" aria-label="Toggle status"></div>
+                              <h3>{m.title}</h3>
+                            </div>
+                            <p class="description">{m.description}</p>
+                          </div>
+                          <div class="status-indicators">
+                            <div class="task-status-wrapper">
+                              <span class={`task-status ${statusCls(m.status)}`}>{m.status || 'Pending'}</span>
+                              <span class="progress-text">{m.completed}/{m.total}</span>
+                            </div>
+                            <div class="progress-wrapper">
+                              <div class="progress-container">
+                                <div class="progress-bar" style={`width: ${pct(m.completed, m.total)}%`}></div>
+                              </div>
+                              <div class="toggle-icon">
+                                <div class="icon-line horizontal"></div>
+                                <div class="icon-line vertical"></div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="tasks" hidden>
+                          {(m.tasks ?? []).map((t: any, ti: number) => (
+                            <div class="task">
+                              <div class="task-header" data-act="toggle-task" data-q={qi} data-m={mi} data-t={ti} tabindex="0" role="button">
+                                <div class="header-content">
+                                  <div class="title-with-status">
+                                    <div class="status-icon" data-act="toggle-task-status" data-q={qi} data-m={mi} data-t={ti} tabindex="0" role="button" aria-label="Toggle status"></div>
+                                    <h4>{t.title}</h4>
+                                  </div>
+                                  <p class="description">{t.description}</p>
+                                  {(t.tags?.length > 0) && (
+                                    <div class="task-tags">
+                                      {t.tags.map((tag: string) => <span class="task-tag" style={`border-color: ${tagColor(tag)}`}>{tag}</span>)}
+                                    </div>
+                                  )}
+                                </div>
+                                <div class="status-indicators">
+                                  <div class="task-status-wrapper">
+                                    <span class={`task-status ${statusCls(t.status)}`}>{t.status || 'Pending'}</span>
+                                    <span class="progress-text">{t.completed}/{t.total}</span>
+                                  </div>
+                                  <div class="progress-wrapper">
+                                    <div class="progress-container">
+                                      <div class="progress-bar" style={`width: ${pct(t.completed, t.total)}%`}></div>
+                                    </div>
+                                    <div class="toggle-icon small">
+                                      <div class="icon-line horizontal"></div>
+                                      <div class="icon-line vertical"></div>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                              {(t.subtasks?.length > 0) && (
+                                <div class="subtasks" hidden>
+                                  {t.subtasks.map((st: any, sti: number) => (
+                                    <div class={`subtask${st.completed ? ' completed' : ''}`}>
+                                      <div class="subtask-header">
+                                        <div class="checkbox-container">
+                                          <div class={`status-icon subtask-status-icon${st.completed ? ' completed' : ' pending'}`} data-act="toggle-subtask" data-q={qi} data-m={mi} data-t={ti} data-st={sti} tabindex="0" role="checkbox" aria-checked={st.completed ? 'true' : 'false'} aria-label="Toggle subtask"></div>
+                                          <input type="checkbox" id={`subtask-${qi}-${mi}-${ti}-${sti}`} checked={st.completed} data-act="toggle-subtask" data-q={qi} data-m={mi} data-t={ti} data-st={sti} />
+                                          <label for={`subtask-${qi}-${mi}-${ti}-${sti}`}>{st.title}</label>
+                                        </div>
+                                        <div class={`subtask-status${st.completed ? ' completed' : ''}`}>{st.completed ? 'Completed' : 'To Do'}</div>
+                                      </div>
+                                      <p class="subtask-description">{st.description}</p>
+                                    </div>
+                                  ))}
+                                </div>
+                              )}
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              ))}
+            </section>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="relative z-10">
+      <Footer />
+    </div>
+  </div>
+</Layout>
+
+<script define:vars={{ quarters }}>
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const box = document.getElementById('quarters');
+  const search = document.getElementById('roadmap-search');
+  let query = '';
+
+  const pct = (c, t) => Math.round(Math.min(100, Math.max(0, ((Number(c) || 0) / (Number(t) || 1)) * 100)));
+  const sCls = (s) => (s || 'Pending').toLowerCase().replace(/\s+/g, '-');
+  const itemCls = (it) => {
+    if (it.status === 'Completed') return 'completed';
+    if (it.status === 'In Progress') return 'in-progress';
+    if (['ToDo', 'To Do', 'todo'].includes(it.status)) return 'todo';
+    return 'future';
+  };
+  const isCurrent = (q) => {
+    if (!q || !q.year || !q.quarterNum) return false;
+    const now = new Date();
+    return q.year === now.getFullYear() && q.quarterNum === Math.floor(now.getMonth() / 3) + 1;
+  };
+
+  const recalcTask = (t) => {
+    if (!t.subtasks?.length) return;
+    const n = t.subtasks.filter((s) => s.completed).length;
+    t.completed = n;
+    t.status = n === 0 ? 'ToDo' : n < t.subtasks.length ? 'In Progress' : 'Completed';
+  };
+  const recalcMilestone = (m) => {
+    if (!m.tasks?.length) return;
+    const done = m.tasks.filter((t) => t.status === 'Completed').length;
+    const prog = m.tasks.filter((t) => t.status === 'In Progress').length;
+    m.completed = done;
+    m.status = done === m.tasks.length ? 'Completed' : done > 0 || prog > 0 ? 'In Progress' : 'ToDo';
+  };
+  const recalcQuarter = (q) => {
+    if (!q.milestones?.length) return;
+    const done = q.milestones.filter((m) => m.status === 'Completed').length;
+    const prog = q.milestones.filter((m) => m.status === 'In Progress').length;
+    q.completed = done;
+    q.status = done === q.milestones.length ? 'Completed' : done > 0 || prog > 0 ? 'In Progress' : 'ToDo';
+  };
+  const completeAll = (node, kids) => {
+    node.status = 'Completed';
+    for (const k of node[kids] ?? []) {
+      if (kids === 'subtasks') { k.completed = true; continue; }
+      completeAll(k, kids === 'milestones' ? 'tasks' : kids === 'tasks' ? 'subtasks' : 'subtasks');
+      if (kids === 'tasks' && k.subtasks?.length) { k.completed = k.subtasks.length; k.total = k.subtasks.length; }
+      else if (kids === 'tasks') { k.completed = 1; k.total = 1; }
+    }
+    if (kids === 'milestones' && node.milestones?.length) { node.completed = node.milestones.length; node.total = node.milestones.length; }
+    if (kids === 'tasks' && node.tasks?.length) { node.completed = node.tasks.length; node.total = node.tasks.length; }
+  };
+  const resetAll = (node, kids) => {
+    node.status = 'ToDo'; node.completed = 0;
+    for (const k of node[kids] ?? []) {
+      if (kids === 'subtasks') { k.completed = false; continue; }
+      resetAll(k, kids === 'milestones' ? 'tasks' : 'subtasks');
+    }
+  };
+  const toggleStatus = (node, kids) => {
+    if (node.status === 'Completed') resetAll(node, kids);
+    else completeAll(node, kids);
+  };
+
+  const visible = () => {
+    if (!query) return quarters;
+    const q = query.toLowerCase();
+    return quarters.filter((x) => (x.milestones ?? []).some((m) =>
+      (m.title ?? '').toLowerCase().includes(q) ||
+      (m.tasks ?? []).some((t) => (t.title ?? '').toLowerCase().includes(q))));
+  };
+
+  const paint = () => {
+    const list = visible();
+    box.querySelectorAll('.quarter').forEach((el) => {
+      const qi = Number(el.getAttribute('data-q'));
+      const q = quarters[qi];
+      const show = list.includes(q);
+      el.style.display = show ? '' : 'none';
+      if (!show) return;
+      el.classList.toggle('active', !!q.open);
+      el.classList.toggle('completed', q.status === 'Completed');
+      el.classList.toggle('in-progress', q.status === 'In Progress');
+      el.classList.toggle('current-quarter', isCurrent(q));
+      const ms = el.querySelector(':scope > .milestones');
+      if (ms) ms.hidden = !q.open;
+      el.querySelectorAll(':scope .quarter-header .status-icon').forEach((s) => { s.className = `status-icon ${itemCls(q)}`; });
+      el.querySelectorAll(':scope .quarter-header .task-status').forEach((s) => { s.className = `task-status ${sCls(q.status)}`; s.textContent = q.status || 'Pending'; });
+      el.querySelectorAll(':scope .quarter-header .progress-text').forEach((s) => { s.textContent = `${q.completed}/${q.total}`; });
+      el.querySelectorAll(':scope .quarter-header .progress-bar').forEach((s) => { s.style.width = `${pct(q.completed, q.total)}%`; });
+      el.querySelectorAll(':scope .quarter-header .toggle-icon').forEach((s) => {
+        s.classList.toggle('is-open', !!q.open);
+        const v = s.querySelector('.icon-line.vertical');
+        if (v) v.classList.toggle('hidden', !!q.open);
+      });
+      (q.milestones ?? []).forEach((m, mi) => {
+        const mel = el.querySelectorAll(':scope > .milestones > .milestone')[mi];
+        if (!mel) return;
+        mel.classList.toggle('completed', m.status === 'Completed');
+        mel.classList.toggle('in-progress', m.status === 'In Progress');
+        const ts = mel.querySelector(':scope > .tasks');
+        if (ts) ts.hidden = !m.open;
+        const set = (sel, fn) => mel.querySelectorAll(sel).forEach(fn);
+        set(':scope .milestone-header .status-icon', (s) => { s.className = `status-icon ${itemCls(m)}`; });
+        set(':scope .milestone-header .task-status', (s) => { s.className = `task-status ${sCls(m.status)}`; s.textContent = m.status || 'Pending'; });
+        set(':scope .milestone-header .progress-text', (s) => { s.textContent = `${m.completed}/${m.total}`; });
+        set(':scope .milestone-header .progress-bar', (s) => { s.style.width = `${pct(m.completed, m.total)}%`; });
+        set(':scope .milestone-header .toggle-icon', (s) => {
+          s.classList.toggle('is-open', !!m.open);
+          const v = s.querySelector('.icon-line.vertical');
+          if (v) v.classList.toggle('hidden', !!m.open);
+        });
+        (m.tasks ?? []).forEach((t, ti) => {
+          const tel = mel.querySelectorAll(':scope > .tasks > .task')[ti];
+          if (!tel) return;
+          tel.classList.toggle('completed', t.status === 'Completed');
+          tel.classList.toggle('in-progress', t.status === 'In Progress');
+          const ss = tel.querySelector(':scope > .subtasks');
+          if (ss) ss.hidden = !t.open;
+          const tset = (sel, fn) => tel.querySelectorAll(sel).forEach(fn);
+          tset(':scope .task-header .status-icon', (s) => { s.className = `status-icon ${itemCls(t)}`; });
+          tset(':scope .task-header .task-status', (s) => { s.className = `task-status ${sCls(t.status)}`; s.textContent = t.status || 'Pending'; });
+          tset(':scope .task-header .progress-text', (s) => { s.textContent = `${t.completed}/${t.total}`; });
+          tset(':scope .task-header .progress-bar', (s) => { s.style.width = `${pct(t.completed, t.total)}%`; });
+          tset(':scope .task-header .toggle-icon', (s) => {
+            s.classList.toggle('is-open', !!t.open);
+            const v = s.querySelector('.icon-line.vertical');
+            if (v) v.classList.toggle('hidden', !!t.open);
+          });
+          (t.subtasks ?? []).forEach((st, sti) => {
+            const sel = tel.querySelectorAll(':scope > .subtasks > .subtask')[sti];
+            if (!sel) return;
+            sel.classList.toggle('completed', !!st.completed);
+            const ic = sel.querySelector('.subtask-status-icon');
+            if (ic) {
+              ic.className = `status-icon subtask-status-icon${st.completed ? ' completed' : ' pending'}`;
+              ic.setAttribute('aria-checked', st.completed ? 'true' : 'false');
+            }
+            const cb = sel.querySelector('input[type="checkbox"]');
+            if (cb) cb.checked = !!st.completed;
+            const lb = sel.querySelector('.subtask-status');
+            if (lb) { lb.className = `subtask-status${st.completed ? ' completed' : ''}`; lb.textContent = st.completed ? 'Completed' : 'To Do'; }
+          });
+        });
+      });
+    });
+  };
+
+  const at = (el) => ({
+    q: quarters[Number(el.getAttribute('data-q'))],
+    m: null, t: null,
+  });
+
+  box.addEventListener('click', (e) => {
+    const tgt = e.target.closest('[data-act]');
+    if (!tgt || !box.contains(tgt)) return;
+    const act = tgt.getAttribute('data-act');
+    const qi = Number(tgt.getAttribute('data-q'));
+    const mi = Number(tgt.getAttribute('data-m') ?? -1);
+    const ti = Number(tgt.getAttribute('data-t') ?? -1);
+    const sti = Number(tgt.getAttribute('data-st') ?? -1);
+    const q = quarters[qi];
+    if (!q) return;
+    const m = mi >= 0 ? q.milestones[mi] : null;
+    const t = m && ti >= 0 ? m.tasks[ti] : null;
+    if (act === 'toggle-quarter') { q.open = !q.open; }
+    else if (act === 'toggle-milestone' && m) { m.open = !m.open; }
+    else if (act === 'toggle-task' && t) { t.open = !t.open; }
+    else if (act === 'toggle-quarter-status') { toggleStatus(q, 'milestones'); recalcQuarter(q); }
+    else if (act === 'toggle-milestone-status' && m) { toggleStatus(m, 'tasks'); recalcQuarter(q); }
+    else if (act === 'toggle-task-status' && t && m) { toggleStatus(t, 'subtasks'); recalcMilestone(m); recalcQuarter(q); }
+    else if (act === 'toggle-subtask' && t && m) {
+      const st = t.subtasks[sti];
+      if (st) { st.completed = !st.completed; recalcTask(t); recalcMilestone(m); recalcQuarter(q); }
+    } else return;
+    e.stopPropagation();
+    paint();
+  });
+  box.addEventListener('keydown', (e) => {
+    if (e.key !== 'Enter' && e.key !== ' ') return;
+    const tgt = e.target.closest('[data-act]');
+    if (!tgt || !box.contains(tgt)) return;
+    e.preventDefault();
+    tgt.click();
+  });
+  box.addEventListener('mousemove', (e) => {
+    if (reduceMotion) return;
+    const card = e.target.closest('.quarter-header, .milestone-header, .task-header');
+    if (!card) return;
+    const r = card.getBoundingClientRect();
+    card.style.setProperty('--mouse-x', `${e.clientX - r.left}px`);
+    card.style.setProperty('--mouse-y', `${e.clientY - r.top}px`);
+  });
+  box.addEventListener('mouseout', (e) => {
+    const card = e.target.closest('.quarter-header, .milestone-header, .task-header');
+    if (!card) return;
+    card.style.removeProperty('--mouse-x');
+    card.style.removeProperty('--mouse-y');
+  });
+
+  search?.addEventListener('input', () => { query = search.value.trim(); paint(); });
+
+  const scrollCurrent = () => {
+    const now = new Date();
+    const cy = now.getFullYear(), cq = Math.floor(now.getMonth() / 3) + 1;
+    let idx = quarters.findIndex((x) => x.year === cy && x.quarterNum === cq);
+    if (idx === -1) {
+      const val = (x) => x.year * 10 + x.quarterNum;
+      const cur = cy * 10 + cq;
+      let best = -1;
+      quarters.forEach((x, i) => { if (val(x) <= cur && (best === -1 || val(x) > val(quarters[best]))) best = i; });
+      idx = best === -1 ? 0 : best;
+    }
+    const q = quarters[idx];
+    if (!q) return;
+    if (q.status !== 'Completed') q.status = 'In Progress';
+    q.open = true;
+    query = '';
+    if (search) search.value = '';
+    paint();
+    requestAnimationFrame(() => {
+      const el = box.querySelector(`.quarter[data-q="${idx}"]`);
+      const scroller = document.querySelector('.scrollable-content');
+      if (el && scroller) {
+        scroller.scrollTo({ top: Math.max(0, el.offsetTop - 200), behavior: reduceMotion ? 'auto' : 'smooth' });
+        el.style.transition = 'background-color 0.5s ease';
+        el.style.backgroundColor = 'rgba(15, 185, 253, 0.2)';
+        setTimeout(() => {
+          el.style.backgroundColor = '';
+          setTimeout(() => { el.style.transition = ''; }, 500);
+        }, 1000);
+      } else if (el) {
+        el.scrollIntoView({ behavior: reduceMotion ? 'auto' : 'smooth', block: 'start' });
+      }
+    });
+  };
+  document.querySelectorAll('[data-act="current"]').forEach((b) => b.addEventListener('click', scrollCurrent));
+
+  // Open the current quarter on load (same as the Vue page)
+  scrollCurrent();
+</script>
+
+<style>
+  /* Clearance for the fixed overlay header. */
+  .roadmap-page { padding-top: 6.5rem; }
+</style>

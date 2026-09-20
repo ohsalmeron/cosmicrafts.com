@@ -1,6 +1,7 @@
 ---
 import Layout from './Layout.astro';
-import Starfield from '../components/Starfield.astro';
+import PageBackdrop from '../components/PageBackdrop.astro';
+import Header from '../components/Header.astro';
 import { getCollection } from 'astro:content';
 
 interface Props {
@@ -19,24 +20,17 @@ const sortedDocs = allDocs.sort((a, b) => (a.data.order || 0) - (b.data.order ||
 <Layout title={`${title} | Cosmicrafts Docs`} description={description}>
   <div class="fixed inset-0 h-screen w-screen overflow-hidden flex flex-col justify-between p-4 md:p-8 select-none z-10">
     <!-- Starfield Background -->
-    <Starfield />
+    <PageBackdrop />
 
     <!-- Ambient blur glows in background -->
     <div class="absolute top-1/4 left-1/4 w-[400px] h-[400px] bg-cyan-500/5 rounded-full blur-[100px] pointer-events-none z-0"></div>
     <div class="absolute bottom-1/4 right-1/4 w-[400px] h-[400px] bg-indigo-500/5 rounded-full blur-[100px] pointer-events-none z-0"></div>
 
     <!-- Header -->
-    <header class="w-full max-w-7xl mx-auto flex justify-between items-center z-10 pb-4 border-b border-white/5">
-      <a href="/" class="flex items-center space-x-2">
-        <img src="/logo.svg" alt="Cosmicrafts Logo" class="h-6 md:h-8 opacity-95" />
-      </a>
-      <a href="/" class="text-xs text-slate-400 hover:text-cyan-400 font-mono tracking-widest uppercase transition-all duration-300">
-        ← Home
-      </a>
-    </header>
+    <Header overlay />
 
     <!-- Main Docs Area -->
-    <main class="w-full max-w-7xl mx-auto flex-1 flex flex-col md:flex-row gap-6 md:gap-10 my-4 overflow-hidden z-10">
+    <main class="w-full max-w-7xl mx-auto flex-1 flex flex-col md:flex-row gap-6 md:gap-10 my-4 overflow-hidden z-10 pt-20">
       <!-- Left: Sidebar Navigation -->
       <aside class="w-full md:w-64 flex flex-row md:flex-col overflow-x-auto md:overflow-x-visible md:overflow-y-auto shrink-0 gap-2 border-b md:border-b-0 md:border-r border-white/5 pb-4 md:pb-0 md:pr-6 scrollbar-none select-none">
         {sortedDocs.map((doc) => {

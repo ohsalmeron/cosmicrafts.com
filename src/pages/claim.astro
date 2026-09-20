@@ -1,19 +1,19 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import Starfield from '../components/Starfield.astro';
+import PageBackdrop from '../components/PageBackdrop.astro';
 import Header from '../components/Header.astro';
 import Panel from '../components/Panel.astro';
 ---
 
 <Layout title="Cosmicrafts | Community Claim Portal" description="Claim Cosmicrafts community and beta incentives. Connect your wallet and collect SPIRAL rewards.">
   <div class="fixed inset-0 h-screen w-screen overflow-hidden flex flex-col justify-between p-4 sm:p-6 md:p-10 select-none z-10 bg-[#020208]">
-    <Starfield />
+    <PageBackdrop />
 
     <!-- Header component -->
-    <Header />
+    <Header overlay />
 
     <!-- Main claims interface -->
-    <main class="w-full max-w-7xl mx-auto flex-1 flex items-center justify-center z-10">
+    <main class="w-full max-w-7xl mx-auto flex-1 flex items-center justify-center z-10 pt-20">
       <Panel class="w-full max-w-md p-6 sm:p-8 text-center relative overflow-hidden">
 
         <h2 class="text-xs text-cyan-400 font-mono tracking-widest uppercase mb-2">[ COMMUNITY ALLOCATION ]</h2>
@@ -84,7 +84,7 @@ import Panel from '../components/Panel.astro';
 </Layout>
 
 <script>
-  import { wouAuth, type WouAccount } from '@worldofunreal/id';
+  import { wouAuth, type PlayerAccount } from '@worldofunreal/id';
   wouAuth.setDefaultContext('cosmicrafts');
 
   const btnConnect = document.getElementById('btn-connect');
@@ -96,7 +96,7 @@ import Panel from '../components/Panel.astro';
   const claimUsername = document.getElementById('claim-username');
   const claimAddress = document.getElementById('claim-address');
 
-  function updateClaimUI(user: WouAccount | null) {
+  function updateClaimUI(user: PlayerAccount | null) {
     if (user) {
       walletSection?.classList.add('hidden');
       claimSection?.classList.remove('hidden');
@@ -104,7 +104,7 @@ import Panel from '../components/Panel.astro';
 
       if (claimUsername) claimUsername.textContent = `@${user.username || 'commander'}`;
       if (claimAddress) {
-        const addr = user.embedded_wallets?.evm_address || user.embedded_wallets?.solana_address || user.id;
+        const addr = user.embedded_wallets?.evm_address || user.embedded_wallets?.solana_address || user.account_id;
         claimAddress.textContent = addr ? `${addr.slice(0, 8)}...${addr.slice(-6)}` : 'Verified Identity';
       }
     } else {
