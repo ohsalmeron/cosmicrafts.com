@@ -90,8 +90,8 @@ jobs:
           check "$base/whitepaper/"
           curl -s --max-time 30 "$base/" | grep -q "hero-carousel"
           echo "home contains hero carousel: yes"
-          curl -s --max-time 30 "$base/" | grep -q 'id="juegos"'
-          echo "home contains games library: yes"
+          curl -s --max-time 30 "$base/games/" | grep -q "game-launcher"
+          echo "games page contains library: yes"
           enc="$(curl -sI -H 'Accept-Encoding: gzip, deflate, br, zstd' --max-time 30 "$base/games/adventures-3d/Cosmicrafts.data.br" | tr -d '\r' | grep -i '^content-encoding:' | awk '{print $2}')"
           echo "unity .br content-encoding: $enc"
           [ "$enc" = "br" ]
