@@ -18,7 +18,7 @@ export interface Game {
   statusLabel: string;
   /** Unity WebGL build dir under /games/ (for playable), or external URL */
   buildDir?: string;
-  /** Local embed URL (iframe): trunk WASM dist or static Rush app */
+  /** Local embed URL (iframe): trunk WASM dist under /games/ */
   embed?: string;
   loader?: string;
   data?: string;
@@ -83,10 +83,10 @@ export const GAMES: Game[] = [
     tagColor: 'cyan',
     description: 'Carreras de naves 1v1 en cadena. Apuesta, mira la carrera y desbloquea logros.',
     image: '/assets/games/rush.svg',
-    status: 'live',
+    status: 'external',
     statusLabel: 'En vivo',
-    embed: '/rush/',
-    playRoute: '/play/rush',
+    playRoute: '',
+    externalUrl: 'https://rush.cosmicrafts.com',
     repo: 'https://github.com/cosmicrafts/Rush',
     features: ['Carreras', 'On-chain', 'Apuestas'],
     badge: 'Live',

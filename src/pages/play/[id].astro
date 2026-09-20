@@ -15,6 +15,10 @@ const game = getGame(id ?? '');
 if (!game) {
   return Astro.redirect('/games');
 }
+
+if (game.externalUrl) {
+  return Astro.redirect(game.externalUrl);
+}
 ---
 
 <Layout title={`Cosmicrafts | ${game.name}`} description={`Play ${game.name} (${game.year}). ${game.description}`}>
