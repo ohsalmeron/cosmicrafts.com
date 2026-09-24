@@ -76,6 +76,29 @@ jobs:
           ls
           REMOTE
 
+      - name: Sync nginx conf (versioned in infra/nginx)
+        run: |
+          # The vhost lives in the repo so every header change is reviewable
+          # and reproducible. Backup first (.bak_<ts>), test config, reload.
+          scp -o StrictHostKeyChecking=no infra/nginx/cosmicrafts.com.conf \
+            "${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:/tmp/cc-nginx.conf"
+          ssh -o StrictHostKeyChecking=no "${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}" <<'REMOTE'
+          set -eu
+          live=/usr/local/etc/nginx/conf.d/cosmicrafts.com.conf
+          if ! cmp -s /tmp/cc-nginx.conf "$live"; then
+            sudo -n cp "$live" "$live.bak_$(date +%s)"
+            sudo -n cp /tmp/cc-nginx.conf "$live"
+            sudo -n nginx -t
+            sudo -n service nginx reload
+            sudo -n nginx -T 2>/dev/null | grep -q 'max-age=3600, must-revalidate' \
+              || { echo "NGINX POLICY CHECK FAILED"; exit 1; }
+            echo "nginx conf updated + reloaded"
+          else
+            echo "nginx conf unchanged"
+          fi
+          rm -f /tmp/cc-nginx.conf
+          REMOTE
+
       - name: Verify Live Site
         run: |
           set -e

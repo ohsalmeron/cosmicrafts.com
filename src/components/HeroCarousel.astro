@@ -139,7 +139,7 @@ const socials = [
   const dots = [...document.querySelectorAll('#hero-dots span')];
   const referral = document.getElementById('hero-referral');
   const referralCode = document.getElementById('hero-referral-code');
-  let current = 0, entering = false, timer = null, loadedOnce = false, sy = 0;
+  let current = 0, entering = false, timer = null, idleTimer = null, loadedOnce = false, sy = 0;
   const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   const heroImageFor = (i) => {
@@ -172,6 +172,8 @@ const socials = [
     img.classList.add(dir === 'next' ? 'leave-animation-next' : 'leave-animation-prev');
     logo.classList.add('leave-animation');
     title.classList.add('leave-animation');
+    // Swap content only when the 0.3s leave animation ends; swapping at 40ms
+    // cut it mid-flight (flicker). The lock covers the full transition.
     setTimeout(() => {
       current = next;
       ['leave-animation-next', 'leave-animation-prev'].forEach((c) => img.classList.remove(c));
@@ -187,15 +189,22 @@ const socials = [
         logo.classList.remove('enter-animation');
         title.classList.remove('enter-animation');
         entering = false;
-      }, 60);
-    }, 40);
+      }, 300);
+    }, 300);
   };
 
-  const go = (i, dir) => { if (i === current || entering) return; swap((i + slides.length) % slides.length, dir || (i > current ? 'next' : 'prev')); restart(); };
-  const next = () => go(current + 1, 'next');
-  const prev = () => go(current - 1, 'prev');
-  const restart = () => { stop(); if (!reduceMotion) timer = setInterval(next, 5000); };
-  const stop = () => { if (timer) clearInterval(timer); };
+  const go = (i, dir, manual) => { if (i === current || entering) return; swap((i + slides.length) % slides.length, dir || (i > current ? 'next' : 'prev')); restart(manual); };
+  const next = (manual) => go(current + 1, 'next', manual);
+  const prev = (manual) => go(current - 1, 'prev', manual);
+  const restart = (manual) => {
+    stop();
+    if (reduceMotion) return;
+    // Manual nav pauses autoplay; it resumes after 15s idle so it never
+    // steals the slide you just picked. Autoplay ticks resume immediately.
+    if (manual) idleTimer = setTimeout(() => { timer = setInterval(() => next(false), 5000); }, 15000);
+    else timer = setInterval(() => next(false), 5000);
+  };
+  const stop = () => { if (timer) clearInterval(timer); timer = null; if (idleTimer) clearTimeout(idleTimer); idleTimer = null; };
 
   const onCta = (e) => {
     const btn = e.currentTarget;
@@ -215,11 +224,11 @@ const socials = [
     else window.location.href = link;
   };
 
-  document.getElementById('hero-next')?.addEventListener('click', next);
-  document.getElementById('hero-prev')?.addEventListener('click', prev);
+  document.getElementById('hero-next')?.addEventListener('click', () => next(true));
+  document.getElementById('hero-prev')?.addEventListener('click', () => prev(true));
   dots.forEach((d) => {
     const i = Number(d.getAttribute('data-slide'));
-    d.addEventListener('click', () => go(i));
+    d.addEventListener('click', () => go(i, undefined, true));
     d.addEventListener('keydown', (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); go(i); } });
   });
   document.getElementById('hero-referral-close')?.addEventListener('click', () => { referral.hidden = true; });
