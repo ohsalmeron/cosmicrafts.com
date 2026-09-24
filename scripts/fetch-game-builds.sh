@@ -23,13 +23,7 @@ else
   echo "regenerate: (cd /tmp/opencode/Rush && npx nuxi generate) then rerun"
 fi
 
-echo "== Star-Drifter WASM (trunk release in the game repo) =="
-if [ -d /tmp/opencode/Star-Drifter/dist ]; then
-  mkdir -p "$OUT/stardrifter"
-  cp -r /tmp/opencode/Star-Drifter/dist/. "$OUT/stardrifter/"
-else
-  echo "rebuild: (cd /tmp/opencode/Star-Drifter && trunk build --release) then rerun"
-fi
+echo "== Star-Drifter: JS nativo en stardrifter.cosmicrafts.com (nada que copiar) =="
 
 echo "== Adventures-Bevy WASM (trunk release in the game repo) =="
 if [ -d /home/bizkit/Github/Adventures-Bevy/dist ]; then
