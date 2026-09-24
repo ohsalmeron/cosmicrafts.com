@@ -124,10 +124,10 @@
   pointer-events: none;
 }
 
-/* Slide indicators */
+/* Slide indicators (clears the cta-panel footmenu: ~130px desktop) */
 .slide-indicators {
   position: absolute;
-  bottom: calc(80px + 2rem);
+  bottom: calc(80px + 3.5rem);
   left: 0;
   width: 100%;
   display: flex;
@@ -330,6 +330,11 @@
     flex-direction: column;
     gap: .25rem;
     padding: 0.8rem 1rem;
+  }
+
+  /* Dots clear the taller stacked footmenu on mobile (~222px) */
+  .slide-indicators {
+    bottom: 242px;
   }
 
   .cta-buttons {
