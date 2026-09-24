@@ -1,97 +1,135 @@
 {
   "login": {
-  "connectWith": "Willkommen im Metaversum",
-  "internetIdentity": "Mit Internet Identity anmelden",
-  "google": "Mit Google anmelden",
-  "guestAccount": "Als Gast fortfahren",
-  "signInClarification": "Schon eine Seed?",
-  "loginWith": "Anmelden mit {method}",
-  "enterSeedPhrase": "Seed-Phrase eingeben",
-  "accountRecovery": "Konto wiederherstellen",
-  "recoverAccount": "Mit dieser Seed anmelden",
-  "seedValid": "Ihre Seed-Phrase scheint gültig zu sein!",
-  "invalidSeedPhrase": "Die Seed-Phrase ist ungültig.",
-  "invalidSeedLength": "Die Seed-Phrase muss genau 12 Wörter enthalten.",
-  "guestLoginError": "Ups, etwas ist schiefgelaufen!",
-  "recoverySuccess": "Konto erfolgreich wiederhergestellt!",
-  "recovering": "Wird wiederhergestellt..."
-},
-"register": {
-  "usernameLabel": "Benutzername:",
-  "usernamePlaceholder": "Max. 12 Zeichen",
-  "referralCodeLabel": "Empfehlungscode:",
-  "referralCodePlaceholder": "(optional)",
-  "noReferralCode": "Keinen Code?",
-  "getReferralCode": "Hier bekommen!",
-  "acceptTerms": "Ich akzeptiere",
-  "privacyPolicy": "die Datenschutzrichtlinie",
-  "termsOfService": "die Nutzungsbedingungen",
-  "and": "und",
-  "continueButton": "Weiter",
-  "successMessage": "Willkommen, {username}!",
-  "failureMessage": "Registrierung fehlgeschlagen.",
-  "newPlayer": "Neuer Spieler",
-  "selectedAvatarAlt": "Ausgewählter Avatar",
-  "projectedAvatarAlt": "Projizierter Avatar",
-  "avatarIconAlt": "Avatar-Icon",
-  "avatarGridTitle": "Wähle einen Avatar",
-  "avatarAlt": "Avatar {index}"
-},
+    "connectWith": "Willkommen im Metaversum",
+    "internetIdentity": "Mit Internet Identity anmelden",
+    "google": "Mit Google anmelden",
+    "guestAccount": "Als Gast fortfahren",
+    "signInClarification": "Schon eine Seed?",
+    "loginWith": "Anmelden mit {method}",
+    "enterSeedPhrase": "Seed-Phrase eingeben",
+    "accountRecovery": "Konto wiederherstellen",
+    "recoverAccount": "Mit dieser Seed anmelden",
+    "seedValid": "Ihre Seed-Phrase scheint gültig zu sein!",
+    "invalidSeedPhrase": "Die Seed-Phrase ist ungültig.",
+    "invalidSeedLength": "Die Seed-Phrase muss genau 12 Wörter enthalten.",
+    "guestLoginError": "Ups, etwas ist schiefgelaufen!",
+    "recoverySuccess": "Konto erfolgreich wiederhergestellt!",
+    "recovering": "Wird wiederhergestellt..."
+  },
+  "register": {
+    "usernameLabel": "Benutzername:",
+    "usernamePlaceholder": "Max. 12 Zeichen",
+    "referralCodeLabel": "Empfehlungscode:",
+    "referralCodePlaceholder": "(optional)",
+    "noReferralCode": "Keinen Code?",
+    "getReferralCode": "Hier bekommen!",
+    "acceptTerms": "Ich akzeptiere",
+    "privacyPolicy": "die Datenschutzrichtlinie",
+    "termsOfService": "die Nutzungsbedingungen",
+    "and": "und",
+    "continueButton": "Weiter",
+    "successMessage": "Willkommen, {username}!",
+    "failureMessage": "Registrierung fehlgeschlagen.",
+    "newPlayer": "Neuer Spieler",
+    "selectedAvatarAlt": "Ausgewählter Avatar",
+    "projectedAvatarAlt": "Projizierter Avatar",
+    "avatarIconAlt": "Avatar-Icon",
+    "avatarGridTitle": "Wähle einen Avatar",
+    "avatarAlt": "Avatar {index}"
+  },
   "header": {
-  "home": "Startseite",
-  "features": "Funktionen",
-  "play": "Spielen",
-  "games": "Spiele",
-  "community": "Gemeinschaft",
-  "contact": "Kontakt",
-  "support": "Support",
-  "language": "Sprache",
-  "marketplace": "Marktplatz",
-  "spiral": "Spiral",
-  "dao": "DAO",
-  "dashboard": "Dashboard",
-  "connect": "Verbinden",
-  "whitepaper": "Whitepaper",
-  "login": "Anmelden",
-  "myProfile": "Mein Profil",
-  "settings": "Einstellungen",
-  "signout": "Abmelden",
-  "profile": "Profil",
-  "roadmap": "Roadmap"
-},
-"error": {
-      "title": "Hoppla!",
-      "description": "Irgendwas ist hier komplett daneben gegangen.",
-      "homeButton": "⏪ Zurück"
-    },
+    "home": "Startseite",
+    "features": "Funktionen",
+    "play": "Spielen",
+    "games": "Spiele",
+    "community": "Gemeinschaft",
+    "contact": "Kontakt",
+    "support": "Support",
+    "language": "Sprache",
+    "marketplace": "Marktplatz",
+    "spiral": "Spiral",
+    "dao": "DAO",
+    "dashboard": "Dashboard",
+    "connect": "Verbinden",
+    "whitepaper": "Whitepaper",
+    "login": "Anmelden",
+    "myProfile": "Mein Profil",
+    "settings": "Einstellungen",
+    "signout": "Abmelden",
+    "profile": "Profil",
+    "roadmap": "Roadmap"
+  },
+  "error": {
+    "title": "Hoppla!",
+    "description": "Irgendwas ist hier komplett daneben gegangen.",
+    "homeButton": "⏪ Zurück"
+  },
   "hero": {
     "slides": [
       {
         "title": "Hier geht's los. Alpha ist am Start – komm rein!",
         "ctaButtons": [
-          { "text": "Jetzt Spielen!" },
-          { "text": "Zur Wunschliste bei Epic Games hinzufügen" }
+          {
+            "text": "Jetzt Spielen!"
+          },
+          {
+            "text": "Zur Wunschliste bei Epic Games hinzufügen"
+          }
         ]
       },
       {
         "title": "Die Party steigt! Bist du dabei oder was?",
         "ctaButtons": [
-          { "text": "Zu NNS" },
-          { "text": "Whitepaper Lesen" }
+          {
+            "text": "Zu NNS"
+          },
+          {
+            "text": "Whitepaper Lesen"
+          }
         ]
       },
       {
         "title": "On-Chain RTS. Ein Sternendrift, galaktisches Chaos",
         "ctaButtons": [
-          { "text": "Jetzt Herunterladen!" },
-          { "text": "Mehr Erfahren!" }
+          {
+            "text": "Jetzt Herunterladen!"
+          },
+          {
+            "text": "Mehr Erfahren!"
+          }
+        ]
+      },
+      {
+        "title": "Cosmicrafts Classics - Bringt das Erbe zurück",
+        "ctaButtons": [
+          {
+            "text": "Classics spielen"
+          },
+          {
+            "text": "X-Highlights"
+          }
         ]
       },
       {
         "title": "Lass uns vernetzen! Lade Freunde ein und hol dir exklusive Belohnungen!",
         "ctaButtons": [
-          { "text": "Zum Dashboard" },
-          { "text": "Erhalte einen Einladungslink" }
+          {
+            "text": "Zum Dashboard"
+          },
+          {
+            "text": "Erhalte einen Einladungslink"
+          }
+        ]
+      },
+      {
+        "title": "Setze auf Raumschiffe. Gewinne sofort SPIRAL.",
+        "ctaButtons": [
+          {
+            "text": "Rush spielen"
+          },
+          {
+            "text": "Spiele entdecken"
+          }
         ]
       }
     ]
@@ -157,10 +195,10 @@
     "trademarks": "Alle hier genannten Marken sind Eigentum ihrer jeweiligen Besitzer."
   },
   "darkRift": {
-  "title": "Die Dunkle Kluft",
-  "discover": "Entdecken"
-},
-"loadingScreen": {
+    "title": "Die Dunkle Kluft",
+    "discover": "Entdecken"
+  },
+  "loadingScreen": {
     "messages": {
       "initializingQuantumShenanigans": "Quantenzauber wird gestartet",
       "chargingHyperdrive": "Hyperantrieb wird aufgeladen",
@@ -560,7 +598,6 @@
     "level": "Level",
     "balance": "Guthaben",
     "max": "Max",
-
     "actions": "Aktionen",
     "send": "Senden",
     "sendTooltip": "Tokens an ein anderes Konto senden",
@@ -577,7 +614,6 @@
     "swapTooltip": "Zwischen verschiedenen Tokens tauschen",
     "stake": "Staken",
     "stakeTooltip": "Tokens staken, um Belohnungen zu erhalten",
-
     "recipient": "Empfänger",
     "enterRecipient": "Empfängeradresse eingeben",
     "amount": "Betrag",
@@ -586,7 +622,6 @@
     "optional": "optional",
     "enterMemo": "Geben Sie ein Memo oder eine Nachricht ein (optional)",
     "transactionFee": "Transaktionsgebühr",
-
     "token": "Token",
     "tokenId": "Token-ID",
     "enterTokenId": "Geben Sie die Canister-ID des Tokens ein",
@@ -597,7 +632,6 @@
     "tokenDecimals": "Token-Dezimalstellen",
     "showAdvanced": "Erweiterte Optionen anzeigen",
     "hideAdvanced": "Erweiterte Optionen ausblenden",
-
     "nftCollection": "NFT-Sammlung",
     "loadingNfts": "NFTs werden geladen...",
     "noNfts": "Keine NFTs gefunden",
@@ -606,16 +640,12 @@
     "chestRewards": "Ihre Belohnungen",
     "noRewardsFound": "Keine Belohnungen gefunden",
     "tapToReveal": "Tippen zum Anzeigen",
-
     "activityLog": "Aktivitätsprotokoll",
     "clearLogs": "Protokoll löschen",
     "noLogs": "Keine Aktivitäten zum Anzeigen",
-
     "copy": "Kopieren",
     "comingSoon": "Demnächst verfügbar",
-
     "closeDialog": "Schließen",
-
     "loading": "Wird geladen...",
     "error": "Fehler"
   },

@@ -79,29 +79,67 @@
       {
         "title": "Aquí comienza todo. ¡El Alpha está en vivo, únete ya!",
         "ctaButtons": [
-          { "text": "¡Juega Ahora!" },
-          { "text": "Añadir a Wishlist en Epic Games" }
+          {
+            "text": "¡Juega Ahora!"
+          },
+          {
+            "text": "Añadir a Wishlist en Epic Games"
+          }
         ]
       },
       {
         "title": "La fiesta está aquí. ¿Te unes o qué?",
         "ctaButtons": [
-          { "text": "Ir a NNS" },
-          { "text": "Leer el Whitepaper" }
+          {
+            "text": "Ir a NNS"
+          },
+          {
+            "text": "Leer el Whitepaper"
+          }
         ]
       },
       {
         "title": "RTS en Blockchain. Una Guerra Estelar, Caos Galáctico.",
         "ctaButtons": [
-          { "text": "¡Descárgalo Ya!" },
-          { "text": "Saber Más!" }
+          {
+            "text": "¡Descárgalo Ya!"
+          },
+          {
+            "text": "Saber Más!"
+          }
+        ]
+      },
+      {
+        "title": "Cosmicrafts Classics - Revive el legado",
+        "ctaButtons": [
+          {
+            "text": "Jugar Classics"
+          },
+          {
+            "text": "Destacados en X"
+          }
         ]
       },
       {
         "title": "¡Únete a la diversión! Invita y gana recompensas exclusivas.",
         "ctaButtons": [
-          { "text": "Ir al Panel" },
-          { "text": "Obtén tu Código de Referencia" }
+          {
+            "text": "Ir al Panel"
+          },
+          {
+            "text": "Obtén tu Código de Referencia"
+          }
+        ]
+      },
+      {
+        "title": "Apuesta en naves. Gana SPIRAL al instante.",
+        "ctaButtons": [
+          {
+            "text": "Jugar Rush"
+          },
+          {
+            "text": "Ver juegos"
+          }
         ]
       }
     ]
@@ -536,7 +574,7 @@
         "description": "Influye en las prioridades de desarrollo técnico y de producto de la plataforma",
         "items": {
           "features": "Priorización de características",
-          "expansions": "Expansiones de juegos", 
+          "expansions": "Expansiones de juegos",
           "improvements": "Mejoras técnicas"
         }
       },
@@ -733,6 +771,3 @@
     "logout": "Cerrar Sesión"
   }
 }
-
-
-

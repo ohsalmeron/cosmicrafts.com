@@ -69,29 +69,67 @@
       {
         "title": "すべてはここから始まります。アルファ版が準備完了、今すぐ参加！",
         "ctaButtons": [
-          { "text": "今すぐプレイ！" },
-          { "text": "Epic Gamesでウィッシュリストに追加" }
+          {
+            "text": "今すぐプレイ！"
+          },
+          {
+            "text": "Epic Gamesでウィッシュリストに追加"
+          }
         ]
       },
       {
         "title": "パーティーの始まりです！参加しませんか？",
         "ctaButtons": [
-          { "text": "NNSへ移動" },
-          { "text": "ホワイトペーパーを見る" }
+          {
+            "text": "NNSへ移動"
+          },
+          {
+            "text": "ホワイトペーパーを見る"
+          }
         ]
       },
       {
         "title": "ブロックチェーン上のRTS。星間移動、銀河の混沌",
         "ctaButtons": [
-          { "text": "今すぐダウンロード！" },
-          { "text": "詳細を見る！" }
+          {
+            "text": "今すぐダウンロード！"
+          },
+          {
+            "text": "詳細を見る！"
+          }
+        ]
+      },
+      {
+        "title": "Cosmicrafts Classics - 伝説を呼び戻せ",
+        "ctaButtons": [
+          {
+            "text": "Classicsをプレイ"
+          },
+          {
+            "text": "Xハイライト"
+          }
         ]
       },
       {
         "title": "つながろう！友達を招待して限定報酬をゲット！",
         "ctaButtons": [
-          { "text": "ダッシュボードへ移動" },
-          { "text": "紹介コードを取得" }
+          {
+            "text": "ダッシュボードへ移動"
+          },
+          {
+            "text": "紹介コードを取得"
+          }
+        ]
+      },
+      {
+        "title": "宇宙船に賭けて、SPIRALを即ゲット。",
+        "ctaButtons": [
+          {
+            "text": "Rushをプレイ"
+          },
+          {
+            "text": "ゲームを見る"
+          }
         ]
       }
     ]
@@ -301,9 +339,8 @@
       "offline": "オフライン"
     },
     "editProfileModal": {
-      "title": "プロフィール編集",
-      "username": "ユーザー名",
       "title": "タイトル",
+      "username": "ユーザー名",
       "description": "説明",
       "cancel": "キャンセル",
       "saveChanges": "変更を保存"
@@ -560,7 +597,6 @@
     "level": "レベル",
     "balance": "残高",
     "max": "最大",
-
     "actions": "アクション",
     "send": "送信",
     "sendTooltip": "他のアカウントにトークンを送信",
@@ -577,7 +613,6 @@
     "swapTooltip": "異なるトークン間で交換",
     "stake": "ステーク",
     "stakeTooltip": "報酬を得るためにトークンをステーク",
-
     "recipient": "受信者",
     "enterRecipient": "受信者アドレスを入力",
     "amount": "金額",
@@ -586,7 +621,6 @@
     "optional": "任意",
     "enterMemo": "メモやメッセージを入力（任意）",
     "transactionFee": "取引手数料",
-
     "token": "トークン",
     "tokenId": "トークンID",
     "enterTokenId": "トークンのキャニスターIDを入力",
@@ -597,7 +631,6 @@
     "tokenDecimals": "トークン小数点",
     "showAdvanced": "詳細オプションを表示",
     "hideAdvanced": "詳細オプションを非表示",
-
     "nftCollection": "NFTコレクション",
     "loadingNfts": "NFTを読み込み中...",
     "noNfts": "NFTが見つかりません",
@@ -606,16 +639,12 @@
     "chestRewards": "あなたの報酬",
     "noRewardsFound": "報酬が見つかりません",
     "tapToReveal": "タップして表示",
-
     "activityLog": "アクティビティログ",
     "clearLogs": "ログをクリア",
     "noLogs": "表示するアクティビティがありません",
-
     "copy": "コピー",
     "comingSoon": "近日公開",
-
     "closeDialog": "閉じる",
-
     "loading": "読み込み中...",
     "error": "エラー"
   },

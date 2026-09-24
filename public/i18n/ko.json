@@ -69,29 +69,67 @@
       {
         "title": "모든 것이 여기서 시작됩니다. 알파가 준비되었습니다. 지금 참여하세요!",
         "ctaButtons": [
-          { "text": "지금 플레이!" },
-          { "text": "Epic Games에서 위시리스트에 추가" }
+          {
+            "text": "지금 플레이!"
+          },
+          {
+            "text": "Epic Games에서 위시리스트에 추가"
+          }
         ]
       },
       {
         "title": "파티가 시작됩니다! 참여하시겠습니까?",
         "ctaButtons": [
-          { "text": "NNS로 이동" },
-          { "text": "백서 보기" }
+          {
+            "text": "NNS로 이동"
+          },
+          {
+            "text": "백서 보기"
+          }
         ]
       },
       {
         "title": "블록체인 상의 RTS. 별간 이동, 은하계 혼돈",
         "ctaButtons": [
-          { "text": "지금 다운로드!" },
-          { "text": "더 알아보기!" }
+          {
+            "text": "지금 다운로드!"
+          },
+          {
+            "text": "더 알아보기!"
+          }
+        ]
+      },
+      {
+        "title": "Cosmicrafts Classics - 전설을 되살리세요",
+        "ctaButtons": [
+          {
+            "text": "Classics 플레이"
+          },
+          {
+            "text": "X 하이라이트"
+          }
         ]
       },
       {
         "title": "연결하세요! 친구를 초대하고 독점 보상을 받으세요!",
         "ctaButtons": [
-          { "text": "대시보드로 이동" },
-          { "text": "추천 코드 받기" }
+          {
+            "text": "대시보드로 이동"
+          },
+          {
+            "text": "추천 코드 받기"
+          }
+        ]
+      },
+      {
+        "title": "우주선에 베팅하고 SPIRAL을 즉시 획득하세요.",
+        "ctaButtons": [
+          {
+            "text": "Rush 플레이"
+          },
+          {
+            "text": "게임 보기"
+          }
         ]
       }
     ]
@@ -301,9 +339,8 @@
       "offline": "오프라인"
     },
     "editProfileModal": {
-      "title": "프로필 편집",
-      "username": "사용자 이름",
       "title": "제목",
+      "username": "사용자 이름",
       "description": "설명",
       "cancel": "취소",
       "saveChanges": "변경사항 저장"
@@ -560,7 +597,6 @@
     "level": "레벨",
     "balance": "잔액",
     "max": "최대",
-
     "actions": "작업",
     "send": "보내기",
     "sendTooltip": "다른 계정으로 토큰 보내기",
@@ -577,7 +613,6 @@
     "swapTooltip": "다른 토큰과 교환",
     "stake": "스테이킹",
     "stakeTooltip": "보상을 받기 위한 토큰 스테이킹",
-
     "recipient": "수신자",
     "enterRecipient": "수신자 주소 입력",
     "amount": "금액",
@@ -586,7 +621,6 @@
     "optional": "선택사항",
     "enterMemo": "메모 또는 메시지 입력 (선택사항)",
     "transactionFee": "거래 수수료",
-
     "token": "토큰",
     "tokenId": "토큰 ID",
     "enterTokenId": "토큰 캐니스터 ID 입력",
@@ -597,7 +631,6 @@
     "tokenDecimals": "토큰 소수점",
     "showAdvanced": "고급 옵션 표시",
     "hideAdvanced": "고급 옵션 숨기기",
-
     "nftCollection": "NFT 컬렉션",
     "loadingNfts": "NFT 로딩 중...",
     "noNfts": "NFT를 찾을 수 없음",
@@ -606,16 +639,12 @@
     "chestRewards": "보상",
     "noRewardsFound": "보상을 찾을 수 없음",
     "tapToReveal": "탭하여 확인",
-
     "activityLog": "활동 로그",
     "clearLogs": "로그 지우기",
     "noLogs": "표시할 활동이 없습니다",
-
     "copy": "복사",
     "comingSoon": "곧 출시 예정",
-
     "closeDialog": "닫기",
-
     "loading": "로딩 중...",
     "error": "오류"
   },

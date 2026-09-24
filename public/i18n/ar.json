@@ -1,97 +1,135 @@
 {
   "login": {
-  "connectWith": "مرحبًا بك في الميتافيرس",
-  "internetIdentity": "تسجيل الدخول باستخدام Internet Identity",
-  "google": "تسجيل الدخول باستخدام Google",
-  "guestAccount": "المتابعة كضيف",
-  "signInClarification": "هل لديك seed بالفعل؟",
-  "loginWith": "تسجيل الدخول باستخدام {method}",
-  "enterSeedPhrase": "أدخل عبارة seed",
-  "accountRecovery": "استعادة الحساب",
-  "recoverAccount": "تسجيل الدخول باستخدام هذا seed",
-  "seedValid": "عبارة seed تبدو صحيحة!",
-  "invalidSeedPhrase": "عبارة seed غير صالحة.",
-  "invalidSeedLength": "يجب أن تحتوي عبارة seed على 12 كلمة بالضبط.",
-  "guestLoginError": "عذرًا! حدث خطأ ما.",
-  "recoverySuccess": "تم استعادة الحساب بنجاح!",
-  "recovering": "جارٍ الاستعادة..."
-},
-"register": {
-  "usernameLabel": "اسم المستخدم:",
-  "usernamePlaceholder": "بحد أقصى 12 حرفًا",
-  "referralCodeLabel": "رمز الإحالة:",
-  "referralCodePlaceholder": "(اختياري)",
-  "noReferralCode": "ليس لديك رمز؟",
-  "getReferralCode": "احصل على رمز هنا!",
-  "acceptTerms": "أوافق على",
-  "privacyPolicy": "سياسة الخصوصية",
-  "termsOfService": "شروط الخدمة",
-  "and": "و",
-  "continueButton": "متابعة",
-  "successMessage": "مرحبًا بك، {username}!",
-  "failureMessage": "فشل التسجيل.",
-  "newPlayer": "لاعب جديد",
-  "selectedAvatarAlt": "الصورة الرمزية المختارة",
-  "projectedAvatarAlt": "الصورة الرمزية المتوقعة",
-  "avatarIconAlt": "أيقونة الصورة الرمزية",
-  "avatarGridTitle": "اختر صورة رمزية",
-  "avatarAlt": "الصورة الرمزية {index}"
-},
-"header": {
-  "home": "الرئيسية",
-  "features": "الميزات",
-  "play": "العب",
-  "games": "الألعاب",
-  "community": "المجتمع",
-  "contact": "تواصل معنا",
-  "support": "الدعم",
-  "language": "اللغة",
-  "marketplace": "السوق",
-  "spiral": "الحلزون",
-  "dao": "DAO",
-  "dashboard": "لوحة التحكم",
-  "connect": "الاتصال",
-  "whitepaper": "الورقة البيضاء",
-  "login": "تسجيل الدخول",
-  "myProfile": "ملفي الشخصي",
-  "settings": "الإعدادات",
-  "signout": "تسجيل الخروج",
-  "profile": "الملف الشخصي",
-  "roadmap": "خارطة الطريق"
-},
-"error": {
-      "title": "!يا للهول",
-      "description": "عذرًا، الصفحة أخذت رحلة كونية!",
-      "homeButton": "⏪ العودة"
-    },
+    "connectWith": "مرحبًا بك في الميتافيرس",
+    "internetIdentity": "تسجيل الدخول باستخدام Internet Identity",
+    "google": "تسجيل الدخول باستخدام Google",
+    "guestAccount": "المتابعة كضيف",
+    "signInClarification": "هل لديك seed بالفعل؟",
+    "loginWith": "تسجيل الدخول باستخدام {method}",
+    "enterSeedPhrase": "أدخل عبارة seed",
+    "accountRecovery": "استعادة الحساب",
+    "recoverAccount": "تسجيل الدخول باستخدام هذا seed",
+    "seedValid": "عبارة seed تبدو صحيحة!",
+    "invalidSeedPhrase": "عبارة seed غير صالحة.",
+    "invalidSeedLength": "يجب أن تحتوي عبارة seed على 12 كلمة بالضبط.",
+    "guestLoginError": "عذرًا! حدث خطأ ما.",
+    "recoverySuccess": "تم استعادة الحساب بنجاح!",
+    "recovering": "جارٍ الاستعادة..."
+  },
+  "register": {
+    "usernameLabel": "اسم المستخدم:",
+    "usernamePlaceholder": "بحد أقصى 12 حرفًا",
+    "referralCodeLabel": "رمز الإحالة:",
+    "referralCodePlaceholder": "(اختياري)",
+    "noReferralCode": "ليس لديك رمز؟",
+    "getReferralCode": "احصل على رمز هنا!",
+    "acceptTerms": "أوافق على",
+    "privacyPolicy": "سياسة الخصوصية",
+    "termsOfService": "شروط الخدمة",
+    "and": "و",
+    "continueButton": "متابعة",
+    "successMessage": "مرحبًا بك، {username}!",
+    "failureMessage": "فشل التسجيل.",
+    "newPlayer": "لاعب جديد",
+    "selectedAvatarAlt": "الصورة الرمزية المختارة",
+    "projectedAvatarAlt": "الصورة الرمزية المتوقعة",
+    "avatarIconAlt": "أيقونة الصورة الرمزية",
+    "avatarGridTitle": "اختر صورة رمزية",
+    "avatarAlt": "الصورة الرمزية {index}"
+  },
+  "header": {
+    "home": "الرئيسية",
+    "features": "الميزات",
+    "play": "العب",
+    "games": "الألعاب",
+    "community": "المجتمع",
+    "contact": "تواصل معنا",
+    "support": "الدعم",
+    "language": "اللغة",
+    "marketplace": "السوق",
+    "spiral": "الحلزون",
+    "dao": "DAO",
+    "dashboard": "لوحة التحكم",
+    "connect": "الاتصال",
+    "whitepaper": "الورقة البيضاء",
+    "login": "تسجيل الدخول",
+    "myProfile": "ملفي الشخصي",
+    "settings": "الإعدادات",
+    "signout": "تسجيل الخروج",
+    "profile": "الملف الشخصي",
+    "roadmap": "خارطة الطريق"
+  },
+  "error": {
+    "title": "!يا للهول",
+    "description": "عذرًا، الصفحة أخذت رحلة كونية!",
+    "homeButton": "⏪ العودة"
+  },
   "hero": {
     "slides": [
       {
         "title": "هنا البداية. الألفا شغّالة، يلا شارك!",
         "ctaButtons": [
-          { "text": "العب الآن!" },
-          { "text": "أضفها لقائمة الرغبات على Epic Games" }
+          {
+            "text": "العب الآن!"
+          },
+          {
+            "text": "أضفها لقائمة الرغبات على Epic Games"
+          }
         ]
       },
       {
         "title": "الحفلة هنا! معانا ولا إيه؟",
         "ctaButtons": [
-          { "text": "الذهاب إلى NNS" },
-          { "text": "اقرأ الورقة البيضاء" }
+          {
+            "text": "الذهاب إلى NNS"
+          },
+          {
+            "text": "اقرأ الورقة البيضاء"
+          }
         ]
       },
       {
         "title": "RTS على البلوكتشين. دريفت بين النجوم، وفوضى مجرّية",
         "ctaButtons": [
-          { "text": "حمّلها الآن!" },
-          { "text": "اعرف المزيد!" }
+          {
+            "text": "حمّلها الآن!"
+          },
+          {
+            "text": "اعرف المزيد!"
+          }
+        ]
+      },
+      {
+        "title": "Cosmicrafts Classics - رجّع الأسطورة",
+        "ctaButtons": [
+          {
+            "text": "العب Classics"
+          },
+          {
+            "text": "أبرز منشورات X"
+          }
         ]
       },
       {
         "title": "خلينا نتواصل! ادعو أصحابك وخذ جوائز حصرية!",
         "ctaButtons": [
-          { "text": "اذهب للوحة التحكم" },
-          { "text": "احصل على كود الدعوة" }
+          {
+            "text": "اذهب للوحة التحكم"
+          },
+          {
+            "text": "احصل على كود الدعوة"
+          }
+        ]
+      },
+      {
+        "title": "راهن على السفن واربح SPIRAL فورًا.",
+        "ctaButtons": [
+          {
+            "text": "العب Rush"
+          },
+          {
+            "text": "كل الألعاب"
+          }
         ]
       }
     ]
@@ -157,10 +195,10 @@
     "trademarks": "جميع العلامات التجارية المذكورة هنا هي ملك لأصحابها."
   },
   "darkRift": {
-  "title": "الصدع المظلم",
-  "discover": "اكتشف"
-},
-"loadingScreen": {
+    "title": "الصدع المظلم",
+    "discover": "اكتشف"
+  },
+  "loadingScreen": {
     "messages": {
       "initializingQuantumShenanigans": "تشغيل السحر الكمي",
       "chargingHyperdrive": "شحن المحرك الفائق",
@@ -301,9 +339,8 @@
       "offline": "غير متصل"
     },
     "editProfileModal": {
-      "title": "تعديل الملف الشخصي",
-      "username": "اسم المستخدم",
       "title": "اللقب",
+      "username": "اسم المستخدم",
       "description": "الوصف",
       "cancel": "إلغاء",
       "saveChanges": "حفظ التغييرات"
@@ -560,7 +597,6 @@
     "level": "المستوى",
     "balance": "الرصيد",
     "max": "الحد الأقصى",
-
     "actions": "الإجراءات",
     "send": "إرسال",
     "sendTooltip": "إرسال الرموز إلى حساب آخر",
@@ -577,7 +613,6 @@
     "swapTooltip": "تبديل بين الرموز المختلفة",
     "stake": "تخزين",
     "stakeTooltip": "تخزين الرموز للحصول على المكافآت",
-
     "recipient": "المستلم",
     "enterRecipient": "أدخل عنوان المستلم",
     "amount": "المبلغ",
@@ -586,7 +621,6 @@
     "optional": "اختياري",
     "enterMemo": "أدخل ملاحظة أو رسالة (اختياري)",
     "transactionFee": "رسوم المعاملة",
-
     "token": "الرمز",
     "tokenId": "معرف الرمز",
     "enterTokenId": "أدخل معرف حاوية الرمز",
@@ -597,7 +631,6 @@
     "tokenDecimals": "عدد الكسور العشرية للرمز",
     "showAdvanced": "إظهار الخيارات المتقدمة",
     "hideAdvanced": "إخفاء الخيارات المتقدمة",
-
     "nftCollection": "مجموعة NFT",
     "loadingNfts": "جاري تحميل NFT...",
     "noNfts": "لم يتم العثور على NFT",
@@ -606,16 +639,12 @@
     "chestRewards": "مكافآتك",
     "noRewardsFound": "لم يتم العثور على مكافآت",
     "tapToReveal": "اضغط للكشف",
-
     "activityLog": "سجل النشاط",
     "clearLogs": "مسح السجلات",
     "noLogs": "لا توجد أنشطة للعرض",
-
     "copy": "نسخ",
     "comingSoon": "قريبًا",
-
     "closeDialog": "إغلاق",
-
     "loading": "جار التحميل...",
     "error": "خطأ"
   },

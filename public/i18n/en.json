@@ -41,7 +41,6 @@
     "level": "Level",
     "balance": "Balance",
     "max": "Max",
-
     "actions": "Actions",
     "send": "Send",
     "sendTooltip": "Send tokens to another account",
@@ -58,7 +57,6 @@
     "swapTooltip": "Swap between different tokens",
     "stake": "Stake",
     "stakeTooltip": "Stake tokens to earn rewards",
-
     "recipient": "Recipient",
     "enterRecipient": "Enter recipient address",
     "amount": "Amount",
@@ -67,7 +65,6 @@
     "optional": "optional",
     "enterMemo": "Enter a memo or message (optional)",
     "transactionFee": "Transaction Fee",
-
     "token": "Token",
     "tokenId": "Token ID",
     "enterTokenId": "Enter token canister ID",
@@ -78,7 +75,6 @@
     "tokenDecimals": "Token Decimals",
     "showAdvanced": "Show Advanced Options",
     "hideAdvanced": "Hide Advanced Options",
-
     "nftCollection": "NFT Collection",
     "loadingNfts": "Loading NFTs...",
     "noNfts": "No NFTs found",
@@ -87,20 +83,15 @@
     "chestRewards": "Your Rewards",
     "noRewardsFound": "No rewards found",
     "tapToReveal": "Tap to reveal",
-
     "activityLog": "Activity Log",
     "clearLogs": "Clear Logs",
     "noLogs": "No activity logs to display",
-
     "copy": "Copy",
     "comingSoon": "Coming Soon",
-
     "closeDialog": "Close",
     "close": "Close",
-
     "loading": "Loading...",
     "error": "Error",
-    
     "seedWarningTitle": "IMPORTANT: BACKUP YOUR SEED PHRASE",
     "seedWarningPoint1": "This seed phrase is the ONLY way to recover your account. Keep it safe!",
     "seedWarningPoint2": "Anyone with this seed phrase can access your account and assets.",
@@ -108,7 +99,6 @@
     "seedWarningPoint4": "Store it in a secure location, preferably offline or in a hardware wallet.",
     "revealSeedPhrase": "I understand, show my seed phrase",
     "hideSeedPhrase": "Hide seed phrase",
-    
     "accounts": {
       "manage": "Manage Accounts",
       "defaultName": "My Account",
@@ -116,14 +106,12 @@
         "management": "Could not open Account Management. Please try again."
       }
     },
-    
     "header": {
       "accountIds": "Account IDs",
       "ethereumAddress": "Ethereum Address",
       "ethAddress": "ETH Address",
       "buy": "Buy"
     },
-    
     "management": {
       "title": "Account Security",
       "tabs": {
@@ -210,83 +198,114 @@
       {
         "title": "It all starts here. Alpha's live—get in now!",
         "ctaButtons": [
-          { "text": "Play Now!" },
-          { "text": "Wishlist on Epic Games" }
+          {
+            "text": "Play Now!"
+          },
+          {
+            "text": "Wishlist on Epic Games"
+          }
         ]
       },
       {
         "title": "The Party's Here. Are You In or What?",
         "ctaButtons": [
-          { "text": "Go to NNS" },
-          { "text": "Read Whitepaper" }
+          {
+            "text": "Go to NNS"
+          },
+          {
+            "text": "Read Whitepaper"
+          }
         ]
       },
       {
         "title": "On-chain RTS. A Starlight Drift, Galactic Mayhem",
         "ctaButtons": [
-          { "text": "Download Now!" },
-          { "text": "Learn More!" }
+          {
+            "text": "Download Now!"
+          },
+          {
+            "text": "Learn More!"
+          }
         ]
       },
       {
         "title": "Cosmicrafts Classics - Bring back the Legacy",
         "ctaButtons": [
-          { "text": "Play Classics" },
-          { "text": "X Highlights" }
+          {
+            "text": "Play Classics"
+          },
+          {
+            "text": "X Highlights"
+          }
         ]
       },
       {
         "title": "Time to team up! Invite friends and score exclusive rewards!",
         "ctaButtons": [
-          { "text": "Go to Dashboard" },
-          { "text": "Get Referral Code" }
+          {
+            "text": "Go to Dashboard"
+          },
+          {
+            "text": "Get Referral Code"
+          }
+        ]
+      },
+      {
+        "title": "Bet on starships. Win SPIRAL instantly.",
+        "ctaButtons": [
+          {
+            "text": "Play Rush Now"
+          },
+          {
+            "text": "Explore Games"
+          }
         ]
       }
     ]
   },
   "cta": "Try Cosmicrafts Adventures",
-    "lore": {
-      "title": "Cosmicrafts Lore",
-      "description": "Dive deep with us into the rich lore of Cosmicrafts—full of heroes, epic battles, and mysteries waiting to be uncovered."
-    },
+  "lore": {
+    "title": "Cosmicrafts Lore",
+    "description": "Dive deep with us into the rich lore of Cosmicrafts—full of heroes, epic battles, and mysteries waiting to be uncovered."
+  },
   "games": {
-      "title": "Our Games",
-      "battlegrounds": {
-        "title": "Cosmicrafts Battlegrounds",
-        "description": "Get in on epic multiplayer battles with friends in the Cosmicrafts universe!"
-      },
-      "adventures": {
-        "title": "Cosmicrafts Adventures",
-        "description": "Join thrilling space quests and unlock the secrets of the galaxy with us!"
-      }
+    "title": "Our Games",
+    "battlegrounds": {
+      "title": "Cosmicrafts Battlegrounds",
+      "description": "Get in on epic multiplayer battles with friends in the Cosmicrafts universe!"
     },
-    "carousel": {
-      "slides": [
-        {
-          "title": "Cosmicrafts Adventures",
-          "description": "Discover a new universe in development with Cosmicrafts Adventures!",
-          "buttonText": "Learn More",
-          "action": "adventures"
-        },
-        {
-          "title": "Cosmicrafts Battleground",
-          "description": "Jump into the action and play Cosmicrafts Battleground now!",
-          "buttonText": "Play Now",
-          "action": "battleground"
-        },
-        {
-          "title": "Latest News",
-          "description": "Stay in the loop with the latest updates from Cosmicrafts.",
-          "buttonText": "Read News",
-          "action": "news"
-        },
-        {
-          "title": "ICP Technology",
-          "description": "Learn more about the innovative ICP technology powering Cosmicrafts.",
-          "buttonText": "Discover ICP",
-          "action": "technology"
-        }
-      ]
+    "adventures": {
+      "title": "Cosmicrafts Adventures",
+      "description": "Join thrilling space quests and unlock the secrets of the galaxy with us!"
+    }
+  },
+  "carousel": {
+    "slides": [
+      {
+        "title": "Cosmicrafts Adventures",
+        "description": "Discover a new universe in development with Cosmicrafts Adventures!",
+        "buttonText": "Learn More",
+        "action": "adventures"
+      },
+      {
+        "title": "Cosmicrafts Battleground",
+        "description": "Jump into the action and play Cosmicrafts Battleground now!",
+        "buttonText": "Play Now",
+        "action": "battleground"
+      },
+      {
+        "title": "Latest News",
+        "description": "Stay in the loop with the latest updates from Cosmicrafts.",
+        "buttonText": "Read News",
+        "action": "news"
+      },
+      {
+        "title": "ICP Technology",
+        "description": "Learn more about the innovative ICP technology powering Cosmicrafts.",
+        "buttonText": "Discover ICP",
+        "action": "technology"
+      }
+    ]
   },
   "footer": {
     "stayConnected": "Let's Stay Connected",
@@ -332,8 +351,14 @@
     },
     "proposals": {
       "title": "Current Proposals",
-      "sample1": { "title": "Proposal 1", "summary": "Details about proposal 1." },
-      "sample2": { "title": "Proposal 2", "summary": "Details about proposal 2." },
+      "sample1": {
+        "title": "Proposal 1",
+        "summary": "Details about proposal 1."
+      },
+      "sample2": {
+        "title": "Proposal 2",
+        "summary": "Details about proposal 2."
+      },
       "no_proposals": "No proposals available at this time.",
       "view": "View Proposal"
     },
@@ -464,7 +489,7 @@
         "description": "Influence the technical and product development priorities of the platform",
         "items": {
           "features": "Feature prioritization",
-          "expansions": "Game expansions", 
+          "expansions": "Game expansions",
           "improvements": "Technical improvements"
         }
       },
@@ -659,57 +684,57 @@
     }
   },
   "loadingScreen": {
-      "messages": {
-        "initializingQuantumShenanigans": "Activating quantum magic",
-        "chargingHyperdrive": "Charging hyperdrive",
-        "generatingCosmicChaos": "Spawning cosmic chaos",
-        "decodingAlienSignals": "Decoding alien signals",
-        "calibratingFluxCapacitor": "Tuning flux capacitor",
-        "initiatingSelfDestruct": "Starting self-destruct",
-        "fuelingRocket": "Fueling the rocket",
-        "generatingWormholes": "Opening wormholes",
-        "conjuringBlackHole": "Summoning black hole",
-        "syncingHiveMind": "Syncing hive mind",
-        "reticulatingSplines": "Reticulating splines",
-        "summoningSpaceHamsters": "Calling space hamsters",
-        "defragmentingSpaceTime": "Defragging space-time",
-        "transmogrifyingMatter": "Transforming matter",
-        "brewingNebula": "Brewing nebula",
-        "lubricatingGears": "Greasing the gears",
-        "tighteningRealityBolts": "Tightening reality bolts",
-        "chargingStardustReserves": "Charging stardust",
-        "calibratingLaserBeams": "Calibrating lasers",
-        "summoningFriendlyAliens": "Calling friendly aliens",
-        "spinningUpWormhole": "Spinning up wormhole",
-        "tamingBlackHoles": "Taming black holes",
-        "polishingStars": "Polishing stars",
-        "clearingAsteroidBelt": "Clearing asteroid belt",
-        "rewritingGalacticCode": "Rewriting galactic code",
-        "encryptingCosmos": "Encrypting the cosmos",
-        "quantumJuggling": "Juggling quantum stuff",
-        "debuggingAliens": "Debugging alien tech",
-        "hackingGravity": "Hacking gravity",
-        "warmingUpWarpDrive": "Warming up warp drive",
-        "tamingComets": "Taming comets",
-        "aligningPhotonBeams": "Aligning photon beams",
-        "overclockingStellarEngine": "Overclocking star engine",
-        "stirringCosmicSoup": "Stirring cosmic soup",
-        "buffingRocketPaint": "Buffing rocket paint",
-        "resettingWormholePhysics": "Resetting wormhole physics",
-        "aligningNebulas": "Aligning nebulas",
-        "herdingAsteroids": "Herding asteroids",
-        "debuggingStardust": "Debugging stardust",
-        "uploadingTheUniverse": "Uploading the universe",
-        "turningOffInertia": "Turning off inertia",
-        "pluckingSuperstrings": "Plucking superstrings",
-        "paintingNebulas": "Painting nebulas",
-        "scanningForLife": "Scanning for life",
-        "reversingPolarity": "Reversing polarity",
-        "quantumDancing": "Quantum dancing",
-        "herdingWormholes": "Herding wormholes",
-        "encryptingReality": "Encrypting reality",
-        "debuggingTheMultiverse": "Debugging the multiverse"
-      }
+    "messages": {
+      "initializingQuantumShenanigans": "Activating quantum magic",
+      "chargingHyperdrive": "Charging hyperdrive",
+      "generatingCosmicChaos": "Spawning cosmic chaos",
+      "decodingAlienSignals": "Decoding alien signals",
+      "calibratingFluxCapacitor": "Tuning flux capacitor",
+      "initiatingSelfDestruct": "Starting self-destruct",
+      "fuelingRocket": "Fueling the rocket",
+      "generatingWormholes": "Opening wormholes",
+      "conjuringBlackHole": "Summoning black hole",
+      "syncingHiveMind": "Syncing hive mind",
+      "reticulatingSplines": "Reticulating splines",
+      "summoningSpaceHamsters": "Calling space hamsters",
+      "defragmentingSpaceTime": "Defragging space-time",
+      "transmogrifyingMatter": "Transforming matter",
+      "brewingNebula": "Brewing nebula",
+      "lubricatingGears": "Greasing the gears",
+      "tighteningRealityBolts": "Tightening reality bolts",
+      "chargingStardustReserves": "Charging stardust",
+      "calibratingLaserBeams": "Calibrating lasers",
+      "summoningFriendlyAliens": "Calling friendly aliens",
+      "spinningUpWormhole": "Spinning up wormhole",
+      "tamingBlackHoles": "Taming black holes",
+      "polishingStars": "Polishing stars",
+      "clearingAsteroidBelt": "Clearing asteroid belt",
+      "rewritingGalacticCode": "Rewriting galactic code",
+      "encryptingCosmos": "Encrypting the cosmos",
+      "quantumJuggling": "Juggling quantum stuff",
+      "debuggingAliens": "Debugging alien tech",
+      "hackingGravity": "Hacking gravity",
+      "warmingUpWarpDrive": "Warming up warp drive",
+      "tamingComets": "Taming comets",
+      "aligningPhotonBeams": "Aligning photon beams",
+      "overclockingStellarEngine": "Overclocking star engine",
+      "stirringCosmicSoup": "Stirring cosmic soup",
+      "buffingRocketPaint": "Buffing rocket paint",
+      "resettingWormholePhysics": "Resetting wormhole physics",
+      "aligningNebulas": "Aligning nebulas",
+      "herdingAsteroids": "Herding asteroids",
+      "debuggingStardust": "Debugging stardust",
+      "uploadingTheUniverse": "Uploading the universe",
+      "turningOffInertia": "Turning off inertia",
+      "pluckingSuperstrings": "Plucking superstrings",
+      "paintingNebulas": "Painting nebulas",
+      "scanningForLife": "Scanning for life",
+      "reversingPolarity": "Reversing polarity",
+      "quantumDancing": "Quantum dancing",
+      "herdingWormholes": "Herding wormholes",
+      "encryptingReality": "Encrypting reality",
+      "debuggingTheMultiverse": "Debugging the multiverse"
+    }
   },
   "months": {
     "0": "January",
@@ -891,21 +916,18 @@
     "subtitle": "Your cosmic journey awaits",
     "principal": "Principal ID",
     "copied": "Copied!",
-    
     "tabs": {
       "overview": "Overview",
       "referrals": "Referral Network",
       "rewards": "Rewards",
       "settings": "Settings"
     },
-
     "stats": {
       "level": "Level",
       "multiplier": "Multiplier",
       "rank": "Rank",
       "points": "Points"
     },
-
     "cards": {
       "referralCode": {
         "title": "Referral Code",
@@ -920,7 +942,6 @@
         "explanation": "Extra rewards from your network"
       }
     },
-
     "referrals": {
       "title": "Referral Network",
       "yourReferralCode": "Your Referral Code",
@@ -962,17 +983,14 @@
         }
       }
     },
-
     "rewards": {
       "comingSoon": "Rewards Coming Soon",
       "stayTuned": "Stay tuned for exciting rewards!"
     },
-
     "settings": {
       "comingSoon": "Settings Coming Soon",
       "checkBackLater": "Check back later for account settings"
     },
-
     "notifications": {
       "referralCodeCopied": "Referral code copied to clipboard!",
       "shareSuccess": "Successfully shared your referral code!",
@@ -982,7 +1000,6 @@
         "failedToCopy": "Failed to copy referral code"
       }
     },
-
     "actions": {
       "copy": "Copy Code",
       "share": "Share",

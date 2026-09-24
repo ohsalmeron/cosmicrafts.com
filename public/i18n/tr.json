@@ -1,97 +1,135 @@
 {
   "login": {
-  "connectWith": "Metaverse'e Hoş Geldiniz",
-  "internetIdentity": "Internet Identity ile Giriş Yap",
-  "google": "Google ile Giriş Yap",
-  "guestAccount": "Misafir olarak devam et",
-  "signInClarification": "Zaten bir seed'iniz var mı?",
-  "loginWith": "{method} ile Giriş Yap",
-  "enterSeedPhrase": "Seed kelime grubunuzu girin",
-  "accountRecovery": "Hesabınızı kurtarın",
-  "recoverAccount": "Bu Seed ile Giriş Yap",
-  "seedValid": "Seed kelime grubunuz geçerli görünüyor!",
-  "invalidSeedPhrase": "Seed kelime grubu geçersiz.",
-  "invalidSeedLength": "Seed kelime grubu tam olarak 12 kelime içermelidir.",
-  "guestLoginError": "Oops, bir şeyler ters gitti!",
-  "recoverySuccess": "Hesap kurtarma başarılı!",
-  "recovering": "Kurtarılıyor..."
-},
-"register": {
-  "usernameLabel": "Kullanıcı Adı:",
-  "usernamePlaceholder": "En fazla 12 karakter",
-  "referralCodeLabel": "Referans Kodu:",
-  "referralCodePlaceholder": "(isteğe bağlı)",
-  "noReferralCode": "Kodunuz yok mu?",
-  "getReferralCode": "Buradan alın!",
-  "acceptTerms": "Kabul ediyorum",
-  "privacyPolicy": "Gizlilik Politikası'nı",
-  "termsOfService": "Hizmet Şartları'nı",
-  "and": "ve",
-  "continueButton": "Devam Et",
-  "successMessage": "Hoş geldiniz, {username}!",
-  "failureMessage": "Kayıt başarısız oldu.",
-  "newPlayer": "Yeni Oyuncu",
-  "selectedAvatarAlt": "Seçilen Avatar",
-  "projectedAvatarAlt": "Tahmin Edilen Avatar",
-  "avatarIconAlt": "Avatar İkonu",
-  "avatarGridTitle": "Avatar Seçin",
-  "avatarAlt": "Avatar {index}"
-},
-"header": {
-  "home": "Ana Sayfa",
-  "features": "Özellikler",
-  "play": "Oyna",
-  "games": "Oyunlar",
-  "community": "Topluluk",
-  "contact": "İletişim",
-  "support": "Destek",
-  "language": "Dil",
-  "marketplace": "Pazar Yeri",
-  "spiral": "Spiral",
-  "dao": "DAO",
-  "dashboard": "Gösterge Paneli",
-  "connect": "Bağlan",
-  "whitepaper": "Teknik Doküman",
-  "login": "Giriş Yap",
-  "myProfile": "Profilim",
-  "settings": "Ayarlar",
-  "signout": "Çıkış Yap",
-  "profile": "Profil",
-  "roadmap": "Yol Haritası"
-},
-"error": {
-      "title": "Vay canına!",
-      "description": "Bu sayfa galaksi turuna çıkmış!",
-      "homeButton": "⏪ Geri Dön"
-    },
+    "connectWith": "Metaverse'e Hoş Geldiniz",
+    "internetIdentity": "Internet Identity ile Giriş Yap",
+    "google": "Google ile Giriş Yap",
+    "guestAccount": "Misafir olarak devam et",
+    "signInClarification": "Zaten bir seed'iniz var mı?",
+    "loginWith": "{method} ile Giriş Yap",
+    "enterSeedPhrase": "Seed kelime grubunuzu girin",
+    "accountRecovery": "Hesabınızı kurtarın",
+    "recoverAccount": "Bu Seed ile Giriş Yap",
+    "seedValid": "Seed kelime grubunuz geçerli görünüyor!",
+    "invalidSeedPhrase": "Seed kelime grubu geçersiz.",
+    "invalidSeedLength": "Seed kelime grubu tam olarak 12 kelime içermelidir.",
+    "guestLoginError": "Oops, bir şeyler ters gitti!",
+    "recoverySuccess": "Hesap kurtarma başarılı!",
+    "recovering": "Kurtarılıyor..."
+  },
+  "register": {
+    "usernameLabel": "Kullanıcı Adı:",
+    "usernamePlaceholder": "En fazla 12 karakter",
+    "referralCodeLabel": "Referans Kodu:",
+    "referralCodePlaceholder": "(isteğe bağlı)",
+    "noReferralCode": "Kodunuz yok mu?",
+    "getReferralCode": "Buradan alın!",
+    "acceptTerms": "Kabul ediyorum",
+    "privacyPolicy": "Gizlilik Politikası'nı",
+    "termsOfService": "Hizmet Şartları'nı",
+    "and": "ve",
+    "continueButton": "Devam Et",
+    "successMessage": "Hoş geldiniz, {username}!",
+    "failureMessage": "Kayıt başarısız oldu.",
+    "newPlayer": "Yeni Oyuncu",
+    "selectedAvatarAlt": "Seçilen Avatar",
+    "projectedAvatarAlt": "Tahmin Edilen Avatar",
+    "avatarIconAlt": "Avatar İkonu",
+    "avatarGridTitle": "Avatar Seçin",
+    "avatarAlt": "Avatar {index}"
+  },
+  "header": {
+    "home": "Ana Sayfa",
+    "features": "Özellikler",
+    "play": "Oyna",
+    "games": "Oyunlar",
+    "community": "Topluluk",
+    "contact": "İletişim",
+    "support": "Destek",
+    "language": "Dil",
+    "marketplace": "Pazar Yeri",
+    "spiral": "Spiral",
+    "dao": "DAO",
+    "dashboard": "Gösterge Paneli",
+    "connect": "Bağlan",
+    "whitepaper": "Teknik Doküman",
+    "login": "Giriş Yap",
+    "myProfile": "Profilim",
+    "settings": "Ayarlar",
+    "signout": "Çıkış Yap",
+    "profile": "Profil",
+    "roadmap": "Yol Haritası"
+  },
+  "error": {
+    "title": "Vay canına!",
+    "description": "Bu sayfa galaksi turuna çıkmış!",
+    "homeButton": "⏪ Geri Dön"
+  },
   "hero": {
     "slides": [
       {
         "title": "Başlangıç burada. Alpha yayında, hadi katıl!",
         "ctaButtons": [
-          { "text": "Hemen Oyna!" },
-          { "text": "Epic Games Wishlist'ine Ekle" }
+          {
+            "text": "Hemen Oyna!"
+          },
+          {
+            "text": "Epic Games Wishlist'ine Ekle"
+          }
         ]
       },
       {
         "title": "Parti burada! Bizimle misin yoksa ne?",
         "ctaButtons": [
-          { "text": "NNS'ye Git" },
-          { "text": "Whitepaper'ı Oku" }
+          {
+            "text": "NNS'ye Git"
+          },
+          {
+            "text": "Whitepaper'ı Oku"
+          }
         ]
       },
       {
         "title": "Blockchain'de RTS. Yıldızlararası Drift, Galaktik Kaos",
         "ctaButtons": [
-          { "text": "Hemen İndir!" },
-          { "text": "Daha Fazla Bilgi!" }
+          {
+            "text": "Hemen İndir!"
+          },
+          {
+            "text": "Daha Fazla Bilgi!"
+          }
+        ]
+      },
+      {
+        "title": "Cosmicrafts Classics - Efsaneyi geri getir",
+        "ctaButtons": [
+          {
+            "text": "Classics Oyna"
+          },
+          {
+            "text": "X Öne Çıkanlar"
+          }
         ]
       },
       {
         "title": "Bağlanalım mı? Arkadaşlarını davet et ve özel ödüller kazan!",
         "ctaButtons": [
-          { "text": "Kontrol Paneline Git" },
-          { "text": "Referans Kodunu Al" }
+          {
+            "text": "Kontrol Paneline Git"
+          },
+          {
+            "text": "Referans Kodunu Al"
+          }
+        ]
+      },
+      {
+        "title": "Yıldız gemilerine bahse gir, SPIRAL'ı anında kazan.",
+        "ctaButtons": [
+          {
+            "text": "Rush Oyna"
+          },
+          {
+            "text": "Oyunlara göz at"
+          }
         ]
       }
     ]
@@ -157,10 +195,10 @@
     "trademarks": "Burada belirtilen tüm ticari markalar ilgili sahiplerine aittir."
   },
   "darkRift": {
-  "title": "Karanlık Yarık",
-  "discover": "Keşfet"
-},
-"loadingScreen": {
+    "title": "Karanlık Yarık",
+    "discover": "Keşfet"
+  },
+  "loadingScreen": {
     "messages": {
       "initializingQuantumShenanigans": "Kuantum sihirbazlığı başlatılıyor",
       "chargingHyperdrive": "Hiper sürücü şarj ediliyor",
@@ -301,9 +339,8 @@
       "offline": "Çevrimdışı"
     },
     "editProfileModal": {
-      "title": "Profili Düzenle",
-      "username": "Kullanıcı Adı",
       "title": "Başlık",
+      "username": "Kullanıcı Adı",
       "description": "Açıklama",
       "cancel": "İptal",
       "saveChanges": "Değişiklikleri Kaydet"
@@ -560,7 +597,6 @@
     "level": "Seviye",
     "balance": "Bakiye",
     "max": "Maks",
-
     "actions": "İşlemler",
     "send": "Gönder",
     "sendTooltip": "Başka bir hesaba token gönder",
@@ -577,7 +613,6 @@
     "swapTooltip": "Farklı tokenlar arasında takas yapın",
     "stake": "Stake",
     "stakeTooltip": "Ödül kazanmak için token stake edin",
-
     "recipient": "Alıcı",
     "enterRecipient": "Alıcı adresini girin",
     "amount": "Miktar",
@@ -586,7 +621,6 @@
     "optional": "isteğe bağlı",
     "enterMemo": "Bir not veya mesaj girin (isteğe bağlı)",
     "transactionFee": "İşlem Ücreti",
-
     "token": "Token",
     "tokenId": "Token Kimliği",
     "enterTokenId": "Token canister kimliğini girin",
@@ -597,7 +631,6 @@
     "tokenDecimals": "Token Ondalık Basamakları",
     "showAdvanced": "Gelişmiş Seçenekleri Göster",
     "hideAdvanced": "Gelişmiş Seçenekleri Gizle",
-
     "nftCollection": "NFT Koleksiyonu",
     "loadingNfts": "NFT'ler yükleniyor...",
     "noNfts": "NFT bulunamadı",
@@ -606,16 +639,12 @@
     "chestRewards": "Ödülleriniz",
     "noRewardsFound": "Ödül bulunamadı",
     "tapToReveal": "Görmek için dokunun",
-
     "activityLog": "Aktivite Günlüğü",
     "clearLogs": "Günlüğü Temizle",
     "noLogs": "Gösterilecek aktivite yok",
-
     "copy": "Kopyala",
     "comingSoon": "Çok Yakında",
-
     "closeDialog": "Kapat",
-
     "loading": "Yükleniyor...",
     "error": "Hata"
   },
