@@ -43,7 +43,7 @@ export const GAMES: Game[] = [
     year: '2026',
     tag: 'NEW',
     tagColor: 'emerald',
-    description: 'Roguelike estilo FTL. Elige faccion, salta entre nodos, resuelve eventos y cuida fuel, scrap y hull.',
+    description: 'Roguelike de nodos. Elige faccion, salta entre sectores, resuelve eventos y cuida fuel, scrap y hull.',
     image: '/assets/planet.webp',
     status: 'playable',
     statusLabel: 'Jugable',
