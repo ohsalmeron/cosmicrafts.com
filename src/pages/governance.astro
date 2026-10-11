@@ -5,7 +5,7 @@ import Header from '../components/Header.astro';
 import Panel from '../components/Panel.astro';
 ---
 
-<Layout title="Cosmicrafts | GitOps DAO Terminal" description="Cosmicrafts DAO governance terminal. Vote on code merges and treasury decisions.">
+<Layout title="Cosmicrafts | Governance Terminal" description="Cosmicrafts community governance terminal. Vote on code merges and platform decisions.">
   <div class="fixed inset-0 h-screen w-screen overflow-hidden flex flex-col justify-between p-4 md:p-6 select-none z-10">
     <PageBackdrop />
 
@@ -104,7 +104,7 @@ import Panel from '../components/Panel.astro';
             <div class="bg-slate-950/80 border border-white/5 p-4 rounded-xl space-y-4 font-mono">
               <div class="flex justify-between items-center text-[10px] text-slate-500">
                 <span>VOTE SPECTRUM SUMMARY</span>
-                <span class="text-slate-400" id="total-voted-count">TOTAL: 87,300,000 SPIRAL</span>
+                <span class="text-slate-400" id="total-voted-count">TOTAL: 87,300 VOTES</span>
               </div>
 
               <!-- Vote Bar -->
@@ -129,7 +129,7 @@ import Panel from '../components/Panel.astro';
               <div id="voting-console" class="space-y-3 pt-2 border-t border-white/5">
                 <div class="flex items-center justify-between text-[10px]">
                   <span class="text-slate-500">YOUR VOTING ACCOUNT:</span>
-                  <span id="user-status-info" class="text-emerald-400">CONNECTED (70,000,000 SPIRAL)</span>
+                  <span id="user-status-info" class="text-emerald-400">CONNECTED (1 VOTE)</span>
                 </div>
 
                 <!-- Alert of Swing Potential -->
@@ -138,7 +138,7 @@ import Panel from '../components/Panel.astro';
                     <span class="inline-block w-1.5 h-1.5 rounded bg-cyan-400"></span>
                     Tide Turner Mode Active
                   </span>
-                  <span class="text-slate-400">YOUR 70M VOTE SWINGS THE DECISION!</span>
+                  <span class="text-slate-400">YOUR VOTE SWINGS THE DECISION!</span>
                 </div>
 
                 <div class="grid grid-cols-2 gap-3" id="vote-btn-grid">
@@ -150,38 +150,21 @@ import Panel from '../components/Panel.astro';
                   </button>
                 </div>
 
-                <!-- Connect Wallet fallback -->
+                <!-- Sign-in fallback -->
                 <div id="login-fallback" class="hidden text-center p-2 bg-white/5 border border-white/5 rounded-lg">
-                  <p class="text-[10px] text-slate-400 uppercase mb-2">Connect wallet to enable voting power</p>
+                  <p class="text-[10px] text-slate-400 uppercase mb-2">Sign in to enable your vote</p>
                   <button id="btn-fallback-connect" class="px-4 py-1.5 bg-cyan-500/20 hover:bg-cyan-500/35 text-cyan-300 text-[9px] uppercase tracking-wider rounded border border-cyan-500/30 font-bold transition-all duration-300">
-                    Connect Wallet
+                    Sign In
                   </button>
-                </div>
-              </div>
-
-              <!-- Immutable Consensus Terminal -->
-              <div class="border-t border-white/5 pt-3">
-                <div class="flex items-center justify-between text-[8px] text-slate-500 mb-1">
-                  <span>ETHEREUM MULTI-PROVIDER VALIDATION (4 NODES)</span>
-                  <span class="text-emerald-400 flex items-center gap-1">
-                    <span class="w-1 h-1 bg-emerald-400 rounded-full animate-pulse"></span>
-                    SYNCED
-                  </span>
-                </div>
-                <div class="grid grid-cols-4 gap-1 text-[8px] text-center font-mono">
-                  <div id="node-alchemy" class="py-1 bg-slate-900 border border-emerald-500/20 text-emerald-400 rounded">ALCHEMY // SECURE</div>
-                  <div id="node-infura" class="py-1 bg-slate-900 border border-emerald-500/20 text-emerald-400 rounded">INFURA // SECURE</div>
-                  <div id="node-quicknode" class="py-1 bg-slate-900 border border-emerald-500/20 text-emerald-400 rounded">QUICKNODE // SECURE</div>
-                  <div id="node-ankr" class="py-1 bg-slate-900 border border-emerald-500/20 text-emerald-400 rounded">ANKR // SECURE</div>
                 </div>
               </div>
 
               <!-- Simulated vote action feedback -->
               <div id="vote-success-terminal" class="hidden text-left bg-slate-900/80 border border-cyan-500/30 p-3 rounded-lg font-mono text-[9px] text-slate-400 space-y-1 overflow-hidden max-h-28 overflow-y-auto">
-                <div class="text-emerald-400 font-bold uppercase tracking-wider text-[10px] mb-1">✓ DECIDING VOTE BROADCASTED SUCCESSFULLY</div>
-                <div>[0.00s] Initiating Web3 wallet signing sequence...</div>
-                <div>[0.45s] Signature authenticated via Ethereum RPC block #1948271.</div>
-                <div>[0.90s] Injected 70,000,000 SPIRAL voting weight.</div>
+                <div class="text-emerald-400 font-bold uppercase tracking-wider text-[10px] mb-1">✓ DECIDING VOTE RECORDED</div>
+                <div>[0.00s] Verifying commander session...</div>
+                <div>[0.45s] Single-vote authority confirmed via WOU-ID.</div>
+                <div>[0.90s] Registered 1 vote of community weight.</div>
                 <div class="text-cyan-400">[1.35s] Swung proposal result. Syncing with GitHub webhooks...</div>
                 <div class="text-emerald-400" id="github-gitops-log">[1.80s] GitHub Action triggered. PR auto-merging verified.</div>
               </div>
@@ -193,8 +176,8 @@ import Panel from '../components/Panel.astro';
 
     <!-- Footer -->
     <footer class="w-full max-w-7xl mx-auto flex justify-between items-center z-10 font-mono text-[9px] text-slate-600 mt-1">
-      <a href="https://worldofunreal.com/" target="_blank" class="hover:text-cyan-400 transition-colors uppercase">&copy; 2026 WORLD OF UNREAL. GITOPS DAO TERMINAL V0.2</a>
-      <span>ETHEREUM MULTI-SIG INTEGRATION (4 RPC NODES CONSENSUS)</span>
+      <a href="https://worldofunreal.com/" target="_blank" class="hover:text-cyan-400 transition-colors uppercase">&copy; 2026 WORLD OF UNREAL. GOVERNANCE TERMINAL V0.2</a>
+      <span>COMMUNITY CONSENSUS // WOU-ID VERIFIED ACCOUNTS</span>
     </footer>
 
     <!-- Spectacular Vote Impact Overlay -->
@@ -237,7 +220,7 @@ import Panel from '../components/Panel.astro';
 
         <!-- Bottom Warning -->
         <div id="impact-action-banner" class="text-[10px] text-emerald-400 uppercase tracking-widest bg-emerald-500/10 border border-emerald-500/20 py-2 rounded-lg font-bold">
-          PR AUTO-MERGE TRIGGERED // ETHEREUM LEDGER FINALIZED
+          PR AUTO-MERGE TRIGGERED // CONSENSUS FINALIZED
         </div>
       </div>
     </div>
@@ -307,36 +290,36 @@ import Panel from '../components/Panel.astro';
   const BASE_PROPOSALS = [
     {
       id: "CC-PROP-001",
-      title: "Deploy Base ERC-20 SpiralToken.sol to Ethereum Mainnet",
-      description: "Launch the primary, fixed-supply SPIRAL token contract on Ethereum using standard, audited OpenZeppelin modules with no post-deployment minting. This ensures absolute trust and permanence for the foundation of our entire creator economy.",
+      title: "Standardize in-game credits as the official Cosmicrafts currency",
+      description: "Implement a single, fixed in-game credits system shared across every Cosmicrafts title. One balance, one inventory, no regional conversions — a permanent foundation for the entire creator economy.",
       category: "INFRASTRUCTURE",
       quality: "great",
-      votesFor: 45200000,
-      votesAgainst: 42100000,
+      votesFor: 45200,
+      votesAgainst: 42100,
       status: "active",
       author: "founder_0x",
       gitops: true
     },
     {
       id: "CC-PROP-002",
-      title: "Transfer 500,000 SPIRAL to unverified TikTok influencer for viral reach",
-      description: "An anonymous TikTok growth hacker with 12k purchased followers claims he can bring 10 million views to Cosmicrafts if we transfer half a million SPIRAL upfront with no locked metrics, contracts, or KPI verification.",
+      title: "Transfer 500,000 in-game credits to unverified TikTok influencer for viral reach",
+      description: "An anonymous TikTok growth hacker with 12k purchased followers claims he can bring 10 million views to Cosmicrafts if we transfer half a million credits upfront with no locked metrics, contracts, or KPI verification.",
       category: "COMMUNITY",
       quality: "dogshit",
-      votesFor: 32000000,
-      votesAgainst: 34500000,
+      votesFor: 32000,
+      votesAgainst: 34500,
       status: "active",
       author: "shill_master",
       gitops: false
     },
     {
       id: "CC-PROP-003",
-      title: "Deploy 4-Node RPC Consensus (Infura, Alchemy, QuickNode, Ankr) for GitOps Actions",
-      description: "Implement multi-provider Ethereum verification within our GitHub Actions CI runner. This checks that code merges can only happen if state is proven authentic across 4 independent node providers, neutralizing single-provider RPC failure risks.",
+      title: "Deploy 4-region CI runner consensus for GitOps actions",
+      description: "Implement multi-region build verification within our GitHub Actions CI runner. This checks that code merges can only happen if the build is proven green across 4 independent regions, neutralizing single-runner failure risks.",
       category: "GITOPS",
       quality: "great",
-      votesFor: 48900000,
-      votesAgainst: 47100000,
+      votesFor: 48900,
+      votesAgainst: 47100,
       status: "active",
       author: "bizkit_0x1337",
       gitops: true
@@ -347,68 +330,68 @@ import Panel from '../components/Panel.astro';
       description: "Change the audio file for the multiplayer ship horn to the viral 'Bruh' sound effect. This is intended to increase player retention and social sharing via standard internet meme culture.",
       category: "GAMEPLAY",
       quality: "meh",
-      votesFor: 25000000,
-      votesAgainst: 26000000,
+      votesFor: 25000,
+      votesAgainst: 26000,
       status: "active",
       author: "meme_lord",
       gitops: true
     },
     {
       id: "CC-PROP-005",
-      title: "Convert 90% of the DAO Treasury into Dogecoin during market peak",
-      description: "Convert 711 million SPIRAL from the treasury into Dogecoin immediately. A trending tweet by an influential tech billionaire suggests it might go to $10. Let's deploy the entire treasury directly to buy the top.",
-      category: "TREASURY",
+      title: "Spend 90% of the community fund on Super Bowl ads immediately",
+      description: "Deploy 711 million credits from the community fund into Super Bowl ads immediately. A trending post from a big-name marketing guru claims everyone will see it. Let's bet the entire fund on one single broadcast.",
+      category: "FUND",
       quality: "dogshit",
-      votesFor: 12000000,
-      votesAgainst: 14000000,
+      votesFor: 12000,
+      votesAgainst: 14000,
       status: "active",
       author: "degens_unite",
       gitops: false
     },
     {
       id: "CC-PROP-006",
-      title: "Implement exit fee on withdrawing SPIRAL from in-game database back to Ethereum",
-      description: "Introduce a flat transfer fee (calculated dynamically based on Ethereum base gas rate) for players initiating transfers from their in-game ledger balance back to their ERC-20 on-chain wallet. This covers gas refunds and deters withdrawal spam.",
-      category: "TREASURY",
+      title: "Implement transfer fee on moving credits between Cosmicrafts game accounts",
+      description: "Introduce a small transfer fee for players moving credits between game accounts. This covers infrastructure costs and deters spam transfers.",
+      category: "FUND",
       quality: "good",
-      votesFor: 35000000,
-      votesAgainst: 33000000,
+      votesFor: 35000,
+      votesAgainst: 33000,
       status: "active",
       author: "finance_lead",
       gitops: true
     },
     {
       id: "CC-PROP-007",
-      title: "Build a 50-foot solid gold statue of the Founder to install in the metaverse lobby",
-      description: "Deploy 5 million SPIRAL from community funds to design and render a colossal solid gold statue of the Founder. This asset will sit in the center of the sandbox social lobby, serving no gameplay function but asserting absolute dominance.",
+      title: "Build a 50-foot solid gold statue of the Founder to install in the social lobby",
+      description: "Deploy 5 million credits from community funds to design and render a colossal solid gold statue of the Founder. This asset will sit in the center of the sandbox social lobby, serving no gameplay function but asserting absolute dominance.",
       category: "COMMUNITY",
       quality: "dogshit",
-      votesFor: 5000000,
-      votesAgainst: 12000000,
+      votesFor: 5000,
+      votesAgainst: 12000,
       status: "active",
       author: "yes_man_99",
       gitops: false
     },
     {
       id: "CC-PROP-008",
-      title: "Integrate IPFS-based backup for user-generated AI asset recipe schema",
-      description: "Store text prompts and 2D asset recipes permanently on decentralized IPFS. Even if our cloud servers face outages, player asset parameters remain fully restorable by reading IPFS CID hash logs.",
+      title: "Integrate off-site encrypted backups for user-generated AI asset recipes",
+      description: "Store text prompts and 2D asset recipes in encrypted off-site backups. Even if our cloud servers face outages, player asset parameters remain fully restorable from backup archives.",
       category: "INFRASTRUCTURE",
       quality: "good",
-      votesFor: 56000000,
-      votesAgainst: 22000000,
+      votesFor: 56000,
+      votesAgainst: 22000,
       status: "passed",
       author: "infra_guru",
       gitops: true
     },
     {
       id: "CC-PROP-009",
-      title: "Sponsor a local coffee shop in Madrid for $150,000 worth of SPIRAL",
-      description: "Send 150,000 SPIRAL from community funds to a coffee shop in central Madrid because the developers go there on weekends. This does not advertise the game, but the owner said he'll put a small printed Cosmicrafts sticker on the tip jar.",
+      title: "Sponsor a local coffee shop in Madrid for 150,000 in-game credits",
+      description: "Send 150,000 credits from community funds to a coffee shop in central Madrid because the developers go there on weekends. This does not advertise the game, but the owner said he'll put a small printed Cosmicrafts sticker on the tip jar.",
       category: "COMMUNITY",
       quality: "bad",
-      votesFor: 18000000,
-      votesAgainst: 39000000,
+      votesFor: 18000,
+      votesAgainst: 39000,
       status: "defeated",
       author: "madrid_surfer",
       gitops: false
@@ -419,44 +402,44 @@ import Panel from '../components/Panel.astro';
       description: "Some players find the PvE boss fights too challenging. Let's update the starter fighter vessel with 5,000,000 HP and 100,000 DPS. This allows any player to win the entire game in 5 seconds with zero effort.",
       category: "GAMEPLAY",
       quality: "bad",
-      votesFor: 11000000,
-      votesAgainst: 28000000,
+      votesFor: 11000,
+      votesAgainst: 28000,
       status: "defeated",
       author: "noob_slayer",
       gitops: true
     },
     {
       id: "CC-PROP-011",
-      title: "Hire professional Solidity audit firm to verify SpiralVesting.sol",
-      description: "Approve 20,000 USDC payment from treasury to contract an industry-standard external security firm to audit the token locking mechanisms, securing the 7% Founder and 2.6% Seed allocations before deployment.",
+      title: "Hire professional security firm to audit the credits ledger",
+      description: "Approve a 20,000-credit payment from the community fund to contract an industry-standard external security firm to audit the account system and credits ledger, securing player balances before the next season launch.",
       category: "INFRASTRUCTURE",
       quality: "great",
-      votesFor: 89000000,
-      votesAgainst: 2000000,
+      votesFor: 89000,
+      votesAgainst: 2000,
       status: "executed",
       author: "founder_0x",
       gitops: true
     },
     {
       id: "CC-PROP-012",
-      title: "Establish 100,000 SPIRAL Grand Tournament with no sponsor backing",
-      description: "Host a global esport event offering 100,000 SPIRAL in prizes, entirely paid out from the treasury, without securing any streaming rights, brand sponsorships, or ticket sales beforehand. Hope for the best.",
+      title: "Establish 100,000-credit Grand Tournament with no sponsor backing",
+      description: "Host a global esport event offering 100,000 credits in prizes, entirely paid out from the community fund, without securing any streaming rights, brand sponsorships, or ticket sales beforehand. Hope for the best.",
       category: "COMMUNITY",
       quality: "bad",
-      votesFor: 22000000,
-      votesAgainst: 45000000,
+      votesFor: 22000,
+      votesAgainst: 45000,
       status: "defeated",
       author: "hype_builder",
       gitops: false
     },
     {
       id: "CC-PROP-013",
-      title: "Integrate Gnosis Safe multisig with core Solidity deployment workflow",
-      description: "Bind Gnosis Safe API endpoints directly to our deployment scripts so that token releases can only occur when multi-sig confirmations correspond with verified GitHub pull request approvals.",
+      title: "Enforce dual senior review on all core deployment workflows",
+      description: "Bind reviewer approvals directly to our deployment scripts so that releases can only occur when two senior sign-offs correspond with verified GitHub pull request approvals.",
       category: "GITOPS",
       quality: "great",
-      votesFor: 91000000,
-      votesAgainst: 1000000,
+      votesFor: 91000,
+      votesAgainst: 1000,
       status: "executed",
       author: "bizkit_0x1337",
       gitops: true
@@ -464,11 +447,11 @@ import Panel from '../components/Panel.astro';
     {
       id: "CC-PROP-014",
       title: "Sponsor core dev's high-end gaming PC upgrade for $8,000",
-      description: "Approve treasury release to purchase an custom liquid-cooled PC with dual RTX 4090s for a core developer. He claims it is strictly for 'testing' the 2D pixel UI at 4,000 frames per second.",
-      category: "TREASURY",
+      description: "Approve community fund release to purchase an custom liquid-cooled PC with dual RTX 4090s for a core developer. He claims it is strictly for 'testing' the 2D pixel UI at 4,000 frames per second.",
+      category: "FUND",
       quality: "bad",
-      votesFor: 15000000,
-      votesAgainst: 41000000,
+      votesFor: 15000,
+      votesAgainst: 41000,
       status: "defeated",
       author: "hungry_dev",
       gitops: false
@@ -479,8 +462,8 @@ import Panel from '../components/Panel.astro';
       description: "Let players configure custom WASD keys and hotkey macros via a clean terminal layout panel, reducing control friction for left-handed competitive players.",
       category: "GAMEPLAY",
       quality: "good",
-      votesFor: 64000000,
-      votesAgainst: 8000000,
+      votesFor: 64000,
+      votesAgainst: 8000,
       status: "passed",
       author: "keybind_expert",
       gitops: true
@@ -488,11 +471,11 @@ import Panel from '../components/Panel.astro';
     {
       id: "CC-PROP-016",
       title: "Send the entire core team on a fully paid 6-month holiday in Maui",
-      description: "Close down cloud multiplayer development servers and sponsor a half-year luxury retreat for all staff using treasury capital. Developers promise to 'think about' game balance while surfing.",
+      description: "Close down cloud multiplayer development servers and sponsor a half-year luxury retreat for all staff using community funds. Developers promise to 'think about' game balance while surfing.",
       category: "COMMUNITY",
       quality: "dogshit",
-      votesFor: 4000000,
-      votesAgainst: 68000000,
+      votesFor: 4000,
+      votesAgainst: 68000,
       status: "defeated",
       author: "beach_bum",
       gitops: false
@@ -500,11 +483,11 @@ import Panel from '../components/Panel.astro';
     {
       id: "CC-PROP-017",
       title: "Establish $50,000 Discord Nitro community giveaway for marketing",
-      description: "Buy and distribute 5,000 Discord Nitro subscriptions to random accounts to generate hype on the server. Most participants are predicted to be Sybil airdrop bots who leave the server in 24 hours.",
+      description: "Buy and distribute 5,000 Discord Nitro subscriptions to random accounts to generate hype on the server. Most participants are predicted to be giveaway bots who leave the server in 24 hours.",
       category: "COMMUNITY",
       quality: "bad",
-      votesFor: 19000000,
-      votesAgainst: 34000000,
+      votesFor: 19000,
+      votesAgainst: 34000,
       status: "defeated",
       author: "nitro_distributor",
       gitops: false
@@ -515,8 +498,8 @@ import Panel from '../components/Panel.astro';
       description: "Host an exclusive, ultra-high-budget esport league at the South Pole. Players and commentators must travel via custom icebreakers. This will generate massive organic press due to extreme absurdity.",
       category: "COMMUNITY",
       quality: "dogshit",
-      votesFor: 3000000,
-      votesAgainst: 72000000,
+      votesFor: 3000,
+      votesAgainst: 72000,
       status: "defeated",
       author: "polar_explorer",
       gitops: false
@@ -527,8 +510,8 @@ import Panel from '../components/Panel.astro';
       description: "Refactor starfield and sprite rendering to reuse a single offscreen buffer context. Tests show a 40% reduction in CPU idle cycles on low-end laptops and standard Chromebooks.",
       category: "INFRASTRUCTURE",
       quality: "good",
-      votesFor: 71000000,
-      votesAgainst: 4000000,
+      votesFor: 71000,
+      votesAgainst: 4000,
       status: "passed",
       author: "perf_wizard",
       gitops: true
@@ -539,8 +522,8 @@ import Panel from '../components/Panel.astro';
       description: "Maintain player state, balances, and matchmaking rankings in a shared, public Google Spreadsheet instead of hosting a secure database cluster. This saves $10 per month in cloud hosting costs.",
       category: "INFRASTRUCTURE",
       quality: "dogshit",
-      votesFor: 1000000,
-      votesAgainst: 84000000,
+      votesFor: 1000,
+      votesAgainst: 84000,
       status: "defeated",
       author: "sheet_fanatic",
       gitops: false
@@ -551,8 +534,8 @@ import Panel from '../components/Panel.astro';
       description: "Release a free downloadable digital pack containing original, high-resolution spacecraft renders for desktop and mobile devices to boost community asset engagement.",
       category: "COMMUNITY",
       quality: "good",
-      votesFor: 48000000,
-      votesAgainst: 9000000,
+      votesFor: 48000,
+      votesAgainst: 9000,
       status: "passed",
       author: "creative_director",
       gitops: false
@@ -563,20 +546,20 @@ import Panel from '../components/Panel.astro';
       description: "Allocate three months of senior developer time to port our browser-based multiplayer client to run on dual-screen Nintendo 3DS hardware. Very retro-cool, but targets a defunct, offline userbase.",
       category: "GAMEPLAY",
       quality: "meh",
-      votesFor: 22000000,
-      votesAgainst: 31000000,
+      votesFor: 22000,
+      votesAgainst: 31000,
       status: "defeated",
       author: "retro_collector",
       gitops: false
     },
     {
       id: "CC-PROP-023",
-      title: "Double vesting schedule duration for all core founders to align incentives",
-      description: "Extend the linear unlock cliff of founder allocations from 12 months to 24 months. Demonstrates long-term, non-diluted commitment to seed investors and the broader ecosystem survival.",
-      category: "TREASURY",
+      title: "Double the payout schedule duration for all core founders to align incentives",
+      description: "Extend the linear payout cliff of the core team bonus pool from 12 months to 24 months. Demonstrates long-term commitment to players and the broader ecosystem survival.",
+      category: "FUND",
       quality: "great",
-      votesFor: 78000000,
-      votesAgainst: 2000000,
+      votesFor: 78000,
+      votesAgainst: 2000,
       status: "passed",
       author: "founder_0x",
       gitops: true
@@ -587,8 +570,8 @@ import Panel from '../components/Panel.astro';
       description: "Replace laser fire, reactor explosions, and hyperdrive hums with continuous low-fidelity corporate elevator jazz tracks. Aimed at establishing a calm, relaxed environment during high-intensity competitive combat.",
       category: "GAMEPLAY",
       quality: "dogshit",
-      votesFor: 2000000,
-      votesAgainst: 59000000,
+      votesFor: 2000,
+      votesAgainst: 59000,
       status: "defeated",
       author: "muzak_fan",
       gitops: true
@@ -599,32 +582,32 @@ import Panel from '../components/Panel.astro';
       description: "Deploy a lightweight clock synchronization check against four highly accurate atomic NTP pools before starting competitive lobby matches, eliminating micro-stutters during high-speed ship collisions.",
       category: "INFRASTRUCTURE",
       quality: "good",
-      votesFor: 52000000,
-      votesAgainst: 3000000,
+      votesFor: 52000,
+      votesAgainst: 3000,
       status: "passed",
       author: "bizkit_0x1337",
       gitops: true
     },
     {
       id: "CC-PROP-026",
-      title: "Buy $100,000 worth of virtual land in a highly inflated, empty metaverse",
-      description: "Deploy valuable treasury funds to purchase three virtual plots of digital soil in a legacy, empty metaverse grid. There are no players on this grid, but we can display a virtual 2D poster of Cosmicrafts.",
-      category: "TREASURY",
+      title: "Buy $100,000 worth of ad space in a dead, empty VR chatroom",
+      description: "Deploy valuable community funds to purchase three virtual billboards in a legacy, empty VR chatroom grid. There are no players in this grid, but we can display a virtual 2D poster of Cosmicrafts.",
+      category: "FUND",
       quality: "bad",
-      votesFor: 12000000,
-      votesAgainst: 49000000,
+      votesFor: 12000,
+      votesAgainst: 49000,
       status: "defeated",
       author: "meta_broker",
       gitops: false
     },
     {
       id: "CC-PROP-027",
-      title: "Change main token symbol from SPIRAL to SPNL for no specific reason",
-      description: "Re-compile all frontends, indexes, metadata, and documentation to change our clean token symbol to SPNL because it sounds slightly more professional in a single email.",
+      title: "Rename in-game credits to 'CRDTS' for no specific reason",
+      description: "Re-compile all frontends, indexes, metadata, and documentation to change our clean currency label because it sounds slightly more professional in a single email.",
       category: "COMMUNITY",
       quality: "meh",
-      votesFor: 15000000,
-      votesAgainst: 28000000,
+      votesFor: 15000,
+      votesAgainst: 28000,
       status: "defeated",
       author: "punc_guy",
       gitops: false
@@ -635,8 +618,8 @@ import Panel from '../components/Panel.astro';
       description: "Transmit immediate, read-only Discord log updates whenever a new GitOps proposal enters active, passed, or auto-merged stages, boosting transparency for community members.",
       category: "COMMUNITY",
       quality: "good",
-      votesFor: 59000000,
-      votesAgainst: 4000000,
+      votesFor: 59000,
+      votesAgainst: 4000,
       status: "passed",
       author: "community_mod",
       gitops: true
@@ -647,8 +630,8 @@ import Panel from '../components/Panel.astro';
       description: "Introduce a classic keystroke combination (Konami Code) in the sandbox lobby that renders a retro pixel sprite animation. Fun, lightweight, zero-latency community engagement asset.",
       category: "GAMEPLAY",
       quality: "meh",
-      votesFor: 41000000,
-      votesAgainst: 12000000,
+      votesFor: 41000,
+      votesAgainst: 12000,
       status: "passed",
       author: "easter_egg",
       gitops: true
@@ -656,11 +639,11 @@ import Panel from '../components/Panel.astro';
     {
       id: "CC-PROP-030",
       title: "Create localized DevRel lead position to help onboard asset designers",
-      description: "Approve 3,000 SPIRAL monthly allocation to contract a technical developer relations advocate to write clear step-by-step guides for custom spaceship model uploads.",
+      description: "Approve a 3,000-credit monthly allocation to contract a technical developer relations advocate to write clear step-by-step guides for custom spaceship model uploads.",
       category: "COMMUNITY",
       quality: "good",
-      votesFor: 53000000,
-      votesAgainst: 7000000,
+      votesFor: 53000,
+      votesAgainst: 7000,
       status: "passed",
       author: "founder_0x",
       gitops: false
@@ -671,8 +654,8 @@ import Panel from '../components/Panel.astro';
       description: "Enhance visual atmosphere by introducing low-weight floating stardust particles reacting gently to player cursor movements in the starfield canvas. Fully GPU-optimized.",
       category: "GAMEPLAY",
       quality: "good",
-      votesFor: 62000000,
-      votesAgainst: 5000000,
+      votesFor: 62000,
+      votesAgainst: 5000,
       status: "passed",
       author: "vfx_artist",
       gitops: true
@@ -680,23 +663,23 @@ import Panel from '../components/Panel.astro';
     {
       id: "CC-PROP-032",
       title: "Hire professional concept artist to draw 10 premium ship hulls",
-      description: "Approve one-time 8,000 SPIRAL release to hire a top-tier sci-fi concept designer. Hulls will be utilized as baseline blueprints for the AI generation seed index.",
+      description: "Approve a one-time 8,000-credit release to hire a top-tier sci-fi concept designer. Hulls will be utilized as baseline blueprints for the AI generation seed index.",
       category: "GAMEPLAY",
       quality: "good",
-      votesFor: 68000000,
-      votesAgainst: 2000000,
+      votesFor: 68000,
+      votesAgainst: 2000,
       status: "passed",
       author: "creative_director",
       gitops: false
     },
     {
       id: "CC-PROP-033",
-      title: "Increase total token supply to 500 Billion to make token feel 'cheaper'",
-      description: "Nuke the 1 Billion token limit and inflate supply by 500x. Players will hold millions of tokens instead of hundreds, which might make them feel richer psychologically.",
-      category: "TREASURY",
+      title: "Increase in-game credit supply 500x to make balances feel 'bigger'",
+      description: "Nuke the 1 billion credit limit and inflate the economy by 500x. Players will hold millions of credits instead of hundreds, which might make them feel richer psychologically.",
+      category: "FUND",
       quality: "dogshit",
-      votesFor: 4000000,
-      votesAgainst: 82000000,
+      votesFor: 4000,
+      votesAgainst: 82000,
       status: "defeated",
       author: "math_genius",
       gitops: true
@@ -707,8 +690,8 @@ import Panel from '../components/Panel.astro';
       description: "Streamline communication frames between client web-sockets and our node backend servers, cutting redundant telemetry metrics and shaving 15ms off network responses.",
       category: "INFRASTRUCTURE",
       quality: "great",
-      votesFor: 76000000,
-      votesAgainst: 1000000,
+      votesFor: 76000,
+      votesAgainst: 1000,
       status: "passed",
       author: "perf_wizard",
       gitops: true
@@ -716,11 +699,11 @@ import Panel from '../components/Panel.astro';
     {
       id: "CC-PROP-035",
       title: "Rent physical billboard in Times Square for $80,000 for 1 day",
-      description: "Deploy standard treasury assets to print our logo on a Times Square billboard for 24 hours. No call-to-action link, no tracking. Just pure, expensive ego boost.",
+      description: "Deploy community fund assets to print our logo on a Times Square billboard for 24 hours. No call-to-action link, no tracking. Just pure, expensive ego boost.",
       category: "COMMUNITY",
       quality: "bad",
-      votesFor: 12000000,
-      votesAgainst: 48000000,
+      votesFor: 12000,
+      votesAgainst: 48000,
       status: "defeated",
       author: "hype_builder",
       gitops: false
@@ -728,11 +711,11 @@ import Panel from '../components/Panel.astro';
     {
       id: "CC-PROP-036",
       title: "Sponsor core dev's cat nutrition plan with custom monthly organic salmon",
-      description: "Deploy 500 SPIRAL monthly from community resources to feed a senior developer's cat premium wild-caught salmon. Dev claims a happy cat results in 5% higher typing speeds.",
-      category: "TREASURY",
+      description: "Deploy a 500-credit monthly allowance from community resources to feed a senior developer's cat premium wild-caught salmon. Dev claims a happy cat results in 5% higher typing speeds.",
+      category: "FUND",
       quality: "meh",
-      votesFor: 25000000,
-      votesAgainst: 30000000,
+      votesFor: 25000,
+      votesAgainst: 30000,
       status: "active",
       author: "hungry_dev",
       gitops: false
@@ -776,14 +759,6 @@ import Panel from '../components/Panel.astro';
   const voteSuccessTerminal = document.getElementById('vote-success-terminal');
   const githubGitopsLog = document.getElementById('github-gitops-log');
 
-  // RPC nodes indicators
-  const nodes = {
-    alchemy: document.getElementById('node-alchemy'),
-    infura: document.getElementById('node-infura'),
-    quicknode: document.getElementById('node-quicknode'),
-    ankr: document.getElementById('node-ankr')
-  };
-
   // Impact Overlay Selectors
   const voteImpactOverlay = document.getElementById('vote-impact-overlay');
   const impactCard = document.getElementById('impact-card');
@@ -807,7 +782,7 @@ import Panel from '../components/Panel.astro';
   let currentSelectionId = "CC-PROP-001";
   let activeTab = "active";
   let activeQuality = "all";
-  const userVotingPower = 70000000; // 70 Million SPIRAL
+  const userVotingPower = 1; // one verified account, one vote
 
   // Initialize and load state
   const loadProposals = () => {
@@ -945,7 +920,7 @@ import Panel from '../components/Panel.astro';
         </div>
         <p class="text-xs font-bold text-white uppercase tracking-tight line-clamp-1 mb-1 group-hover:text-cyan-400 transition-colors">${prop.title}</p>
         <div class="flex justify-between items-center text-[8px] font-mono text-slate-500 pt-1.5 border-t border-white/5 mt-1.5">
-          <span>VOTES: ${formatCompact(prop.votesFor + prop.votesAgainst)} SPIRAL</span>
+          <span>TOTAL: ${formatCompact(prop.votesFor + prop.votesAgainst)}</span>
           <span class="text-slate-400">BY: ${prop.author.toUpperCase()}</span>
         </div>
       `;
@@ -1005,7 +980,7 @@ import Panel from '../components/Panel.astro';
     detailVotesAgainstPct.innerText = `${againstPct}%`;
     detailVotesForAbs.innerText = formatCompact(prop.votesFor);
     detailVotesAgainstAbs.innerText = formatCompact(prop.votesAgainst);
-    totalVotedCount.innerText = `TOTAL: ${totalVotes.toLocaleString()} SPIRAL`;
+    totalVotedCount.innerText = `TOTAL: ${totalVotes.toLocaleString()} VOTES`;
 
     voteBarFor.style.width = `${forPct}%`;
     voteBarAgainst.style.width = `${againstPct}%`;
@@ -1028,11 +1003,11 @@ import Panel from '../components/Panel.astro';
       swingBanner?.classList.add('hidden');
       loginFallback?.classList.remove('hidden');
       userStatusInfo.className = "text-rose-400 animate-pulse";
-      userStatusInfo.innerText = "NOT CONNECTED (0 SPIRAL)";
+      userStatusInfo.innerText = "NOT CONNECTED (0 VOTES)";
       voteSuccessTerminal?.classList.add('hidden');
     } else {
       userStatusInfo.className = "text-emerald-400";
-      userStatusInfo.innerText = `CONNECTED (${userVotingPower.toLocaleString()} SPIRAL)`;
+      userStatusInfo.innerText = `CONNECTED (${userVotingPower.toLocaleString()} VOTE)`;
       loginFallback?.classList.add('hidden');
       voteBtnGrid?.classList.remove('hidden');
 
@@ -1049,15 +1024,15 @@ import Panel from '../components/Panel.astro';
           githubGitopsLog.innerText = `[1.80s] GitHub Action completed. Auto-merge status code: 200 (SUCCESS).`;
           githubGitopsLog.className = "text-emerald-400";
         } else {
-          githubGitopsLog.innerText = `[1.80s] Local ledger execution completed. Treasury state finalized.`;
+          githubGitopsLog.innerText = `[1.80s] Community poll recorded. Proposal state finalized.`;
           githubGitopsLog.className = "text-teal-400";
         }
 
         voteSuccessTerminal.innerHTML = `
-          <div class="text-emerald-400 font-bold uppercase tracking-wider text-[9px] mb-1">✓ DECIDING VOTE VERIFIED ON GITOPS CONSENSUS</div>
-          <div>[0.00s] Connected via MetaMask address: 0x71C...9312</div>
-          <div>[0.35s] Signature authenticated via Ethereum multi-sig block.</div>
-          <div>[0.70s] Registered voting weight: ${userVotingPower.toLocaleString()} SPIRAL (Locked Vesting).</div>
+          <div class="text-emerald-400 font-bold uppercase tracking-wider text-[9px] mb-1">✓ DECIDING VOTE VERIFIED ON COMMUNITY CONSENSUS</div>
+          <div>[0.00s] Commander account verified via WOU-ID.</div>
+          <div>[0.35s] Session signature verified. Single-vote authority confirmed.</div>
+          <div>[0.70s] Registered voting weight: ${userVotingPower.toLocaleString()} vote.</div>
           <div class="text-cyan-400">[1.10s] Current vote outcome: ${castVote === 'for' ? 'PASSED & APPROVED' : 'REJECTED & DEFEATED'}</div>
           <div class="${prop.gitops ? 'text-emerald-400' : 'text-teal-400'} font-mono">[1.55s] Consensus: ${prop.gitops ? '✓ GitHub Webhook triggered. Auto-merging verified.' : '✓ Transaction ledger state saved.'}</div>
         `;
@@ -1087,28 +1062,11 @@ import Panel from '../components/Panel.astro';
             <span class="inline-block w-1.5 h-1.5 rounded bg-cyan-400 animate-ping"></span>
             Tide Turner Mode Active
           </span>
-          <span class="text-slate-300">DIFF IS ONLY ${diffFormatted}. YOUR 70M SPIRAL SWINGS THE OUTCOME!</span>
+          <span class="text-slate-300">DIFF IS ONLY ${diffFormatted} VOTES. YOUR VOTE DECIDES IT!</span>
         `;
       }
     }
 
-    // Update node simulation (simulate latency for verification consensus)
-    triggerNodeValidationAnimation();
-  };
-
-  // Simulated node validation animations
-  const triggerNodeValidationAnimation = () => {
-    const rpcs = [nodes.alchemy, nodes.infura, nodes.quicknode, nodes.ankr];
-    rpcs.forEach((node, i) => {
-      if (!node) return;
-      node.className = "py-1 bg-slate-900 border border-cyan-500/10 text-slate-500 rounded animate-pulse";
-      node.innerText = "VERIFYING...";
-      
-      setTimeout(() => {
-        node.className = "py-1 bg-slate-900 border border-emerald-500/20 text-emerald-400 rounded transition-all duration-300";
-        node.innerText = `${node.id.split('-')[1].toUpperCase()} // SECURE`;
-      }, 400 + i * 150);
-    });
   };
 
   // Spectacular Vote Impact Overlay sequence
@@ -1136,7 +1094,7 @@ import Panel from '../components/Panel.astro';
       sequenceStagePercent.className = "text-emerald-400 font-mono";
       
       impactActionBanner.className = "text-[10px] text-emerald-400 uppercase tracking-widest bg-emerald-500/10 border border-emerald-500/20 py-2 rounded-lg font-bold font-mono";
-      impactActionBanner.innerText = "✓ CODE DEPLOYMENT INITIATED // ETHEREUM FINALIZED";
+      impactActionBanner.innerText = "✓ CODE DEPLOYMENT INITIATED // CONSENSUS REACHED";
       
       impactPing.className = "inline-block w-2.5 h-2.5 rounded-full bg-emerald-500 animate-ping";
       
@@ -1176,22 +1134,22 @@ import Panel from '../components/Panel.astro';
 
     // Logging steps
     const logs = isApproved ? [
-      { text: `[SYSTEM] Connection authenticated from address: 0x71C...9312 (Vesting Signature)`, class: "text-slate-500 font-mono" },
-      { text: `[STATE] Staked Balance Checked: 70,000,000 SPIRAL parsed.`, class: "text-slate-400 font-mono" },
-      { text: `[STATE] INJECTING DECIDING POWER (+70M SPIRAL WEIGHT TO APPROVED)...`, class: "text-emerald-400 font-bold font-mono" },
-      { text: `[CONSENSUS] QUORUM STAGE MET: Total Votes passed threshold.`, class: "text-cyan-400 font-mono" },
-      { text: `[CONSENSUS] Multi-sig execution contract verified on 4 independent RPC Nodes.`, class: "text-cyan-400 font-mono" },
+      { text: `[SYSTEM] Commander session authenticated via WOU-ID.`, class: "text-slate-500 font-mono" },
+      { text: `[STATE] Account verified: 1 registered vote parsed.`, class: "text-slate-400 font-mono" },
+      { text: `[STATE] RECORDING DECIDING VOTE (FOR APPROVED)...`, class: "text-emerald-400 font-bold font-mono" },
+      { text: `[CONSENSUS] QUORUM STAGE MET: Total votes passed threshold.`, class: "text-cyan-400 font-mono" },
+      { text: `[CONSENSUS] Poll integrity verified across all community replicas.`, class: "text-cyan-400 font-mono" },
       { text: `[GITHUB] Dispatching secure GitOps webhook to repo main branch...`, class: "text-slate-400 font-mono" },
       { text: `[GITHUB] Triggering actions runner: merging branch 'staging' into 'master'.`, class: "text-slate-400 font-mono" },
       { text: `[DEPLOY] Auto-deployment running... Static assets compiling...`, class: "text-slate-400 font-mono" },
       { text: `[DEPLOY] GITOPS PR AUTO-MERGED: Status 200 (SUCCESS).`, class: "text-emerald-400 font-bold animate-pulse font-mono" },
       { text: `[SYSTEM] Consensus loop completed. Clearing memory channels...`, class: "text-slate-500 font-mono" }
     ] : [
-      { text: `[SYSTEM] Connection authenticated from address: 0x71C...9312 (Vesting Signature)`, class: "text-slate-500 font-mono" },
-      { text: `[STATE] Staked Balance Checked: 70,000,000 SPIRAL parsed.`, class: "text-slate-400 font-mono" },
-      { text: `[STATE] INJECTING DECIDING POWER (+70M SPIRAL WEIGHT TO REJECTED)...`, class: "text-rose-400 font-bold font-mono" },
-      { text: `[CONSENSUS] SHUTDOWN THRESHOLD MET: Defeat weight overrides approval.`, class: "text-red-400 font-mono" },
-      { text: `[CONSENSUS] Multi-sig execution sequence ABORTED. Gnosis Safe transaction cancelled.`, class: "text-red-400 font-mono" },
+      { text: `[SYSTEM] Commander session authenticated via WOU-ID.`, class: "text-slate-500 font-mono" },
+      { text: `[STATE] Account verified: 1 registered vote parsed.`, class: "text-slate-400 font-mono" },
+      { text: `[STATE] RECORDING DECIDING VOTE (FOR REJECTED)...`, class: "text-rose-400 font-bold font-mono" },
+      { text: `[CONSENSUS] SHUTDOWN THRESHOLD MET: Defeat votes override approval.`, class: "text-red-400 font-mono" },
+      { text: `[CONSENSUS] GitOps execution sequence ABORTED. Auto-merge cancelled.`, class: "text-red-400 font-mono" },
       { text: `[GITHUB] Dispatching rejection webhook to repository controllers...`, class: "text-slate-400 font-mono" },
       { text: `[GITHUB] Triggering actions runner: closing PR #${prop.id.split('-')[2]} without merging.`, class: "text-slate-400 font-mono" },
       { text: `[DEPLOY] GITOPS STATUS: PR CLOSED & ARCHIVED. CODE LOCKED [403]`, class: "text-rose-400 font-bold animate-pulse font-mono" },
@@ -1319,12 +1277,12 @@ import Panel from '../components/Panel.astro';
     if (direction === 'for') {
       prop.status = "passed";
       if (prop.votesFor <= prop.votesAgainst) {
-        prop.votesFor = prop.votesAgainst + Math.round(userVotingPower * 0.4);
+        prop.votesFor = prop.votesAgainst + userVotingPower;
       }
     } else {
       prop.status = "defeated";
       if (prop.votesAgainst <= prop.votesFor) {
-        prop.votesAgainst = prop.votesFor + Math.round(userVotingPower * 0.4);
+        prop.votesAgainst = prop.votesFor + userVotingPower;
       }
     }
 
@@ -1339,7 +1297,7 @@ import Panel from '../components/Panel.astro';
 
   // Add click listeners to vote buttons
   btnVoteFor?.addEventListener('click', () => {
-    btnVoteFor.innerText = "SIGNING TX...";
+    btnVoteFor.innerText = "RECORDING VOTE...";
     btnVoteFor.setAttribute('disabled', 'true');
     if (btnVoteAgainst) btnVoteAgainst.style.opacity = '0.3';
 
@@ -1350,7 +1308,7 @@ import Panel from '../components/Panel.astro';
   });
 
   btnVoteAgainst?.addEventListener('click', () => {
-    btnVoteAgainst.innerText = "SIGNING TX...";
+    btnVoteAgainst.innerText = "RECORDING VOTE...";
     btnVoteAgainst.setAttribute('disabled', 'true');
     if (btnVoteFor) btnVoteFor.style.opacity = '0.3';
 
@@ -1405,7 +1363,7 @@ import Panel from '../components/Panel.astro';
   // Search filter
   searchInput?.addEventListener('input', renderList);
 
-  // Fallback Login Connect Wallet triggering WOU-ID Modal
+  // Fallback login button triggering the WOU-ID modal
   btnFallbackConnect?.addEventListener('click', () => {
     wouAuth.openModal();
   });

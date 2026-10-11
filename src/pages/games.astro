@@ -6,7 +6,7 @@ import Footer from '../components/Footer.astro';
 import { GAMES, BATTLEGROUNDS } from '../data/games';
 
 /**
- * Games library — 1:1 behavior port of the Vue DAO Games.vue:
+ * Games library — 1:1 behavior port of the Vue Games.vue:
  * Battlegrounds banner, game cards, and the launcher modal.
  */
 const cards = GAMES.map((g) => ({
@@ -40,7 +40,7 @@ const cards = GAMES.map((g) => ({
           <img class="banner-logo" src="/assets/webp/battlegrounds.webp" alt="Cosmicrafts Battlegrounds Logo" loading="lazy" />
           <div class="banner-text">
             <h1 class="banner-title text-gradient" data-i18n="games.battlegrounds.title">Cosmicrafts Battlegrounds</h1>
-            <p class="banner-subtitle text-secondary">Launching Q4 2025 — The next evolution in on-chain RTS. Wishlist and play the demo now!</p>
+            <p class="banner-subtitle text-secondary">Launching Q4 2025 — The next evolution in RTS. Wishlist and play the demo now!</p>
             <div class="banner-ctas">
               <a class="cosmic-button cosmic-button-primary min-h-[44px]" href={BATTLEGROUNDS.epicUrl} target="_blank" rel="noopener">
                 <span class="button-text">Wishlist on Epic Games</span>

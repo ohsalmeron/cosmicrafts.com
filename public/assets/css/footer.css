@@ -296,7 +296,7 @@
   text-shadow: var(--cosmic-glow-blue-sm);
 }
 
-/* Mobile Button Styles (DAO-style) */
+/* Mobile Button Styles (terminal-style) */
 @media (max-width: 768px) {
   .link-list {
     padding: 0.75rem;

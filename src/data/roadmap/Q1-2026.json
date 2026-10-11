@@ -1,14 +1,14 @@
 {
   "period": "2026-Q1",
-  "description": "Ship ckBTC Integration: Basic trading features, NPC behavior engine, and automated testing pipeline",
+  "description": "Ship Trading Features: NPC behavior engine, and automated testing pipeline",
   "completed": 0,
-  "total": 5,
+  "total": 45,
   "milestones": [
     {
       "title": "AI Code Pipeline Release",
       "description": "Ship production-ready AI code generation and testing system",
       "completed": 0,
-      "total": 3,
+      "total": 9,
       "tasks": [
         {
           "title": "Autonomous Code Generation",
@@ -88,7 +88,7 @@
       "title": "Governance System Deployment",
       "description": "Deploy automated proposal and voting system with fraud detection",
       "completed": 0,
-      "total": 3,
+      "total": 9,
       "tasks": [
         {
           "title": "Proposal Automation",
@@ -127,8 +127,8 @@
               "completed": false
             },
             {
-              "title": "Stake Weighting",
-              "description": "Develop advanced stake weighting algorithms with AI optimization.",
+              "title": "Vote Weighting",
+              "description": "Develop advanced vote weighting algorithms with AI optimization.",
               "completed": false
             },
             {
@@ -168,7 +168,7 @@
       "title": "NPC Engine Core Build",
       "description": "Build and test core NPC behavior and interaction engine",
       "completed": 0,
-      "total": 3,
+      "total": 9,
       "tasks": [
         {
           "title": "World Generation",
@@ -220,7 +220,7 @@
         },
         {
           "title": "Economy System",
-          "description": "Implement AI-managed metaverse economy system.",
+          "description": "Implement AI-managed universe economy system.",
           "completed": 0,
           "total": 3,
           "status": "ToDo",
@@ -248,7 +248,7 @@
       "title": "Cross-Platform Integration",
       "description": "Deliver core integration with major gaming platforms",
       "completed": 0,
-      "total": 3,
+      "total": 9,
       "tasks": [
         {
           "title": "CrazyGames Integration",
@@ -328,7 +328,7 @@
       "title": "CI/CD Pipeline Boost",
       "description": "Enhance CI/CD pipeline with advanced automation and AI capabilities",
       "completed": 0,
-      "total": 3,
+      "total": 9,
       "tasks": [
         {
           "title": "Build System Enhancement",
@@ -362,8 +362,8 @@
           "status": "ToDo",
           "subtasks": [
             {
-              "title": "Canister Deployment",
-              "description": "Enhance automated canister deployment system.",
+              "title": "Service Deployment",
+              "description": "Enhance automated service deployment system.",
               "completed": false
             },
             {
@@ -405,4 +405,4 @@
       ]
     }
   ]
-} 
+}

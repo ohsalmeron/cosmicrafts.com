@@ -1,4 +1,4 @@
-/* Hover utilities ported 1:1 from the Vue DAO style.css (needs universal.css vars). */
+/* Hover utilities ported 1:1 from the Vue style.css (needs universal.css vars). */
 /* Universal Hover Effect */
 .u-hover {
   text-shadow: 0 2px 4px rgba(0, 0, 0, .75);

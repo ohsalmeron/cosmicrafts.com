@@ -1,26 +1,26 @@
 ---
 title: "Project Vision & Scope"
-description: "The official, persistent blueprint of the Cosmicrafts Web2.5 AI-Driven Creator Economy."
+description: "The official, persistent blueprint of the Cosmicrafts AI-Driven Creator Economy."
 order: 5
 ---
 
 # Cosmicrafts Project Blueprint & Technical Specification
 
-This document serves as the permanent **Source of Truth** for the vision, scope, tokenomics, and smart contract architecture of the Cosmicrafts project. It ensures that the team, the founders, and all future development agents work under a unified, un-drifting specification.
+This document serves as the permanent **Source of Truth** for the vision and scope of the Cosmicrafts project. It ensures that the team, the founders, and all future development agents work under a unified, un-drifting specification.
 
 ---
 
-## 🚀 The Pivot
+## 🚀 The Foundation
 
-Cosmicrafts started as a fully on-chain game experiment. We respect that work and everyone who contributed to it.
+Cosmicrafts is built to actually ship. We respect every lesson from the early days and everyone who contributed along the way.
 
-But we're shifting gears to make this thing real:
+We run on proven, boring, fast technology:
 
-- **Hybrid cloud + Ethereum**: Game state, matchmaking, profiles — all on cloud servers. Fast, no gas fees. SPIRAL lives on Ethereum as a standard ERC-20. Permanent, liquid, no cycle management.
-- **Lower costs**: This setup costs a fraction of what we were burning. That means we can keep delivering instead of watching overhead eat the runway.
-- **No free airdrops**: Every token is bought or earned. That's it.
+- **Cloud-native core**: Game state, matchmaking, profiles — all on our own fast servers. No per-transaction costs, no network fees.
+- **Lower costs**: This setup costs a fraction of alternatives. That means we can keep delivering instead of watching overhead eat the runway.
+- **Earned rewards**: Everything in the economy is bought or earned in-game. That's it.
 
-This is not a betrayal of the original vision — it's the only way to ship something people can actually use. We owe that to the people who believed in this.
+This is the only way to ship something people can actually use. We owe that to the people who believed in this.
 
 ---
 
@@ -29,53 +29,21 @@ This is not a betrayal of the original vision — it's the only way to ship some
 Cosmicrafts is building an **AI-powered creator sandbox** for sci-fi assets.
 
 - **The Forge**: Users prompt an AI engine (generating 3D spaceships, characters, or avatar items from text or 2D image inputs).
-- **The Utility**: The generated assets are instantly usable inside the game client or tradeable on our internal ledger.
-- **The Token**: The `SPIRAL` token is the universal gas that powers this AI generator, staking mechanisms, and governance.
+- **The Utility**: The generated assets are instantly usable inside the game client or tradeable on the official marketplace.
+- **The Economy**: A single in-game credits system powers the AI generator, the marketplace, and community rewards across every Cosmicrafts title.
 
 ---
 
-## 🪙 2. Tokenomics & Capped Allocations (No Giveaways)
+## 🏗️ 2. The Credits Economy
 
-Total Fixed Supply: **1,000,000,000 SPIRAL Tokens (1 Billion)**
-Pegged Value (Public Sale): **$1.00 USD = 1 SPIRAL** (operating legally like V-Bucks/Robux).
-
-| Allocation Group | Percentage | Token Allocation | Lock & Vesting Terms |
-| :--- | :---: | :---: | :--- |
-| **Seed Investors** | **2.6%** | **26,000,000** | Fully preserved, non-diluted, and honored. |
-| **Former Team** | **1.3%** | **13,000,000** | Capped at exactly half of the Seed Investors' share to protect investor significance. |
-| **Founder Allocation** | **7.0%** | **70,000,000** | Retained by the founder, locked in a secure vesting contract. |
-| **Public Sale** | **10.0%** | **100,000,000** | Offered publicly at $1.00 per token. |
-| **DAO Treasury** | **79.1%** | **791,000,000** | Controlled by the Treasury contract, released by DAO votes. |
+1. **In-Game Credits**: One fixed in-game currency, shared across all Cosmicrafts games. Earned by playing, bought in the store — operating like any standard game currency (V-Bucks/Robux).
+2. **Zero Friction**: All AI generation, cosmetic purchases, and trading run through this balance with sub-second execution and no external transfer costs.
+3. **No Free Giveaways**: Credits represent real value input or earned gameplay. No free handouts, no lotteries.
 
 ---
 
-## 🏗️ 3. Hybrid Ledger & Transfer Mechanics
+## ⚙️ 3. GitOps Governance & Community Fund
 
-To eliminate the $20–$50 gas fee per asset generation on Ethereum Mainnet, the project uses a **Web2.5 Hybrid Ledger**:
-
-1. **On-Chain Layer (Ethereum)**: The base ERC-20 `SPIRAL` token contract, the Sales Contract, and the Vesting locks live here.
-2. **Off-Chain Layer (Database Vault)**: Players deposit Ethereum `SPIRAL` into the game. Our backend credits them with an identical **In-Game Balance**. All AI generation, cosmetic item purchases, and internal trading use this database balance with **zero gas fees and sub-second execution speeds**.
-3. **The Exit (Transfer Fee)**: When moving tokens from the In-Game Balance back to the on-chain Ethereum wallet, a standard **Transfer Fee** is charged to cover gas costs and protocol maintenance.
-4. **No Free Giveaways**: There are no free community airdrops. Every token in circulation represents real capital input or utility value.
-
----
-
-## ⛓️ 4. The 4-Contract Solidity Architecture
-
-All smart contracts will be built using audit-proven, industry-standard **OpenZeppelin** modules:
-
-### Contract 1: Base ERC-20 Token (`SpiralToken.sol`)
-- Standard, non-burnable, non-pausable ERC-20 contract.
-- Mints 1,000,000,000 tokens on creation to the deployer.
-
-### Contract 2: Vesting / Timelock Contract (`SpiralVesting.sol`)
-- Implements linear vesting with a cliff.
-- Automatically handles the 7% Founder and 2.6% Seed releases to prevent manual key manipulation.
-
-### Contract 3: Sales Contract (`SpiralSale.sol`)
-- Implements a fixed-price sale ($1.00 USD equivalent in Stablecoins or ETH) to sell the 10% public allocation.
-- Functions legally like a digital currency store (V-Bucks).
-
-### Contract 4: Treasury Vault (`SpiralTreasury.sol`)
-- Holds the 79.1% DAO Treasury.
-- Integrates with **GitHub Actions / CI workflows**. Transactions can be proposed during GitHub PR approvals and executed on-chain via multi-sig authorization, bridging code-merges directly to financial execution.
+- Community decisions run through GitHub Pull Requests: propose, vote, merge.
+- The community fund is spent only through approved proposals, executed automatically by GitHub Actions workflows.
+- One verified account, one vote — every decision is public and auditable.

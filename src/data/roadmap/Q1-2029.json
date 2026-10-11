@@ -2,13 +2,13 @@
   "period": "2029-Q1",
   "description": "Launch beta testing for new franchise title, begin mobile development for new title, and advance toward final phase of END GAME vision with enhanced ecosystem intelligence.",
   "completed": 0,
-  "total": 3,
+  "total": 27,
   "milestones": [
     {
       "title": "New Title Beta Launch",
       "description": "Launch beta version of new franchise title with expanded audience.",
       "completed": 0,
-      "total": 3,
+      "total": 9,
       "tasks": [
         {
           "title": "Beta Build Deployment",
@@ -88,7 +88,7 @@
       "title": "Mobile Development",
       "description": "Begin mobile development for new franchise title.",
       "completed": 0,
-      "total": 3,
+      "total": 9,
       "tasks": [
         {
           "title": "Mobile Strategy",
@@ -168,7 +168,7 @@
       "title": "Ecosystem Intelligence",
       "description": "Enhance AI capabilities with advanced ecosystem-wide intelligence systems.",
       "completed": 0,
-      "total": 3,
+      "total": 9,
       "tasks": [
         {
           "title": "Unified Intelligence",
@@ -245,4 +245,4 @@
       ]
     }
   ]
-} 
+}

@@ -2,13 +2,13 @@
   "period": "2028-Q1",
   "description": "4X Mobile Alpha, AI Governance Systems, Autonomous Development Framework",
   "completed": 0,
-  "total": 4,
+  "total": 36,
   "milestones": [
     {
       "title": "4X Mobile Conquest",
       "description": "Alpha version with core features",
       "completed": 0,
-      "total": 3,
+      "total": 9,
       "tasks": [
         {
           "title": "Alpha Release Preparation",
@@ -88,7 +88,7 @@
       "title": "AI Governance Nexus",
       "description": "AI-driven governance systems",
       "completed": 0,
-      "total": 3,
+      "total": 9,
       "tasks": [
         {
           "title": "Decision Systems",
@@ -168,7 +168,7 @@
       "title": "Autonomous Development Matrix",
       "description": "Expanded autonomous development framework",
       "completed": 0,
-      "total": 3,
+      "total": 9,
       "tasks": [
         {
           "title": "AI Development Systems",
@@ -245,10 +245,10 @@
       ]
     },
     {
-      "title": "Metaverse Integration Core",
-      "description": "Metaverse integration systems",
+      "title": "Shared Universe Core",
+      "description": "Shared universe integration systems",
       "completed": 0,
-      "total": 3,
+      "total": 9,
       "tasks": [
         {
           "title": "Cross-Game Features",
@@ -276,14 +276,14 @@
         },
         {
           "title": "Economic Systems",
-          "description": "Advance metaverse economic systems.",
+          "description": "Advance shared universe economic systems.",
           "completed": 0,
           "total": 3,
           "status": "ToDo",
           "subtasks": [
             {
-              "title": "Token Integration",
-              "description": "Enhance token integration systems.",
+              "title": "Currency Integration",
+              "description": "Enhance in-game currency integration systems.",
               "completed": false
             },
             {
@@ -300,7 +300,7 @@
         },
         {
           "title": "Social Features",
-          "description": "Expand metaverse social capabilities.",
+          "description": "Expand shared universe social capabilities.",
           "completed": 0,
           "total": 3,
           "status": "ToDo",
@@ -325,4 +325,4 @@
       ]
     }
   ]
-} 
+}

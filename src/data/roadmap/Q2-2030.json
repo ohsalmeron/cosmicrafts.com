@@ -2,13 +2,13 @@
   "period": "2030-Q2",
   "description": "Expand autonomous development capabilities and begin phased transition from human development team.",
   "completed": 0,
-  "total": 4,
+  "total": 36,
   "milestones": [
     {
       "title": "Autonomous Feature Development",
       "description": "Enable AI-driven feature development.",
       "completed": 0,
-      "total": 3,
+      "total": 9,
       "tasks": [
         {
           "title": "Feature Planning",
@@ -88,7 +88,7 @@
       "title": "Knowledge Transfer",
       "description": "Transfer development knowledge to AI systems.",
       "completed": 0,
-      "total": 3,
+      "total": 9,
       "tasks": [
         {
           "title": "Documentation Analysis",
@@ -168,7 +168,7 @@
       "title": "Team Transition",
       "description": "Begin phased transition of development team.",
       "completed": 0,
-      "total": 3,
+      "total": 9,
       "tasks": [
         {
           "title": "Role Analysis",
@@ -248,7 +248,7 @@
       "title": "Oversight Preparation",
       "description": "Prepare oversight transition framework.",
       "completed": 0,
-      "total": 3,
+      "total": 9,
       "tasks": [
         {
           "title": "Monitoring Framework",
@@ -325,4 +325,4 @@
       ]
     }
   ]
-} 
+}

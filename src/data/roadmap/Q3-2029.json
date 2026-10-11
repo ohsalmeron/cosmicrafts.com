@@ -2,13 +2,13 @@
   "period": "2029-Q3",
   "description": "Launch mobile version of new franchise title, plan franchise expansion, and advance AI development capabilities.",
   "completed": 0,
-  "total": 3,
+  "total": 27,
   "milestones": [
     {
       "title": "Mobile Launch",
       "description": "Launch mobile version of new franchise title on all major platforms.",
       "completed": 0,
-      "total": 3,
+      "total": 9,
       "tasks": [
         {
           "title": "Mobile Launch Execution",
@@ -88,7 +88,7 @@
       "title": "Franchise Expansion",
       "description": "Plan next phase of franchise expansion with new title concepts.",
       "completed": 0,
-      "total": 3,
+      "total": 9,
       "tasks": [
         {
           "title": "Market Analysis",
@@ -168,7 +168,7 @@
       "title": "AI Development Progress",
       "description": "Advance AI development capabilities and frameworks.",
       "completed": 0,
-      "total": 3,
+      "total": 9,
       "tasks": [
         {
           "title": "System Performance",
@@ -245,4 +245,4 @@
       ]
     }
   ]
-} 
+}

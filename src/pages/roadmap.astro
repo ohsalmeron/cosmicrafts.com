@@ -4,7 +4,7 @@ import PageBackdrop from '../components/PageBackdrop.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 
-/** Cosmic Roadmap — 1:1 port of the Vue DAO Roadmap.vue (quarters tracker, JSON-driven). */
+/** Cosmic Roadmap — 1:1 port of the Vue Roadmap.vue (quarters tracker, JSON-driven). */
 const mods = import.meta.glob('../data/roadmap/*.json', { eager: true });
 const qnum = (q: string) => parseInt(String(q).replace('Q', ''), 10);
 

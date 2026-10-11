@@ -1,7 +1,7 @@
 /**
  * Games inventory — single source of truth for cosmicrafts.com.
  * 2026 new: Bevy Adventures + Star Drifter.
- * DAO classics: Adventures 3D (2025), 2D (2019), Alpha 2021, Beta 2022.
+ * Classics: Adventures 3D (2025), 2D (2019), Alpha 2021, Beta 2022.
  * Live: Rush (external). Banner: Battlegrounds (Epic + itch.io).
  */
 export type GameStatus = 'live' | 'playable' | 'external' | 'soon';
@@ -29,7 +29,7 @@ export interface Game {
   externalUrl?: string;
   repo: string;
   features: string[];
-  /** Vue DAO card fields (1:1 port) */
+  /** Vue card fields (1:1 port) */
   badge: string;
   badgeClass: 'prototype' | 'classic' | 'alpha' | 'beta' | 'live' | 'new';
   genre: string;
@@ -81,7 +81,7 @@ export const GAMES: Game[] = [
     year: '2025',
     tag: 'LIVE',
     tagColor: 'cyan',
-    description: 'Carreras de naves con IA y caos. Apuesta SPIRAL, mira la carrera y colecciona logros.',
+    description: 'Carreras de naves con IA y caos. Apuesta, mira la carrera y colecciona logros.',
     image: '/assets/games/rush.svg',
     status: 'external',
     statusLabel: 'En vivo',

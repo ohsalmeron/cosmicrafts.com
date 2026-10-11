@@ -2,20 +2,20 @@
   "period": "2025-Q4",
   "description": "Epic Games Store Release: Ship Battlegrounds with complete feature set while delivering Adventures' combat demo and 4X faction system",
   "completed": 0,
-  "total": 4,
+  "total": 36,
   "milestones": [
     {
       "title": "Battlegrounds Epic Launch",
       "description": "Execute full launch of Battlegrounds on Epic Games Store",
       "completed": 0,
-      "total": 3,
+      "total": 9,
       "tasks": [
         {
           "title": "Launch Campaign",
           "description": "Execute comprehensive launch marketing campaign",
           "completed": 0,
           "total": 3,
-          "status": "InProgress",
+          "status": "ToDo",
           "subtasks": [
             {
               "title": "Content Creator Program",
@@ -39,7 +39,7 @@
           "description": "Maximize visibility and conversion on Epic Store",
           "completed": 0,
           "total": 3,
-          "status": "InProgress",
+          "status": "ToDo",
           "subtasks": [
             {
               "title": "Store Page Optimization",
@@ -63,7 +63,7 @@
           "description": "Provide comprehensive launch support and monitoring",
           "completed": 0,
           "total": 3,
-          "status": "InProgress",
+          "status": "ToDo",
           "subtasks": [
             {
               "title": "24/7 Support",
@@ -88,14 +88,14 @@
       "title": "Adventures Prototype Development",
       "description": "Advance Adventures prototype development",
       "completed": 0,
-      "total": 3,
+      "total": 9,
       "tasks": [
         {
           "title": "Core Systems Implementation",
           "description": "Implement core gameplay systems for Adventures",
           "completed": 0,
           "total": 3,
-          "status": "InProgress",
+          "status": "ToDo",
           "subtasks": [
             {
               "title": "Player Systems",
@@ -119,7 +119,7 @@
           "description": "Begin content creation for Adventures prototype",
           "completed": 0,
           "total": 3,
-          "status": "InProgress",
+          "status": "ToDo",
           "subtasks": [
             {
               "title": "World Building",
@@ -143,7 +143,7 @@
           "description": "Establish technical infrastructure for Adventures",
           "completed": 0,
           "total": 3,
-          "status": "InProgress",
+          "status": "ToDo",
           "subtasks": [
             {
               "title": "Build Pipeline",
@@ -166,16 +166,16 @@
     },
     {
       "title": "4X Game Core Systems",
-      "description": "Develop core systems for 4X metaverse game",
+      "description": "Develop core systems for the 4X universe game",
       "completed": 0,
-      "total": 3,
+      "total": 9,
       "tasks": [
         {
           "title": "World Generation",
           "description": "Implement initial world generation systems",
           "completed": 0,
           "total": 3,
-          "status": "InProgress",
+          "status": "ToDo",
           "subtasks": [
             {
               "title": "Procedural Systems",
@@ -199,7 +199,7 @@
           "description": "Develop initial faction mechanics",
           "completed": 0,
           "total": 3,
-          "status": "InProgress",
+          "status": "ToDo",
           "subtasks": [
             {
               "title": "Faction Framework",
@@ -223,7 +223,7 @@
           "description": "Establish technical foundation for 4X game",
           "completed": 0,
           "total": 3,
-          "status": "InProgress",
+          "status": "ToDo",
           "subtasks": [
             {
               "title": "Core Architecture",
@@ -248,14 +248,14 @@
       "title": "Portfolio Analytics",
       "description": "Track and analyze performance across all games",
       "completed": 0,
-      "total": 3,
+      "total": 9,
       "tasks": [
         {
           "title": "Battlegrounds Analytics",
           "description": "Track Battlegrounds launch performance",
           "completed": 0,
           "total": 3,
-          "status": "InProgress",
+          "status": "ToDo",
           "subtasks": [
             {
               "title": "Player Metrics",
@@ -279,7 +279,7 @@
           "description": "Monitor development progress of all games",
           "completed": 0,
           "total": 3,
-          "status": "InProgress",
+          "status": "ToDo",
           "subtasks": [
             {
               "title": "Adventures Tracking",
@@ -303,7 +303,7 @@
           "description": "Analyze data for strategic decision making",
           "completed": 0,
           "total": 3,
-          "status": "InProgress",
+          "status": "ToDo",
           "subtasks": [
             {
               "title": "Market Analysis",
@@ -325,4 +325,4 @@
       ]
     }
   ]
-} 
+}

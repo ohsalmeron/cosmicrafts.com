@@ -1,18 +1,18 @@
 {
   "period": "2024-Q2",
-  "description": "**System Enhancement: Photon Quantum multiplayer, Web3 expansion, ICP.NET deployment**",
-  "completed": 27,
-  "total": 27,
+  "description": "**System Enhancement: Photon Quantum multiplayer, reward systems expansion, audio framework**",
+  "completed": 21,
+  "total": 21,
   "milestones": [
     {
-      "title": "Web3 Systems Enhancement",
-      "description": "Advanced token mechanics and DFINITY grant expansion",
-      "completed": 9,
-      "total": 9,
+      "title": "Economy Systems Enhancement",
+      "description": "Advanced reward mechanics and grant deliverables",
+      "completed": 6,
+      "total": 6,
       "tasks": [
         {
-          "title": "Token Mechanics",
-          "description": "Expand token reward system features",
+          "title": "Reward Mechanics",
+          "description": "Expand the reward system features",
           "completed": 3,
           "total": 3,
           "status": "Completed",
@@ -31,61 +31,34 @@
             },
             {
               "title": "Lootbox Enhancement",
-              "description": "Expand NFT lootbox varieties",
+              "description": "Expand lootbox varieties",
               "completed": 1,
               "total": 1
             }
           ]
         },
         {
-          "title": "NFT System Expansion",
-          "description": "Enhanced NFT features and upgrades",
+          "title": "Collectible System Expansion",
+          "description": "Enhanced collectible features and upgrades",
           "completed": 3,
           "total": 3,
           "status": "Completed",
           "subtasks": [
             {
               "title": "Upgrade Mechanics",
-              "description": "Expand NFT upgrade options",
+              "description": "Expand asset upgrade options",
               "completed": 1,
               "total": 1
             },
             {
-              "title": "Token Integration",
-              "description": "Enhance token-NFT interactions",
+              "title": "Currency Integration",
+              "description": "Enhance currency-collectible interactions",
               "completed": 1,
               "total": 1
             },
             {
               "title": "Grant Completion",
-              "description": "Complete DFINITY grant deliverables",
-              "completed": 1,
-              "total": 1
-            }
-          ]
-        },
-        {
-          "title": "SNS Configuration",
-          "description": "Advanced SNS settings and tokenomics",
-          "completed": 3,
-          "total": 3,
-          "status": "Completed",
-          "subtasks": [
-            {
-              "title": "Token Parameters",
-              "description": "Refine SNS token parameters",
-              "completed": 1,
-              "total": 1
-            },
-            {
-              "title": "Economic Model",
-              "description": "Optimize tokenomics model",
-              "completed": 1,
-              "total": 1
-            },
-            {
-              "title": "Launch Preparation",
-              "description": "Complete SNS launch readiness",
+              "description": "Complete grant deliverables",
               "completed": 1,
               "total": 1
             }
@@ -183,48 +156,21 @@
       ]
     },
     {
-      "title": "ICP Integration Stack",
-      "description": "ICP.NET deployment and Boom DAO integration",
-      "completed": 9,
-      "total": 9,
+      "title": "Platform Integration Stack",
+      "description": "Platform SDK deployment and engine integration",
+      "completed": 6,
+      "total": 6,
       "tasks": [
         {
-          "title": "ICP.NET Deployment",
-          "description": "Complete ICP.NET integration",
+          "title": "Engine SDK Integration",
+          "description": "Implement game engine SDK integration",
           "completed": 3,
           "total": 3,
           "status": "Completed",
           "subtasks": [
             {
-              "title": "Core Integration",
-              "description": "Deploy ICP.NET framework",
-              "completed": 1,
-              "total": 1
-            },
-            {
-              "title": "Testing",
-              "description": "Validate ICP.NET functionality",
-              "completed": 1,
-              "total": 1
-            },
-            {
-              "title": "Documentation",
-              "description": "Document integration process",
-              "completed": 1,
-              "total": 1
-            }
-          ]
-        },
-        {
-          "title": "Boom DAO Integration",
-          "description": "Implement world canister and SDK",
-          "completed": 3,
-          "total": 3,
-          "status": "Completed",
-          "subtasks": [
-            {
-              "title": "World Canister",
-              "description": "Deploy Boom DAO world canister",
+              "title": "World Backend",
+              "description": "Deploy the game world backend",
               "completed": 1,
               "total": 1
             },
@@ -236,7 +182,7 @@
             },
             {
               "title": "Testing",
-              "description": "Validate Boom DAO systems",
+              "description": "Validate integration systems",
               "completed": 1,
               "total": 1
             }

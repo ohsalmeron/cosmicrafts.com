@@ -2,13 +2,13 @@
   "period": "2028-Q4",
   "description": "New Game Development, AI Systems Update, Automation Framework",
   "completed": 0,
-  "total": 4,
+  "total": 36,
   "milestones": [
     {
       "title": "New Game Core Systems",
       "description": "Core systems for new franchise title",
       "completed": 0,
-      "total": 3,
+      "total": 9,
       "tasks": [
         {
           "title": "Core Systems",
@@ -88,7 +88,7 @@
       "title": "AI Systems Enhancement",
       "description": "Updated AI capabilities",
       "completed": 0,
-      "total": 3,
+      "total": 9,
       "tasks": [
         {
           "title": "Learning Systems",
@@ -168,7 +168,7 @@
       "title": "Automation Systems",
       "description": "Expanded automation framework",
       "completed": 0,
-      "total": 3,
+      "total": 9,
       "tasks": [
         {
           "title": "Development Automation",
@@ -248,7 +248,7 @@
       "title": "System Transition",
       "description": "Full automation preparation",
       "completed": 0,
-      "total": 3,
+      "total": 9,
       "tasks": [
         {
           "title": "Strategy Development",
@@ -325,4 +325,4 @@
       ]
     }
   ]
-} 
+}

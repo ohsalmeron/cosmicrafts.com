@@ -35,7 +35,7 @@ import Panel from '../components/Panel.astro';
         <div class="space-y-1">
           <h2 class="text-xl font-bold uppercase tracking-tight text-white">Commander Not Connected</h2>
           <p class="text-xs text-slate-400 font-mono font-light">
-            Connect via World of Unreal Identity to inspect your cross-chain profile, fleet inventory, and battle rank.
+            Connect via World of Unreal Identity to inspect your commander profile, fleet inventory, and battle rank.
           </p>
         </div>
         <button id="guest-connect-btn" type="button" class="px-6 py-2.5 rounded-xl bg-gradient-to-r from-cyan-500 to-indigo-500 hover:from-cyan-400 hover:to-indigo-400 text-white font-mono text-xs font-bold uppercase tracking-widest shadow-lg shadow-cyan-500/25 transition cursor-pointer">
@@ -78,33 +78,13 @@ import Panel from '../components/Panel.astro';
                 </div>
               </div>
 
-              <!-- Vault & Public Cryptographic Identities -->
-              <div class="bg-white/5 border border-white/5 rounded-xl p-3.5 font-mono text-[10px] text-left space-y-2">
-                <div class="text-[9px] text-slate-500 tracking-wider uppercase border-b border-white/5 pb-1 flex justify-between">
-                  <span>[ PUBLIC GAMING VAULT ]</span>
-                  <span class="text-emerald-400 font-bold">VERIFIED</span>
-                </div>
-                <div class="flex justify-between items-center">
-                  <span class="text-slate-400">EVM:</span>
-                  <span id="vault-evm" class="text-white select-text font-bold truncate max-w-[140px]">0x0...000</span>
-                </div>
-                <div class="flex justify-between items-center">
-                  <span class="text-slate-400">SOL:</span>
-                  <span id="vault-sol" class="text-purple-300 select-text font-bold truncate max-w-[140px]">Sol...000</span>
-                </div>
-                <div class="flex justify-between items-center">
-                  <span class="text-slate-400">ICP:</span>
-                  <span id="vault-icp" class="text-cyan-300 select-text font-bold truncate max-w-[140px]">icp...000</span>
-                </div>
+              <!-- Bio / Dispatch Note -->
+              <div class="pt-4 border-t border-white/5 mt-4 text-left font-mono text-[10px] text-slate-400">
+                <span class="text-[9px] text-slate-500 block mb-1 uppercase">[ DISPATCH BIO ]</span>
+                <p id="player-bio" class="text-slate-300 leading-relaxed font-sans text-xs">
+                  Active Cosmicrafts Commander.
+                </p>
               </div>
-            </div>
-
-            <!-- Bio / Dispatch Note -->
-            <div class="pt-4 border-t border-white/5 mt-4 text-left font-mono text-[10px] text-slate-400">
-              <span class="text-[9px] text-slate-500 block mb-1 uppercase">[ DISPATCH BIO ]</span>
-              <p id="player-bio" class="text-slate-300 leading-relaxed font-sans text-xs">
-                Active Cosmicrafts Commander.
-              </p>
             </div>
           </div>
 
@@ -125,10 +105,10 @@ import Panel from '../components/Panel.astro';
       </div>
     </main>
 
-    <!-- Floating High-Detail NFT Visor / Modal -->
-    <div id="nft-visor-modal" class="fixed inset-0 z-[9999] hidden items-center justify-center p-4 bg-slate-950/50 backdrop-blur-md">
+    <!-- Floating High-Detail Asset Visor / Modal -->
+    <div id="asset-visor-modal" class="fixed inset-0 z-[9999] hidden items-center justify-center p-4 bg-slate-950/50 backdrop-blur-md">
       <!-- Backdrop Click Close -->
-      <div class="absolute inset-0 z-0" id="nft-visor-backdrop"></div>
+      <div class="absolute inset-0 z-0" id="asset-visor-backdrop"></div>
       
       <!-- Visor Content Panel -->
       <Panel class="relative w-full max-w-3xl p-6 md:p-8 flex flex-col md:flex-row gap-6 md:gap-10 z-10 select-none text-left">
@@ -174,27 +154,6 @@ import Panel from '../components/Panel.astro';
                 <span class="text-slate-500">SHIELD TYPE:</span>
                 <span class="text-cyan-400">AEGIS MK-V</span>
               </div>
-              <div class="flex justify-between col-span-2 pt-1">
-                <span class="text-slate-500">EST_VALUATION:</span>
-                <span id="visor-val" class="text-cyan-400 font-black">150,000 SPIRAL</span>
-              </div>
-            </div>
-
-            <!-- Web3 Ledger data -->
-            <div class="space-y-1.5 border-t border-white/5 pt-3">
-              <span class="text-[8px] text-slate-500 uppercase font-black tracking-widest">[ BLOCKCHAIN LEDGER DATA ]</span>
-              <div class="flex justify-between">
-                <span>CONTRACT STANDARD:</span>
-                <span class="text-slate-300">ERC-1155 (COSMIC_STORE)</span>
-              </div>
-              <div class="flex justify-between">
-                <span>METADATA STORAGE:</span>
-                <span class="text-slate-300">DECENTRALIZED IPFS</span>
-              </div>
-              <div class="flex justify-between">
-                <span>VERIFICATION:</span>
-                <span class="text-emerald-400">WOU-ID PROTOCOL VERIFIED</span>
-              </div>
             </div>
           </div>
         </div>
@@ -220,15 +179,11 @@ import Panel from '../components/Panel.astro';
   const playerAvatar = document.getElementById('player-avatar') as HTMLImageElement;
   const playerAvatarEmoji = document.getElementById('player-avatar-emoji');
 
-  const vaultEvm = document.getElementById('vault-evm');
-  const vaultSol = document.getElementById('vault-sol');
-  const vaultIcp = document.getElementById('vault-icp');
-
   const invContainer = document.getElementById('inventory-container');
 
   // Modal Visor elements
-  const nftVisorModal = document.getElementById('nft-visor-modal');
-  const nftVisorBackdrop = document.getElementById('nft-visor-backdrop');
+  const assetVisorModal = document.getElementById('asset-visor-modal');
+  const assetVisorBackdrop = document.getElementById('asset-visor-backdrop');
   const btnCloseVisor = document.getElementById('btn-close-visor');
   const visorImg = document.getElementById('visor-img') as HTMLImageElement;
   const visorName = document.getElementById('visor-name');
@@ -236,16 +191,15 @@ import Panel from '../components/Panel.astro';
   const visorRarity = document.getElementById('visor-rarity');
   const visorPower = document.getElementById('visor-power');
   const visorSpeed = document.getElementById('visor-speed');
-  const visorVal = document.getElementById('visor-val');
 
   const fleetInventory = [
-    { name: "Void Dreadnought", serial: "0001", rarity: "Mythic", power: 98, speed: "9.5", value: "150,000", img: "/assets/starter-ship.webp" },
-    { name: "Solaris Cruiser", serial: "0042", rarity: "Legendary", power: 88, speed: "8.2", value: "85,000", img: "/assets/starter-ship.webp" },
-    { name: "Quantum Interceptor", serial: "0109", rarity: "Epic", power: 74, speed: "11.0", value: "42,000", img: "/assets/starter-ship.webp" },
-    { name: "Nebula Frigate", serial: "0314", rarity: "Rare", power: 65, speed: "7.8", value: "18,500", img: "/assets/starter-ship.webp" },
-    { name: "Aegis Recon Scout", serial: "0892", rarity: "Rare", power: 52, speed: "12.4", value: "12,000", img: "/assets/starter-ship.webp" },
-    { name: "Titan Harvester", serial: "1024", rarity: "Epic", power: 80, speed: "5.5", value: "35,000", img: "/assets/starter-ship.webp" },
-    { name: "Plasma Striker", serial: "2048", rarity: "Rare", power: 60, speed: "9.8", value: "15,000", img: "/assets/starter-ship.webp" },
+    { name: "Void Dreadnought", serial: "0001", rarity: "Mythic", power: 98, speed: "9.5", img: "/assets/starter-ship.webp" },
+    { name: "Solaris Cruiser", serial: "0042", rarity: "Legendary", power: 88, speed: "8.2", img: "/assets/starter-ship.webp" },
+    { name: "Quantum Interceptor", serial: "0109", rarity: "Epic", power: 74, speed: "11.0", img: "/assets/starter-ship.webp" },
+    { name: "Nebula Frigate", serial: "0314", rarity: "Rare", power: 65, speed: "7.8", img: "/assets/starter-ship.webp" },
+    { name: "Aegis Recon Scout", serial: "0892", rarity: "Rare", power: 52, speed: "12.4", img: "/assets/starter-ship.webp" },
+    { name: "Titan Harvester", serial: "1024", rarity: "Epic", power: 80, speed: "5.5", img: "/assets/starter-ship.webp" },
+    { name: "Plasma Striker", serial: "2048", rarity: "Rare", power: 60, speed: "9.8", img: "/assets/starter-ship.webp" },
   ];
 
   function openVisor(item: any) {
@@ -255,19 +209,18 @@ import Panel from '../components/Panel.astro';
     if (visorRarity) visorRarity.innerText = item.rarity;
     if (visorPower) visorPower.innerText = `${item.power}%`;
     if (visorSpeed) visorSpeed.innerText = `${item.speed}LY`;
-    if (visorVal) visorVal.innerText = `${item.value} SPIRAL`;
 
-    nftVisorModal?.classList.remove('hidden');
-    nftVisorModal?.classList.add('flex');
+    assetVisorModal?.classList.remove('hidden');
+    assetVisorModal?.classList.add('flex');
   }
 
   function closeVisor() {
-    nftVisorModal?.classList.add('hidden');
-    nftVisorModal?.classList.remove('flex');
+    assetVisorModal?.classList.add('hidden');
+    assetVisorModal?.classList.remove('flex');
   }
 
   btnCloseVisor?.addEventListener('click', closeVisor);
-  nftVisorBackdrop?.addEventListener('click', closeVisor);
+  assetVisorBackdrop?.addEventListener('click', closeVisor);
 
   function renderProfile(user: PlayerAccount) {
     loadingEl?.classList.add('hidden');
@@ -296,22 +249,6 @@ import Panel from '../components/Panel.astro';
       playerAvatar?.classList.add('hidden');
     }
 
-    // Wallets
-    if (user.embedded_wallets) {
-      if (vaultEvm) {
-        const a = user.embedded_wallets.evm_address;
-        vaultEvm.textContent = a ? `${a.slice(0, 6)}...${a.slice(-4)}` : 'N/A';
-      }
-      if (vaultSol) {
-        const a = user.embedded_wallets.solana_address;
-        vaultSol.textContent = a ? `${a.slice(0, 4)}...${a.slice(-4)}` : 'N/A';
-      }
-      if (vaultIcp) {
-        const a = user.embedded_wallets.icp_principal;
-        vaultIcp.textContent = a ? `${a.slice(0, 5)}...${a.slice(-3)}` : 'N/A';
-      }
-    }
-
     // Render Fleet Inventory Cards
     if (invContainer) {
       invContainer.innerHTML = '';
@@ -337,13 +274,9 @@ import Panel from '../components/Panel.astro';
           </div>
           <div class="p-1.5 w-full flex flex-col text-left space-y-1 font-mono">
             <span class="text-[9px] text-white font-bold uppercase truncate">${inv.name}</span>
-            <div class="flex justify-between items-center text-[7px] text-slate-400">
+            <div class="flex justify-between items-center text-[7px] text-slate-400 pt-1 mt-0.5 border-t border-white/5">
               <span>PWR: ${inv.power}%</span>
               <span>SPD: ${inv.speed}LY</span>
-            </div>
-            <div class="flex items-center justify-between border-t border-white/5 pt-1 mt-0.5">
-              <span class="text-[6px] text-slate-500 uppercase">VALUE:</span>
-              <span class="text-[8px] text-cyan-400 font-bold">${inv.value} SP</span>
             </div>
           </div>
         `;

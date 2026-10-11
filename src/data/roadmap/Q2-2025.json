@@ -2,20 +2,20 @@
   "period": "2025-Q2",
   "description": "Web Platform Integration Phase: Establishing Cosmicrafts Battlegrounds presence on web gaming platforms with multiplayer capabilities",
   "completed": 0,
-  "total": 3,
+  "total": 24,
   "milestones": [
     {
       "title": "Web Gaming Platform Integration",
       "description": "Establish presence on major web gaming platforms with optimized performance",
       "completed": 0,
-      "total": 3,
+      "total": 9,
       "tasks": [
         {
           "title": "Platform Integration Strategy",
           "description": "Research and implement platform-specific requirements for major gaming portals",
           "completed": 0,
           "total": 3,
-          "status": "InProgress",
+          "status": "ToDo",
           "subtasks": [
             {
               "title": "Technical Requirements Analysis",
@@ -39,7 +39,7 @@
           "description": "Implement unified SDK layer for multiple gaming platforms",
           "completed": 0,
           "total": 3,
-          "status": "InProgress",
+          "status": "ToDo",
           "subtasks": [
             {
               "title": "Core SDK Architecture",
@@ -63,7 +63,7 @@
           "description": "Optimize game performance for web platform requirements",
           "completed": 0,
           "total": 3,
-          "status": "InProgress",
+          "status": "ToDo",
           "subtasks": [
             {
               "title": "Loading Time Optimization",
@@ -88,14 +88,14 @@
       "title": "WebGL Game Engine Enhancement",
       "description": "Optimize game engine for web browser performance and compatibility",
       "completed": 0,
-      "total": 3,
+      "total": 9,
       "tasks": [
         {
           "title": "Rendering Pipeline Optimization",
           "description": "Enhance WebGL rendering pipeline for optimal performance",
           "completed": 0,
           "total": 3,
-          "status": "InProgress",
+          "status": "ToDo",
           "subtasks": [
             {
               "title": "Shader Optimization",
@@ -119,7 +119,7 @@
           "description": "Implement efficient asset loading and management",
           "completed": 0,
           "total": 3,
-          "status": "InProgress",
+          "status": "ToDo",
           "subtasks": [
             {
               "title": "Dynamic Loading",
@@ -143,7 +143,7 @@
           "description": "Ensure broad browser compatibility and performance",
           "completed": 0,
           "total": 3,
-          "status": "InProgress",
+          "status": "ToDo",
           "subtasks": [
             {
               "title": "Cross-Browser Testing",
@@ -168,14 +168,14 @@
       "title": "Multiplayer Infrastructure",
       "description": "Establish robust multiplayer gaming infrastructure",
       "completed": 0,
-      "total": 3,
+      "total": 6,
       "tasks": [
         {
           "title": "Real-time Communication",
           "description": "Implement efficient real-time game state synchronization",
           "completed": 0,
           "total": 3,
-          "status": "InProgress",
+          "status": "ToDo",
           "subtasks": [
             {
               "title": "WebSocket Protocol",
@@ -195,35 +195,11 @@
           ]
         },
         {
-          "title": "Canister Integration",
-          "description": "Integrate game state with IC canisters",
-          "completed": 0,
-          "total": 3,
-          "status": "InProgress",
-          "subtasks": [
-            {
-              "title": "State Management",
-              "description": "Implement efficient game state management in canisters",
-              "completed": false
-            },
-            {
-              "title": "Transaction Processing",
-              "description": "Optimize canister transaction processing",
-              "completed": false
-            },
-            {
-              "title": "Data Persistence",
-              "description": "Implement efficient data persistence strategy",
-              "completed": false
-            }
-          ]
-        },
-        {
           "title": "Multiplayer Features",
           "description": "Implement core multiplayer gameplay features",
           "completed": 0,
           "total": 3,
-          "status": "InProgress",
+          "status": "ToDo",
           "subtasks": [
             {
               "title": "Matchmaking System",
@@ -245,4 +221,4 @@
       ]
     }
   ]
-} 
+}

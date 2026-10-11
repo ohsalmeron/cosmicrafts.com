@@ -1,14 +1,14 @@
 {
   "period": "2026-Q2",
-  "description": "Ship ckETH Integration: Basic trading features, Adventures CrazyGames launch, and 4X pre-alpha",
+  "description": "Ship Trading Features: Adventures CrazyGames launch, and 4X pre-alpha",
   "completed": 0,
-  "total": 6,
+  "total": 48,
   "milestones": [
     {
       "title": "AI Code Review System Launch",
       "description": "Ship automated code review and validation pipeline",
       "completed": 0,
-      "total": 3,
+      "total": 6,
       "tasks": [
         {
           "title": "Automated Code Review",
@@ -64,11 +64,11 @@
       "title": "4X Pre-Alpha Build",
       "description": "Deliver first playable 4X build with core systems and AI factions",
       "completed": 0,
-      "total": 3,
+      "total": 12,
       "tasks": [
         {
-          "title": "4X Metaverse Pre-Alpha Development",
-          "description": "Progress 4X metaverse game development toward pre-alpha milestone with focus on core systems and initial content.",
+          "title": "4X Universe Pre-Alpha Development",
+          "description": "Progress 4X universe game development toward pre-alpha milestone with focus on core systems and initial content.",
           "completed": 0,
           "total": 4,
           "status": "ToDo",
@@ -97,7 +97,7 @@
         },
         {
           "title": "AI-Enhanced 4X World",
-          "description": "Integrate advanced AI systems into the 4X metaverse game to create a living, evolving world.",
+          "description": "Integrate advanced AI systems into the 4X universe game to create a living, evolving world.",
           "completed": 0,
           "total": 4,
           "status": "ToDo",
@@ -159,7 +159,7 @@
       "title": "Adventures CrazyGames Release",
       "description": "Ship Adventures prototype on CrazyGames platform",
       "completed": 0,
-      "total": 3,
+      "total": 10,
       "tasks": [
         {
           "title": "Final Prototype Polish",
@@ -241,40 +241,16 @@
       ]
     },
     {
-      "title": "Cross-Chain Economy Expansion",
-      "description": "Expand cross-chain economy integration and enhance DAO governance capabilities",
+      "title": "Community Governance Expansion",
+      "description": "Expand community governance capabilities across the ecosystem",
       "completed": 0,
       "total": 3,
       "tasks": [
         {
-          "title": "Cross-Chain Integration for Adventures",
-          "description": "Implement cross-chain payment options in Adventures prototype with improved user experience.",
+          "title": "Community Game Development Governance",
+          "description": "Expand community governance to include decision-making for game development priorities and features.",
           "completed": 0,
           "total": 3,
-          "status": "ToDo",
-          "subtasks": [
-            {
-              "title": "Multi-Currency Support",
-              "description": "Implement support for all established cryptocurrencies (ckBTC, ckETH, ckSOL, Dogecoin) in Adventures.",
-              "completed": false
-            },
-            {
-              "title": "Streamlined Onboarding",
-              "description": "Create streamlined onboarding process for new users to set up cryptocurrency payments with minimal friction.",
-              "completed": false
-            },
-            {
-              "title": "Cross-Game Asset Movement",
-              "description": "Implement capability for players to move purchased assets between Battlegrounds and Adventures.",
-              "completed": false
-            }
-          ]
-        },
-        {
-          "title": "DAO Game Development Governance",
-          "description": "Expand DAO governance to include decision-making for game development priorities and features.",
-          "completed": 0,
-          "total": 4,
           "status": "ToDo",
           "subtasks": [
             {
@@ -288,37 +264,8 @@
               "completed": false
             },
             {
-              "title": "Weighted Voting Implementation",
-              "description": "Implement weighted voting system based on token holdings and contribution history.",
-              "completed": false
-            },
-            {
               "title": "Development Transparency Dashboard",
               "description": "Create dashboard showing development priorities, progress, and community voting results.",
-              "completed": false
-            }
-          ]
-        },
-        {
-          "title": "Token Utility Expansion",
-          "description": "Expand utility of supported cryptocurrencies within the games and ecosystem.",
-          "completed": 0,
-          "total": 3,
-          "status": "ToDo",
-          "subtasks": [
-            {
-              "title": "Token-Specific Benefits",
-              "description": "Implement unique benefits and features for holders of each supported cryptocurrency.",
-              "completed": false
-            },
-            {
-              "title": "Cross-Chain Staking",
-              "description": "Develop staking mechanism for supported cryptocurrencies to earn in-game rewards and governance power.",
-              "completed": false
-            },
-            {
-              "title": "Community Rewards Program",
-              "description": "Create rewards program for cryptocurrency holders who actively participate in governance and community.",
               "completed": false
             }
           ]
@@ -329,7 +276,7 @@
       "title": "Advanced AI Features",
       "description": "Implement advanced AI features in Adventures prototype and 4X pre-alpha",
       "completed": 0,
-      "total": 2,
+      "total": 7,
       "tasks": [
         {
           "title": "Adventures AI Integration",
@@ -390,7 +337,7 @@
       "title": "Battlegrounds Mobile Beta",
       "description": "Prepare Battlegrounds mobile version for beta testing with enhanced features and optimized performance",
       "completed": 0,
-      "total": 3,
+      "total": 10,
       "tasks": [
         {
           "title": "Mobile Beta Feature Completion",
@@ -472,4 +419,4 @@
       ]
     }
   ]
-} 
+}

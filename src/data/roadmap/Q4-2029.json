@@ -2,13 +2,13 @@
   "period": "2029-Q4",
   "description": "Finalize new title preparations, advance AI frameworks, and enhance infrastructure systems.",
   "completed": 0,
-  "total": 3,
+  "total": 27,
   "milestones": [
     {
       "title": "Title Finalization",
       "description": "Complete final preparations for the new franchise title.",
       "completed": 0,
-      "total": 3,
+      "total": 9,
       "tasks": [
         {
           "title": "Final Gameplay Tuning",
@@ -88,7 +88,7 @@
       "title": "AI Framework Progress",
       "description": "Advance AI framework development and testing.",
       "completed": 0,
-      "total": 3,
+      "total": 9,
       "tasks": [
         {
           "title": "AI Development Tools",
@@ -168,7 +168,7 @@
       "title": "Infrastructure Enhancement",
       "description": "Optimize infrastructure for scalability and efficiency.",
       "completed": 0,
-      "total": 3,
+      "total": 9,
       "tasks": [
         {
           "title": "Scalability Enhancements",
@@ -245,4 +245,4 @@
       ]
     }
   ]
-} 
+}

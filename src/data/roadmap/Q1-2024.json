@@ -1,64 +1,64 @@
 {
   "period": "2024-Q1",
-  "description": "**DFINITY Grant Delivery: ICRC standards, multiplayer systems, Web3 integration**",
-  "completed": 27,
-  "total": 27,
+  "description": "**Platform Delivery: in-game asset standards, multiplayer systems, account integration**",
+  "completed": 22,
+  "total": 22,
   "milestones": [
     {
-      "title": "ICRC Standards Implementation",
-      "description": "Deploy ICRC1 token and ICRC7 NFT standards with lootbox system",
+      "title": "In-Game Asset Systems",
+      "description": "Deploy in-game currency and collectible asset systems with lootbox system",
       "completed": 9,
       "total": 9,
       "tasks": [
         {
-          "title": "ICRC1 Token System",
-          "description": "Implement standard-compliant token system",
+          "title": "In-Game Currency System",
+          "description": "Implement the in-game currency system",
           "completed": 3,
           "total": 3,
           "status": "Completed",
           "subtasks": [
             {
-              "title": "Token Contract",
-              "description": "Deploy ICRC1 token contract",
+              "title": "Currency Backend",
+              "description": "Deploy the in-game currency backend",
               "completed": 1,
               "total": 1
             },
             {
               "title": "Economy Refactor",
-              "description": "Refactor game economy to ICRC1",
+              "description": "Refactor the game economy to the new currency",
               "completed": 1,
               "total": 1
             },
             {
               "title": "Testing",
-              "description": "Validate token operations and security",
+              "description": "Validate currency operations and security",
               "completed": 1,
               "total": 1
             }
           ]
         },
         {
-          "title": "ICRC7 NFT Framework",
-          "description": "Deploy standard-compliant NFT system",
+          "title": "Collectible Asset Framework",
+          "description": "Deploy the collectible asset system",
           "completed": 3,
           "total": 3,
           "status": "Completed",
           "subtasks": [
             {
-              "title": "NFT Contract",
-              "description": "Implement ICRC7 NFT standard",
+              "title": "Asset Registry",
+              "description": "Implement the collectible asset registry",
               "completed": 1,
               "total": 1
             },
             {
               "title": "Upgrade System",
-              "description": "Create token-based NFT upgrades",
+              "description": "Create currency-based asset upgrades",
               "completed": 1,
               "total": 1
             },
             {
               "title": "Integration",
-              "description": "Connect NFTs with game systems",
+              "description": "Connect collectibles with game systems",
               "completed": 1,
               "total": 1
             }
@@ -66,20 +66,20 @@
         },
         {
           "title": "Lootbox Mechanics",
-          "description": "Implement NFT-based lootbox system",
+          "description": "Implement the lootbox system",
           "completed": 3,
           "total": 3,
           "status": "Completed",
           "subtasks": [
             {
-              "title": "NFT Structure",
-              "description": "Design lootbox NFT architecture",
+              "title": "Lootbox Structure",
+              "description": "Design the lootbox reward architecture",
               "completed": 1,
               "total": 1
             },
             {
-              "title": "Token Minting",
-              "description": "Implement token minting from lootboxes",
+              "title": "Reward Payouts",
+              "description": "Implement reward payouts from lootboxes",
               "completed": 1,
               "total": 1
             },
@@ -101,7 +101,7 @@
       "tasks": [
         {
           "title": "ELO System",
-          "description": "Implement on-chain matchmaking system",
+          "description": "Implement matchmaking system",
           "completed": 3,
           "total": 3,
           "status": "Completed",
@@ -119,8 +119,8 @@
               "total": 1
             },
             {
-              "title": "Canister Deploy",
-              "description": "Deploy standalone matchmaking canister",
+              "title": "Service Deploy",
+              "description": "Deploy the standalone matchmaking service",
               "completed": 1,
               "total": 1
             }
@@ -183,16 +183,16 @@
       ]
     },
     {
-      "title": "Web3 Authentication",
-      "description": "Multi-wallet login system and SNS technical setup",
-      "completed": 9,
-      "total": 9,
+      "title": "Account Authentication",
+      "description": "Multi-provider login system and account setup",
+      "completed": 4,
+      "total": 4,
       "tasks": [
         {
           "title": "Login Methods",
           "description": "Implement multiple authentication options",
-          "completed": 3,
-          "total": 3,
+          "completed": 1,
+          "total": 1,
           "status": "Completed",
           "subtasks": [
             {
@@ -200,51 +200,12 @@
               "description": "Implement Google login integration",
               "completed": 1,
               "total": 1
-            },
-            {
-              "title": "Metamask",
-              "description": "Deploy Metamask authentication",
-              "completed": 1,
-              "total": 1
-            },
-            {
-              "title": "Phantom",
-              "description": "Integrate Phantom wallet login",
-              "completed": 1,
-              "total": 1
             }
           ]
         },
         {
-          "title": "SNS Framework",
-          "description": "Initial SNS technical implementation",
-          "completed": 3,
-          "total": 3,
-          "status": "Completed",
-          "subtasks": [
-            {
-              "title": "Technical Analysis",
-              "description": "Research SNS framework capabilities",
-              "completed": 1,
-              "total": 1
-            },
-            {
-              "title": "Architecture",
-              "description": "Design SNS integration structure",
-              "completed": 1,
-              "total": 1
-            },
-            {
-              "title": "Testing",
-              "description": "Validate SNS framework setup",
-              "completed": 1,
-              "total": 1
-            }
-          ]
-        },
-        {
-          "title": "Web3 Rewards",
-          "description": "Implement token and NFT reward systems",
+          "title": "Reward Systems",
+          "description": "Implement in-game reward systems",
           "completed": 3,
           "total": 3,
           "status": "Completed",

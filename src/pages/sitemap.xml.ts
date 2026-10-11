@@ -6,7 +6,6 @@ export async function GET() {
   const docs = await getCollection('docs');
   const urls = [
     '/',
-    '/claim/',
     '/governance/',
     '/profile/',
     '/privacy/',

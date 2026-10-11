@@ -34,10 +34,7 @@
 
     <!-- Tab Selector -->
     <div id="modal-tabs" class="flex p-1 bg-slate-900 border border-white/10 rounded-xl mb-5 text-[11px] font-mono">
-      <button id="tab-btn-web3" type="button" class="flex-1 py-1.5 font-bold rounded-lg bg-cyan-500 text-slate-950 shadow-md transition-all cursor-pointer">
-        Web3 Wallets
-      </button>
-      <button id="tab-btn-email" type="button" class="flex-1 py-1.5 font-bold rounded-lg text-slate-400 hover:text-white transition-all cursor-pointer">
+      <button id="tab-btn-email" type="button" class="flex-1 py-1.5 font-bold rounded-lg bg-cyan-500 text-slate-950 shadow-md transition-all cursor-pointer">
         Email OTP
       </button>
       <button id="tab-btn-social" type="button" class="flex-1 py-1.5 font-bold rounded-lg text-slate-400 hover:text-white transition-all cursor-pointer">
@@ -45,29 +42,8 @@
       </button>
     </div>
 
-    <!-- TAB 1: WEB3 WALLETS -->
-    <div id="tab-content-web3" class="space-y-2.5">
-      <!-- EVM / MetaMask -->
-      <button id="web3-evm" type="button" class="w-full py-2.5 px-4 rounded-xl bg-white/5 border border-white/10 hover:border-cyan-400/40 hover:bg-cyan-950/20 text-white text-xs font-mono font-bold flex items-center justify-between transition-all group cursor-pointer">
-        <div class="flex items-center gap-3">
-          <div class="w-6 h-6 rounded-lg bg-amber-500/20 border border-amber-500/30 flex items-center justify-center font-bold text-amber-300 text-xs">Ξ</div>
-          <span>ETHEREUM / EVM (METAMASK)</span>
-        </div>
-        <span class="text-[9px] text-cyan-400 uppercase">[ CONNECT ]</span>
-      </button>
-
-      <!-- Solana / Phantom -->
-      <button id="web3-solana" type="button" class="w-full py-2.5 px-4 rounded-xl bg-white/5 border border-white/10 hover:border-purple-400/40 hover:bg-purple-950/20 text-white text-xs font-mono font-bold flex items-center justify-between transition-all group cursor-pointer">
-        <div class="flex items-center gap-3">
-          <div class="w-6 h-6 rounded-lg bg-purple-500/20 border border-purple-500/30 flex items-center justify-center font-bold text-purple-300 text-xs">S</div>
-          <span>SOLANA (PHANTOM / BACKPACK)</span>
-        </div>
-        <span class="text-[9px] text-purple-400 uppercase">[ CONNECT ]</span>
-      </button>
-    </div>
-
-    <!-- TAB 2: EMAIL OTP -->
-    <div id="tab-content-email" class="hidden space-y-4">
+    <!-- TAB 1: EMAIL OTP -->
+    <div id="tab-content-email" class="space-y-4">
       <form id="form-request-otp" class="space-y-4 text-left">
         <div>
           <label for="wou-input-email" class="block text-[10px] font-mono uppercase tracking-wider text-slate-400 mb-1.5">
@@ -125,7 +101,7 @@
       </form>
     </div>
 
-    <!-- TAB 3: SOCIAL -->
+    <!-- TAB 2: SOCIAL -->
     <div id="tab-content-social" class="hidden space-y-2 text-xs font-mono">
       <button data-provider="discord" class="social-btn w-full py-2.5 px-4 rounded-xl bg-[#5865F2]/15 border border-[#5865F2]/30 hover:bg-[#5865F2]/25 text-white flex items-center justify-between transition-all cursor-pointer">
         <div class="flex items-center gap-3">
@@ -172,10 +148,8 @@
   const errorMsg = document.getElementById('modal-error-msg');
 
   // Tabs
-  const tabBtnWeb3 = document.getElementById('tab-btn-web3');
   const tabBtnEmail = document.getElementById('tab-btn-email');
   const tabBtnSocial = document.getElementById('tab-btn-social');
-  const tabContentWeb3 = document.getElementById('tab-content-web3');
   const tabContentEmail = document.getElementById('tab-content-email');
   const tabContentSocial = document.getElementById('tab-content-social');
 
@@ -220,31 +194,23 @@
     errorBanner?.classList.add('hidden');
   }
 
-  function switchTab(tab: 'web3' | 'email' | 'social') {
+  function switchTab(tab: 'email' | 'social') {
     hideError();
     const activeClass = 'flex-1 py-1.5 font-bold rounded-lg bg-cyan-500 text-slate-950 shadow-md transition-all cursor-pointer';
     const inactiveClass = 'flex-1 py-1.5 font-bold rounded-lg text-slate-400 hover:text-white transition-all cursor-pointer';
 
-    if (tabBtnWeb3) tabBtnWeb3.className = tab === 'web3' ? activeClass : inactiveClass;
     if (tabBtnEmail) tabBtnEmail.className = tab === 'email' ? activeClass : inactiveClass;
     if (tabBtnSocial) tabBtnSocial.className = tab === 'social' ? activeClass : inactiveClass;
 
-    if (tab === 'web3') {
-      tabContentWeb3?.classList.remove('hidden');
-      tabContentEmail?.classList.add('hidden');
-      tabContentSocial?.classList.add('hidden');
-    } else if (tab === 'email') {
-      tabContentWeb3?.classList.add('hidden');
+    if (tab === 'email') {
       tabContentEmail?.classList.remove('hidden');
       tabContentSocial?.classList.add('hidden');
     } else {
-      tabContentWeb3?.classList.add('hidden');
       tabContentEmail?.classList.add('hidden');
       tabContentSocial?.classList.remove('hidden');
     }
   }
 
-  tabBtnWeb3?.addEventListener('click', () => switchTab('web3'));
   tabBtnEmail?.addEventListener('click', () => switchTab('email'));
   tabBtnSocial?.addEventListener('click', () => switchTab('social'));
 
@@ -256,7 +222,7 @@
   window.addEventListener('wou:open-modal', () => {
     modal?.classList.remove('hidden');
     hideError();
-    switchTab('web3');
+    switchTab('email');
   });
 
   window.addEventListener('wou:close-modal', () => {
@@ -357,27 +323,6 @@
       const provider = btn.getAttribute('data-provider');
       if (provider) wouAuth.loginWithSocial(provider);
     });
-  });
-
-  // Web3 Auth
-  document.getElementById('web3-solana')?.addEventListener('click', async () => {
-    try {
-      hideError();
-      await wouAuth.loginWithSolana();
-      modal?.classList.add('hidden');
-    } catch (err: any) {
-      showError(err.message || 'Solana authentication failed.');
-    }
-  });
-
-  document.getElementById('web3-evm')?.addEventListener('click', async () => {
-    try {
-      hideError();
-      await wouAuth.loginWithEvm();
-      modal?.classList.add('hidden');
-    } catch (err: any) {
-      showError(err.message || 'MetaMask/EVM authentication failed.');
-    }
   });
 
 </script>

@@ -2,13 +2,13 @@
   "period": "2029-Q2",
   "description": "Launch full release of new franchise title, begin mobile beta testing, and advance AI systems development.",
   "completed": 0,
-  "total": 3,
+  "total": 30,
   "milestones": [
     {
       "title": "New Title Full Launch",
       "description": "Launch full release of new franchise title across all major platforms.",
       "completed": 0,
-      "total": 3,
+      "total": 9,
       "tasks": [
         {
           "title": "Feature Completion",
@@ -88,11 +88,9 @@
       "title": "Mobile Beta Testing",
       "description": "Launch beta testing for mobile version of new franchise title.",
       "completed": 0,
-      "total": 3,
+      "total": 9,
       "tasks": [
         {
-          "title": "Platform Adaptation",
-          "description": "Adapt gameplay and systems for mobile platforms.",
           "title": "Decision Systems",
           "description": "Enhance decision-making capabilities.",
           "completed": 0,
@@ -170,7 +168,7 @@
       "title": "Q2 2029: System Expansion",
       "description": "Expand and enhance autonomous system capabilities.",
       "completed": 0,
-      "total": 3,
+      "total": 9,
       "tasks": [
         {
           "title": "Service Enhancement",
@@ -279,4 +277,4 @@
       ]
     }
   ]
-} 
+}

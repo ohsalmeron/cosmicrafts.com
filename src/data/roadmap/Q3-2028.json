@@ -2,13 +2,13 @@
   "period": "2028-Q3",
   "description": "4X Mobile Release, New Game Development, AI Governance Update",
   "completed": 0,
-  "total": 4,
+  "total": 36,
   "milestones": [
     {
       "title": "4X Mobile Release",
       "description": "Full version release on mobile platforms",
       "completed": 0,
-      "total": 3,
+      "total": 9,
       "tasks": [
         {
           "title": "Launch Preparation",
@@ -88,7 +88,7 @@
       "title": "New Game Development",
       "description": "New franchise title concept and planning",
       "completed": 0,
-      "total": 3,
+      "total": 9,
       "tasks": [
         {
           "title": "Concept Development",
@@ -168,7 +168,7 @@
       "title": "AI Governance Update",
       "description": "Enhanced governance systems",
       "completed": 0,
-      "total": 3,
+      "total": 9,
       "tasks": [
         {
           "title": "Decision Systems",
@@ -248,7 +248,7 @@
       "title": "System Automation",
       "description": "Automated system improvements",
       "completed": 0,
-      "total": 3,
+      "total": 9,
       "tasks": [
         {
           "title": "Development Automation",
@@ -325,4 +325,4 @@
       ]
     }
   ]
-} 
+}

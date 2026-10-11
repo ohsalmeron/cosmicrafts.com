@@ -1,14 +1,14 @@
 {
   "period": "2028-Q2",
-  "description": "4X Mobile Beta, AI Systems Update, Metaverse Features",
+  "description": "4X Mobile Beta, AI Systems Update, Shared Universe Features",
   "completed": 0,
-  "total": 4,
+  "total": 36,
   "milestones": [
     {
       "title": "4X Mobile Beta Launch",
       "description": "Beta version with enhanced features",
       "completed": 0,
-      "total": 3,
+      "total": 9,
       "tasks": [
         {
           "title": "Beta Launch",
@@ -88,7 +88,7 @@
       "title": "AI Systems Core",
       "description": "AI system updates and improvements",
       "completed": 0,
-      "total": 3,
+      "total": 9,
       "tasks": [
         {
           "title": "Learning Systems",
@@ -165,10 +165,10 @@
       ]
     },
     {
-      "title": "Metaverse Features",
-      "description": "Extended metaverse functionality",
+      "title": "Shared Universe Features",
+      "description": "Extended shared universe functionality",
       "completed": 0,
-      "total": 3,
+      "total": 9,
       "tasks": [
         {
           "title": "Virtual Spaces",
@@ -226,8 +226,8 @@
           "status": "ToDo",
           "subtasks": [
             {
-              "title": "Token Systems",
-              "description": "Advance token integration.",
+              "title": "Currency Systems",
+              "description": "Advance in-game currency integration.",
               "completed": false
             },
             {
@@ -248,7 +248,7 @@
       "title": "Operations Framework",
       "description": "Automated operations system",
       "completed": 0,
-      "total": 3,
+      "total": 9,
       "tasks": [
         {
           "title": "Process Automation",
@@ -325,4 +325,4 @@
       ]
     }
   ]
-} 
+}
